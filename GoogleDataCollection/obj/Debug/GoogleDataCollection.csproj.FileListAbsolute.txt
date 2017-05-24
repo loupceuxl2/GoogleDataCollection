@@ -1,0 +1,8 @@
+D:\Project 4\Programming\C#\GoogleDataCollection\GoogleDataCollection\bin\Debug\GoogleDataCollection.exe.config
+D:\Project 4\Programming\C#\GoogleDataCollection\GoogleDataCollection\bin\Debug\GoogleDataCollection.exe
+D:\Project 4\Programming\C#\GoogleDataCollection\GoogleDataCollection\bin\Debug\GoogleDataCollection.pdb
+D:\Project 4\Programming\C#\GoogleDataCollection\GoogleDataCollection\bin\Debug\Newtonsoft.Json.dll
+D:\Project 4\Programming\C#\GoogleDataCollection\GoogleDataCollection\bin\Debug\Newtonsoft.Json.xml
+D:\Project 4\Programming\C#\GoogleDataCollection\GoogleDataCollection\obj\Debug\GoogleDataCollection.csprojResolveAssemblyReference.cache
+D:\Project 4\Programming\C#\GoogleDataCollection\GoogleDataCollection\obj\Debug\GoogleDataCollection.exe
+D:\Project 4\Programming\C#\GoogleDataCollection\GoogleDataCollection\obj\Debug\GoogleDataCollection.pdb
