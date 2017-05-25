@@ -3,6 +3,8 @@ using System.ComponentModel;
 
 namespace GoogleDataCollection.Model
 {
+
+    [JsonObject(MemberSerialization.OptIn)]
     public class PointToPoint
     {
         [JsonProperty(PropertyName = "fId", Required = Required.Always)]

@@ -56,9 +56,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataAccess\ProgressBar.cs" />
+    <Compile Include="DataAccess\GoogleAccess.cs" />
+    <Compile Include="DataAccess\JsonAccess.cs" />
     <Compile Include="DataAccess\SpreadsheetAccess.cs" />
+    <Compile Include="Model\ErrorContainer.cs" />
+    <Compile Include="Model\ErrorReport.cs" />
     <Compile Include="Model\PointToPoint.cs" />
+    <Compile Include="Model\PointToPointContainer.cs" />
+    <Compile Include="Model\PointToPointError.cs" />
     <Compile Include="Model\Project.cs" />
     <Compile Include="Model\Period.cs" />
     <Compile Include="Program.cs" />
