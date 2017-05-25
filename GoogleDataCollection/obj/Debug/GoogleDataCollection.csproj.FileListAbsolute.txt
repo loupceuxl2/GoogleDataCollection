@@ -6,3 +6,13 @@ D:\Project 4\Programming\C#\GoogleDataCollection\GoogleDataCollection\bin\Debug\
 D:\Project 4\Programming\C#\GoogleDataCollection\GoogleDataCollection\obj\Debug\GoogleDataCollection.csprojResolveAssemblyReference.cache
 D:\Project 4\Programming\C#\GoogleDataCollection\GoogleDataCollection\obj\Debug\GoogleDataCollection.exe
 D:\Project 4\Programming\C#\GoogleDataCollection\GoogleDataCollection\obj\Debug\GoogleDataCollection.pdb
+D:\Project1\Programming\C#\GoogleDataCollection\GoogleDataCollection\bin\Debug\GoogleDataCollection.exe.config
+D:\Project1\Programming\C#\GoogleDataCollection\GoogleDataCollection\obj\Debug\GoogleDataCollection.exe
+D:\Project1\Programming\C#\GoogleDataCollection\GoogleDataCollection\obj\Debug\GoogleDataCollection.pdb
+D:\Project1\Programming\C#\GoogleDataCollection\GoogleDataCollection\bin\Debug\GoogleDataCollection.exe
+D:\Project1\Programming\C#\GoogleDataCollection\GoogleDataCollection\bin\Debug\GoogleDataCollection.pdb
+D:\Project1\Programming\C#\GoogleDataCollection\GoogleDataCollection\bin\Debug\Newtonsoft.Json.dll
+D:\Project1\Programming\C#\GoogleDataCollection\GoogleDataCollection\bin\Debug\Newtonsoft.Json.xml
+D:\Project1\Programming\C#\GoogleDataCollection\GoogleDataCollection\obj\Debug\GoogleDataCollection.csprojResolveAssemblyReference.cache
+D:\Project1\Programming\C#\GoogleDataCollection\GoogleDataCollection\bin\Debug\ShellProgressBar.dll
+D:\Project1\Programming\C#\GoogleDataCollection\GoogleDataCollection\bin\Debug\ShellProgressBar.pdb
