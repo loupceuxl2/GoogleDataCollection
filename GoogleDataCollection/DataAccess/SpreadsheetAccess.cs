@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 using System.Runtime.InteropServices;
 using GoogleDataCollection.Model;
 using Excel = Microsoft.Office.Interop.Excel;
@@ -10,11 +8,14 @@ namespace GoogleDataCollection.DataAccess
 {
     public static class SpreadsheetAccess
     {
-        // TO DO: Change to reflect inversion of x & y's.
-        public enum ColumnIndex : byte { FId = 1, OsmId, HighwayName, HighwayType, IsOneWay, MaxSpeed, Length, FromX, FromY, ToX, ToY, XMid, YMid };
+        // Note that the spreadsheet data is erroenous: Y's are X's and vice versa.
+        // Does not take above error into account:
+        // public enum ColumnIndex : byte { FId = 1, OsmId, HighwayName, HighwayType, IsOneWay, MaxSpeed, Length, FromX, FromY, ToX, ToY, XMid, YMid };
+        // Takes account of above error:
+        public enum ColumnIndex : byte { FId = 1, OsmId, HighwayName, HighwayType, IsOneWay, MaxSpeed, Length, FromY, FromX, ToY, ToX, YMid, XMid };
 
-        //public static readonly string DefaultFilename = @"D:\Project1\Programming\C#\GoogleDataCollection\GoogleDataCollection\Data\QLD_Network_Graph.csv";
-        public static readonly string DefaultFilename = @"D:\Project4\Programming\C#\GoogleDataCollection\GoogleDataCollection\Data\QLD_Network_Graph.csv";
+        public static readonly string DefaultFilename = @"D:\Project1\Programming\C#\GoogleDataCollection\GoogleDataCollection\Data\QLD_Network_Graph.csv";
+        //public static readonly string DefaultFilename = @"D:\Project4\Programming\C#\GoogleDataCollection\GoogleDataCollection\Data\QLD_Network_Graph.csv";
 
         private static Excel.Application _xlApp;
         private static Excel.Workbook _xlWorkbook;
@@ -24,7 +25,13 @@ namespace GoogleDataCollection.DataAccess
         public static PointToPointContainer LoadData(string filename, uint sheetNum)
         {
             //var nodeCollection = new List<PointToPoint>(100000);
-            var container = new PointToPointContainer();
+            var container = new PointToPointContainer()
+            {
+                CsvParsing = new CsvParsing()
+                {
+                    Time = DateTime.Now
+                }
+            };
 
             try
             {
@@ -35,108 +42,136 @@ namespace GoogleDataCollection.DataAccess
 
                 var rowCount = _xlRange.Rows.Count;
                 var colCount = _xlRange.Columns.Count;
-                var errors = new ErrorContainer();
+                var currentRow = 2;
+                var currentColumn = 1;
+
 
                 ShellProgressBar.ProgressBar bar = new ShellProgressBar.ProgressBar(rowCount, null, ConsoleColor.DarkRed);
 
                 // Iterate over the rows and columns and print to the console as it appears in the file.
                 // Excel is not zero based!
                 // Skip the header line.
-                for (var i = 2; i <= rowCount; i++)
+                for (currentRow = 2; currentRow <= rowCount; currentRow++)
                 {
                     try
                     {
+                        //ConsoleKeyInfo key = Console.ReadKey(true);
+
                         var currentNode = new PointToPoint();
 
-                        for (var j = 1; j <= colCount; j++)
+                        for (currentColumn = 1; currentColumn <= colCount; currentColumn++)
                         {
                             // Null value check.
                             // More info: https://stackoverflow.com/questions/17359835/what-is-the-difference-between-text-value-and-value2
-                            if (_xlRange.Cells[i, j] == null || _xlRange.Cells[i, j].Value2 == null)
+                            if (_xlRange.Cells[currentRow, currentColumn] == null || _xlRange.Cells[currentRow, currentColumn].Value2 == null)
                             {
                                 //errorMessage = $"Data error: Null value found at [{i}, {j}].";
                                 //Debug.WriteLine(errorMessage);
                                 //File.WriteAllLines($"error_report_{ DateTime.Now.ToShortDateString() }", new string[] { errorMessage });
+
+                                container.CsvParsing.Errors.Add(new CsvParsingError()
+                                {
+                                    Row = (uint)currentRow,
+                                    Column = (uint)currentColumn,
+                                    ErrorType = CsvParsingError.ErrorTypes.NullValue
+                                });
+
                                 continue;
                             }
 
                             // TO DO: Try/Catch? Or just print to file.
-                            switch (j)
+                            switch (currentColumn)
                             {
                                 case (int)ColumnIndex.FId:
-                                    currentNode.Fid = Convert.ToUInt32(_xlRange.Cells[i, j].Value2);
+                                    currentNode.Fid = Convert.ToUInt32(_xlRange.Cells[currentRow, currentColumn].Value2);
                                     break;
 
                                 case (int)ColumnIndex.OsmId:
-                                    currentNode.OsmId = Convert.ToUInt32(_xlRange.Cells[i, j].Value2);
+                                    currentNode.OsmId = Convert.ToUInt32(_xlRange.Cells[currentRow, currentColumn].Value2);
                                     break;
 
                                 case (int)ColumnIndex.HighwayName:
-                                    currentNode.HighwayName = _xlRange.Cells[i, j].Value2.ToString();
+                                    currentNode.HighwayName = _xlRange.Cells[currentRow, currentColumn].Value2.ToString();
                                     break;
 
                                 case (int)ColumnIndex.HighwayType:
-                                    currentNode.HighwayType = _xlRange.Cells[i, j].Value2.ToString();
+                                    currentNode.HighwayType = _xlRange.Cells[currentRow, currentColumn].Value2.ToString();
                                     break;
 
                                 case (int)ColumnIndex.IsOneWay:
-                                    currentNode.IsOneWay = Convert.ToBoolean(Convert.ToInt32(_xlRange.Cells[i, j].Value2));
+                                    currentNode.IsOneWay = Convert.ToBoolean(Convert.ToInt32(_xlRange.Cells[currentRow, currentColumn].Value2));
                                     break;
 
                                 case (int)ColumnIndex.MaxSpeed:
-                                    currentNode.MaxSpeed = Convert.ToUInt32(_xlRange.Cells[i, j].Value2);
+                                    currentNode.MaxSpeed = Convert.ToUInt32(_xlRange.Cells[currentRow, currentColumn].Value2);
                                     break;
 
                                 case (int)ColumnIndex.Length:
-                                    currentNode.Length = Convert.ToDouble(_xlRange.Cells[i, j].Value2);
+                                    currentNode.Length = Convert.ToDouble(_xlRange.Cells[currentRow, currentColumn].Value2);
                                     break;
 
                                 case (int)ColumnIndex.FromX:
-                                    currentNode.XFromPoint = Convert.ToDouble(_xlRange.Cells[i, j].Value2);
+                                    currentNode.XFromPoint = Convert.ToDouble(_xlRange.Cells[currentRow, currentColumn].Value2);
                                     break;
 
                                 case (int)ColumnIndex.FromY:
-                                    currentNode.YFromPoint = Convert.ToDouble(_xlRange.Cells[i, j].Value2);
+                                    currentNode.YFromPoint = Convert.ToDouble(_xlRange.Cells[currentRow, currentColumn].Value2);
                                     break;
 
                                 case (int)ColumnIndex.ToX:
-                                    currentNode.XToPoint = Convert.ToDouble(_xlRange.Cells[i, j].Value2);
+                                    currentNode.XToPoint = Convert.ToDouble(_xlRange.Cells[currentRow, currentColumn].Value2);
                                     break;
 
                                 case (int)ColumnIndex.ToY:
-                                    currentNode.YToPoint = Convert.ToDouble(_xlRange.Cells[i, j].Value2);
+                                    currentNode.YToPoint = Convert.ToDouble(_xlRange.Cells[currentRow, currentColumn].Value2);
                                     break;
 
                                 case (int)ColumnIndex.XMid:
-                                    currentNode.XMidPoint = Convert.ToDouble(_xlRange.Cells[i, j].Value2);
+                                    currentNode.XMidPoint = Convert.ToDouble(_xlRange.Cells[currentRow, currentColumn].Value2);
                                     break;
 
                                 case (int)ColumnIndex.YMid:
-                                    currentNode.YMidPoint = Convert.ToDouble(_xlRange.Cells[i, j].Value2);
+                                    currentNode.YMidPoint = Convert.ToDouble(_xlRange.Cells[currentRow, currentColumn].Value2);
                                     break;
 
                                 default:
+                                    container.CsvParsing.Errors.Add(new CsvParsingError()
+                                    {
+                                        Row = (uint)currentRow,
+                                        Column = (uint)currentColumn,
+                                        ErrorType = CsvParsingError.ErrorTypes.InvalidColumn
+                                    });
                                     //Debug.WriteLine($"Data error: Unknown column found at [{i}, {j}].");
                                     break;
                             }
 
-                            if (j == colCount)
+                            if (currentColumn == colCount)
                             {
                                 container.PointToPoints.Add(currentNode);
                             }
-
                         }
 
                         bar.Tick();
-
-                        if (i == 100)
+/*
+                        // Test up to:
+                        if (currentRow == 100)
                         {
                             bar.Dispose();
+
                             return container;
                         }
+*/
                     }
                     catch (Exception e)
                     {
+                        container.CsvParsing.Errors.Add(new CsvParsingError()
+                        {
+                            Row = (uint)currentRow,
+                            Column = (uint)currentColumn,
+                            ErrorType = CsvParsingError.ErrorTypes.Unknown,
+                            ExceptionMessage = e.Message
+                        });
+
                         continue;
                     }
                 }

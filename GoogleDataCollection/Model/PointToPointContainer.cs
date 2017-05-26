@@ -9,15 +9,12 @@ namespace GoogleDataCollection.Model
         [JsonProperty(PropertyName = "pointToPoints", Required = Required.Always)]
         public List<PointToPoint> PointToPoints { get; set; }
 
+        [JsonProperty(PropertyName = "csvParsing", Required = Required.Default)]
+        public CsvParsing CsvParsing { get; set; }
+
         public PointToPointContainer()
         {
             PointToPoints = new List<PointToPoint>();
         }
-/*
-        public PointToPointContainer(int initCapacity = 100000)
-        {
-            PointToPoints = new List<PointToPoint>(initCapacity);
-        }
-*/
     }
 }

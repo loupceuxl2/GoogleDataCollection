@@ -8,12 +8,12 @@
       "isOneWay": false,
       "maxSpeed": 0,
       "length": 590.8713458,
-      "xFromPoint": 153.4073545,
-      "yFromPoint": -27.9083023,
-      "xToPoint": 153.4078265,
-      "yToPoint": -27.9136192,
-      "xMidPoint": 153.4076298,
-      "yMidPoint": -27.91095726
+      "xFromPoint": -27.9083023,
+      "yFromPoint": 153.4073545,
+      "xToPoint": -27.9136192,
+      "yToPoint": 153.4078265,
+      "xMidPoint": -27.91095726,
+      "yMidPoint": 153.4076298
     },
     {
       "fId": 1,
@@ -23,12 +23,12 @@
       "isOneWay": false,
       "maxSpeed": 0,
       "length": 429.356103,
-      "xFromPoint": 153.4076463,
-      "yFromPoint": -27.9111314,
-      "xToPoint": 153.4033891,
-      "yToPoint": -27.9108205,
-      "xMidPoint": 153.405502,
-      "yMidPoint": -27.91079459
+      "xFromPoint": -27.9111314,
+      "yFromPoint": 153.4076463,
+      "xToPoint": -27.9108205,
+      "yToPoint": 153.4033891,
+      "xMidPoint": -27.91079459,
+      "yMidPoint": 153.405502
     },
     {
       "fId": 2,
@@ -38,12 +38,12 @@
       "isOneWay": false,
       "maxSpeed": 0,
       "length": 439.4021159,
-      "xFromPoint": 153.4034835,
-      "yFromPoint": -27.9078928,
-      "xToPoint": 153.4060327,
-      "yToPoint": -27.9095159,
-      "xMidPoint": 153.4046775,
-      "yMidPoint": -27.90939159
+      "xFromPoint": -27.9078928,
+      "yFromPoint": 153.4034835,
+      "xToPoint": -27.9095159,
+      "yToPoint": 153.4060327,
+      "xMidPoint": -27.90939159,
+      "yMidPoint": 153.4046775
     },
     {
       "fId": 3,
@@ -53,12 +53,12 @@
       "isOneWay": false,
       "maxSpeed": 0,
       "length": 140.2740152,
-      "xFromPoint": 153.4045306,
-      "yFromPoint": -27.9085451,
-      "xToPoint": 153.4059039,
-      "yToPoint": -27.9082644,
-      "xMidPoint": 153.4051983,
-      "yMidPoint": -27.90831516
+      "xFromPoint": -27.9085451,
+      "yFromPoint": 153.4045306,
+      "xToPoint": -27.9082644,
+      "yToPoint": 153.4059039,
+      "xMidPoint": -27.90831516,
+      "yMidPoint": 153.4051983
     },
     {
       "fId": 4,
@@ -68,12 +68,12 @@
       "isOneWay": false,
       "maxSpeed": 0,
       "length": 93.3067635,
-      "xFromPoint": 153.4066077,
-      "yFromPoint": -27.910153,
-      "xToPoint": 153.4075519,
-      "yToPoint": -27.9101379,
-      "xMidPoint": 153.4070803,
-      "yMidPoint": -27.91018254
+      "xFromPoint": -27.910153,
+      "yFromPoint": 153.4066077,
+      "xToPoint": -27.9101379,
+      "yToPoint": 153.4075519,
+      "xMidPoint": -27.91018254,
+      "yMidPoint": 153.4070803
     },
     {
       "fId": 5,
@@ -83,12 +83,12 @@
       "isOneWay": false,
       "maxSpeed": 0,
       "length": 643.8555257,
-      "xFromPoint": 153.4038783,
-      "yFromPoint": -27.9097434,
-      "xToPoint": 153.4062043,
-      "yToPoint": -27.9133916,
-      "xMidPoint": 153.4038548,
-      "yMidPoint": -27.91206316
+      "xFromPoint": -27.9097434,
+      "yFromPoint": 153.4038783,
+      "xToPoint": -27.9133916,
+      "yToPoint": 153.4062043,
+      "xMidPoint": -27.91206316,
+      "yMidPoint": 153.4038548
     },
     {
       "fId": 6,
@@ -98,12 +98,12 @@
       "isOneWay": false,
       "maxSpeed": 0,
       "length": 228.712328,
-      "xFromPoint": 153.4053289,
-      "yFromPoint": -27.9107674,
-      "xToPoint": 153.4062558,
-      "yToPoint": -27.9122085,
-      "xMidPoint": 153.4053502,
-      "yMidPoint": -27.91180834
+      "xFromPoint": -27.9107674,
+      "yFromPoint": 153.4053289,
+      "xToPoint": -27.9122085,
+      "yToPoint": 153.4062558,
+      "xMidPoint": -27.91180834,
+      "yMidPoint": 153.4053502
     },
     {
       "fId": 7,
@@ -113,12 +113,12 @@
       "isOneWay": false,
       "maxSpeed": 0,
       "length": 43.0819165,
-      "xFromPoint": 153.4042388,
-      "yFromPoint": -27.9135206,
-      "xToPoint": 153.4043676,
-      "yToPoint": -27.9131489,
-      "xMidPoint": 153.4043032,
-      "yMidPoint": -27.91333475
+      "xFromPoint": -27.9135206,
+      "yFromPoint": 153.4042388,
+      "xToPoint": -27.9131489,
+      "yToPoint": 153.4043676,
+      "xMidPoint": -27.91333475,
+      "yMidPoint": 153.4043032
     },
     {
       "fId": 8,
@@ -128,12 +128,12 @@
       "isOneWay": false,
       "maxSpeed": 0,
       "length": 5277.44675,
-      "xFromPoint": 153.3276756,
-      "yFromPoint": -27.9259819,
-      "xToPoint": 153.3744421,
-      "yToPoint": -27.9313778,
-      "xMidPoint": 153.350201,
-      "yMidPoint": -27.92228931
+      "xFromPoint": -27.9259819,
+      "yFromPoint": 153.3276756,
+      "xToPoint": -27.9313778,
+      "yToPoint": 153.3744421,
+      "xMidPoint": -27.92228931,
+      "yMidPoint": 153.350201
     },
     {
       "fId": 9,
@@ -143,12 +143,12 @@
       "isOneWay": false,
       "maxSpeed": 0,
       "length": 378.2947116,
-      "xFromPoint": 153.4021338,
-      "yFromPoint": -27.8789751,
-      "xToPoint": 153.3985544,
-      "yToPoint": -27.8777319,
-      "xMidPoint": 153.4003441,
-      "yMidPoint": -27.8783535
+      "xFromPoint": -27.8789751,
+      "yFromPoint": 153.4021338,
+      "xToPoint": -27.8777319,
+      "yToPoint": 153.3985544,
+      "xMidPoint": -27.8783535,
+      "yMidPoint": 153.4003441
     },
     {
       "fId": 10,
@@ -158,12 +158,12 @@
       "isOneWay": false,
       "maxSpeed": 0,
       "length": 382.3911407,
-      "xFromPoint": 153.3985544,
-      "yFromPoint": -27.8777319,
-      "xToPoint": 153.3947164,
-      "yToPoint": -27.8771983,
-      "xMidPoint": 153.3966354,
-      "yMidPoint": -27.8774651
+      "xFromPoint": -27.8777319,
+      "yFromPoint": 153.3985544,
+      "xToPoint": -27.8771983,
+      "yToPoint": 153.3947164,
+      "xMidPoint": -27.8774651,
+      "yMidPoint": 153.3966354
     },
     {
       "fId": 11,
@@ -173,12 +173,12 @@
       "isOneWay": false,
       "maxSpeed": 0,
       "length": 200.868774,
-      "xFromPoint": 153.3963094,
-      "yFromPoint": -27.8751635,
-      "xToPoint": 153.3948485,
-      "yToPoint": -27.8764295,
-      "xMidPoint": 153.3955773,
-      "yMidPoint": -27.87579462
+      "xFromPoint": -27.8751635,
+      "yFromPoint": 153.3963094,
+      "xToPoint": -27.8764295,
+      "yToPoint": 153.3948485,
+      "xMidPoint": -27.87579462,
+      "yMidPoint": 153.3955773
     },
     {
       "fId": 12,
@@ -188,12 +188,12 @@
       "isOneWay": false,
       "maxSpeed": 0,
       "length": 216.2474373,
-      "xFromPoint": 153.3984791,
-      "yFromPoint": -27.8754692,
-      "xToPoint": 153.3963094,
-      "yToPoint": -27.8751635,
-      "xMidPoint": 153.3973942,
-      "yMidPoint": -27.87531635
+      "xFromPoint": -27.8754692,
+      "yFromPoint": 153.3984791,
+      "xToPoint": -27.8751635,
+      "yToPoint": 153.3963094,
+      "xMidPoint": -27.87531635,
+      "yMidPoint": 153.3973942
     },
     {
       "fId": 13,
@@ -203,12 +203,12 @@
       "isOneWay": false,
       "maxSpeed": 0,
       "length": 1770.483352,
-      "xFromPoint": 153.3959132,
-      "yFromPoint": -27.8906661,
-      "xToPoint": 153.3984791,
-      "yToPoint": -27.8754692,
-      "xMidPoint": 153.396085,
-      "yMidPoint": -27.88295286
+      "xFromPoint": -27.8906661,
+      "yFromPoint": 153.3959132,
+      "xToPoint": -27.8754692,
+      "yToPoint": 153.3984791,
+      "xMidPoint": -27.88295286,
+      "yMidPoint": 153.396085
     },
     {
       "fId": 14,
@@ -218,12 +218,12 @@
       "isOneWay": false,
       "maxSpeed": 0,
       "length": 1459.695891,
-      "xFromPoint": 153.3902999,
-      "yFromPoint": -27.8887013,
-      "xToPoint": 153.3948485,
-      "yToPoint": -27.8764295,
-      "xMidPoint": 153.3924849,
-      "yMidPoint": -27.88252101
+      "xFromPoint": -27.8887013,
+      "yFromPoint": 153.3902999,
+      "xToPoint": -27.8764295,
+      "yToPoint": 153.3948485,
+      "xMidPoint": -27.88252101,
+      "yMidPoint": 153.3924849
     },
     {
       "fId": 15,
@@ -233,12 +233,12 @@
       "isOneWay": false,
       "maxSpeed": 0,
       "length": 357.4479873,
-      "xFromPoint": 153.3945908,
-      "yFromPoint": -27.8779097,
-      "xToPoint": 153.3981803,
-      "yToPoint": -27.878398,
-      "xMidPoint": 153.3963855,
-      "yMidPoint": -27.87815385
+      "xFromPoint": -27.8779097,
+      "yFromPoint": 153.3945908,
+      "xToPoint": -27.878398,
+      "yToPoint": 153.3981803,
+      "xMidPoint": -27.87815385,
+      "yMidPoint": 153.3963855
     },
     {
       "fId": 16,
@@ -248,12 +248,12 @@
       "isOneWay": false,
       "maxSpeed": 0,
       "length": 345.2728253,
-      "xFromPoint": 153.3961965,
-      "yFromPoint": -27.8826625,
-      "xToPoint": 153.3927461,
-      "yToPoint": -27.8821011,
-      "xMidPoint": 153.3944713,
-      "yMidPoint": -27.8823818
+      "xFromPoint": -27.8826625,
+      "yFromPoint": 153.3961965,
+      "xToPoint": -27.8821011,
+      "yToPoint": 153.3927461,
+      "xMidPoint": -27.8823818,
+      "yMidPoint": 153.3944713
     },
     {
       "fId": 17,
@@ -263,12 +263,12 @@
       "isOneWay": false,
       "maxSpeed": 0,
       "length": 615.7036715,
-      "xFromPoint": 153.3897519,
-      "yFromPoint": -27.8824393,
-      "xToPoint": 153.3958789,
-      "yToPoint": -27.8834895,
-      "xMidPoint": 153.3927989,
-      "yMidPoint": -27.88302793
+      "xFromPoint": -27.8824393,
+      "yFromPoint": 153.3897519,
+      "xToPoint": -27.8834895,
+      "yToPoint": 153.3958789,
+      "xMidPoint": -27.88302793,
+      "yMidPoint": 153.3927989
     },
     {
       "fId": 18,
@@ -278,12 +278,12 @@
       "isOneWay": false,
       "maxSpeed": 0,
       "length": 587.321873,
-      "xFromPoint": 153.3911325,
-      "yFromPoint": -27.882746,
-      "xToPoint": 153.3922247,
-      "yToPoint": -27.8776493,
-      "xMidPoint": 153.3916442,
-      "yMidPoint": -27.8801185
+      "xFromPoint": -27.882746,
+      "yFromPoint": 153.3911325,
+      "xToPoint": -27.8776493,
+      "yToPoint": 153.3922247,
+      "xMidPoint": -27.8801185,
+      "yMidPoint": 153.3916442
     },
     {
       "fId": 19,
@@ -293,12 +293,12 @@
       "isOneWay": false,
       "maxSpeed": 0,
       "length": 178.1433412,
-      "xFromPoint": 153.390031,
-      "yFromPoint": -27.87917,
-      "xToPoint": 153.3918397,
-      "yToPoint": -27.8791145,
-      "xMidPoint": 153.3909354,
-      "yMidPoint": -27.87914225
+      "xFromPoint": -27.87917,
+      "yFromPoint": 153.390031,
+      "xToPoint": -27.8791145,
+      "yToPoint": 153.3918397,
+      "xMidPoint": -27.87914225,
+      "yMidPoint": 153.3909354
     },
     {
       "fId": 20,
@@ -308,12 +308,12 @@
       "isOneWay": false,
       "maxSpeed": 0,
       "length": 137.4122047,
-      "xFromPoint": 153.390217,
-      "yFromPoint": -27.8779406,
-      "xToPoint": 153.390031,
-      "yToPoint": -27.87917,
-      "xMidPoint": 153.390124,
-      "yMidPoint": -27.8785553
+      "xFromPoint": -27.8779406,
+      "yFromPoint": 153.390217,
+      "xToPoint": -27.87917,
+      "yToPoint": 153.390031,
+      "xMidPoint": -27.8785553,
+      "yMidPoint": 153.390124
     },
     {
       "fId": 21,
@@ -323,12 +323,12 @@
       "isOneWay": false,
       "maxSpeed": 0,
       "length": 240.0953045,
-      "xFromPoint": 153.3900551,
-      "yFromPoint": -27.8802887,
-      "xToPoint": 153.3897519,
-      "yToPoint": -27.8824393,
-      "xMidPoint": 153.3899035,
-      "yMidPoint": -27.881364
+      "xFromPoint": -27.8802887,
+      "yFromPoint": 153.3900551,
+      "xToPoint": -27.8824393,
+      "yToPoint": 153.3897519,
+      "xMidPoint": -27.881364,
+      "yMidPoint": 153.3899035
     },
     {
       "fId": 22,
@@ -338,12 +338,12 @@
       "isOneWay": false,
       "maxSpeed": 0,
       "length": 473.6577016,
-      "xFromPoint": 153.3917762,
-      "yFromPoint": -27.8864027,
-      "xToPoint": 153.3964782,
-      "yToPoint": -27.8865667,
-      "xMidPoint": 153.3941442,
-      "yMidPoint": -27.88675906
+      "xFromPoint": -27.8864027,
+      "yFromPoint": 153.3917762,
+      "xToPoint": -27.8865667,
+      "yToPoint": 153.3964782,
+      "xMidPoint": -27.88675906,
+      "yMidPoint": 153.3941442
     },
     {
       "fId": 23,
@@ -353,12 +353,12 @@
       "isOneWay": false,
       "maxSpeed": 0,
       "length": 528.7136757,
-      "xFromPoint": 153.3911352,
-      "yFromPoint": -27.8872474,
-      "xToPoint": 153.3964368,
-      "yToPoint": -27.888011,
-      "xMidPoint": 153.3937863,
-      "yMidPoint": -27.88762505
+      "xFromPoint": -27.8872474,
+      "yFromPoint": 153.3911352,
+      "xToPoint": -27.888011,
+      "yToPoint": 153.3964368,
+      "xMidPoint": -27.88762505,
+      "yMidPoint": 153.3937863
     },
     {
       "fId": 24,
@@ -368,12 +368,12 @@
       "isOneWay": false,
       "maxSpeed": 0,
       "length": 615.2040044,
-      "xFromPoint": 153.3969528,
-      "yFromPoint": -27.8888563,
-      "xToPoint": 153.3907891,
-      "yToPoint": -27.8879351,
-      "xMidPoint": 153.3938693,
-      "yMidPoint": -27.8884073
+      "xFromPoint": -27.8888563,
+      "yFromPoint": 153.3969528,
+      "xToPoint": -27.8879351,
+      "yToPoint": 153.3907891,
+      "xMidPoint": -27.8884073,
+      "yMidPoint": 153.3938693
     },
     {
       "fId": 25,
@@ -383,12 +383,12 @@
       "isOneWay": false,
       "maxSpeed": 0,
       "length": 656.9118726,
-      "xFromPoint": 153.3950723,
-      "yFromPoint": -27.8891958,
-      "xToPoint": 153.3885146,
-      "yToPoint": -27.8884889,
-      "xMidPoint": 153.3918059,
-      "yMidPoint": -27.88895464
+      "xFromPoint": -27.8891958,
+      "yFromPoint": 153.3950723,
+      "xToPoint": -27.8884889,
+      "yToPoint": 153.3885146,
+      "xMidPoint": -27.88895464,
+      "yMidPoint": 153.3918059
     },
     {
       "fId": 26,
@@ -398,12 +398,12 @@
       "isOneWay": false,
       "maxSpeed": 0,
       "length": 1086.999782,
-      "xFromPoint": 153.3885146,
-      "yFromPoint": -27.8884889,
-      "xToPoint": 153.3839033,
-      "yToPoint": -27.8799186,
-      "xMidPoint": 153.3871632,
-      "yMidPoint": -27.88377882
+      "xFromPoint": -27.8884889,
+      "yFromPoint": 153.3885146,
+      "xToPoint": -27.8799186,
+      "yToPoint": 153.3839033,
+      "xMidPoint": -27.88377882,
+      "yMidPoint": 153.3871632
     },
     {
       "fId": 27,
@@ -413,12 +413,12 @@
       "isOneWay": false,
       "maxSpeed": 0,
       "length": 82.63436689,
-      "xFromPoint": 153.3853502,
-      "yFromPoint": -27.8786904,
-      "xToPoint": 153.3861028,
-      "yToPoint": -27.8790209,
-      "xMidPoint": 153.3857265,
-      "yMidPoint": -27.87885565
+      "xFromPoint": -27.8786904,
+      "yFromPoint": 153.3853502,
+      "xToPoint": -27.8790209,
+      "yToPoint": 153.3861028,
+      "xMidPoint": -27.87885565,
+      "yMidPoint": 153.3857265
     },
     {
       "fId": 28,
@@ -428,12 +428,12 @@
       "isOneWay": false,
       "maxSpeed": 0,
       "length": 375.0486308,
-      "xFromPoint": 153.3880941,
-      "yFromPoint": -27.8780801,
-      "xToPoint": 153.3850385,
-      "yToPoint": -27.8790437,
-      "xMidPoint": 153.3862789,
-      "yMidPoint": -27.87778854
+      "xFromPoint": -27.8780801,
+      "yFromPoint": 153.3880941,
+      "xToPoint": -27.8790437,
+      "yToPoint": 153.3850385,
+      "xMidPoint": -27.87778854,
+      "yMidPoint": 153.3862789
     },
     {
       "fId": 29,
@@ -443,12 +443,12 @@
       "isOneWay": false,
       "maxSpeed": 0,
       "length": 144.6602079,
-      "xFromPoint": 153.3870813,
-      "yFromPoint": -27.8810693,
-      "xToPoint": 153.3859912,
-      "yToPoint": -27.8802424,
-      "xMidPoint": 153.3864924,
-      "yMidPoint": -27.88073128
+      "xFromPoint": -27.8810693,
+      "yFromPoint": 153.3870813,
+      "xToPoint": -27.8802424,
+      "yToPoint": 153.3859912,
+      "xMidPoint": -27.88073128,
+      "yMidPoint": 153.3864924
     },
     {
       "fId": 30,
@@ -458,12 +458,12 @@
       "isOneWay": false,
       "maxSpeed": 0,
       "length": 644.3393076,
-      "xFromPoint": 153.3876364,
-      "yFromPoint": -27.8780196,
-      "xToPoint": 153.3888408,
-      "yToPoint": -27.8832391,
-      "xMidPoint": 153.3871034,
-      "yMidPoint": -27.88094773
+      "xFromPoint": -27.8780196,
+      "yFromPoint": 153.3876364,
+      "xToPoint": -27.8832391,
+      "yToPoint": 153.3888408,
+      "xMidPoint": -27.88094773,
+      "yMidPoint": 153.3871034
     },
     {
       "fId": 31,
@@ -473,12 +473,12 @@
       "isOneWay": false,
       "maxSpeed": 0,
       "length": 220.412291,
-      "xFromPoint": 153.3885747,
-      "yFromPoint": -27.8805686,
-      "xToPoint": 153.387854,
-      "yToPoint": -27.8823055,
-      "xMidPoint": 153.3884333,
-      "yMidPoint": -27.88157939
+      "xFromPoint": -27.8805686,
+      "yFromPoint": 153.3885747,
+      "xToPoint": -27.8823055,
+      "yToPoint": 153.387854,
+      "xMidPoint": -27.88157939,
+      "yMidPoint": 153.3884333
     },
     {
       "fId": 32,
@@ -488,12 +488,12 @@
       "isOneWay": false,
       "maxSpeed": 0,
       "length": 420.3707129,
-      "xFromPoint": 153.3854419,
-      "yFromPoint": -27.8839902,
-      "xToPoint": 153.3869902,
-      "yToPoint": -27.8874098,
-      "xMidPoint": 153.3865638,
-      "yMidPoint": -27.88553861
+      "xFromPoint": -27.8839902,
+      "yFromPoint": 153.3854419,
+      "xToPoint": -27.8874098,
+      "yToPoint": 153.3869902,
+      "xMidPoint": -27.88553861,
+      "yMidPoint": 153.3865638
     },
     {
       "fId": 33,
@@ -503,12 +503,12 @@
       "isOneWay": false,
       "maxSpeed": 0,
       "length": 169.0131112,
-      "xFromPoint": 153.3885404,
-      "yFromPoint": -27.8847413,
-      "xToPoint": 153.3888408,
-      "yToPoint": -27.8832391,
-      "xMidPoint": 153.3886906,
-      "yMidPoint": -27.8839902
+      "xFromPoint": -27.8847413,
+      "yFromPoint": 153.3885404,
+      "xToPoint": -27.8832391,
+      "yToPoint": 153.3888408,
+      "xMidPoint": -27.8839902,
+      "yMidPoint": 153.3886906
     },
     {
       "fId": 34,
@@ -518,12 +518,12 @@
       "isOneWay": false,
       "maxSpeed": 0,
       "length": 519.716939,
-      "xFromPoint": 153.390121,
-      "yFromPoint": -27.8824696,
-      "xToPoint": 153.389227,
-      "yToPoint": -27.887093,
-      "xMidPoint": 153.3896707,
-      "yMidPoint": -27.88478095
+      "xFromPoint": -27.8824696,
+      "yFromPoint": 153.390121,
+      "xToPoint": -27.887093,
+      "yToPoint": 153.389227,
+      "xMidPoint": -27.88478095,
+      "yMidPoint": 153.3896707
     },
     {
       "fId": 35,
@@ -533,12 +533,12 @@
       "isOneWay": false,
       "maxSpeed": 0,
       "length": 233.7061789,
-      "xFromPoint": 153.3894674,
-      "yFromPoint": -27.8857199,
-      "xToPoint": 153.3918105,
-      "yToPoint": -27.8860613,
-      "xMidPoint": 153.390639,
-      "yMidPoint": -27.8858906
+      "xFromPoint": -27.8857199,
+      "yFromPoint": 153.3894674,
+      "xToPoint": -27.8860613,
+      "yToPoint": 153.3918105,
+      "xMidPoint": -27.8858906,
+      "yMidPoint": 153.390639
     },
     {
       "fId": 36,
@@ -548,12 +548,12 @@
       "isOneWay": false,
       "maxSpeed": 0,
       "length": 211.1967933,
-      "xFromPoint": 153.3914562,
-      "yFromPoint": -27.8867994,
-      "xToPoint": 153.3893472,
-      "yToPoint": -27.8864482,
-      "xMidPoint": 153.3904017,
-      "yMidPoint": -27.8866238
+      "xFromPoint": -27.8867994,
+      "yFromPoint": 153.3914562,
+      "xToPoint": -27.8864482,
+      "yToPoint": 153.3893472,
+      "xMidPoint": -27.8866238,
+      "yMidPoint": 153.3904017
     },
     {
       "fId": 37,
@@ -563,12 +563,12 @@
       "isOneWay": false,
       "maxSpeed": 0,
       "length": 175.3559046,
-      "xFromPoint": 153.389227,
-      "yFromPoint": -27.887093,
-      "xToPoint": 153.3909608,
-      "yToPoint": -27.8874572,
-      "xMidPoint": 153.3900939,
-      "yMidPoint": -27.8872751
+      "xFromPoint": -27.887093,
+      "yFromPoint": 153.389227,
+      "xToPoint": -27.8874572,
+      "yToPoint": 153.3909608,
+      "xMidPoint": -27.8872751,
+      "yMidPoint": 153.3900939
     },
     {
       "fId": 38,
@@ -578,12 +578,12 @@
       "isOneWay": false,
       "maxSpeed": 0,
       "length": 229.9806626,
-      "xFromPoint": 153.3884717,
-      "yFromPoint": -27.8876696,
-      "xToPoint": 153.3907891,
-      "yToPoint": -27.8879351,
-      "xMidPoint": 153.3896304,
-      "yMidPoint": -27.88780235
+      "xFromPoint": -27.8876696,
+      "yFromPoint": 153.3884717,
+      "xToPoint": -27.8879351,
+      "yToPoint": 153.3907891,
+      "xMidPoint": -27.88780235,
+      "yMidPoint": 153.3896304
     },
     {
       "fId": 39,
@@ -593,12 +593,12 @@
       "isOneWay": false,
       "maxSpeed": 0,
       "length": 298.0358669,
-      "xFromPoint": 153.3986158,
-      "yFromPoint": -27.8762356,
-      "xToPoint": 153.3956399,
-      "yToPoint": -27.8757401,
-      "xMidPoint": 153.3971279,
-      "yMidPoint": -27.87598785
+      "xFromPoint": -27.8762356,
+      "yFromPoint": 153.3986158,
+      "xToPoint": -27.8757401,
+      "yToPoint": 153.3956399,
+      "xMidPoint": -27.87598785,
+      "yMidPoint": 153.3971279
     },
     {
       "fId": 40,
@@ -608,12 +608,12 @@
       "isOneWay": false,
       "maxSpeed": 0,
       "length": 388.3009689,
-      "xFromPoint": 153.3948485,
-      "yFromPoint": -27.8764295,
-      "xToPoint": 153.3987407,
-      "yToPoint": -27.8769995,
-      "xMidPoint": 153.3967946,
-      "yMidPoint": -27.8767145
+      "xFromPoint": -27.8764295,
+      "yFromPoint": 153.3948485,
+      "xToPoint": -27.8769995,
+      "yToPoint": 153.3987407,
+      "xMidPoint": -27.8767145,
+      "yMidPoint": 153.3967946
     },
     {
       "fId": 41,
@@ -623,12 +623,12 @@
       "isOneWay": false,
       "maxSpeed": 0,
       "length": 436.7682544,
-      "xFromPoint": 153.3987285,
-      "yFromPoint": -27.8908634,
-      "xToPoint": 153.4013463,
-      "yToPoint": -27.8940419,
-      "xMidPoint": 153.4000919,
-      "yMidPoint": -27.89240928
+      "xFromPoint": -27.8908634,
+      "yFromPoint": 153.3987285,
+      "xToPoint": -27.8940419,
+      "yToPoint": 153.4013463,
+      "xMidPoint": -27.89240928,
+      "yMidPoint": 153.4000919
     },
     {
       "fId": 42,
@@ -638,12 +638,12 @@
       "isOneWay": false,
       "maxSpeed": 0,
       "length": 129.6539096,
-      "xFromPoint": 153.3992902,
-      "yFromPoint": -27.8932744,
-      "xToPoint": 153.4005481,
-      "yToPoint": -27.8929268,
-      "xMidPoint": 153.3999191,
-      "yMidPoint": -27.8931006
+      "xFromPoint": -27.8932744,
+      "yFromPoint": 153.3992902,
+      "xToPoint": -27.8929268,
+      "yToPoint": 153.4005481,
+      "xMidPoint": -27.8931006,
+      "yMidPoint": 153.3999191
     },
     {
       "fId": 43,
@@ -653,12 +653,12 @@
       "isOneWay": false,
       "maxSpeed": 0,
       "length": 1327.827688,
-      "xFromPoint": 153.3886515,
-      "yFromPoint": -27.8928704,
-      "xToPoint": 153.4013463,
-      "yToPoint": -27.8940419,
-      "xMidPoint": 153.395252,
-      "yMidPoint": -27.89380154
+      "xFromPoint": -27.8928704,
+      "yFromPoint": 153.3886515,
+      "xToPoint": -27.8940419,
+      "yToPoint": 153.4013463,
+      "xMidPoint": -27.89380154,
+      "yMidPoint": 153.395252
     },
     {
       "fId": 44,
@@ -668,12 +668,12 @@
       "isOneWay": false,
       "maxSpeed": 0,
       "length": 864.829872,
-      "xFromPoint": 153.3959132,
-      "yFromPoint": -27.8906661,
-      "xToPoint": 153.4007283,
-      "yToPoint": -27.8971445,
-      "xMidPoint": 153.3980692,
-      "yMidPoint": -27.89407557
+      "xFromPoint": -27.8906661,
+      "yFromPoint": 153.3959132,
+      "xToPoint": -27.8971445,
+      "yToPoint": 153.4007283,
+      "xMidPoint": -27.89407557,
+      "yMidPoint": 153.3980692
     },
     {
       "fId": 45,
@@ -683,12 +683,12 @@
       "isOneWay": false,
       "maxSpeed": 0,
       "length": 796.1841127,
-      "xFromPoint": 153.4007283,
-      "yFromPoint": -27.8971445,
-      "xToPoint": 153.4016017,
-      "yToPoint": -27.9042769,
-      "xMidPoint": 153.4012491,
-      "yMidPoint": -27.90069433
+      "xFromPoint": -27.8971445,
+      "yFromPoint": 153.4007283,
+      "xToPoint": -27.9042769,
+      "yToPoint": 153.4016017,
+      "xMidPoint": -27.90069433,
+      "yMidPoint": 153.4012491
     },
     {
       "fId": 46,
@@ -698,12 +698,12 @@
       "isOneWay": false,
       "maxSpeed": 0,
       "length": 271.7052972,
-      "xFromPoint": 153.3997611,
-      "yFromPoint": -27.8960235,
-      "xToPoint": 153.3970247,
-      "yToPoint": -27.8956988,
-      "xMidPoint": 153.3983926,
-      "yMidPoint": -27.89586371
+      "xFromPoint": -27.8960235,
+      "yFromPoint": 153.3997611,
+      "xToPoint": -27.8956988,
+      "yToPoint": 153.3970247,
+      "xMidPoint": -27.89586371,
+      "yMidPoint": 153.3983926
     },
     {
       "fId": 47,
@@ -713,12 +713,12 @@
       "isOneWay": false,
       "maxSpeed": 0,
       "length": 190.4098086,
-      "xFromPoint": 153.3978681,
-      "yFromPoint": -27.8958015,
-      "xToPoint": 153.3975784,
-      "yToPoint": -27.897501,
-      "xMidPoint": 153.3977233,
-      "yMidPoint": -27.89665125
+      "xFromPoint": -27.8958015,
+      "yFromPoint": 153.3978681,
+      "xToPoint": -27.897501,
+      "yToPoint": 153.3975784,
+      "xMidPoint": -27.89665125,
+      "yMidPoint": 153.3977233
     },
     {
       "fId": 48,
@@ -728,12 +728,12 @@
       "isOneWay": false,
       "maxSpeed": 0,
       "length": 187.9009911,
-      "xFromPoint": 153.3984191,
-      "yFromPoint": -27.8975772,
-      "xToPoint": 153.398734,
-      "yToPoint": -27.8959042,
-      "xMidPoint": 153.3985766,
-      "yMidPoint": -27.8967407
+      "xFromPoint": -27.8975772,
+      "yFromPoint": 153.3984191,
+      "xToPoint": -27.8959042,
+      "yToPoint": 153.398734,
+      "xMidPoint": -27.8967407,
+      "yMidPoint": 153.3985766
     },
     {
       "fId": 49,
@@ -743,12 +743,12 @@
       "isOneWay": false,
       "maxSpeed": 0,
       "length": 264.5802074,
-      "xFromPoint": 153.3999717,
-      "yFromPoint": -27.8976239,
-      "xToPoint": 153.3991555,
-      "yToPoint": -27.8983987,
-      "xMidPoint": 153.3992611,
-      "yMidPoint": -27.89719045
+      "xFromPoint": -27.8976239,
+      "yFromPoint": 153.3999717,
+      "xToPoint": -27.8983987,
+      "yToPoint": 153.3991555,
+      "xMidPoint": -27.89719045,
+      "yMidPoint": 153.3992611
     },
     {
       "fId": 50,
@@ -758,12 +758,12 @@
       "isOneWay": false,
       "maxSpeed": 0,
       "length": 325.6800539,
-      "xFromPoint": 153.3975784,
-      "yFromPoint": -27.897501,
-      "xToPoint": 153.4008807,
-      "yToPoint": -27.8975942,
-      "xMidPoint": 153.3992273,
-      "yMidPoint": -27.89762445
+      "xFromPoint": -27.897501,
+      "yFromPoint": 153.3975784,
+      "xToPoint": -27.8975942,
+      "yToPoint": 153.4008807,
+      "xMidPoint": -27.89762445,
+      "yMidPoint": 153.3992273
     },
     {
       "fId": 51,
@@ -773,12 +773,12 @@
       "isOneWay": false,
       "maxSpeed": 0,
       "length": 774.7943468,
-      "xFromPoint": 153.3972093,
-      "yFromPoint": -27.8949598,
-      "xToPoint": 153.3958596,
-      "yToPoint": -27.9018496,
-      "xMidPoint": 153.396513,
-      "yMidPoint": -27.8984
+      "xFromPoint": -27.8949598,
+      "yFromPoint": 153.3972093,
+      "xToPoint": -27.9018496,
+      "yToPoint": 153.3958596,
+      "xMidPoint": -27.8984,
+      "yMidPoint": 153.396513
     },
     {
       "fId": 52,
@@ -788,12 +788,12 @@
       "isOneWay": false,
       "maxSpeed": 0,
       "length": 808.5379271,
-      "xFromPoint": 153.3954734,
-      "yFromPoint": -27.901789,
-      "xToPoint": 153.4035779,
-      "yToPoint": -27.9029852,
-      "xMidPoint": 153.399524,
-      "yMidPoint": -27.90239762
+      "xFromPoint": -27.901789,
+      "yFromPoint": 153.3954734,
+      "xToPoint": -27.9029852,
+      "yToPoint": 153.4035779,
+      "xMidPoint": -27.90239762,
+      "yMidPoint": 153.399524
     },
     {
       "fId": 53,
@@ -803,12 +803,12 @@
       "isOneWay": false,
       "maxSpeed": 0,
       "length": 447.9748626,
-      "xFromPoint": 153.3965182,
-      "yFromPoint": -27.8983726,
-      "xToPoint": 153.4010094,
-      "yToPoint": -27.8982466,
-      "xMidPoint": 153.3987463,
-      "yMidPoint": -27.89841501
+      "xFromPoint": -27.8983726,
+      "yFromPoint": 153.3965182,
+      "xToPoint": -27.8982466,
+      "yToPoint": 153.4010094,
+      "xMidPoint": -27.89841501,
+      "yMidPoint": 153.3987463
     },
     {
       "fId": 54,
@@ -818,12 +818,12 @@
       "isOneWay": false,
       "maxSpeed": 0,
       "length": 433.6502539,
-      "xFromPoint": 153.3986512,
-      "yFromPoint": -27.8984188,
-      "xToPoint": 153.3988708,
-      "yToPoint": -27.9023106,
-      "xMidPoint": 153.3986884,
-      "yMidPoint": -27.90035903
+      "xFromPoint": -27.8984188,
+      "yFromPoint": 153.3986512,
+      "xToPoint": -27.9023106,
+      "yToPoint": 153.3988708,
+      "xMidPoint": -27.90035903,
+      "yMidPoint": 153.3986884
     },
     {
       "fId": 55,
@@ -833,12 +833,12 @@
       "isOneWay": false,
       "maxSpeed": 0,
       "length": 248.691771,
-      "xFromPoint": 153.3986577,
-      "yFromPoint": -27.9001657,
-      "xToPoint": 153.4011725,
-      "yToPoint": -27.8999457,
-      "xMidPoint": 153.399915,
-      "yMidPoint": -27.90005475
+      "xFromPoint": -27.9001657,
+      "yFromPoint": 153.3986577,
+      "xToPoint": -27.8999457,
+      "yToPoint": 153.4011725,
+      "xMidPoint": -27.90005475,
+      "yMidPoint": 153.399915
     },
     {
       "fId": 56,
@@ -848,12 +848,12 @@
       "isOneWay": false,
       "maxSpeed": 0,
       "length": 107.3788619,
-      "xFromPoint": 153.4004365,
-      "yFromPoint": -27.9009827,
-      "xToPoint": 153.4003488,
-      "yToPoint": -27.9000165,
-      "xMidPoint": 153.4003926,
-      "yMidPoint": -27.9004996
+      "xFromPoint": -27.9009827,
+      "yFromPoint": 153.4004365,
+      "xToPoint": -27.9000165,
+      "yToPoint": 153.4003488,
+      "xMidPoint": -27.9004996,
+      "yMidPoint": 153.4003926
     },
     {
       "fId": 57,
@@ -863,12 +863,12 @@
       "isOneWay": false,
       "maxSpeed": 0,
       "length": 243.5950226,
-      "xFromPoint": 153.3995084,
-      "yFromPoint": -27.9000906,
-      "xToPoint": 153.4004966,
-      "yToPoint": -27.9017792,
-      "xMidPoint": 153.3996424,
-      "yMidPoint": -27.90122508
+      "xFromPoint": -27.9000906,
+      "yFromPoint": 153.3995084,
+      "xToPoint": -27.9017792,
+      "yToPoint": 153.4004966,
+      "xMidPoint": -27.90122508,
+      "yMidPoint": 153.3996424
     },
     {
       "fId": 58,
@@ -878,12 +878,12 @@
       "isOneWay": false,
       "maxSpeed": 0,
       "length": 188.0790108,
-      "xFromPoint": 153.4035779,
-      "yFromPoint": -27.9029852,
-      "xToPoint": 153.4036981,
-      "yToPoint": -27.9013316,
-      "xMidPoint": 153.4038175,
-      "yMidPoint": -27.90216476
+      "xFromPoint": -27.9029852,
+      "yFromPoint": 153.4035779,
+      "xToPoint": -27.9013316,
+      "yToPoint": 153.4036981,
+      "xMidPoint": -27.90216476,
+      "yMidPoint": 153.4038175
     },
     {
       "fId": 59,
@@ -893,12 +893,12 @@
       "isOneWay": false,
       "maxSpeed": 0,
       "length": 481.8130581,
-      "xFromPoint": 153.3994218,
-      "yFromPoint": -27.9023828,
-      "xToPoint": 153.4016017,
-      "yToPoint": -27.9042769,
-      "xMidPoint": 153.3993221,
-      "yMidPoint": -27.90432305
+      "xFromPoint": -27.9023828,
+      "yFromPoint": 153.3994218,
+      "xToPoint": -27.9042769,
+      "yToPoint": 153.4016017,
+      "xMidPoint": -27.90432305,
+      "yMidPoint": 153.3993221
     },
     {
       "fId": 60,
@@ -908,12 +908,12 @@
       "isOneWay": false,
       "maxSpeed": 0,
       "length": 446.9665499,
-      "xFromPoint": 153.4016017,
-      "yFromPoint": -27.9042769,
-      "xToPoint": 153.4060842,
-      "yToPoint": -27.904927,
-      "xMidPoint": 153.4038429,
-      "yMidPoint": -27.90460198
+      "xFromPoint": -27.9042769,
+      "yFromPoint": 153.4016017,
+      "xToPoint": -27.904927,
+      "yToPoint": 153.4060842,
+      "xMidPoint": -27.90460198,
+      "yMidPoint": 153.4038429
     },
     {
       "fId": 61,
@@ -923,12 +923,12 @@
       "isOneWay": false,
       "maxSpeed": 0,
       "length": 297.9559364,
-      "xFromPoint": 153.4017583,
-      "yFromPoint": -27.9056476,
-      "xToPoint": 153.401224,
-      "yToPoint": -27.90656,
-      "xMidPoint": 153.4003555,
-      "yMidPoint": -27.90552933
+      "xFromPoint": -27.9056476,
+      "yFromPoint": 153.4017583,
+      "xToPoint": -27.90656,
+      "yToPoint": 153.401224,
+      "xMidPoint": -27.90552933,
+      "yMidPoint": 153.4003555
     },
     {
       "fId": 62,
@@ -938,12 +938,12 @@
       "isOneWay": false,
       "maxSpeed": 0,
       "length": 222.736987,
-      "xFromPoint": 153.4038697,
-      "yFromPoint": -27.9054352,
-      "xToPoint": 153.4026853,
-      "yToPoint": -27.9065502,
-      "xMidPoint": 153.40289,
-      "yMidPoint": -27.90556244
+      "xFromPoint": -27.9054352,
+      "yFromPoint": 153.4038697,
+      "xToPoint": -27.9065502,
+      "yToPoint": 153.4026853,
+      "xMidPoint": -27.90556244,
+      "yMidPoint": 153.40289
     },
     {
       "fId": 63,
@@ -953,12 +953,12 @@
       "isOneWay": false,
       "maxSpeed": 0,
       "length": 111.8820247,
-      "xFromPoint": 153.4023935,
-      "yFromPoint": -27.9066337,
-      "xToPoint": 153.4035093,
-      "yToPoint": -27.9066412,
-      "xMidPoint": 153.4029465,
-      "yMidPoint": -27.90657904
+      "xFromPoint": -27.9066337,
+      "yFromPoint": 153.4023935,
+      "xToPoint": -27.9066412,
+      "yToPoint": 153.4035093,
+      "xMidPoint": -27.90657904,
+      "yMidPoint": 153.4029465
     },
     {
       "fId": 64,
@@ -968,12 +968,12 @@
       "isOneWay": false,
       "maxSpeed": 0,
       "length": 167.8705969,
-      "xFromPoint": 153.4048825,
-      "yFromPoint": -27.9069902,
-      "xToPoint": 153.4047195,
-      "yToPoint": -27.905549,
-      "xMidPoint": 153.4049078,
-      "yMidPoint": -27.90622427
+      "xFromPoint": -27.9069902,
+      "yFromPoint": 153.4048825,
+      "xToPoint": -27.905549,
+      "yToPoint": 153.4047195,
+      "xMidPoint": -27.90622427,
+      "yMidPoint": 153.4049078
     },
     {
       "fId": 65,
@@ -983,12 +983,12 @@
       "isOneWay": false,
       "maxSpeed": 0,
       "length": 173.2912106,
-      "xFromPoint": 153.4065047,
-      "yFromPoint": -27.9056628,
-      "xToPoint": 153.4049083,
-      "yToPoint": -27.9062089,
-      "xMidPoint": 153.4056498,
-      "yMidPoint": -27.90576479
+      "xFromPoint": -27.9056628,
+      "yFromPoint": 153.4065047,
+      "xToPoint": -27.9062089,
+      "yToPoint": 153.4049083,
+      "xMidPoint": -27.90576479,
+      "yMidPoint": 153.4056498
     },
     {
       "fId": 66,
@@ -998,12 +998,12 @@
       "isOneWay": false,
       "maxSpeed": 0,
       "length": 248.2559379,
-      "xFromPoint": 153.4060842,
-      "yFromPoint": -27.904927,
-      "xToPoint": 153.4070111,
-      "yToPoint": -27.9070053,
-      "xMidPoint": 153.4066083,
-      "yMidPoint": -27.90593758
+      "xFromPoint": -27.904927,
+      "yFromPoint": 153.4060842,
+      "xToPoint": -27.9070053,
+      "yToPoint": 153.4070111,
+      "xMidPoint": -27.90593758,
+      "yMidPoint": 153.4066083
     },
     {
       "fId": 67,
@@ -1013,12 +1013,12 @@
       "isOneWay": false,
       "maxSpeed": 0,
       "length": 471.140705,
-      "xFromPoint": 153.4016017,
-      "yFromPoint": -27.9042769,
-      "xToPoint": 153.4020072,
-      "yToPoint": -27.9085147,
-      "xMidPoint": 153.4018034,
-      "yMidPoint": -27.90639591
+      "xFromPoint": -27.9042769,
+      "yFromPoint": 153.4016017,
+      "xToPoint": -27.9085147,
+      "yToPoint": 153.4020072,
+      "xMidPoint": -27.90639591,
+      "yMidPoint": 153.4018034
     },
     {
       "fId": 68,
@@ -1028,12 +1028,12 @@
       "isOneWay": false,
       "maxSpeed": 0,
       "length": 433.1314775,
-      "xFromPoint": 153.4019966,
-      "yFromPoint": -27.908426,
-      "xToPoint": 153.39775,
-      "yToPoint": -27.9089091,
-      "xMidPoint": 153.3998548,
-      "yMidPoint": -27.90874239
+      "xFromPoint": -27.908426,
+      "yFromPoint": 153.4019966,
+      "xToPoint": -27.9089091,
+      "yToPoint": 153.39775,
+      "xMidPoint": -27.90874239,
+      "yMidPoint": 153.3998548
     },
     {
       "fId": 69,
@@ -1043,12 +1043,12 @@
       "isOneWay": false,
       "maxSpeed": 0,
       "length": 313.1244774,
-      "xFromPoint": 153.398129,
-      "yFromPoint": -27.9125314,
-      "xToPoint": 153.3983178,
-      "yToPoint": -27.9153528,
-      "xMidPoint": 153.3982315,
-      "yMidPoint": -27.9139417
+      "xFromPoint": -27.9125314,
+      "yFromPoint": 153.398129,
+      "xToPoint": -27.9153528,
+      "yToPoint": 153.3983178,
+      "xMidPoint": -27.9139417,
+      "yMidPoint": 153.3982315
     },
     {
       "fId": 70,
@@ -1058,12 +1058,12 @@
       "isOneWay": false,
       "maxSpeed": 0,
       "length": 456.0762858,
-      "xFromPoint": 153.3982234,
-      "yFromPoint": -27.9124024,
-      "xToPoint": 153.4028068,
-      "yToPoint": -27.9123797,
-      "xMidPoint": 153.4005222,
-      "yMidPoint": -27.91241828
+      "xFromPoint": -27.9124024,
+      "yFromPoint": 153.3982234,
+      "xToPoint": -27.9123797,
+      "yToPoint": 153.4028068,
+      "xMidPoint": -27.91241828,
+      "yMidPoint": 153.4005222
     },
     {
       "fId": 71,
@@ -1073,12 +1073,12 @@
       "isOneWay": false,
       "maxSpeed": 0,
       "length": 73.21072274,
-      "xFromPoint": 153.4038711,
-      "yFromPoint": -27.9121066,
-      "xToPoint": 153.4031501,
-      "yToPoint": -27.9122659,
-      "xMidPoint": 153.4035116,
-      "yMidPoint": -27.91219245
+      "xFromPoint": -27.9121066,
+      "yFromPoint": 153.4038711,
+      "xToPoint": -27.9122659,
+      "yToPoint": 153.4031501,
+      "xMidPoint": -27.91219245,
+      "yMidPoint": 153.4035116
     },
     {
       "fId": 72,
@@ -1088,12 +1088,12 @@
       "isOneWay": false,
       "maxSpeed": 0,
       "length": 282.8344693,
-      "xFromPoint": 153.4020072,
-      "yFromPoint": -27.9085147,
-      "xToPoint": 153.4026008,
-      "yToPoint": -27.9110069,
-      "xMidPoint": 153.4022188,
-      "yMidPoint": -27.90978174
+      "xFromPoint": -27.9085147,
+      "yFromPoint": 153.4020072,
+      "xToPoint": -27.9110069,
+      "yToPoint": 153.4026008,
+      "xMidPoint": -27.90978174,
+      "yMidPoint": 153.4022188
     },
     {
       "fId": 73,
@@ -1103,12 +1103,12 @@
       "isOneWay": false,
       "maxSpeed": 0,
       "length": 219.2380777,
-      "xFromPoint": 153.4051796,
-      "yFromPoint": -27.914864,
-      "xToPoint": 153.4051303,
-      "yToPoint": -27.9168424,
-      "xMidPoint": 153.405167,
-      "yMidPoint": -27.91585357
+      "xFromPoint": -27.914864,
+      "yFromPoint": 153.4051796,
+      "xToPoint": -27.9168424,
+      "yToPoint": 153.4051303,
+      "xMidPoint": -27.91585357,
+      "yMidPoint": 153.405167
     },
     {
       "fId": 74,
@@ -1118,12 +1118,12 @@
       "isOneWay": false,
       "maxSpeed": 0,
       "length": 354.3349062,
-      "xFromPoint": 153.403833,
-      "yFromPoint": -27.9167144,
-      "xToPoint": 153.407404,
-      "yToPoint": -27.917124,
-      "xMidPoint": 153.4056203,
-      "yMidPoint": -27.91690309
+      "xFromPoint": -27.9167144,
+      "yFromPoint": 153.403833,
+      "xToPoint": -27.917124,
+      "yToPoint": 153.407404,
+      "xMidPoint": -27.91690309,
+      "yMidPoint": 153.4056203
     },
     {
       "fId": 75,
@@ -1133,12 +1133,12 @@
       "isOneWay": false,
       "maxSpeed": 0,
       "length": 544.1978254,
-      "xFromPoint": 153.4075933,
-      "yFromPoint": -27.9149251,
-      "xToPoint": 153.4068719,
-      "yToPoint": -27.9197897,
-      "xMidPoint": 153.407354,
-      "yMidPoint": -27.91737468
+      "xFromPoint": -27.9149251,
+      "yFromPoint": 153.4075933,
+      "xToPoint": -27.9197897,
+      "yToPoint": 153.4068719,
+      "xMidPoint": -27.91737468,
+      "yMidPoint": 153.407354
     },
     {
       "fId": 76,
@@ -1148,12 +1148,12 @@
       "isOneWay": false,
       "maxSpeed": 0,
       "length": 482.3891569,
-      "xFromPoint": 153.404286,
-      "yFromPoint": -27.9218717,
-      "xToPoint": 153.4056985,
-      "yToPoint": -27.9182985,
-      "xMidPoint": 153.4054011,
-      "yMidPoint": -27.92050568
+      "xFromPoint": -27.9218717,
+      "yFromPoint": 153.404286,
+      "xToPoint": -27.9182985,
+      "yToPoint": 153.4056985,
+      "xMidPoint": -27.92050568,
+      "yMidPoint": 153.4054011
     },
     {
       "fId": 77,
@@ -1163,12 +1163,12 @@
       "isOneWay": false,
       "maxSpeed": 0,
       "length": 273.7897453,
-      "xFromPoint": 153.4057513,
-      "yFromPoint": -27.9228727,
-      "xToPoint": 153.4068472,
-      "yToPoint": -27.9206413,
-      "xMidPoint": 153.406462,
-      "yMidPoint": -27.92184608
+      "xFromPoint": -27.9228727,
+      "yFromPoint": 153.4057513,
+      "xToPoint": -27.9206413,
+      "yToPoint": 153.4068472,
+      "xMidPoint": -27.92184608,
+      "yMidPoint": 153.406462
     },
     {
       "fId": 78,
@@ -1178,12 +1178,12 @@
       "isOneWay": false,
       "maxSpeed": 0,
       "length": 795.2872408,
-      "xFromPoint": 153.4039655,
-      "yFromPoint": -27.9238242,
-      "xToPoint": 153.403833,
-      "yToPoint": -27.9167144,
-      "xMidPoint": 153.4043898,
-      "yMidPoint": -27.92026991
+      "xFromPoint": -27.9238242,
+      "yFromPoint": 153.4039655,
+      "xToPoint": -27.9167144,
+      "yToPoint": 153.403833,
+      "xMidPoint": -27.92026991,
+      "yMidPoint": 153.4043898
     },
     {
       "fId": 79,
@@ -1193,12 +1193,12 @@
       "isOneWay": false,
       "maxSpeed": 0,
       "length": 800.3091338,
-      "xFromPoint": 153.3959489,
-      "yFromPoint": -27.9226032,
-      "xToPoint": 153.4039655,
-      "yToPoint": -27.9238242,
-      "xMidPoint": 153.3999552,
-      "yMidPoint": -27.92322697
+      "xFromPoint": -27.9226032,
+      "yFromPoint": 153.3959489,
+      "xToPoint": -27.9238242,
+      "yToPoint": 153.4039655,
+      "xMidPoint": -27.92322697,
+      "yMidPoint": 153.3999552
     },
     {
       "fId": 80,
@@ -1208,12 +1208,12 @@
       "isOneWay": false,
       "maxSpeed": 0,
       "length": 589.7794079,
-      "xFromPoint": 153.3988757,
-      "yFromPoint": -27.921367,
-      "xToPoint": 153.3983779,
-      "yToPoint": -27.9160657,
-      "xMidPoint": 153.3986654,
-      "yMidPoint": -27.91871034
+      "xFromPoint": -27.921367,
+      "yFromPoint": 153.3988757,
+      "xToPoint": -27.9160657,
+      "yToPoint": 153.3983779,
+      "xMidPoint": -27.91871034,
+      "yMidPoint": 153.3986654
     },
     {
       "fId": 81,
@@ -1223,12 +1223,12 @@
       "isOneWay": false,
       "maxSpeed": 0,
       "length": 20.42994939,
-      "xFromPoint": 153.4058721,
-      "yFromPoint": -27.9230227,
-      "xToPoint": 153.4057513,
-      "yToPoint": -27.9228727,
-      "xMidPoint": 153.4058117,
-      "yMidPoint": -27.9229477
+      "xFromPoint": -27.9230227,
+      "yFromPoint": 153.4058721,
+      "xToPoint": -27.9228727,
+      "yToPoint": 153.4057513,
+      "xMidPoint": -27.9229477,
+      "yMidPoint": 153.4058117
     },
     {
       "fId": 82,
@@ -1238,12 +1238,12 @@
       "isOneWay": false,
       "maxSpeed": 0,
       "length": 678.5204239,
-      "xFromPoint": 153.3989803,
-      "yFromPoint": -27.9230747,
-      "xToPoint": 153.3979669,
-      "yToPoint": -27.9291074,
-      "xMidPoint": 153.3984325,
-      "yMidPoint": -27.92610005
+      "xFromPoint": -27.9230747,
+      "yFromPoint": 153.3989803,
+      "xToPoint": -27.9291074,
+      "yToPoint": 153.3979669,
+      "xMidPoint": -27.92610005,
+      "yMidPoint": 153.3984325
     },
     {
       "fId": 83,
@@ -1253,12 +1253,12 @@
       "isOneWay": false,
       "maxSpeed": 0,
       "length": 496.0346767,
-      "xFromPoint": 153.4036833,
-      "yFromPoint": -27.9254153,
-      "xToPoint": 153.3987057,
-      "yToPoint": -27.9247052,
-      "xMidPoint": 153.4011945,
-      "yMidPoint": -27.92506021
+      "xFromPoint": -27.9254153,
+      "yFromPoint": 153.4036833,
+      "xToPoint": -27.9247052,
+      "yToPoint": 153.3987057,
+      "xMidPoint": -27.92506021,
+      "yMidPoint": 153.4011945
     },
     {
       "fId": 84,
@@ -1268,12 +1268,12 @@
       "isOneWay": false,
       "maxSpeed": 0,
       "length": 809.0573346,
-      "xFromPoint": 153.4011841,
-      "yFromPoint": -27.9234189,
-      "xToPoint": 153.3999176,
-      "yToPoint": -27.9306325,
-      "xMidPoint": 153.4005167,
-      "yMidPoint": -27.92702066
+      "xFromPoint": -27.9234189,
+      "yFromPoint": 153.4011841,
+      "xToPoint": -27.9306325,
+      "yToPoint": 153.3999176,
+      "xMidPoint": -27.92702066,
+      "yMidPoint": 153.4005167
     },
     {
       "fId": 85,
@@ -1283,12 +1283,12 @@
       "isOneWay": false,
       "maxSpeed": 0,
       "length": 218.6375476,
-      "xFromPoint": 153.3984568,
-      "yFromPoint": -27.9259792,
-      "xToPoint": 153.4006435,
-      "yToPoint": -27.9263302,
-      "xMidPoint": 153.3995502,
-      "yMidPoint": -27.9261547
+      "xFromPoint": -27.9259792,
+      "yFromPoint": 153.3984568,
+      "xToPoint": -27.9263302,
+      "yToPoint": 153.4006435,
+      "xMidPoint": -27.9261547,
+      "yMidPoint": 153.3995502
     },
     {
       "fId": 86,
@@ -1298,12 +1298,12 @@
       "isOneWay": false,
       "maxSpeed": 0,
       "length": 219.8039801,
-      "xFromPoint": 153.400524,
-      "yFromPoint": -27.9269826,
-      "xToPoint": 153.3983194,
-      "yToPoint": -27.9266618,
-      "xMidPoint": 153.3994217,
-      "yMidPoint": -27.9268222
+      "xFromPoint": -27.9269826,
+      "yFromPoint": 153.400524,
+      "xToPoint": -27.9266618,
+      "yToPoint": 153.3983194,
+      "xMidPoint": -27.9268222,
+      "yMidPoint": 153.3994217
     },
     {
       "fId": 87,
@@ -1313,12 +1313,12 @@
       "isOneWay": false,
       "maxSpeed": 0,
       "length": 109.1113217,
-      "xFromPoint": 153.3981907,
-      "yFromPoint": -27.9273215,
-      "xToPoint": 153.3992875,
-      "yToPoint": -27.9274622,
-      "xMidPoint": 153.3987409,
-      "yMidPoint": -27.92737874
+      "xFromPoint": -27.9273215,
+      "yFromPoint": 153.3981907,
+      "xToPoint": -27.9274622,
+      "yToPoint": 153.3992875,
+      "xMidPoint": -27.92737874,
+      "yMidPoint": 153.3987409
     },
     {
       "fId": 88,
@@ -1328,12 +1328,12 @@
       "isOneWay": false,
       "maxSpeed": 0,
       "length": 210.8380724,
-      "xFromPoint": 153.3979669,
-      "yFromPoint": -27.9291074,
-      "xToPoint": 153.400092,
-      "yToPoint": -27.9293516,
-      "xMidPoint": 153.3990287,
-      "yMidPoint": -27.92923572
+      "xFromPoint": -27.9291074,
+      "yFromPoint": 153.3979669,
+      "xToPoint": -27.9293516,
+      "yToPoint": 153.400092,
+      "xMidPoint": -27.92923572,
+      "yMidPoint": 153.3990287
     },
     {
       "fId": 89,
@@ -1343,12 +1343,12 @@
       "isOneWay": false,
       "maxSpeed": 0,
       "length": 253.1171972,
-      "xFromPoint": 153.4002664,
-      "yFromPoint": -27.9285252,
-      "xToPoint": 153.4024289,
-      "yToPoint": -27.9276667,
-      "xMidPoint": 153.4014703,
-      "yMidPoint": -27.92844289
+      "xFromPoint": -27.9285252,
+      "yFromPoint": 153.4002664,
+      "xToPoint": -27.9276667,
+      "yToPoint": 153.4024289,
+      "xMidPoint": -27.92844289,
+      "yMidPoint": 153.4014703
     },
     {
       "fId": 90,
@@ -1358,12 +1358,12 @@
       "isOneWay": false,
       "maxSpeed": 0,
       "length": 168.6792612,
-      "xFromPoint": 153.4016997,
-      "yFromPoint": -27.9297334,
-      "xToPoint": 153.4000051,
-      "yToPoint": -27.9298265,
-      "xMidPoint": 153.4008583,
-      "yMidPoint": -27.9298844
+      "xFromPoint": -27.9297334,
+      "yFromPoint": 153.4016997,
+      "xToPoint": -27.9298265,
+      "yToPoint": 153.4000051,
+      "xMidPoint": -27.9298844,
+      "yMidPoint": 153.4008583
     },
     {
       "fId": 91,
@@ -1373,12 +1373,12 @@
       "isOneWay": false,
       "maxSpeed": 0,
       "length": 323.0133947,
-      "xFromPoint": 153.3999176,
-      "yFromPoint": -27.9306325,
-      "xToPoint": 153.4029286,
-      "yToPoint": -27.9304686,
-      "xMidPoint": 153.401445,
-      "yMidPoint": -27.93099848
+      "xFromPoint": -27.9306325,
+      "yFromPoint": 153.3999176,
+      "xToPoint": -27.9304686,
+      "yToPoint": 153.4029286,
+      "xMidPoint": -27.93099848,
+      "yMidPoint": 153.401445
     },
     {
       "fId": 92,
@@ -1388,12 +1388,12 @@
       "isOneWay": false,
       "maxSpeed": 0,
       "length": 178.4366337,
-      "xFromPoint": 153.4036833,
-      "yFromPoint": -27.9254153,
-      "xToPoint": 153.4039655,
-      "yToPoint": -27.9238242,
-      "xMidPoint": 153.4038323,
-      "yMidPoint": -27.92462115
+      "xFromPoint": -27.9254153,
+      "yFromPoint": 153.4036833,
+      "xToPoint": -27.9238242,
+      "yToPoint": 153.4039655,
+      "xMidPoint": -27.92462115,
+      "yMidPoint": 153.4038323
     },
     {
       "fId": 93,
@@ -1403,12 +1403,12 @@
       "isOneWay": false,
       "maxSpeed": 0,
       "length": 772.5220425,
-      "xFromPoint": 153.4036833,
-      "yFromPoint": -27.9254153,
-      "xToPoint": 153.4056557,
-      "yToPoint": -27.9311048,
-      "xMidPoint": 153.4058545,
-      "yMidPoint": -27.927519
+      "xFromPoint": -27.9254153,
+      "yFromPoint": 153.4036833,
+      "xToPoint": -27.9311048,
+      "yToPoint": 153.4056557,
+      "xMidPoint": -27.927519,
+      "yMidPoint": 153.4058545
     },
     {
       "fId": 94,
@@ -1418,12 +1418,12 @@
       "isOneWay": false,
       "maxSpeed": 0,
       "length": 494.083909,
-      "xFromPoint": 153.4048621,
-      "yFromPoint": -27.9312536,
-      "xToPoint": 153.4043862,
-      "yToPoint": -27.9268138,
-      "xMidPoint": 153.4045959,
-      "yMidPoint": -27.92903675
+      "xFromPoint": -27.9312536,
+      "yFromPoint": 153.4048621,
+      "xToPoint": -27.9268138,
+      "yToPoint": 153.4043862,
+      "xMidPoint": -27.92903675,
+      "yMidPoint": 153.4045959
     },
     {
       "fId": 95,
@@ -1433,12 +1433,12 @@
       "isOneWay": false,
       "maxSpeed": 0,
       "length": 268.6626733,
-      "xFromPoint": 153.4058605,
-      "yFromPoint": -27.9290498,
-      "xToPoint": 153.4031416,
-      "yToPoint": -27.9292632,
-      "xMidPoint": 153.4045036,
-      "yMidPoint": -27.9291887
+      "xFromPoint": -27.9290498,
+      "yFromPoint": 153.4058605,
+      "xToPoint": -27.9292632,
+      "yToPoint": 153.4031416,
+      "xMidPoint": -27.9291887,
+      "yMidPoint": 153.4045036
     },
     {
       "fId": 96,
@@ -1448,12 +1448,12 @@
       "isOneWay": false,
       "maxSpeed": 0,
       "length": 293.5320969,
-      "xFromPoint": 153.4007792,
-      "yFromPoint": -27.9256863,
-      "xToPoint": 153.4037051,
-      "yToPoint": -27.9257308,
-      "xMidPoint": 153.402241,
-      "yMidPoint": -27.92595156
+      "xFromPoint": -27.9256863,
+      "yFromPoint": 153.4007792,
+      "xToPoint": -27.9257308,
+      "yToPoint": 153.4037051,
+      "xMidPoint": -27.92595156,
+      "yMidPoint": 153.402241
     },
     {
       "fId": 97,
@@ -1463,12 +1463,12 @@
       "isOneWay": false,
       "maxSpeed": 0,
       "length": 146.0484558,
-      "xFromPoint": 153.3988323,
-      "yFromPoint": -27.9281138,
-      "xToPoint": 153.4002929,
-      "yToPoint": -27.9283489,
-      "xMidPoint": 153.3995626,
-      "yMidPoint": -27.92823134
+      "xFromPoint": -27.9281138,
+      "yFromPoint": 153.3988323,
+      "xToPoint": -27.9283489,
+      "yToPoint": 153.4002929,
+      "xMidPoint": -27.92823134,
+      "yMidPoint": 153.3995626
     },
     {
       "fId": 98,
@@ -1478,12 +1478,16 @@
       "isOneWay": false,
       "maxSpeed": 0,
       "length": 625.3436624,
-      "xFromPoint": 153.4056557,
-      "yFromPoint": -27.9311048,
-      "xToPoint": 153.399502,
-      "yToPoint": -27.9322085,
-      "xMidPoint": 153.4025799,
-      "yMidPoint": -27.9318004
+      "xFromPoint": -27.9311048,
+      "yFromPoint": 153.4056557,
+      "xToPoint": -27.9322085,
+      "yToPoint": 153.399502,
+      "xMidPoint": -27.9318004,
+      "yMidPoint": 153.4025799
     }
-  ]
+  ],
+  "csvParsing": {
+    "errors": [],
+    "parseTime": "2017-05-26T14:39:35.9199034+10:00"
+  }
 }
