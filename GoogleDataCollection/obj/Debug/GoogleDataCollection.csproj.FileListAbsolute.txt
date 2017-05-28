@@ -32,3 +32,5 @@ D:\Project4\Programming\C#\GoogleDataCollection\GoogleDataCollection\bin\Debug\S
 D:\Project4\Programming\C#\GoogleDataCollection\GoogleDataCollection\obj\Debug\GoogleDataCollection.csprojResolveAssemblyReference.cache
 D:\Project4\Programming\C#\GoogleDataCollection\GoogleDataCollection\obj\Debug\GoogleDataCollection.exe
 D:\Project4\Programming\C#\GoogleDataCollection\GoogleDataCollection\obj\Debug\GoogleDataCollection.pdb
+D:\Project1\Programming\C#\GoogleDataCollection\GoogleDataCollection\bin\Debug\GoogleMapsApi.dll
+D:\Project1\Programming\C#\GoogleDataCollection\GoogleDataCollection\bin\Debug\GoogleMapsApi.xml

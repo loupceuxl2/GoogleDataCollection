@@ -60,14 +60,16 @@
     <Compile Include="DataAccess\JsonAccess.cs" />
     <Compile Include="DataAccess\SpreadsheetAccess.cs" />
     <Compile Include="Model\CsvParsing.cs" />
-    <Compile Include="Model\PointToPoint.cs" />
-    <Compile Include="Model\PointToPointContainer.cs" />
+    <Compile Include="Model\Edge.cs" />
+    <Compile Include="Model\DataContainer.cs" />
     <Compile Include="Model\CsvParsingError.cs" />
+    <Compile Include="Model\EdgeUpdate.cs" />
     <Compile Include="Model\Project.cs" />
     <Compile Include="Model\Period.cs" />
+    <Compile Include="Model\TimeBracket.cs" />
+    <Compile Include="Model\UpdateSession.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SafeExit.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

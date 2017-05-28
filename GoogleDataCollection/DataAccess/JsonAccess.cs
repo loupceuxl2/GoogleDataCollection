@@ -6,19 +6,26 @@ namespace GoogleDataCollection.DataAccess
 {
     public static class JsonAccess
     {
-        public static readonly string DefaultFilename = @"D:\Project4\Programming\C#\GoogleDataCollection\GoogleDataCollection\Data\output.json";
+        public static readonly string DefaultFilepath = @"D:\Project1\Programming\C#\GoogleDataCollection\GoogleDataCollection\Data\";
+        public static readonly string DefaultFilename = "output.json";
+        public static readonly string DefaultCompleteFilename = DefaultFilepath + DefaultFilename;
 
-        public static PointToPointContainer DeserializePointToPoints()
+        public static DataContainer DeserializeEdges(string filename)
         {
-            PointToPointContainer container;
+            DataContainer container;
 
-            using (StreamReader file = File.OpenText(DefaultFilename))
+            using (var file = File.OpenText(filename))
             {
-                JsonSerializer serializer = new JsonSerializer();
-                container = (PointToPointContainer)serializer.Deserialize(file, typeof(PointToPointContainer));
+                var serializer = new JsonSerializer();
+                container = (DataContainer)serializer.Deserialize(file, typeof(DataContainer));
             }
 
             return container;
+        }
+
+        public static DataContainer DeserializeEdges()
+        {
+            return DeserializeEdges(DefaultCompleteFilename);
         }
     }
 }

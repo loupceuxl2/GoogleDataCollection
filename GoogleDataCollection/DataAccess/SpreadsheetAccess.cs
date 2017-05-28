@@ -22,10 +22,10 @@ namespace GoogleDataCollection.DataAccess
         private static Excel._Worksheet _xlWorksheet;
         private static Excel.Range _xlRange;
 
-        public static PointToPointContainer LoadData(string filename, uint sheetNum)
+        public static DataContainer LoadData(string filename, uint sheetNum)
         {
             //var nodeCollection = new List<PointToPoint>(100000);
-            var container = new PointToPointContainer()
+            var container = new DataContainer()
             {
                 CsvParsing = new CsvParsing()
                 {
@@ -57,7 +57,7 @@ namespace GoogleDataCollection.DataAccess
                     {
                         //ConsoleKeyInfo key = Console.ReadKey(true);
 
-                        var currentNode = new PointToPoint();
+                        var currentNode = new Edge();
 
                         for (currentColumn = 1; currentColumn <= colCount; currentColumn++)
                         {
@@ -147,7 +147,7 @@ namespace GoogleDataCollection.DataAccess
 
                             if (currentColumn == colCount)
                             {
-                                container.PointToPoints.Add(currentNode);
+                                container.Edges.Add(currentNode);
                             }
                         }
 
