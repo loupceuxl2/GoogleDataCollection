@@ -14,6 +14,6 @@ namespace GoogleDataCollection.Model
         public Guid UpdateTimeBracketId { get; set; }
 
         [JsonProperty(PropertyName = "duration", Required = Required.Default)]
-        public int Duration { get; set; }
+        public TimeSpan Duration { get; set; }
     }
 }

@@ -14,8 +14,8 @@ namespace GoogleDataCollection.DataAccess
         // Takes account of above error:
         public enum ColumnIndex : byte { FId = 1, OsmId, HighwayName, HighwayType, IsOneWay, MaxSpeed, Length, FromY, FromX, ToY, ToX, YMid, XMid };
 
-        public static readonly string DefaultFilename = @"D:\Project1\Programming\C#\GoogleDataCollection\GoogleDataCollection\Data\QLD_Network_Graph.csv";
-        //public static readonly string DefaultFilename = @"D:\Project4\Programming\C#\GoogleDataCollection\GoogleDataCollection\Data\QLD_Network_Graph.csv";
+        //public static readonly string DefaultFilename = @"D:\Project1\Programming\C#\GoogleDataCollection\GoogleDataCollection\Data\QLD_Network_Graph.csv";
+        public static readonly string DefaultFilename = @"D:\Project4\Programming\C#\GoogleDataCollection\GoogleDataCollection\Data\QLD_Network_Graph.csv";
 
         private static Excel.Application _xlApp;
         private static Excel.Workbook _xlWorkbook;

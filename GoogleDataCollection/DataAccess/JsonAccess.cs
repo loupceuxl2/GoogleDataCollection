@@ -6,7 +6,8 @@ namespace GoogleDataCollection.DataAccess
 {
     public static class JsonAccess
     {
-        public static readonly string DefaultFilepath = @"D:\Project1\Programming\C#\GoogleDataCollection\GoogleDataCollection\Data\";
+        //public static readonly string DefaultFilepath = @"D:\Project1\Programming\C#\GoogleDataCollection\GoogleDataCollection\Data\";
+        public static readonly string DefaultFilepath = @"D:\Project4\Programming\C#\GoogleDataCollection\GoogleDataCollection\Data\";
         public static readonly string DefaultFilename = "output.json";
         public static readonly string DefaultCompleteFilename = DefaultFilepath + DefaultFilename;
 
