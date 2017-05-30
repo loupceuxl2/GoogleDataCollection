@@ -1,13 +1,7 @@
 ﻿using GoogleDataCollection.DataAccess;
-using GoogleDataCollection.Model;
 using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Globalization;
 using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace GoogleDataCollection
 {
@@ -15,28 +9,28 @@ namespace GoogleDataCollection
     {
         private static void Main(string[] args)
         {
-            var data = JsonAccess.DeserializeEdges();
-
-            Console.WriteLine($"{ DateTime.Now }: Data collection started.");
-            GoogleAccess.InitialiseDataCollector(data);
-            GoogleAccess.RunDataCollector(data).Wait();
-            Console.WriteLine($"{ DateTime.Now }: Data collection complete.");
-
-            File.WriteAllText(JsonAccess.DefaultFilepath + "new_file4.json", JsonConvert.SerializeObject(data, Formatting.Indented));
-/*
-            Task<List<EdgeUpdate>[]> temp = null;
-            Task.Run(() => temp = GoogleAccess.RunDataCollector(data)).Wait();
-
-            foreach (var projects in temp.Result)
+            try
             {
-                foreach (var projectUpdates in projects)
-                {
-                    Console.WriteLine($"DFS: {projectUpdates}");
-                }
+                var data = JsonAccess.DeserializeEdges();
+
+                Console.WriteLine($"{DateTime.Now}: Data collection started.");
+                GoogleAccess.RunDataCollector(data).Wait();
+                Console.WriteLine($"{DateTime.Now}: Data collection complete.");
+
+                // TO DO [!IMPORTANT]: Overwrite existing file (JsonAccess.DefaultFilename).
+                File.WriteAllText($"{ AppDomain.CurrentDomain.BaseDirectory }\\new_file6.json", JsonConvert.SerializeObject(data, Formatting.Indented));
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($"Exception");
+                Console.WriteLine($"{e.Message}");         
             }
 
+            // TO DO: Uncomment for release versions.
+/*
+            Console.WriteLine("Press enter to close...");
+            Console.ReadLine();
 */
-            //GoogleAccess.RunDataCollector(data).Wait();
 
 
             //var container = SpreadsheetAccess.LoadData(SpreadsheetAccess.DefaultFilename, 1);
@@ -51,6 +45,21 @@ namespace GoogleDataCollection
         }
     }
 }
+
+/*
+            Task<List<EdgeUpdate>[]> temp = null;
+            Task.Run(() => temp = GoogleAccess.RunDataCollector(data)).Wait();
+
+            foreach (var projects in temp.Result)
+            {
+                foreach (var projectUpdates in projects)
+                {
+                    Console.WriteLine($"DFS: {projectUpdates}");
+                }
+            }
+
+*/
+
 /*
             var test = JsonAccess.DeserializeEdges();
 
@@ -70,21 +79,4 @@ namespace GoogleDataCollection
             var test2 = JsonAccess.DeserializeEdges(JsonAccess.DefaultFilepath + "new_file2.json");
 
             Console.WriteLine(test2.Edges.Count);
-*/
-
-/*
-            foreach (var edge in test.Edges)
-            {
-                //Debug.WriteLine($"CURRENT EDGE FID: { edge.Fid }.");
-
-                var progress = test.Edges.Count(e => 
-                        e.XFromPoint.ToString(CultureInfo.InvariantCulture) == edge.XToPoint.ToString(CultureInfo.InvariantCulture)
-                        && e.YFromPoint.ToString(CultureInfo.InvariantCulture) == edge.YToPoint.ToString(CultureInfo.InvariantCulture));
-
-                if (progress > 2)
-                {
-                    Console.WriteLine($"CURRENT EDGE FID: { edge.Fid }.");
-                    Console.WriteLine($"PROGRESS COUNT: {progress}.");
-                }
-            }
 */

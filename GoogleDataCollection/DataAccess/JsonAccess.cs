@@ -1,4 +1,5 @@
-﻿using GoogleDataCollection.Model;
+﻿using System;
+using GoogleDataCollection.Model;
 using Newtonsoft.Json;
 using System.IO;
 
@@ -6,10 +7,7 @@ namespace GoogleDataCollection.DataAccess
 {
     public static class JsonAccess
     {
-        //public static readonly string DefaultFilepath = @"D:\Project1\Programming\C#\GoogleDataCollection\GoogleDataCollection\Data\";
-        public static readonly string DefaultFilepath = @"D:\Project4\Programming\C#\GoogleDataCollection\GoogleDataCollection\Data\";
-        public static readonly string DefaultFilename = "output.json";
-        public static readonly string DefaultCompleteFilename = DefaultFilepath + DefaultFilename;
+        public static readonly string DefaultFilename = "qld_network.json";
 
         public static DataContainer DeserializeEdges(string filename)
         {
@@ -26,7 +24,7 @@ namespace GoogleDataCollection.DataAccess
 
         public static DataContainer DeserializeEdges()
         {
-            return DeserializeEdges(DefaultCompleteFilename);
+            return DeserializeEdges($"{ AppDomain.CurrentDomain.BaseDirectory }\\{ DefaultFilename }");
         }
     }
 }

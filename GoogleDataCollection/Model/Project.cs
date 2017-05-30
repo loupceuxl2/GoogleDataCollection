@@ -1,9 +1,9 @@
 ﻿using GoogleMapsApi;
 using GoogleMapsApi.Entities.Directions.Request;
-using GoogleMapsApi.Entities.Directions.Response;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -15,12 +15,12 @@ namespace GoogleDataCollection.Model
     {
         // NOTE: MUST BE SMALLER THAN THE TOTAL NUMBER OF EDGES (LAST CHECKED 28/05/17: EDGES == 73738)
         //public static uint MaxRequests = 2500;
-        public static uint MaxRequests = 100;
+        public static uint MaxRequests = 20;
 
         //public static uint MaxIntervalRequests = 50;
         public static uint MaxIntervalRequests = 5;
 
-        public static int IntervalTime = 1000;
+        public static int IntervalTime = 1100;
 
         [JsonProperty(PropertyName = "id", Required = Required.Always)]
         public Guid Id { get; set; }
@@ -46,12 +46,12 @@ namespace GoogleDataCollection.Model
 
             var update = new EdgeUpdate();
 
-            var xOrigin = session.Direction == UpdateSession.UpdateDirections.Forwards ? edge.XFromPoint.ToString() : edge.XToPoint.ToString();
-            var yOrigin = session.Direction == UpdateSession.UpdateDirections.Forwards ? edge.YFromPoint.ToString() : edge.YToPoint.ToString();
-            var xDestination = session.Direction == UpdateSession.UpdateDirections.Forwards ? edge.XToPoint.ToString() : edge.XFromPoint.ToString();
-            var yDestination = session.Direction == UpdateSession.UpdateDirections.Forwards ? edge.YToPoint.ToString() : edge.YFromPoint.ToString();
+            var xOrigin = session.Direction == UpdateSession.UpdateDirections.Forwards ? edge.XFromPoint.ToString(CultureInfo.InvariantCulture) : edge.XToPoint.ToString(CultureInfo.InvariantCulture);
+            var yOrigin = session.Direction == UpdateSession.UpdateDirections.Forwards ? edge.YFromPoint.ToString(CultureInfo.InvariantCulture) : edge.YToPoint.ToString(CultureInfo.InvariantCulture);
+            var xDestination = session.Direction == UpdateSession.UpdateDirections.Forwards ? edge.XToPoint.ToString(CultureInfo.InvariantCulture) : edge.XFromPoint.ToString(CultureInfo.InvariantCulture);
+            var yDestination = session.Direction == UpdateSession.UpdateDirections.Forwards ? edge.YToPoint.ToString(CultureInfo.InvariantCulture) : edge.YFromPoint.ToString(CultureInfo.InvariantCulture);
 
-            DirectionsRequest directionsRequest = new DirectionsRequest()
+            var directionsRequest = new DirectionsRequest()
             {
                 Origin = $"{xOrigin},{yOrigin}",
                 Destination = $"{xDestination},{yDestination}",
@@ -59,17 +59,14 @@ namespace GoogleDataCollection.Model
                 ApiKey = ApiKey
             };
 
-            DirectionsResponse response = GoogleMaps.Directions.Query(directionsRequest);
+            var response = GoogleMaps.Directions.Query(directionsRequest);
 
             update.Status = response.Status;
             update.UpdateTimeBracketId = session.TimeBracketId;
 
             Console.WriteLine($"Project #{ Number } | Edge #{ edge.Fid } Google response status: {update.Status}");
 
-            if (response.Routes == null
-                || response.Routes.FirstOrDefault() == null
-                || response.Routes.First().Legs.FirstOrDefault() == null
-                || response.Routes.First().Legs.First().Duration == null)
+            if (response.Routes?.FirstOrDefault() == null || response.Routes.First().Legs.FirstOrDefault() == null || response.Routes.First().Legs.First().Duration == null)
             {
                 Console.WriteLine($"Project #{ Number } | Edge #{edge.Fid}: No information available.");
                 return update;
@@ -83,19 +80,17 @@ namespace GoogleDataCollection.Model
             return update;
         }
 
-        public async Task<List<EdgeUpdate>> GetUpdates(Dictionary<uint, Edge> edges, List<TimeBracket> timeBrackets)
+        public async Task<int> GetUpdates(Dictionary<uint, Edge> edges, List<TimeBracket> timeBrackets)
         {
             return await Task.Run(() =>
             {
-                var updates = new List<EdgeUpdate>();
-                var invertedUpdates = new List<EdgeUpdate>();
                 var totalEdges = edges.Count;
                 var currentSession = StartingPoint;
 
                 if (currentSession == null)
                 {
                     Console.WriteLine($"Error [UpdateSession]: Project #{ Number } does not have an update session.");
-                    return updates;
+                    return -1;
                 }
 
                 for (var i = 0; i < MaxRequests; i++)
@@ -120,17 +115,15 @@ namespace GoogleDataCollection.Model
                     
                     currentSession = UpdateSession.GetNextUpdateSession((uint)totalEdges, currentSession, timeBrackets);
 
-                    if ((i + 1) % MaxIntervalRequests == 0)
-                    {
-                        Console.WriteLine($"Project #{ Number }: Maximum interval reached ({ MaxIntervalRequests })," +
-                            $" delaying ~{ IntervalTime / 1000 } seconds before starting a new batch." +
-                            $" { i + 1 } of { MaxRequests } edges processed thus far.");
-                        Thread.Sleep(1100);
-                        //await Task.Delay(IntervalTime);
-                    }
+                    if ((i + 1)%MaxIntervalRequests != 0) { continue; }
+
+                    Console.WriteLine($"Project #{ Number }: Maximum interval reached ({ MaxIntervalRequests })," +
+                                      $" delaying ~{ IntervalTime / 1000 } seconds before starting a new batch." +
+                                      $" { i + 1 } of { MaxRequests } edges processed thus far.");
+                    Thread.Sleep(IntervalTime);
                 }
 
-                return updates;
+                return 0;
             });
         }
 
@@ -173,7 +166,6 @@ namespace GoogleDataCollection.Model
                         : TimeBracket.GetNextTimeBracket(data.TimeBrackets, previousSession.TimeBracketId).Id;
                 }
 
-
                 var nextStartingPoint = new UpdateSession
                 {
                     EdgeFid = newFid,
@@ -192,18 +184,10 @@ namespace GoogleDataCollection.Model
                 project.Number = i + 1;
 
                 Console.WriteLine($"Project #{ project.Number } API key: { project.ApiKey }.");
-                Console.WriteLine($"Project (ID: { project.Id }) starting edge FID: { project.StartingPoint.EdgeFid }.");
-                Console.WriteLine($"Project (hour) time bracket: { data.TimeBrackets.Single(b => b.Id.ToString() == project.StartingPoint.TimeBracketId.ToString()).HourRunTime }.");
-                Console.WriteLine($"Project starting direction: { project.StartingPoint.Direction }.{ Environment.NewLine }");
+                Console.WriteLine($"Project #{ project.Number } starting edge FID: { project.StartingPoint.EdgeFid }.");
+                Console.WriteLine($"Project #{ project.Number } (hour) time bracket: { data.TimeBrackets.Single(b => b.Id.ToString() == project.StartingPoint.TimeBracketId.ToString()).HourRunTime }.");
+                Console.WriteLine($"Project #{ project.Number } starting direction: { project.StartingPoint.Direction }.{ Environment.NewLine }");
             }
-/*
-            foreach (var project in data.Projects)
-            {
-                Console.WriteLine($"Project (ID: { project.Id }) starting edge FID: { project.StartingPoint.EdgeFid }.");
-                Console.WriteLine($"Project (hour) time bracket: { data.TimeBrackets.Single(b => b.Id.ToString() == project.StartingPoint.TimeBracketId.ToString()).HourRunTime }.");
-                Console.WriteLine($"Project starting direction: { project.StartingPoint.Direction }.{ Environment.NewLine }");
-            }
-*/
         }
     }
 }
