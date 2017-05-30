@@ -76,5 +76,13 @@ namespace GoogleDataCollection.Model
             
             return Math.Ceiling(diff.TotalSeconds);
         }
+
+        public static TimeBracket GetNextTimeBracket(List<TimeBracket> brackets, Guid currentTimeBracketId)
+        {
+            var indexOfCurrentTimeBracket = brackets.FindIndex(tb => tb.Id == currentTimeBracketId);
+            var nextIndex = (indexOfCurrentTimeBracket % brackets.Count) + 1;
+
+            return brackets[nextIndex < brackets.Count ? nextIndex : 0];
+        }
     }
 }

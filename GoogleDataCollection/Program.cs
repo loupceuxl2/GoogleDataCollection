@@ -7,6 +7,7 @@ using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace GoogleDataCollection
 {
@@ -14,23 +15,39 @@ namespace GoogleDataCollection
     {
         private static void Main(string[] args)
         {
+            var data = JsonAccess.DeserializeEdges();
+
+            Console.WriteLine($"{ DateTime.Now }: Data collection started.");
+            GoogleAccess.InitialiseDataCollector(data);
+            GoogleAccess.RunDataCollector(data).Wait();
+            Console.WriteLine($"{ DateTime.Now }: Data collection complete.");
+
+            File.WriteAllText(JsonAccess.DefaultFilepath + "new_file4.json", JsonConvert.SerializeObject(data, Formatting.Indented));
+/*
+            Task<List<EdgeUpdate>[]> temp = null;
+            Task.Run(() => temp = GoogleAccess.RunDataCollector(data)).Wait();
+
+            foreach (var projects in temp.Result)
+            {
+                foreach (var projectUpdates in projects)
+                {
+                    Console.WriteLine($"DFS: {projectUpdates}");
+                }
+            }
+
+*/
+            //GoogleAccess.RunDataCollector(data).Wait();
+
+
             //var container = SpreadsheetAccess.LoadData(SpreadsheetAccess.DefaultFilename, 1);
-
             //string output = JsonConvert.SerializeObject(container, Formatting.Indented);
-
             //File.WriteAllText(JsonAccess.DefaultFilename, output);
-            //GoogleAccess.InitialiseDataCollector(JsonAccess.DeserializeEdges());
 
-            var test = JsonAccess.DeserializeEdges();
-
-            GoogleAccess.SetProjectUpdateSessions(test);
 
 
             //Console.WriteLine($"NEXT OCCURRENCE (14:00): { TimeBracket.GetNextOccurrence(13)} ");
             //Console.WriteLine($"UNIX TIMESTAMP (NOW): { TimeBracket.ConvertToUnixTimestamp(DateTime.Now) }");
             //Console.WriteLine($"UNIX TIMESTAMP (14:00): { TimeBracket.ConvertToUnixTimestamp(TimeBracket.GetNextOccurrence(13)) }");
-
-
         }
     }
 }
