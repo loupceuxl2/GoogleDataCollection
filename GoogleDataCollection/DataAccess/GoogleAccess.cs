@@ -29,6 +29,8 @@ namespace GoogleDataCollection.DataAccess
 
             await Task.WhenAll(tasks);
 
+            Project.UpdateLastProjectSession(data);
+
             return 0;
         }
     }

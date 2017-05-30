@@ -10,17 +10,17 @@ namespace GoogleDataCollection.Model
     {
         public enum UpdateDirections : byte { Forwards, Backwards }
 
-        [JsonProperty(PropertyName = "lastRunTime", Required = Required.Always)]
-        public DateTime RunTime { get; set; }
+        [JsonProperty(PropertyName = "runTimeCompleted", Required = Required.Always)]
+        public DateTime RunTimeCompleted { get; set; }
 
-        [JsonProperty(PropertyName = "lastTimeBracketId", Required = Required.Always)]
-        public Guid TimeBracketId { get; set; }
+        [JsonProperty(PropertyName = "currentCurrentTimeBracketId", Required = Required.Always)]
+        public Guid CurrentTimeBracketId { get; set; }
 
-        [JsonProperty(PropertyName = "lastEdgeFid", Required = Required.Always)]
-        public uint EdgeFid { get; set; }
+        [JsonProperty(PropertyName = "currentCurrentEdgeFid", Required = Required.Always)]
+        public uint CurrentEdgeFid { get; set; }
 
-        [JsonProperty(PropertyName = "lastDirection", Required = Required.Always)]
-        public UpdateDirections Direction { get; set; }
+        [JsonProperty(PropertyName = "currentDirection", Required = Required.Always)]
+        public UpdateDirections CurrentDirection { get; set; }
 
 
         public static UpdateSession GetNextUpdateSession(uint totalFids, UpdateSession currentSession, List<TimeBracket> brackets)
@@ -30,29 +30,29 @@ namespace GoogleDataCollection.Model
             {
                 return new UpdateSession
                 {
-                    EdgeFid = 0,
-                    Direction = UpdateDirections.Forwards,
-                    TimeBracketId = brackets.First().Id
+                    CurrentEdgeFid = 0,
+                    CurrentDirection = UpdateDirections.Forwards,
+                    CurrentTimeBracketId = brackets.First().Id
                 };
             }
 
             // If we haven't reached the end of the collection go to the next Fid.
-            if (currentSession.EdgeFid != totalFids - 1)
+            if (currentSession.CurrentEdgeFid != totalFids - 1)
             {
                 return new UpdateSession
                 {
-                    EdgeFid = currentSession.EdgeFid + 1,
-                    Direction = currentSession.Direction,
-                    TimeBracketId = currentSession.TimeBracketId
+                    CurrentEdgeFid = currentSession.CurrentEdgeFid + 1,
+                    CurrentDirection = currentSession.CurrentDirection,
+                    CurrentTimeBracketId = currentSession.CurrentTimeBracketId
                 };
             }
 
             // End of collection, decide where to go next.
             return new UpdateSession
             {
-                EdgeFid = 0,
-                Direction = currentSession.Direction == UpdateDirections.Forwards ? UpdateDirections.Backwards : UpdateDirections.Forwards,
-                TimeBracketId = (currentSession.Direction == UpdateDirections.Forwards) ? currentSession.TimeBracketId : TimeBracket.GetNextTimeBracket(brackets, currentSession.TimeBracketId).Id
+                CurrentEdgeFid = 0,
+                CurrentDirection = currentSession.CurrentDirection == UpdateDirections.Forwards ? UpdateDirections.Backwards : UpdateDirections.Forwards,
+                CurrentTimeBracketId = (currentSession.CurrentDirection == UpdateDirections.Forwards) ? currentSession.CurrentTimeBracketId : TimeBracket.GetNextTimeBracket(brackets, currentSession.CurrentTimeBracketId).Id
             };
         }
     }

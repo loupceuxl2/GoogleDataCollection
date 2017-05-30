@@ -30,7 +30,7 @@ namespace GoogleDataCollection.Model
 
         public int Number { get; set; } = 0;
 
-        public UpdateSession StartingPoint { get; set; }
+        public UpdateSession CurrentSession { get; set; }
 
         public Project()
         {
@@ -46,10 +46,10 @@ namespace GoogleDataCollection.Model
 
             var update = new EdgeUpdate();
 
-            var xOrigin = session.Direction == UpdateSession.UpdateDirections.Forwards ? edge.XFromPoint.ToString(CultureInfo.InvariantCulture) : edge.XToPoint.ToString(CultureInfo.InvariantCulture);
-            var yOrigin = session.Direction == UpdateSession.UpdateDirections.Forwards ? edge.YFromPoint.ToString(CultureInfo.InvariantCulture) : edge.YToPoint.ToString(CultureInfo.InvariantCulture);
-            var xDestination = session.Direction == UpdateSession.UpdateDirections.Forwards ? edge.XToPoint.ToString(CultureInfo.InvariantCulture) : edge.XFromPoint.ToString(CultureInfo.InvariantCulture);
-            var yDestination = session.Direction == UpdateSession.UpdateDirections.Forwards ? edge.YToPoint.ToString(CultureInfo.InvariantCulture) : edge.YFromPoint.ToString(CultureInfo.InvariantCulture);
+            var xOrigin = session.CurrentDirection == UpdateSession.UpdateDirections.Forwards ? edge.XFromPoint.ToString(CultureInfo.InvariantCulture) : edge.XToPoint.ToString(CultureInfo.InvariantCulture);
+            var yOrigin = session.CurrentDirection == UpdateSession.UpdateDirections.Forwards ? edge.YFromPoint.ToString(CultureInfo.InvariantCulture) : edge.YToPoint.ToString(CultureInfo.InvariantCulture);
+            var xDestination = session.CurrentDirection == UpdateSession.UpdateDirections.Forwards ? edge.XToPoint.ToString(CultureInfo.InvariantCulture) : edge.XFromPoint.ToString(CultureInfo.InvariantCulture);
+            var yDestination = session.CurrentDirection == UpdateSession.UpdateDirections.Forwards ? edge.YToPoint.ToString(CultureInfo.InvariantCulture) : edge.YFromPoint.ToString(CultureInfo.InvariantCulture);
 
             var directionsRequest = new DirectionsRequest()
             {
@@ -62,17 +62,19 @@ namespace GoogleDataCollection.Model
             var response = GoogleMaps.Directions.Query(directionsRequest);
 
             update.Status = response.Status;
-            update.UpdateTimeBracketId = session.TimeBracketId;
+            update.UpdateTimeBracketId = session.CurrentTimeBracketId;
 
             Console.WriteLine($"Project #{ Number } | Edge #{ edge.Fid } Google response status: {update.Status}");
 
-            if (response.Routes?.FirstOrDefault() == null || response.Routes.First().Legs.FirstOrDefault() == null || response.Routes.First().Legs.First().Duration == null)
+            var tempDuration = response.Routes?.FirstOrDefault()?.Legs?.FirstOrDefault()?.Duration;
+
+            if (tempDuration == null)
             {
                 Console.WriteLine($"Project #{ Number } | Edge #{edge.Fid}: No information available.");
                 return update;
             }
 
-            update.Duration = response.Routes.First().Legs.First().Duration.Value;
+            update.Duration = tempDuration.Value;
 
             Console.WriteLine($"Project #{ Number } | Edge #{edge.Fid} duration: {update.Duration}.");
             Console.WriteLine($"Project #{ Number } | Edge #{edge.Fid} data retrieval completed successfully.");
@@ -85,9 +87,8 @@ namespace GoogleDataCollection.Model
             return await Task.Run(() =>
             {
                 var totalEdges = edges.Count;
-                var currentSession = StartingPoint;
 
-                if (currentSession == null)
+                if (CurrentSession == null)
                 {
                     Console.WriteLine($"Error [UpdateSession]: Project #{ Number } does not have an update session.");
                     return -1;
@@ -95,25 +96,25 @@ namespace GoogleDataCollection.Model
 
                 for (var i = 0; i < MaxRequests; i++)
                 {
-                    var edge = edges.ContainsKey(currentSession.EdgeFid) ? edges[currentSession.EdgeFid] : null;
+                    var edge = edges.ContainsKey(CurrentSession.CurrentEdgeFid) ? edges[CurrentSession.CurrentEdgeFid] : null;
 
                     if (edge == null)
                     {
-                        Console.WriteLine($"Error [Edge]: Project #{ Number } |  Edge #{ currentSession.EdgeFid } not available.");
-                        currentSession = UpdateSession.GetNextUpdateSession((uint)totalEdges, currentSession, timeBrackets);
+                        Console.WriteLine($"Error [Edge]: Project #{ Number } |  Edge #{ CurrentSession.CurrentEdgeFid } not available.");
+                        CurrentSession = UpdateSession.GetNextUpdateSession((uint)totalEdges, CurrentSession, timeBrackets);
                         continue;
                     }
 
-                    if (currentSession.Direction == UpdateSession.UpdateDirections.Forwards)
+                    if (CurrentSession.CurrentDirection == UpdateSession.UpdateDirections.Forwards)
                     {
-                        edge.Updates.Add(GetUpdate(edge, currentSession));
+                        edge.Updates.Add(GetUpdate(edge, CurrentSession));
                     }
                     else
                     {
-                        edge.InvertedUpdates.Add(GetUpdate(edge, currentSession));
+                        edge.InvertedUpdates.Add(GetUpdate(edge, CurrentSession));
                     }
                     
-                    currentSession = UpdateSession.GetNextUpdateSession((uint)totalEdges, currentSession, timeBrackets);
+                    CurrentSession = UpdateSession.GetNextUpdateSession((uint)totalEdges, CurrentSession, timeBrackets);
 
                     if ((i + 1)%MaxIntervalRequests != 0) { continue; }
 
@@ -122,6 +123,8 @@ namespace GoogleDataCollection.Model
                                       $" { i + 1 } of { MaxRequests } edges processed thus far.");
                     Thread.Sleep(IntervalTime);
                 }
+
+                CurrentSession.RunTimeCompleted = DateTime.Now;
 
                 return 0;
             });
@@ -141,39 +144,39 @@ namespace GoogleDataCollection.Model
 */
             //data.Projects[0].StartingPoint = UpdateSession.GetNextUpdateSession(totalEdges, lastUpdateSession, data.TimeBrackets);
 
-            data.Projects[0].StartingPoint = 
+            data.Projects[0].CurrentSession = 
                 data.UpdateSessions.LastOrDefault() ?? UpdateSession.GetNextUpdateSession(totalEdges, null, data.TimeBrackets);
             //data.Projects[0].StartingPoint = UpdateSession.GetNextUpdateSession(totalEdges, null, data.TimeBrackets);
 
             // !!! IF EdgeFid < previousId
             for (var i = 1; i < data.Projects.Count; i++)
             {
-                var previousSession = data.Projects[i - 1].StartingPoint;
-                var previousFid = previousSession.EdgeFid;
-                var newFid = (Project.MaxRequests + previousFid) % totalEdges;
-                var direction = previousSession.Direction;
-                var timeBracketId = previousSession.TimeBracketId;
+                var previousSession = data.Projects[i - 1].CurrentSession;
+                var previousFid = previousSession.CurrentEdgeFid;
+                var newFid = (MaxRequests + previousFid) % totalEdges;
+                var direction = previousSession.CurrentDirection;
+                var timeBracketId = previousSession.CurrentTimeBracketId;
 
                 // TO DO [OPTIONAL]: Change below calls into two separate functions. Use in 'GetNextUpdateSession' method as well.
                 if (newFid < previousFid)
                 {
-                    direction = previousSession.Direction == UpdateSession.UpdateDirections.Forwards
+                    direction = previousSession.CurrentDirection == UpdateSession.UpdateDirections.Forwards
                         ? UpdateSession.UpdateDirections.Backwards
                         : UpdateSession.UpdateDirections.Forwards;
 
-                    timeBracketId = previousSession.Direction == UpdateSession.UpdateDirections.Forwards
-                        ? previousSession.TimeBracketId
-                        : TimeBracket.GetNextTimeBracket(data.TimeBrackets, previousSession.TimeBracketId).Id;
+                    timeBracketId = previousSession.CurrentDirection == UpdateSession.UpdateDirections.Forwards
+                        ? previousSession.CurrentTimeBracketId
+                        : TimeBracket.GetNextTimeBracket(data.TimeBrackets, previousSession.CurrentTimeBracketId).Id;
                 }
 
                 var nextStartingPoint = new UpdateSession
                 {
-                    EdgeFid = newFid,
-                    Direction = direction,
-                    TimeBracketId = timeBracketId
+                    CurrentEdgeFid = newFid,
+                    CurrentDirection = direction,
+                    CurrentTimeBracketId = timeBracketId
                 };
 
-                data.Projects[i].StartingPoint = nextStartingPoint;
+                data.Projects[i].CurrentSession = nextStartingPoint;
             }
 
             // Set the project number.
@@ -184,10 +187,19 @@ namespace GoogleDataCollection.Model
                 project.Number = i + 1;
 
                 Console.WriteLine($"Project #{ project.Number } API key: { project.ApiKey }.");
-                Console.WriteLine($"Project #{ project.Number } starting edge FID: { project.StartingPoint.EdgeFid }.");
-                Console.WriteLine($"Project #{ project.Number } (hour) time bracket: { data.TimeBrackets.Single(b => b.Id.ToString() == project.StartingPoint.TimeBracketId.ToString()).HourRunTime }.");
-                Console.WriteLine($"Project #{ project.Number } starting direction: { project.StartingPoint.Direction }.{ Environment.NewLine }");
+                Console.WriteLine($"Project #{ project.Number } starting edge FID: { project.CurrentSession.CurrentEdgeFid }.");
+                Console.WriteLine($"Project #{ project.Number } (hour) time bracket: { data.TimeBrackets.Single(b => b.Id.ToString() == project.CurrentSession.CurrentTimeBracketId.ToString()).HourRunTime }.");
+                Console.WriteLine($"Project #{ project.Number } starting direction: { project.CurrentSession.CurrentDirection }.{ Environment.NewLine }");
             }
+        }
+
+        public static void UpdateLastProjectSession(DataContainer data)
+        {
+            var lastSession = data.Projects?.LastOrDefault()?.CurrentSession;
+
+            if (lastSession == null) { return; }
+
+            data.UpdateSessions.Add(lastSession);
         }
     }
 }

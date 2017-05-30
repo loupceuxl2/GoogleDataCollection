@@ -1,3 +1,5 @@
 ﻿- Wiki
 - Google Directions info slide.
 - Improvements slide (bullet points).
+	- Specify to the minute.
+	- Data collection optimisation (more requests) using Waypoints.
