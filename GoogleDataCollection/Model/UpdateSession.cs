@@ -10,13 +10,13 @@ namespace GoogleDataCollection.Model
     {
         public enum UpdateDirections : byte { Forwards, Backwards }
 
-        [JsonProperty(PropertyName = "runTimeCompleted", Required = Required.Always)]
-        public DateTime RunTimeCompleted { get; set; }
+        [JsonProperty(PropertyName = "runTimeCompletedAt", Required = Required.Always)]
+        public DateTime RunTimeCompletedAt { get; set; }
 
-        [JsonProperty(PropertyName = "currentCurrentTimeBracketId", Required = Required.Always)]
+        [JsonProperty(PropertyName = "currentTimeBracketId", Required = Required.Always)]
         public Guid CurrentTimeBracketId { get; set; }
 
-        [JsonProperty(PropertyName = "currentCurrentEdgeFid", Required = Required.Always)]
+        [JsonProperty(PropertyName = "currentEdgeFid", Required = Required.Always)]
         public uint CurrentEdgeFid { get; set; }
 
         [JsonProperty(PropertyName = "currentDirection", Required = Required.Always)]

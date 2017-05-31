@@ -1,5 +1,5 @@
-﻿- Wiki
-- Google Directions info slide.
+﻿- Google Directions info slide.
+- Time bracket + Direction cycle slide.
 - Improvements slide (bullet points).
 	- Specify to the minute.
 	- Data collection optimisation (more requests) using Waypoints.

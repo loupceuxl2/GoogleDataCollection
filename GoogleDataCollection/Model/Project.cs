@@ -28,7 +28,7 @@ namespace GoogleDataCollection.Model
         [JsonProperty(PropertyName = "apiKey", Required = Required.Always)]
         public string ApiKey { get; set; }
 
-        public int Number { get; set; } = 0;
+        public int Number { get; set; }
 
         public UpdateSession CurrentSession { get; set; }
 
@@ -40,9 +40,9 @@ namespace GoogleDataCollection.Model
         // TO DO [!!!]: Set departure time!
         // TO DO: Take oneway streets into consideration (i.e., no need to invert).
         // TO DO: Take non streets into account (i.e., ignore them).
-        public EdgeUpdate GetUpdate(Edge edge, UpdateSession session)
+        public EdgeUpdate GetUpdate(Edge edge, UpdateSession session, DateTime occurrence)
         {
-            Console.WriteLine($"Project #{ Number } | Edge #{ edge.Fid } data retrieval started...");
+            Console.WriteLine($"Project #{ Number } | Edge #{ edge.Fid } data retrieval started...{ Environment.NewLine }Seeking duration of travel for { occurrence }.");
 
             var update = new EdgeUpdate();
 
@@ -51,10 +51,11 @@ namespace GoogleDataCollection.Model
             var xDestination = session.CurrentDirection == UpdateSession.UpdateDirections.Forwards ? edge.XToPoint.ToString(CultureInfo.InvariantCulture) : edge.XFromPoint.ToString(CultureInfo.InvariantCulture);
             var yDestination = session.CurrentDirection == UpdateSession.UpdateDirections.Forwards ? edge.YToPoint.ToString(CultureInfo.InvariantCulture) : edge.YFromPoint.ToString(CultureInfo.InvariantCulture);
 
-            var directionsRequest = new DirectionsRequest()
+            var directionsRequest = new DirectionsRequest
             {
                 Origin = $"{xOrigin},{yOrigin}",
                 Destination = $"{xDestination},{yDestination}",
+                DepartureTime = occurrence,
                 TravelMode = TravelMode.Driving,
                 ApiKey = ApiKey
             };
@@ -66,7 +67,8 @@ namespace GoogleDataCollection.Model
 
             Console.WriteLine($"Project #{ Number } | Edge #{ edge.Fid } Google response status: {update.Status}");
 
-            var tempDuration = response.Routes?.FirstOrDefault()?.Legs?.FirstOrDefault()?.Duration;
+            //var tempDuration = response.Routes?.FirstOrDefault()?.Legs?.FirstOrDefault()?.Duration;
+            var tempDuration = response.Routes?.FirstOrDefault()?.Legs?.FirstOrDefault()?.DurationInTraffic;
 
             if (tempDuration == null)
             {
@@ -88,16 +90,35 @@ namespace GoogleDataCollection.Model
             {
                 var totalEdges = edges.Count;
 
-                if (CurrentSession == null)
+                if (totalEdges == 0)
                 {
-                    Console.WriteLine($"Error [UpdateSession]: Project #{ Number } does not have an update session.");
+                    Console.WriteLine($"Project #{ Number } has { totalEdges } available.");
                     return -1;
                 }
 
                 for (var i = 0; i < MaxRequests; i++)
                 {
+                    if (CurrentSession == null)
+                    {
+                        Console.WriteLine($"Error [UpdateSession]: Project #{ Number } does not have an update session.");
+                        return -1;
+                    }
+
+                    var timeBracket =
+                        timeBrackets?.Find(tb => tb.Id.ToString() == CurrentSession.CurrentTimeBracketId.ToString());
+
+                    if (timeBracket == null)
+                    {
+                        Console.WriteLine($"Error [UpdateSession]: Project #{ Number } does not have a Time Bracket set.");
+                        return -1;
+                    }
+
+                    var occurrence = TimeBracket.GetNextOccurrence(timeBracket.HourRunTime);
+                    occurrence = new DateTime(occurrence.Year, occurrence.Month, occurrence.Day, occurrence.Hour, 0, 0);
+
                     var edge = edges.ContainsKey(CurrentSession.CurrentEdgeFid) ? edges[CurrentSession.CurrentEdgeFid] : null;
 
+                    // TO DO: Add edge error handling.
                     if (edge == null)
                     {
                         Console.WriteLine($"Error [Edge]: Project #{ Number } |  Edge #{ CurrentSession.CurrentEdgeFid } not available.");
@@ -107,16 +128,16 @@ namespace GoogleDataCollection.Model
 
                     if (CurrentSession.CurrentDirection == UpdateSession.UpdateDirections.Forwards)
                     {
-                        edge.Updates.Add(GetUpdate(edge, CurrentSession));
+                        edge.Updates.Add(GetUpdate(edge, CurrentSession, occurrence));
                     }
                     else
                     {
-                        edge.InvertedUpdates.Add(GetUpdate(edge, CurrentSession));
+                        edge.InvertedUpdates.Add(GetUpdate(edge, CurrentSession, occurrence));
                     }
                     
                     CurrentSession = UpdateSession.GetNextUpdateSession((uint)totalEdges, CurrentSession, timeBrackets);
 
-                    if ((i + 1)%MaxIntervalRequests != 0) { continue; }
+                    if ((i + 1) % MaxIntervalRequests != 0) { continue; }
 
                     Console.WriteLine($"Project #{ Number }: Maximum interval reached ({ MaxIntervalRequests })," +
                                       $" delaying ~{ IntervalTime / 1000 } seconds before starting a new batch." +
@@ -124,7 +145,7 @@ namespace GoogleDataCollection.Model
                     Thread.Sleep(IntervalTime);
                 }
 
-                CurrentSession.RunTimeCompleted = DateTime.Now;
+                CurrentSession.RunTimeCompletedAt = DateTime.Now;
 
                 return 0;
             });

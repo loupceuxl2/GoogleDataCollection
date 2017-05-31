@@ -17,7 +17,7 @@ namespace GoogleDataCollection
             File.WriteAllText(JsonAccess.DefaultFilename, JsonConvert.SerializeObject(container, Formatting.Indented));
 */
 
-/*
+
             try
             {
                 var data = JsonAccess.DeserializeEdges();
@@ -35,38 +35,25 @@ namespace GoogleDataCollection
                 Console.WriteLine($"{e.Message}");
             }
 
-*/
+
 
             // TO DO: Uncomment for release version.
-/*
+
             Console.WriteLine("Press enter to close...");
             Console.ReadLine();
-*/
 
 
 
-
+            // EXAMPLE: Retrieve the next Time Bracket occurrence (based on a selected hour).
+/*
             //const int hour = 9;
 
             //Console.WriteLine($"NEXT OCCURRENCE ({hour}:00): { TimeBracket.GetNextOccurrence(hour)} ");
             //Console.WriteLine($"UNIX TIMESTAMP ({hour}:00): { TimeBracket.ConvertToUnixTimestamp(TimeBracket.GetNextOccurrence(hour)) }");
+*/
         }
     }
 }
-
-/*
-            Task<List<EdgeUpdate>[]> temp = null;
-            Task.Run(() => temp = GoogleAccess.RunDataCollector(data)).Wait();
-
-            foreach (var projects in temp.Result)
-            {
-                foreach (var projectUpdates in projects)
-                {
-                    Console.WriteLine($"DFS: {projectUpdates}");
-                }
-            }
-
-*/
 
 /*
             var test = JsonAccess.DeserializeEdges();
