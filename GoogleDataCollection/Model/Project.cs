@@ -14,16 +14,17 @@ namespace GoogleDataCollection.Model
     public class Project
     {
         // NOTE: MUST BE SMALLER THAN THE TOTAL NUMBER OF EDGES (LAST CHECKED 28/05/17: EDGES == 73738)
-        //public static uint MaxRequests = 2500;
-        public static uint MaxRequests = 20;
+        // NOTE: I recommend reducing the number of queries below the maximum by 5-10% as
+        //      based on multiple test runs Google tends to miscount.
+        //      A single project involved precisely 2,500 calls but OVER_QUERY_LIMIT occurred on edge 2499 (#2500 counting from 0).
+        //      Two projects and it starts to happen around the 2480 mark.
+        //      This occurs irrespective of a significant delay (MaxIntervalRequests = 1,500 ms).
+        public static uint MaxRequests = 2500;
 
-        //public static uint MaxIntervalRequests = 50;
-        public static uint MaxIntervalRequests = 5;
+        public static uint MaxIntervalRequests = 50;
 
-        public static int IntervalTime = 1100;
-
-        [JsonProperty(PropertyName = "id", Required = Required.Always)]
-        public Guid Id { get; set; }
+        // This interval is somewhat redundant the way the data retrieval is currently setup.
+        public static int IntervalTime = 1500;
 
         [JsonProperty(PropertyName = "apiKey", Required = Required.Always)]
         public string ApiKey { get; set; }
@@ -34,15 +35,15 @@ namespace GoogleDataCollection.Model
 
         public Project()
         {
-            Id = Guid.NewGuid();
+
         }
 
-        // TO DO [!!!]: Set departure time!
+        // DONE: Set departure time!
         // TO DO: Take oneway streets into consideration (i.e., no need to invert).
         // TO DO: Take non streets into account (i.e., ignore them).
         public EdgeUpdate GetUpdate(Edge edge, UpdateSession session, DateTime occurrence)
         {
-            Console.WriteLine($"Project #{ Number } | Edge #{ edge.Fid } data retrieval started...{ Environment.NewLine }Seeking duration of travel for { occurrence }.");
+            Console.WriteLine($"Project #{ Number } | Edge #{ edge.Fid } data retrieval started... Seeking duration of travel for { occurrence }.");
 
             var update = new EdgeUpdate();
 
@@ -66,6 +67,11 @@ namespace GoogleDataCollection.Model
             update.UpdateTimeBracketId = session.CurrentTimeBracketId;
 
             Console.WriteLine($"Project #{ Number } | Edge #{ edge.Fid } Google response status: {update.Status}");
+
+            if (response.ErrorMessage != null)
+            {
+                Console.WriteLine($"Project #{ Number } | Edge #{ edge.Fid } Google error message: { response.ErrorMessage }");
+            }
 
             //var tempDuration = response.Routes?.FirstOrDefault()?.Legs?.FirstOrDefault()?.Duration;
             var tempDuration = response.Routes?.FirstOrDefault()?.Legs?.FirstOrDefault()?.DurationInTraffic;
@@ -118,7 +124,7 @@ namespace GoogleDataCollection.Model
 
                     var edge = edges.ContainsKey(CurrentSession.CurrentEdgeFid) ? edges[CurrentSession.CurrentEdgeFid] : null;
 
-                    // TO DO: Add edge error handling.
+                    // TO DO: Add edge error handling data.
                     if (edge == null)
                     {
                         Console.WriteLine($"Error [Edge]: Project #{ Number } |  Edge #{ CurrentSession.CurrentEdgeFid } not available.");
@@ -155,19 +161,9 @@ namespace GoogleDataCollection.Model
         public static void SetProjectUpdateSessions(DataContainer data)
         {
             var totalEdges = (uint)data.Edges.Count;
-/*
-            var lastUpdateSession = new UpdateSession
-            {
-                EdgeFid = 73734,
-                Direction = UpdateSession.UpdateDirections.Forwards,
-                TimeBracketId = data.TimeBrackets.Last().Id
-            };
-*/
-            //data.Projects[0].StartingPoint = UpdateSession.GetNextUpdateSession(totalEdges, lastUpdateSession, data.TimeBrackets);
 
             data.Projects[0].CurrentSession = 
                 data.UpdateSessions.LastOrDefault() ?? UpdateSession.GetNextUpdateSession(totalEdges, null, data.TimeBrackets);
-            //data.Projects[0].StartingPoint = UpdateSession.GetNextUpdateSession(totalEdges, null, data.TimeBrackets);
 
             // !!! IF EdgeFid < previousId
             for (var i = 1; i < data.Projects.Count; i++)

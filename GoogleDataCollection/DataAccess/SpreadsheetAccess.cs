@@ -3,6 +3,7 @@ using System.Runtime.InteropServices;
 using GoogleDataCollection.Model;
 using Excel = Microsoft.Office.Interop.Excel;
 
+// TO DO: Perform non-Interop Excel based data collection.
 // REFERENCE: https:coderwall.com/p/app3ya/read-excel-file-in-c
 namespace GoogleDataCollection.DataAccess
 {
