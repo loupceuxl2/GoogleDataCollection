@@ -2,6 +2,7 @@
 using GoogleMapsApi.Entities.Directions.Request;
 using Newtonsoft.Json;
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -19,10 +20,10 @@ namespace GoogleDataCollection.Model
         //      based on multiple test runs Google tends to miscount.
         //      A single project involved precisely 2,500 calls but OVER_QUERY_LIMIT occurred on edge 2499 (#2500 counting from 0).
         //      Two projects and it starts to happen around the 2480 mark.
-        //      This occurs irrespective of a significant delay (MaxIntervalRequests = 1,500 ms).
+        //      This occurs irrespective of a significant delay (MaxBatchRequests = 1,500 ms).
         public static uint MaxRequests = 200;
 
-        public static uint MaxIntervalRequests = 50;
+        public static uint MaxBatchRequests = 10;
 
         // This interval is somewhat redundant the way the data retrieval is currently setup.
         public static int IntervalTime = 1500;
@@ -86,28 +87,122 @@ namespace GoogleDataCollection.Model
             return update;
         }
 
-        public async Task<DirectionsResponse> GetUpdate(Edge edge, UpdateSession.UpdateDirections direction)
+        // Return Task<Tuple<FID, Edge, DirectionsResponse>>
+        public async Task<int> GetUpdate(Edge edge, UpdateSession.UpdateDirections direction, TimeBracket time)
         {
             return await Task.Run(() =>
             {
-                return new DirectionsResponse();
+                Console.WriteLine($"Edge {edge.Fid} data retrieval started.");
+/*
+                var response2 = new Tuple<uint, Edge, DirectionsResponse>(edge.Fid, edge, null);
+
+
+                //Console.WriteLine($"Project #{ Number } | Edge #{ edge.Fid } data retrieval started... Seeking duration of travel for { occurrence }.");
+
+                var update = new EdgeUpdate();
+
+                var xOrigin = session.CurrentDirection == UpdateSession.UpdateDirections.Forwards ? edge.XFromPoint.ToString(CultureInfo.InvariantCulture) : edge.XToPoint.ToString(CultureInfo.InvariantCulture);
+                var yOrigin = session.CurrentDirection == UpdateSession.UpdateDirections.Forwards ? edge.YFromPoint.ToString(CultureInfo.InvariantCulture) : edge.YToPoint.ToString(CultureInfo.InvariantCulture);
+                var xDestination = session.CurrentDirection == UpdateSession.UpdateDirections.Forwards ? edge.XToPoint.ToString(CultureInfo.InvariantCulture) : edge.XFromPoint.ToString(CultureInfo.InvariantCulture);
+                var yDestination = session.CurrentDirection == UpdateSession.UpdateDirections.Forwards ? edge.YToPoint.ToString(CultureInfo.InvariantCulture) : edge.YFromPoint.ToString(CultureInfo.InvariantCulture);
+
+                var directionsRequest = new DirectionsRequest
+                {
+                    Origin = $"{xOrigin},{yOrigin}",
+                    Destination = $"{xDestination},{yDestination}",
+                    DepartureTime = occurrence,
+                    TravelMode = TravelMode.Driving,
+                    ApiKey = ApiKey
+                };
+
+                var response = GoogleMaps.Directions.Query(directionsRequest);
+
+                update.Status = response.Status;
+                update.UpdateTimeBracketId = session.CurrentTimeBracketId;
+
+                //Console.WriteLine($"Project #{ Number } | Edge #{ edge.Fid } Google response status: {update.Status}");
+
+                if (response.ErrorMessage != null)
+                {
+                    Console.WriteLine($"Project #{ Number } | Edge #{ edge.Fid } Google error message: { response.ErrorMessage }");
+                }
+
+                //var tempDuration = response.Routes?.FirstOrDefault()?.Legs?.FirstOrDefault()?.Duration;
+                var tempDuration = response.Routes?.FirstOrDefault()?.Legs?.FirstOrDefault()?.DurationInTraffic;
+
+                if (tempDuration == null)
+                {
+                    Console.WriteLine($"Project #{ Number } | Edge #{edge.Fid}: No information available.");
+                    //return update;
+                    return 0;
+                }
+
+                update.Duration = tempDuration.Value;
+
+                //Console.WriteLine($"Project #{ Number } | Edge #{edge.Fid} duration: {update.Duration}.");
+                //Console.WriteLine($"Project #{ Number } | Edge #{edge.Fid} data retrieval completed successfully.");
+
+                //return update;
+*/
+                return 1;
             });
         }
 
-        public async void GetUpdates(List<Tuple<int, Edge>> edges)
+        // TO DO: Add a timer.
+        // TO DO: Test empty queue.
+        public async Task<int> GetUpdates(ConcurrentQueue<Tuple<int, Edge, TimeBracket>> edges)
         {
-            //IEnumerable<Task> tasks = edges.Select(e => GetUpdate(e, UpdateSession.UpdateDirections.Forwards)).Concat(edges.Where(e => !e.IsOneWay).Select(e => GetUpdate(e, UpdateSession.UpdateDirections.Backwards))).ToList();
-            var tasks2 = new List<Task>();
+            var processedCount = 0;
 
-            for (var i = 0; i < MaxIntervalRequests; i++)
+            while (processedCount < MaxRequests)
             {
-                var a = new Task(() => GetUpdate(new Edge(), UpdateSession.UpdateDirections.Forwards));
+                var batchCount = 0;
+                var tasks = new List<Task>();
 
-                tasks2.Add(a);
-                a.Start();
+                while (batchCount < MaxBatchRequests)
+                {
+                    Tuple<int, Edge, TimeBracket> currentEdge;
+
+                    if (!edges.TryDequeue(out currentEdge))
+                    {
+                        break;
+                    }
+
+                    if (!currentEdge.Item2.IsOneWay)
+                    {
+                        // TO DO: Test twoway streets.
+                        if (batchCount + 1 >= MaxBatchRequests)
+                        {
+                            break;
+                        }
+
+                        tasks.Add(GetUpdate(currentEdge.Item2, UpdateSession.UpdateDirections.Forwards, currentEdge.Item3));
+                        tasks.Add(GetUpdate(currentEdge.Item2, UpdateSession.UpdateDirections.Backwards, currentEdge.Item3));
+
+                        batchCount += 2;
+                    }
+                    else
+                    {
+                        tasks.Add(GetUpdate(currentEdge.Item2, UpdateSession.UpdateDirections.Forwards, currentEdge.Item3));
+
+                        batchCount++;
+                    }
+                }
+
+                processedCount += batchCount;
+
+                await Task.WhenAll(tasks);
+
+                if (edges.IsEmpty)
+                {
+
+                    return 0;
+                }
+
+                // Validate and write to object.
             }
-
-            await Task.WhenAll(tasks2);
+            
+            return 0;
         }
 
         public async Task<int> GetUpdates(Dictionary<uint, Edge> edges, List<TimeBracket> timeBrackets)
@@ -163,9 +258,9 @@ namespace GoogleDataCollection.Model
                     
                     CurrentSession = UpdateSession.GetNextUpdateSession((uint)totalEdges, CurrentSession, timeBrackets);
 
-                    if ((i + 1) % MaxIntervalRequests != 0) { continue; }
+                    if ((i + 1) % MaxBatchRequests != 0) { continue; }
 
-                    Console.WriteLine($"Project #{ Number }: Maximum interval reached ({ MaxIntervalRequests })," +
+                    Console.WriteLine($"Project #{ Number }: Maximum interval reached ({ MaxBatchRequests })," +
                                       $" delaying ~{ IntervalTime / 1000 } seconds before starting a new batch." +
                                       $" { i + 1 } of { MaxRequests } edges processed thus far.");
                     Thread.Sleep(IntervalTime);
