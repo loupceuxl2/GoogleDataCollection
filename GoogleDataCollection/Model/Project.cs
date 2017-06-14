@@ -7,6 +7,7 @@ using System.Globalization;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using GoogleMapsApi.Entities.Directions.Response;
 
 namespace GoogleDataCollection.Model
 {
@@ -19,7 +20,7 @@ namespace GoogleDataCollection.Model
         //      A single project involved precisely 2,500 calls but OVER_QUERY_LIMIT occurred on edge 2499 (#2500 counting from 0).
         //      Two projects and it starts to happen around the 2480 mark.
         //      This occurs irrespective of a significant delay (MaxIntervalRequests = 1,500 ms).
-        public static uint MaxRequests = 2500;
+        public static uint MaxRequests = 200;
 
         public static uint MaxIntervalRequests = 50;
 
@@ -33,17 +34,12 @@ namespace GoogleDataCollection.Model
 
         public UpdateSession CurrentSession { get; set; }
 
-        public Project()
-        {
-
-        }
-
         // DONE: Set departure time!
         // TO DO: Take oneway streets into consideration (i.e., no need to invert).
         // TO DO: Take non streets into account (i.e., ignore them).
         public EdgeUpdate GetUpdate(Edge edge, UpdateSession session, DateTime occurrence)
         {
-            Console.WriteLine($"Project #{ Number } | Edge #{ edge.Fid } data retrieval started... Seeking duration of travel for { occurrence }.");
+            //Console.WriteLine($"Project #{ Number } | Edge #{ edge.Fid } data retrieval started... Seeking duration of travel for { occurrence }.");
 
             var update = new EdgeUpdate();
 
@@ -66,7 +62,7 @@ namespace GoogleDataCollection.Model
             update.Status = response.Status;
             update.UpdateTimeBracketId = session.CurrentTimeBracketId;
 
-            Console.WriteLine($"Project #{ Number } | Edge #{ edge.Fid } Google response status: {update.Status}");
+            //Console.WriteLine($"Project #{ Number } | Edge #{ edge.Fid } Google response status: {update.Status}");
 
             if (response.ErrorMessage != null)
             {
@@ -84,10 +80,34 @@ namespace GoogleDataCollection.Model
 
             update.Duration = tempDuration.Value;
 
-            Console.WriteLine($"Project #{ Number } | Edge #{edge.Fid} duration: {update.Duration}.");
-            Console.WriteLine($"Project #{ Number } | Edge #{edge.Fid} data retrieval completed successfully.");
+            //Console.WriteLine($"Project #{ Number } | Edge #{edge.Fid} duration: {update.Duration}.");
+            //Console.WriteLine($"Project #{ Number } | Edge #{edge.Fid} data retrieval completed successfully.");
 
             return update;
+        }
+
+        public async Task<DirectionsResponse> GetUpdate(Edge edge, UpdateSession.UpdateDirections direction)
+        {
+            return await Task.Run(() =>
+            {
+                return new DirectionsResponse();
+            });
+        }
+
+        public async void GetUpdates(List<Tuple<int, Edge>> edges)
+        {
+            //IEnumerable<Task> tasks = edges.Select(e => GetUpdate(e, UpdateSession.UpdateDirections.Forwards)).Concat(edges.Where(e => !e.IsOneWay).Select(e => GetUpdate(e, UpdateSession.UpdateDirections.Backwards))).ToList();
+            var tasks2 = new List<Task>();
+
+            for (var i = 0; i < MaxIntervalRequests; i++)
+            {
+                var a = new Task(() => GetUpdate(new Edge(), UpdateSession.UpdateDirections.Forwards));
+
+                tasks2.Add(a);
+                a.Start();
+            }
+
+            await Task.WhenAll(tasks2);
         }
 
         public async Task<int> GetUpdates(Dictionary<uint, Edge> edges, List<TimeBracket> timeBrackets)
