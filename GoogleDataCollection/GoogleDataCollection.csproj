@@ -61,6 +61,7 @@
     <Compile Include="DataAccess\SpreadsheetAccess.cs" />
     <Compile Include="Logging\ILog.cs" />
     <Compile Include="Logging\Log.cs" />
+    <Compile Include="Logging\LogCategory.cs" />
     <Compile Include="Logging\LogMessage.cs" />
     <Compile Include="Model\CsvParsing.cs" />
     <Compile Include="Model\Edge.cs" />
@@ -69,7 +70,7 @@
     <Compile Include="Model\EdgeUpdate.cs" />
     <Compile Include="Model\Project.cs" />
     <Compile Include="Model\Period.cs" />
-    <Compile Include="Model\TimeBracket.cs" />
+    <Compile Include="Model\UpdateTime.cs" />
     <Compile Include="Model\UpdateSession.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -78,8 +79,6 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

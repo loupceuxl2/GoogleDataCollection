@@ -10,8 +10,8 @@ namespace GoogleDataCollection.Model
         [JsonProperty(PropertyName = "csvParsing", Required = Required.Default)]
         public CsvParsing CsvParsing { get; set; }
 
-        [JsonProperty(PropertyName = "timeBrackets", Required = Required.Always)]
-        public List<TimeBracket> TimeBrackets { get; set; }
+        [JsonProperty(PropertyName = "updateTimes", Required = Required.Always)]
+        public List<UpdateTime> UpdateTimes { get; set; }
 
         [JsonProperty(PropertyName = "projects", Required = Required.Default)]
         public List<Project> Projects { get; set; }
@@ -31,7 +31,7 @@ namespace GoogleDataCollection.Model
         {
             Edges = new List<Edge>();
             UpdateSessions = new List<UpdateSession>();
-            TimeBrackets = new List<TimeBracket>();
+            UpdateTimes = new List<UpdateTime>();
             Projects = new List<Project>();
         }
     }

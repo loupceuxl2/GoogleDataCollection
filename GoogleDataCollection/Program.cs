@@ -28,7 +28,7 @@ namespace GoogleDataCollection
                 var data = JsonAccess.DeserializeEdges();
 
                 Console.WriteLine($"{DateTime.Now}: Data collection started.");
-                GoogleAccess.RunDataCollector2(data).Wait();
+                GoogleAccess.RunDataCollector(data).Wait();
                 Console.WriteLine($"{DateTime.Now}: Data collection complete.");
 
 /*

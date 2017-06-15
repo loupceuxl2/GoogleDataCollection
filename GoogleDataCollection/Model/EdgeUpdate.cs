@@ -10,8 +10,8 @@ namespace GoogleDataCollection.Model
         [JsonProperty(PropertyName = "status", Required = Required.Always)]
         public DirectionsStatusCodes Status { get; set; }
 
-        [JsonProperty(PropertyName = "updateTimeBracketId", Required = Required.Always)]
-        public Guid UpdateTimeBracketId { get; set; }
+        [JsonProperty(PropertyName = "updateTimeId", Required = Required.Always)]
+        public Guid UpdateTimeId { get; set; }
 
         [JsonProperty(PropertyName = "duration", Required = Required.Default)]
         public TimeSpan Duration { get; set; }
