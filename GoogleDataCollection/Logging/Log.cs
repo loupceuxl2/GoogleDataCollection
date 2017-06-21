@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace GoogleDataCollection.Logging
@@ -13,6 +13,10 @@ namespace GoogleDataCollection.Logging
     {
         public static readonly string DefaultGlobalLogFilename = "global_log.txt";
         public static readonly FileInfo DefaultFileInfo = new FileInfo($"{ AppDomain.CurrentDomain.BaseDirectory }\\{ DefaultGlobalLogFilename }");
+
+        private static uint _logCount = 0;
+        private static readonly BlockingCollection<Tuple<LogMessage, Log>> GlobalMessages = new BlockingCollection<Tuple<LogMessage, Log>>();
+        private static readonly CancellationTokenSource LogToFileCancellationToken = new CancellationTokenSource();
 
         public enum PriorityLevels
         {
@@ -38,25 +42,19 @@ namespace GoogleDataCollection.Logging
             Console = 4
         }
 
-        [Flags]
-        public enum LogOptions
-        {
-            LogTimeStamp = 1
-        }
+        public event LogMessageAddedEventHandler LogMessageAdded;
 
         public PriorityLevels FilePriority { get; set; }
         public PriorityLevels DebuggerPriority { get; set; }
         public PriorityLevels ConsolePriority { get; set; }
         public WriteModes WriteMode { get; set; }
-        public OutputFormats? Output { get; set; }
-        public FileInfo FileInfo { get; set; }
+        public OutputFormats Output { get; set; }
+        public FileInfo FileInfo { get; protected set; }
         public bool IsEnabled { get; protected set; }
         public uint WriteToFileCount { get; protected set; }
         public ConcurrentBag<LogMessage> Messages { get; protected set; }
 
-        public event LogMessageAddedEventHandler LogMessageAdded;
-
-        public Log(FileInfo fileInfo, PriorityLevels filePriority = PriorityLevels.UltraLow, WriteModes writeMode = WriteModes.Overwrite, PriorityLevels debugPriority = PriorityLevels.UltraLow, PriorityLevels consolePriority = PriorityLevels.UltraLow, OutputFormats? output = OutputFormats.File | OutputFormats.Debugger, bool enable = true)
+        public Log(FileInfo fileInfo, PriorityLevels filePriority = PriorityLevels.UltraLow, WriteModes writeMode = WriteModes.Overwrite, PriorityLevels debugPriority = PriorityLevels.UltraLow, PriorityLevels consolePriority = PriorityLevels.UltraLow, OutputFormats output = OutputFormats.File | OutputFormats.Debugger, bool enable = true)
         {
             FileInfo = fileInfo;
             FilePriority = filePriority;
@@ -67,10 +65,46 @@ namespace GoogleDataCollection.Logging
             IsEnabled = enable;
             WriteToFileCount = 0;
             Messages = new ConcurrentBag<LogMessage>();
+
+            _logCount++;
+            
+            if (_logCount == 1) 
+            { 
+                LogToFileBackgroundTask();
+            }
         }
 
-        public Log(PriorityLevels filePriority = PriorityLevels.UltraLow, WriteModes writeMode = WriteModes.Overwrite, PriorityLevels debugPriority = PriorityLevels.UltraLow, PriorityLevels consolePriority = PriorityLevels.UltraLow, OutputFormats? output = OutputFormats.File | OutputFormats.Debugger, bool enable = true)
+        public Log(PriorityLevels filePriority = PriorityLevels.UltraLow, WriteModes writeMode = WriteModes.Overwrite, PriorityLevels debugPriority = PriorityLevels.UltraLow, PriorityLevels consolePriority = PriorityLevels.UltraLow, OutputFormats output = OutputFormats.File | OutputFormats.Debugger, bool enable = true)
                 : this(new FileInfo($"{ AppDomain.CurrentDomain.BaseDirectory }\\{ DefaultGlobalLogFilename }"), filePriority, writeMode, debugPriority, consolePriority, output, enable) { }
+
+        private static void LogToFileBackgroundTask()
+        {
+            Task.Run(() =>
+            {
+                while (true)
+                {
+                    foreach (var tuple in GlobalMessages.GetConsumingEnumerable())
+                    {
+                        if (LogToFileCancellationToken.IsCancellationRequested) { return;  }
+
+                        if (tuple.Item2.IsEnabled && tuple.Item2.Output.HasFlag(OutputFormats.File)) 
+                        { 
+                            WriteToFile(tuple.Item1, tuple.Item2);
+                        }
+                    }
+                }
+            });
+        }
+
+        private static void WriteToFile(LogMessage logMessage, Log log)
+        {
+            if (!HasAtLeastPriority(log.FilePriority, logMessage.Priority) || log.FileInfo == null)
+            {
+                return;
+            }
+
+            File.AppendAllText(log.FileInfo.FullName, $"{ logMessage }");
+        }
 
         public void AddToLog(LogMessage message, bool writeToOutputs = true)
         {
@@ -97,7 +131,6 @@ namespace GoogleDataCollection.Logging
         {
             IsEnabled = false;
         }
-
 /*
         public void FlushMessages()
         {
@@ -119,42 +152,24 @@ namespace GoogleDataCollection.Logging
             return Messages.ToList().FindAll(m => HasAtLeastPriority(matchingPriority, m.Priority));
         }
 
-        private static void WriteTextAsync(string filePath, string text)
-        {
-            var encodedText = Encoding.Unicode.GetBytes(text);
-
-            using (var sourceStream = new FileStream(filePath, FileMode.Create, FileAccess.Write, FileShare.ReadWrite, 4096, false))
-            {
-                sourceStream.WriteAsync(encodedText, 0, encodedText.Length);
-            };
-        }
-
         protected void WriteToOutputs(LogMessage message)
         {
-            if (Output == null) {  return; }
-            
-            if (((OutputFormats)Output).HasFlag(OutputFormats.File))
+            if (Output.HasFlag(OutputFormats.File))
             {
-                WriteTextAsync($"{ AppDomain.CurrentDomain.BaseDirectory }\\fdsfds.txt", message.ToString());
+                GlobalMessages.Add(new Tuple<LogMessage, Log>(message, this));
             }
-/*
-            if (((OutputFormats)Output).HasFlag(OutputFormats.File))
-            {
-                WriteToFile(message);
-            }
-*/
-            if (((OutputFormats) Output).HasFlag(OutputFormats.Debugger))
+
+            if (Output.HasFlag(OutputFormats.Debugger))
             {
                 WriteToDebugger(message);
             }
 
-            if (((OutputFormats)Output).HasFlag(OutputFormats.Console))
+            if (Output.HasFlag(OutputFormats.Console))
             {
                 WriteToConsole(message);
             }
         }
 
-        // Change to flush to file.
         protected void WriteToFile(LogMessage logMessage)
         {
             if (!HasAtLeastPriority(FilePriority, logMessage.Priority) || FileInfo == null)
@@ -162,26 +177,12 @@ namespace GoogleDataCollection.Logging
                 return;
             }
 
-            var encodedText = Encoding.Unicode.GetBytes(logMessage.ToString());
-
             if (WriteMode == WriteModes.Overwrite && WriteToFileCount == 0)
             {
-                using (var sourceStream = new FileStream(FileInfo.FullName, FileMode.Create, FileAccess.Write, FileShare.ReadWrite, 4096, false))
-                {
-                    sourceStream.Write(encodedText, 0, encodedText.Length);
-                    //sourceStream.WriteAsync(encodedText, 0, encodedText.Length);
-                }
-
                 File.WriteAllText(FileInfo.FullName, $"{ logMessage }");
             }
             else
             {
-                using (var sourceStream = new FileStream(FileInfo.FullName, FileMode.Append, FileAccess.Write, FileShare.ReadWrite, 4096, false))
-                {
-                    sourceStream.Write(encodedText, 0, encodedText.Length);
-                    //sourceStream.WriteAsync(encodedText, 0, encodedText.Length);
-                }
-
                 File.AppendAllText(FileInfo.FullName, $"{ logMessage }");
             }
 
@@ -210,9 +211,7 @@ namespace GoogleDataCollection.Logging
 
         protected virtual void OnLogMessageAdded(LogMessageAddedEventArgs e)
         {
-            var handler = LogMessageAdded;
-
-            handler?.Invoke(this, e);
+            LogMessageAdded?.Invoke(this, e);
         }
 
         public static bool HasPriority(PriorityLevels matchingPriority, PriorityLevels messagePriority)

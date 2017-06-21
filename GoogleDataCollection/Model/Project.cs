@@ -5,6 +5,7 @@ using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -18,10 +19,9 @@ namespace GoogleDataCollection.Model
     {
         public static uint MaxRequests = 200;
 
-        public static uint MaxBatchRequests = 10;
+        public static uint MaxBatchRequests = 11;
 
-        // This interval is somewhat redundant the way the data retrieval is currently setup.
-        public static int IntervalTime = 1500;
+        public static uint IntervalTime = 1500;
 
         private static uint _numProjects;
 
@@ -36,13 +36,15 @@ namespace GoogleDataCollection.Model
 
         public Project()
         {
-            Log = new Log
+            Number = ++_numProjects;
+
+            Log = new Log(new FileInfo($"{ AppDomain.CurrentDomain.BaseDirectory }\\project_{ Number }.txt"))
             {
                 Output = Log.OutputFormats.File | Log.OutputFormats.Console | Log.OutputFormats.Debugger,
-                ConsolePriority = Log.PriorityLevels.UltraLow
+                ConsolePriority = Log.PriorityLevels.UltraLow,
+                FilePriority = Log.PriorityLevels.UltraLow,
+                DebuggerPriority = Log.PriorityLevels.UltraLow
             };
-
-            Number = ++_numProjects;
         }
 
         // Return Task<Tuple<FID, Edge, DirectionsResponse>>
@@ -128,14 +130,25 @@ namespace GoogleDataCollection.Model
 
                     if (!edges.TryDequeue(out currentEdge))
                     {
+                        //Log.AddToLog(new LogMessage($"Project #{ Number } completed with x, y z", Log.PriorityLevels.Low));
+
                         break;
                     }
 
-                    if (!currentEdge.Item2.IsOneWay)
+                    if (currentEdge.Item2.IsOneWay)
+                    {
+                        tasks.Add(GetUpdate(currentEdge.Item2, UpdateSession.UpdateDirections.Forwards, currentEdge.Item3));
+
+                        batchCount++;
+                    }
+                    else
                     {
                         // TO DO: Test twoway streets.
-                        if (batchCount + 1 >= MaxBatchRequests)
+                        //if (batchCount + 1 >= MaxBatchRequests)
+                        if (batchCount + 2 > MaxBatchRequests)
                         {
+                            Log.AddToLog(new LogMessage($"Project #{ Number }: Edge {currentEdge.Item2.Fid} data retrieval is being skipped.", Log.PriorityLevels.Low));
+
                             break;
                         }
 
@@ -143,12 +156,6 @@ namespace GoogleDataCollection.Model
                         tasks.Add(GetUpdate(currentEdge.Item2, UpdateSession.UpdateDirections.Backwards, currentEdge.Item3));
 
                         batchCount += 2;
-                    }
-                    else
-                    {
-                        tasks.Add(GetUpdate(currentEdge.Item2, UpdateSession.UpdateDirections.Forwards, currentEdge.Item3));
-
-                        batchCount++;
                     }
                 }
 
