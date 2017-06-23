@@ -1,4 +1,5 @@
 ﻿using GoogleDataCollection.DataAccess;
+using GoogleDataCollection.Logging;
 using GoogleDataCollection.Model;
 using Newtonsoft.Json;
 using System;
@@ -12,24 +13,34 @@ namespace GoogleDataCollection
     internal class Program
     {
         // TO DO: Add note regarding deletion of TimeBracket will corrupt data.
-        // TO DO: Add logging from Caliburn Micro app.
+        // DONE: Add logging from Caliburn Micro app.
         private static void Main(string[] args)
         {
+            Log.GlobalLog = new Log(new FileInfo($"{ AppDomain.CurrentDomain.BaseDirectory }\\global_log.txt"))
+            {
+                //Output = OutputFormats.File | OutputFormats.Console | OutputFormats.Debugger,
+                Output = Log.OutputFormats.Console,
+                WriteMode = Log.WriteModes.Overwrite,
+                ConsolePriority = Log.PriorityLevels.Medium,
+                FilePriority = Log.PriorityLevels.UltraLow,
+                DebuggerPriority = Log.PriorityLevels.UltraLow
+            };
+            //Logging.Log.GlobalLog.Disable();
+
+
             // !IMPORTANT: Uncomment to get a new (clean) Qld network JSON file. This will overwrite any existing "qld_network.json".
-            // !IMPORTANT: Also, it will take a while (i.e., 2+ hours); I should not have used Interop.Excel.
 /*
-            var container = SpreadsheetAccess.LoadData(1);
+            var container = CsvAccess.ParseCsv();
             File.WriteAllText(JsonAccess.DefaultFilename, JsonConvert.SerializeObject(container, Formatting.Indented));
 */
 
-
             try
             {
+
                 var data = JsonAccess.DeserializeEdges();
 
-                Console.WriteLine($"{DateTime.Now}: Data collection started.");
                 GoogleAccess.RunDataCollector(data).Wait();
-                Console.WriteLine($"{DateTime.Now}: Data collection complete.");
+
 
 /*
                 Console.WriteLine($"{DateTime.Now}: Data collection started.");

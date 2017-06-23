@@ -3,7 +3,6 @@ using Newtonsoft.Json;
 
 namespace GoogleDataCollection.Model
 {
-
     [JsonObject(MemberSerialization.OptIn)]
     public class Edge
     {
@@ -53,13 +52,9 @@ namespace GoogleDataCollection.Model
         [JsonProperty(PropertyName = "updates", Required = Required.Always)]
         public List<EdgeUpdate> Updates { get; set; }
 
-        [JsonProperty(PropertyName = "invertedUpdates", Required = Required.Always)]
-        public List<EdgeUpdate> InvertedUpdates { get; set; }
-
         public Edge()
         {
             Updates = new List<EdgeUpdate>();
-            InvertedUpdates = new List<EdgeUpdate>();
         }
     }
 }

@@ -7,6 +7,7 @@ using Excel = Microsoft.Office.Interop.Excel;
 // REFERENCE: https:coderwall.com/p/app3ya/read-excel-file-in-c
 namespace GoogleDataCollection.DataAccess
 {
+/*
     public static class SpreadsheetAccess
     {
         // Note that the spreadsheet data is erroenous: Y's are X's and vice versa.
@@ -149,15 +150,7 @@ namespace GoogleDataCollection.DataAccess
                     }
 
                     bar.Tick();
-/*
-                    // Test up to:
-                    if (currentRow == 100)
-                    {
-                        bar.Dispose();
 
-                        return container;
-                    }
-*/
                 }
                 catch (Exception e)
                 {
@@ -206,4 +199,5 @@ namespace GoogleDataCollection.DataAccess
             Marshal.ReleaseComObject(_xlApp);
         }
     }
+*/
 }

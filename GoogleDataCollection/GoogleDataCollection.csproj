@@ -42,10 +42,6 @@
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="ShellProgressBar, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\ShellProgressBar.3.0.0.0\lib\NET4\ShellProgressBar.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -56,6 +52,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataAccess\CsvAccess.cs" />
     <Compile Include="DataAccess\GoogleAccess.cs" />
     <Compile Include="DataAccess\JsonAccess.cs" />
     <Compile Include="DataAccess\SpreadsheetAccess.cs" />
@@ -68,6 +65,7 @@
     <Compile Include="Model\DataContainer.cs" />
     <Compile Include="Model\CsvParsingError.cs" />
     <Compile Include="Model\EdgeUpdate.cs" />
+    <Compile Include="Model\UpdateInfo.cs" />
     <Compile Include="Model\Project.cs" />
     <Compile Include="Model\Period.cs" />
     <Compile Include="Model\UpdateTime.cs" />

@@ -1,424 +1,219 @@
-[22:07:38:950] Project #1: Edge 202 data retrieval started.
-[22:07:38:950] Project #1: Edge 201 data retrieval started.
-[22:07:38:950] Project #1: Edge 206 data retrieval started.
-[22:07:38:950] Project #1: Edge 202 data retrieval started.
-[22:07:38:950] Project #1: Edge 203 data retrieval started.
-[22:07:38:950] Project #1: Edge 200 data retrieval started.
-[22:07:38:950] Project #1: Edge 203 data retrieval started.
-[22:07:38:960] Project #1: Edge 204 data retrieval started.
-[22:07:38:960] Project #1: Edge 204 data retrieval started.
-[22:07:38:961] Project #1: Edge 205 data retrieval started.
-[22:07:38:961] Project #1: Edge 206 data retrieval started.
-[22:07:38:962] Project #1: Edge 207 data retrieval started.
-[22:07:38:962] Project #1: Edge 209 data retrieval started.
-[22:07:38:962] Project #1: Edge 208 data retrieval started.
-[22:07:38:962] Project #1: Edge 208 data retrieval started.
-[22:07:38:962] Project #1: Edge 213 data retrieval started.
-[22:07:38:962] Project #1: Edge 210 data retrieval started.
-[22:07:38:962] Project #1: Edge 211 data retrieval started.
-[22:07:38:962] Project #1: Edge 211 data retrieval started.
-[22:07:38:963] Project #1: Edge 212 data retrieval started.
-[22:07:38:963] Project #1: Edge 213 data retrieval started.
-[22:07:38:964] Project #1: Edge 215 data retrieval started.
-[22:07:38:964] Project #1: Edge 216 data retrieval started.
-[22:07:38:964] Project #1: Edge 215 data retrieval started.
-[22:07:38:964] Project #1: Edge 219 data retrieval started.
-[22:07:38:964] Project #1: Edge 216 data retrieval started.
-[22:07:38:964] Project #1: Edge 217 data retrieval started.
-[22:07:38:964] Project #1: Edge 217 data retrieval started.
-[22:07:38:964] Project #1: Edge 218 data retrieval started.
-[22:07:38:966] Project #1: Edge 218 data retrieval started.
-[22:07:38:966] Project #1: Edge 219 data retrieval started.
-[22:07:38:970] Project #1: Edge 221 data retrieval started.
-[22:07:38:970] Project #1: Edge 221 data retrieval started.
-[22:07:38:971] Project #1: Edge 222 data retrieval started.
-[22:07:38:971] Project #1: Edge 222 data retrieval started.
-[22:07:38:971] Project #1: Edge 223 data retrieval started.
-[22:07:38:971] Project #1: Edge 225 data retrieval started.
-[22:07:38:972] Project #1: Edge 223 data retrieval started.
-[22:07:38:972] Project #1: Edge 224 data retrieval started.
-[22:07:38:973] Project #1: Edge 224 data retrieval started.
-[22:07:38:974] Project #1: Edge 225 data retrieval started.
-[22:07:38:977] Project #1: Edge 227 data retrieval started.
-[22:07:38:977] Project #1: Edge 227 data retrieval started.
-[22:07:38:977] Project #1: Edge 228 data retrieval started.
-[22:07:38:978] Project #1: Edge 229 data retrieval started.
-[22:07:38:978] Project #1: Edge 231 data retrieval started.
-[22:07:38:978] Project #1: Edge 228 data retrieval started.
-[22:07:38:978] Project #1: Edge 229 data retrieval started.
-[22:07:38:978] Project #1: Edge 230 data retrieval started.
-[22:07:38:979] Project #1: Edge 230 data retrieval started.
-[22:07:38:979] Project #1: Edge 231 data retrieval started.
-[22:07:38:983] Project #1: Edge 233 data retrieval started.
-[22:07:38:983] Project #1: Edge 234 data retrieval started.
-[22:07:38:983] Project #1: Edge 233 data retrieval started.
-[22:07:38:983] Project #1: Edge 234 data retrieval started.
-[22:07:38:983] Project #1: Edge 235 data retrieval started.
-[22:07:38:983] Project #1: Edge 237 data retrieval started.
-[22:07:38:983] Project #1: Edge 235 data retrieval started.
-[22:07:38:984] Project #1: Edge 236 data retrieval started.
-[22:07:38:984] Project #1: Edge 236 data retrieval started.
-[22:07:38:984] Project #1: Edge 237 data retrieval started.
-[22:07:38:987] Project #1: Edge 239 data retrieval started.
-[22:07:38:987] Project #1: Edge 239 data retrieval started.
-[22:07:38:987] Project #1: Edge 240 data retrieval started.
-[22:07:38:987] Project #1: Edge 243 data retrieval started.
-[22:07:38:987] Project #1: Edge 241 data retrieval started.
-[22:07:38:987] Project #1: Edge 240 data retrieval started.
-[22:07:38:988] Project #1: Edge 241 data retrieval started.
-[22:07:38:988] Project #1: Edge 242 data retrieval started.
-[22:07:38:988] Project #1: Edge 242 data retrieval started.
-[22:07:38:989] Project #1: Edge 243 data retrieval started.
-[22:07:38:992] Project #1: Edge 245 data retrieval started.
-[22:07:38:992] Project #1: Edge 245 data retrieval started.
-[22:07:38:992] Project #1: Edge 246 data retrieval started.
-[22:07:38:992] Project #1: Edge 247 data retrieval started.
-[22:07:38:992] Project #1: Edge 246 data retrieval started.
-[22:07:38:993] Project #1: Edge 249 data retrieval started.
-[22:07:38:993] Project #1: Edge 247 data retrieval started.
-[22:07:38:994] Project #1: Edge 248 data retrieval started.
-[22:07:38:994] Project #1: Edge 248 data retrieval started.
-[22:07:38:995] Project #1: Edge 249 data retrieval started.
-[22:07:38:998] Project #1: Edge 251 data retrieval started.
-[22:07:38:998] Project #1: Edge 251 data retrieval started.
-[22:07:38:998] Project #1: Edge 252 data retrieval started.
-[22:07:38:998] Project #1: Edge 252 data retrieval started.
-[22:07:38:998] Project #1: Edge 253 data retrieval started.
-[22:07:38:999] Project #1: Edge 253 data retrieval started.
-[22:07:38:999] Project #1: Edge 254 data retrieval started.
-[22:07:38:999] Project #1: Edge 255 data retrieval started.
-[22:07:39:002] Project #1: Edge 254 data retrieval started.
-[22:07:39:003] Project #1: Edge 255 data retrieval started.
-[22:07:39:007] Project #1: Edge 257 data retrieval started.
-[22:07:39:007] Project #1: Edge 257 data retrieval started.
-[22:07:39:007] Project #1: Edge 258 data retrieval started.
-[22:07:39:007] Project #1: Edge 263 data retrieval started.
-[22:07:39:007] Project #1: Edge 258 data retrieval started.
-[22:07:39:007] Project #1: Edge 259 data retrieval started.
-[22:07:39:008] Project #1: Edge 260 data retrieval started.
-[22:07:39:009] Project #1: Edge 261 data retrieval started.
-[22:07:39:010] Project #1: Edge 261 data retrieval started.
-[22:07:39:010] Project #1: Edge 262 data retrieval started.
-[22:07:39:011] Project #1: Edge 262 data retrieval started.
-[22:07:39:014] Project #1: Edge 264 data retrieval started.
-[22:07:39:014] Project #1: Edge 264 data retrieval started.
-[22:07:39:014] Project #1: Edge 265 data retrieval started.
-[22:07:39:014] Project #1: Edge 265 data retrieval started.
-[22:07:39:014] Project #1: Edge 266 data retrieval started.
-[22:07:39:014] Project #1: Edge 268 data retrieval started.
-[22:07:39:015] Project #1: Edge 266 data retrieval started.
-[22:07:39:015] Project #1: Edge 267 data retrieval started.
-[22:07:39:015] Project #1: Edge 267 data retrieval started.
-[22:07:39:016] Project #1: Edge 268 data retrieval started.
-[22:07:39:019] Project #1: Edge 270 data retrieval started.
-[22:07:39:019] Project #1: Edge 270 data retrieval started.
-[22:07:39:019] Project #1: Edge 271 data retrieval started.
-[22:07:39:019] Project #1: Edge 271 data retrieval started.
-[22:07:39:019] Project #1: Edge 272 data retrieval started.
-[22:07:39:019] Project #1: Edge 274 data retrieval started.
-[22:07:39:021] Project #1: Edge 272 data retrieval started.
-[22:07:39:021] Project #1: Edge 273 data retrieval started.
-[22:07:39:022] Project #1: Edge 274 data retrieval started.
-[22:07:39:022] Project #1: Edge 273 data retrieval started.
-[22:07:39:028] Project #1: Edge 276 data retrieval started.
-[22:07:39:028] Project #1: Edge 276 data retrieval started.
-[22:07:39:028] Project #1: Edge 277 data retrieval started.
-[22:07:39:028] Project #1: Edge 277 data retrieval started.
-[22:07:39:028] Project #1: Edge 281 data retrieval started.
-[22:07:39:029] Project #1: Edge 278 data retrieval started.
-[22:07:39:029] Project #1: Edge 278 data retrieval started.
-[22:07:39:029] Project #1: Edge 279 data retrieval started.
-[22:07:39:030] Project #1: Edge 280 data retrieval started.
-[22:07:39:031] Project #1: Edge 280 data retrieval started.
-[22:07:39:031] Project #1: Edge 281 data retrieval started.
-[22:07:39:036] Project #1: Edge 282 data retrieval started.
-[22:07:39:036] Project #1: Edge 282 data retrieval started.
-[22:07:39:036] Project #1: Edge 284 data retrieval started.
-[22:07:39:036] Project #1: Edge 283 data retrieval started.
-[22:07:39:036] Project #1: Edge 283 data retrieval started.
-[22:07:39:036] Project #1: Edge 286 data retrieval started.
-[22:07:39:036] Project #1: Edge 284 data retrieval started.
-[22:07:39:036] Project #1: Edge 285 data retrieval started.
-[22:07:39:036] Project #1: Edge 285 data retrieval started.
-[22:07:39:037] Project #1: Edge 286 data retrieval started.
-[22:07:39:040] Project #1: Edge 288 data retrieval started.
-[22:07:39:040] Project #1: Edge 288 data retrieval started.
-[22:07:39:040] Project #1: Edge 289 data retrieval started.
-[22:07:39:040] Project #1: Edge 289 data retrieval started.
-[22:07:39:040] Project #1: Edge 292 data retrieval started.
-[22:07:39:040] Project #1: Edge 290 data retrieval started.
-[22:07:39:040] Project #1: Edge 290 data retrieval started.
-[22:07:39:041] Project #1: Edge 291 data retrieval started.
-[22:07:39:042] Project #1: Edge 291 data retrieval started.
-[22:07:39:042] Project #1: Edge 292 data retrieval started.
-[22:07:39:045] Project #1: Edge 295 data retrieval started.
-[22:07:39:045] Project #1: Edge 294 data retrieval started.
-[22:07:39:045] Project #1: Edge 295 data retrieval started.
-[22:07:39:045] Project #1: Edge 294 data retrieval started.
-[22:07:39:045] Project #1: Edge 299 data retrieval started.
-[22:07:39:045] Project #1: Edge 296 data retrieval started.
-[22:07:39:046] Project #1: Edge 296 data retrieval started.
-[22:07:39:046] Project #1: Edge 297 data retrieval started.
-[22:07:39:046] Project #1: Edge 297 data retrieval started.
-[22:07:39:046] Project #1: Edge 298 data retrieval started.
-[22:07:39:047] Project #1: Edge 298 data retrieval started.
-[22:07:39:051] Project #1: Edge 300 data retrieval started.
-[22:07:39:051] Project #1: Edge 301 data retrieval started.
-[22:07:39:051] Project #1: Edge 300 data retrieval started.
-[22:07:39:051] Project #1: Edge 301 data retrieval started.
-[22:07:39:051] Project #1: Edge 304 data retrieval started.
-[22:07:39:051] Project #1: Edge 302 data retrieval started.
-[22:07:39:051] Project #1: Edge 302 data retrieval started.
-[22:07:39:052] Project #1: Edge 303 data retrieval started.
-[22:07:39:053] Project #1: Edge 303 data retrieval started.
-[22:07:39:053] Project #1: Edge 304 data retrieval started.
-[22:07:39:057] Project #1: Edge 306 data retrieval started.
-[22:07:39:057] Project #1: Edge 307 data retrieval started.
-[22:07:39:057] Project #1: Edge 306 data retrieval started.
-[22:07:39:057] Project #1: Edge 307 data retrieval started.
-[22:07:39:057] Project #1: Edge 308 data retrieval started.
-[22:07:39:057] Project #1: Edge 310 data retrieval started.
-[22:07:39:057] Project #1: Edge 308 data retrieval started.
-[22:07:39:057] Project #1: Edge 309 data retrieval started.
-[22:07:39:058] Project #1: Edge 309 data retrieval started.
-[22:07:39:058] Project #1: Edge 310 data retrieval started.
-[22:07:39:062] Project #1: Edge 312 data retrieval started.
-[22:07:39:062] Project #1: Edge 312 data retrieval started.
-[22:07:39:062] Project #1: Edge 313 data retrieval started.
-[22:07:39:062] Project #1: Edge 313 data retrieval started.
-[22:07:39:062] Project #1: Edge 314 data retrieval started.
-[22:07:39:062] Project #1: Edge 316 data retrieval started.
-[22:07:39:062] Project #1: Edge 314 data retrieval started.
-[22:07:39:062] Project #1: Edge 315 data retrieval started.
-[22:07:39:062] Project #1: Edge 315 data retrieval started.
-[22:07:39:063] Project #1: Edge 316 data retrieval started.
-[22:07:39:067] Project #1: Edge 318 data retrieval started.
-[22:07:39:067] Project #1: Edge 319 data retrieval started.
-[22:07:39:067] Project #1: Edge 318 data retrieval started.
-[22:07:39:067] Project #1: Edge 320 data retrieval started.
-[22:07:39:067] Project #1: Edge 319 data retrieval started.
-[22:07:39:067] Project #1: Edge 322 data retrieval started.
-[22:07:39:067] Project #1: Edge 320 data retrieval started.
-[22:07:39:067] Project #1: Edge 321 data retrieval started.
-[22:07:39:068] Project #1: Edge 321 data retrieval started.
-[22:07:39:068] Project #1: Edge 322 data retrieval started.
-[22:11:04:211] Project #1: Edge 201 data retrieval started.
-[22:11:04:211] Project #1: Edge 203 data retrieval started.
-[22:11:04:211] Project #1: Edge 203 data retrieval started.
-[22:11:04:211] Project #1: Edge 206 data retrieval started.
-[22:11:04:211] Project #1: Edge 202 data retrieval started.
-[22:11:04:211] Project #1: Edge 202 data retrieval started.
-[22:11:04:211] Project #1: Edge 200 data retrieval started.
-[22:11:04:220] Project #1: Edge 204 data retrieval started.
-[22:11:04:220] Project #1: Edge 204 data retrieval started.
-[22:11:04:220] Project #1: Edge 205 data retrieval started.
-[22:11:04:221] Project #1: Edge 206 data retrieval started.
-[22:11:04:222] Project #1: Edge 208 data retrieval started.
-[22:11:04:222] Project #1: Edge 209 data retrieval started.
-[22:11:04:222] Project #1: Edge 210 data retrieval started.
-[22:11:04:222] Project #1: Edge 214 data retrieval is being skipped.
-[22:11:04:222] Project #1: Edge 211 data retrieval started.
-[22:11:04:222] Project #1: Edge 211 data retrieval started.
-[22:11:04:222] Project #1: Edge 212 data retrieval started.
-[22:11:04:222] Project #1: Edge 213 data retrieval started.
-[22:11:04:222] Project #1: Edge 213 data retrieval started.
-[22:11:04:222] Project #1: Edge 207 data retrieval started.
-[22:11:04:223] Project #1: Edge 208 data retrieval started.
-[22:11:04:224] Project #1: Edge 215 data retrieval started.
-[22:11:04:224] Project #1: Edge 215 data retrieval started.
-[22:11:04:224] Project #1: Edge 216 data retrieval started.
-[22:11:04:224] Project #1: Edge 216 data retrieval started.
-[22:11:04:224] Project #1: Edge 217 data retrieval started.
-[22:11:04:224] Project #1: Edge 220 data retrieval is being skipped.
-[22:11:04:224] Project #1: Edge 217 data retrieval started.
-[22:11:04:226] Project #1: Edge 218 data retrieval started.
-[22:11:04:226] Project #1: Edge 218 data retrieval started.
-[22:11:04:226] Project #1: Edge 219 data retrieval started.
-[22:11:04:227] Project #1: Edge 219 data retrieval started.
-[22:11:04:230] Project #1: Edge 221 data retrieval started.
-[22:11:04:230] Project #1: Edge 221 data retrieval started.
-[22:11:04:230] Project #1: Edge 222 data retrieval started.
-[22:11:04:230] Project #1: Edge 226 data retrieval is being skipped.
-[22:11:04:230] Project #1: Edge 222 data retrieval started.
-[22:11:04:231] Project #1: Edge 223 data retrieval started.
-[22:11:04:231] Project #1: Edge 223 data retrieval started.
-[22:11:04:231] Project #1: Edge 224 data retrieval started.
-[22:11:04:231] Project #1: Edge 224 data retrieval started.
-[22:11:04:232] Project #1: Edge 225 data retrieval started.
-[22:11:04:232] Project #1: Edge 225 data retrieval started.
-[22:11:04:235] Project #1: Edge 227 data retrieval started.
-[22:11:04:235] Project #1: Edge 228 data retrieval started.
-[22:11:04:235] Project #1: Edge 228 data retrieval started.
-[22:11:04:235] Project #1: Edge 227 data retrieval started.
-[22:11:04:235] Project #1: Edge 232 data retrieval is being skipped.
-[22:11:04:235] Project #1: Edge 229 data retrieval started.
-[22:11:04:235] Project #1: Edge 229 data retrieval started.
-[22:11:04:235] Project #1: Edge 230 data retrieval started.
-[22:11:04:236] Project #1: Edge 230 data retrieval started.
-[22:11:04:236] Project #1: Edge 231 data retrieval started.
-[22:11:04:237] Project #1: Edge 231 data retrieval started.
-[22:11:04:240] Project #1: Edge 233 data retrieval started.
-[22:11:04:240] Project #1: Edge 234 data retrieval started.
-[22:11:04:240] Project #1: Edge 234 data retrieval started.
-[22:11:04:240] Project #1: Edge 233 data retrieval started.
-[22:11:04:240] Project #1: Edge 235 data retrieval started.
-[22:11:04:240] Project #1: Edge 238 data retrieval is being skipped.
-[22:11:04:241] Project #1: Edge 235 data retrieval started.
-[22:11:04:241] Project #1: Edge 236 data retrieval started.
-[22:11:04:242] Project #1: Edge 236 data retrieval started.
-[22:11:04:242] Project #1: Edge 237 data retrieval started.
-[22:11:04:243] Project #1: Edge 237 data retrieval started.
-[22:11:04:245] Project #1: Edge 239 data retrieval started.
-[22:11:04:245] Project #1: Edge 239 data retrieval started.
-[22:11:04:246] Project #1: Edge 240 data retrieval started.
-[22:11:04:246] Project #1: Edge 240 data retrieval started.
-[22:11:04:246] Project #1: Edge 244 data retrieval is being skipped.
-[22:11:04:246] Project #1: Edge 241 data retrieval started.
-[22:11:04:246] Project #1: Edge 241 data retrieval started.
-[22:11:04:246] Project #1: Edge 242 data retrieval started.
-[22:11:04:246] Project #1: Edge 242 data retrieval started.
-[22:11:04:247] Project #1: Edge 243 data retrieval started.
-[22:11:04:247] Project #1: Edge 243 data retrieval started.
-[22:11:04:250] Project #1: Edge 245 data retrieval started.
-[22:11:04:250] Project #1: Edge 245 data retrieval started.
-[22:11:04:250] Project #1: Edge 246 data retrieval started.
-[22:11:04:250] Project #1: Edge 250 data retrieval is being skipped.
-[22:11:04:250] Project #1: Edge 246 data retrieval started.
-[22:11:04:251] Project #1: Edge 247 data retrieval started.
-[22:11:04:251] Project #1: Edge 247 data retrieval started.
-[22:11:04:252] Project #1: Edge 248 data retrieval started.
-[22:11:04:252] Project #1: Edge 248 data retrieval started.
-[22:11:04:252] Project #1: Edge 249 data retrieval started.
-[22:11:04:252] Project #1: Edge 249 data retrieval started.
-[22:11:04:254] Project #1: Edge 251 data retrieval started.
-[22:11:04:254] Project #1: Edge 251 data retrieval started.
-[22:11:04:254] Project #1: Edge 252 data retrieval started.
-[22:11:04:254] Project #1: Edge 252 data retrieval started.
-[22:11:04:254] Project #1: Edge 256 data retrieval is being skipped.
-[22:11:04:255] Project #1: Edge 253 data retrieval started.
-[22:11:04:255] Project #1: Edge 253 data retrieval started.
-[22:11:04:256] Project #1: Edge 254 data retrieval started.
-[22:11:04:257] Project #1: Edge 254 data retrieval started.
-[22:11:04:257] Project #1: Edge 255 data retrieval started.
-[22:11:04:257] Project #1: Edge 255 data retrieval started.
-[22:11:04:260] Project #1: Edge 257 data retrieval started.
-[22:11:04:261] Project #1: Edge 258 data retrieval started.
-[22:11:04:261] Project #1: Edge 258 data retrieval started.
-[22:11:04:261] Project #1: Edge 257 data retrieval started.
-[22:11:04:261] Project #1: Edge 263 data retrieval started.
-[22:11:04:261] Project #1: Edge 259 data retrieval started.
-[22:11:04:262] Project #1: Edge 260 data retrieval started.
-[22:11:04:262] Project #1: Edge 261 data retrieval started.
-[22:11:04:262] Project #1: Edge 261 data retrieval started.
-[22:11:04:262] Project #1: Edge 262 data retrieval started.
-[22:11:04:263] Project #1: Edge 262 data retrieval started.
-[22:11:04:265] Project #1: Edge 265 data retrieval started.
-[22:11:04:265] Project #1: Edge 264 data retrieval started.
-[22:11:04:265] Project #1: Edge 264 data retrieval started.
-[22:11:04:265] Project #1: Edge 265 data retrieval started.
-[22:11:04:265] Project #1: Edge 269 data retrieval is being skipped.
-[22:11:04:265] Project #1: Edge 266 data retrieval started.
-[22:11:04:266] Project #1: Edge 266 data retrieval started.
-[22:11:04:266] Project #1: Edge 267 data retrieval started.
-[22:11:04:267] Project #1: Edge 267 data retrieval started.
-[22:11:04:267] Project #1: Edge 268 data retrieval started.
-[22:11:04:267] Project #1: Edge 268 data retrieval started.
-[22:11:04:270] Project #1: Edge 270 data retrieval started.
-[22:11:04:270] Project #1: Edge 270 data retrieval started.
-[22:11:04:270] Project #1: Edge 271 data retrieval started.
-[22:11:04:271] Project #1: Edge 275 data retrieval is being skipped.
-[22:11:04:271] Project #1: Edge 271 data retrieval started.
-[22:11:04:272] Project #1: Edge 272 data retrieval started.
-[22:11:04:272] Project #1: Edge 272 data retrieval started.
-[22:11:04:272] Project #1: Edge 273 data retrieval started.
-[22:11:04:272] Project #1: Edge 273 data retrieval started.
-[22:11:04:272] Project #1: Edge 274 data retrieval started.
-[22:11:04:273] Project #1: Edge 274 data retrieval started.
-[22:11:04:275] Project #1: Edge 276 data retrieval started.
-[22:11:04:275] Project #1: Edge 276 data retrieval started.
-[22:11:04:275] Project #1: Edge 277 data retrieval started.
-[22:11:04:275] Project #1: Edge 277 data retrieval started.
-[22:11:04:275] Project #1: Edge 281 data retrieval started.
-[22:11:04:276] Project #1: Edge 278 data retrieval started.
-[22:11:04:276] Project #1: Edge 278 data retrieval started.
-[22:11:04:276] Project #1: Edge 279 data retrieval started.
-[22:11:04:276] Project #1: Edge 280 data retrieval started.
-[22:11:04:277] Project #1: Edge 280 data retrieval started.
-[22:11:04:277] Project #1: Edge 281 data retrieval started.
-[22:11:04:280] Project #1: Edge 283 data retrieval started.
-[22:11:04:280] Project #1: Edge 282 data retrieval started.
-[22:11:04:280] Project #1: Edge 282 data retrieval started.
-[22:11:04:280] Project #1: Edge 287 data retrieval is being skipped.
-[22:11:04:281] Project #1: Edge 283 data retrieval started.
-[22:11:04:281] Project #1: Edge 284 data retrieval started.
-[22:11:04:281] Project #1: Edge 284 data retrieval started.
-[22:11:04:282] Project #1: Edge 285 data retrieval started.
-[22:11:04:282] Project #1: Edge 286 data retrieval started.
-[22:11:04:283] Project #1: Edge 286 data retrieval started.
-[22:11:04:283] Project #1: Edge 285 data retrieval started.
-[22:11:04:285] Project #1: Edge 288 data retrieval started.
-[22:11:04:285] Project #1: Edge 289 data retrieval started.
-[22:11:04:285] Project #1: Edge 289 data retrieval started.
-[22:11:04:285] Project #1: Edge 290 data retrieval started.
-[22:11:04:285] Project #1: Edge 288 data retrieval started.
-[22:11:04:285] Project #1: Edge 293 data retrieval is being skipped.
-[22:11:04:285] Project #1: Edge 290 data retrieval started.
-[22:11:04:286] Project #1: Edge 291 data retrieval started.
-[22:11:04:286] Project #1: Edge 291 data retrieval started.
-[22:11:04:287] Project #1: Edge 292 data retrieval started.
-[22:11:04:287] Project #1: Edge 292 data retrieval started.
-[22:11:04:290] Project #1: Edge 294 data retrieval started.
-[22:11:04:290] Project #1: Edge 295 data retrieval started.
-[22:11:04:290] Project #1: Edge 295 data retrieval started.
-[22:11:04:290] Project #1: Edge 294 data retrieval started.
-[22:11:04:290] Project #1: Edge 299 data retrieval started.
-[22:11:04:290] Project #1: Edge 296 data retrieval started.
-[22:11:04:290] Project #1: Edge 296 data retrieval started.
-[22:11:04:291] Project #1: Edge 297 data retrieval started.
-[22:11:04:292] Project #1: Edge 297 data retrieval started.
-[22:11:04:292] Project #1: Edge 298 data retrieval started.
-[22:11:04:293] Project #1: Edge 298 data retrieval started.
-[22:11:04:295] Project #1: Edge 300 data retrieval started.
-[22:11:04:295] Project #1: Edge 301 data retrieval started.
-[22:11:04:295] Project #1: Edge 300 data retrieval started.
-[22:11:04:295] Project #1: Edge 301 data retrieval started.
-[22:11:04:296] Project #1: Edge 305 data retrieval is being skipped.
-[22:11:04:296] Project #1: Edge 302 data retrieval started.
-[22:11:04:296] Project #1: Edge 302 data retrieval started.
-[22:11:04:297] Project #1: Edge 303 data retrieval started.
-[22:11:04:297] Project #1: Edge 304 data retrieval started.
-[22:11:04:297] Project #1: Edge 303 data retrieval started.
-[22:11:04:298] Project #1: Edge 304 data retrieval started.
-[22:11:04:300] Project #1: Edge 306 data retrieval started.
-[22:11:04:300] Project #1: Edge 307 data retrieval started.
-[22:11:04:300] Project #1: Edge 307 data retrieval started.
-[22:11:04:300] Project #1: Edge 306 data retrieval started.
-[22:11:04:300] Project #1: Edge 308 data retrieval started.
-[22:11:04:300] Project #1: Edge 308 data retrieval started.
-[22:11:04:300] Project #1: Edge 311 data retrieval is being skipped.
-[22:11:04:301] Project #1: Edge 309 data retrieval started.
-[22:11:04:301] Project #1: Edge 309 data retrieval started.
-[22:11:04:302] Project #1: Edge 310 data retrieval started.
-[22:11:04:302] Project #1: Edge 310 data retrieval started.
-[22:11:04:304] Project #1: Edge 312 data retrieval started.
-[22:11:04:304] Project #1: Edge 312 data retrieval started.
-[22:11:04:304] Project #1: Edge 313 data retrieval started.
-[22:11:04:304] Project #1: Edge 313 data retrieval started.
-[22:11:04:305] Project #1: Edge 314 data retrieval started.
-[22:11:04:305] Project #1: Edge 317 data retrieval is being skipped.
-[22:11:04:306] Project #1: Edge 314 data retrieval started.
-[22:11:04:306] Project #1: Edge 315 data retrieval started.
-[22:11:04:306] Project #1: Edge 315 data retrieval started.
-[22:11:04:306] Project #1: Edge 316 data retrieval started.
-[22:11:04:307] Project #1: Edge 316 data retrieval started.
-[22:11:04:309] Project #1: Edge 318 data retrieval started.
-[22:11:04:309] Project #1: Edge 319 data retrieval started.
-[22:11:04:309] Project #1: Edge 319 data retrieval started.
-[22:11:04:309] Project #1: Edge 320 data retrieval started.
-[22:11:04:309] Project #1: Edge 318 data retrieval started.
-[22:11:04:309] Project #1: Edge 323 data retrieval is being skipped.
-[22:11:04:309] Project #1: Edge 320 data retrieval started.
-[22:11:04:310] Project #1: Edge 321 data retrieval started.
-[22:11:04:310] Project #1: Edge 321 data retrieval started.
-[22:11:04:310] Project #1: Edge 322 data retrieval started.
-[22:11:04:311] Project #1: Edge 322 data retrieval started.
+[14:57:58:950] Project #1: Edge 8 data retrieval is being skipped.
+[14:57:58:959] Project #1: Edge 6 Backwards data retrieval started.
+[14:57:58:961] Project #1: Edge 6 Forwards data retrieval started.
+[14:57:58:962] Project #1: Edge 4 Backwards data retrieval started.
+[14:57:58:962] Project #1: Edge 4 Forwards data retrieval started.
+[14:57:58:964] Project #1: Edge 3 Backwards data retrieval started.
+[14:57:58:965] Project #1: Edge 3 Forwards data retrieval started.
+[14:57:58:966] Project #1: Edge 2 Backwards data retrieval started.
+[14:57:58:967] Project #1: Edge 2 Forwards data retrieval started.
+[14:57:58:969] Project #1: Edge 0 Backwards data retrieval started.
+[14:57:58:974] Project #1: Edge 0 Forwards data retrieval started.
+[14:57:58:975] Project #1: Edge 17 data retrieval is being skipped.
+[14:57:58:975] Project #1: Edge 16 Backwards data retrieval started.
+[14:57:58:976] Project #1: Edge 16 Forwards data retrieval started.
+[14:57:58:977] Project #1: Edge 15 Backwards data retrieval started.
+[14:57:58:979] Project #1: Edge 15 Forwards data retrieval started.
+[14:57:58:982] Project #1: Edge 14 Backwards data retrieval started.
+[14:57:58:986] Project #1: Edge 14 Forwards data retrieval started.
+[14:57:58:993] Project #1: Edge 13 Backwards data retrieval started.
+[14:57:58:994] Project #1: Edge 13 Forwards data retrieval started.
+[14:57:58:995] Project #1: Edge 12 Backwards data retrieval started.
+[14:57:58:996] Project #1: Edge 12 Forwards data retrieval started.
+[14:57:58:997] Project #1: Edge 29 data retrieval is being skipped.
+[14:57:58:998] Project #1: Edge 28 Backwards data retrieval started.
+[14:57:59:008] Project #1: Edge 28 Forwards data retrieval started.
+[14:57:59:010] Project #1: Edge 27 Backwards data retrieval started.
+[14:57:59:025] Project #1: Edge 24 Forwards data retrieval started.
+[14:57:59:029] Project #1: Edge 27 Forwards data retrieval started.
+[14:57:59:040] Project #1: Edge 26 Backwards data retrieval started.
+[14:57:59:041] Project #1: Edge 24 Backwards data retrieval started.
+[14:57:59:042] Project #1: Edge 25 Forwards data retrieval started.
+[14:57:59:043] Project #1: Edge 25 Backwards data retrieval started.
+[14:57:59:045] Project #1: Edge 26 Forwards data retrieval started.
+[14:57:59:051] Project #1: Edge 41 data retrieval is being skipped.
+[14:57:59:052] Project #1: Edge 36 Forwards data retrieval started.
+[14:57:59:054] Project #1: Edge 36 Backwards data retrieval started.
+[14:57:59:055] Project #1: Edge 37 Forwards data retrieval started.
+[14:57:59:057] Project #1: Edge 37 Backwards data retrieval started.
+[14:57:59:060] Project #1: Edge 38 Forwards data retrieval started.
+[14:57:59:061] Project #1: Edge 38 Backwards data retrieval started.
+[14:57:59:064] Project #1: Edge 39 Forwards data retrieval started.
+[14:57:59:065] Project #1: Edge 40 Forwards data retrieval started.
+[14:57:59:069] Project #1: Edge 39 Backwards data retrieval started.
+[14:57:59:090] Project #1: Edge 53 data retrieval is being skipped.
+[14:57:59:091] Project #1: Edge 48 Forwards data retrieval started.
+[14:57:59:094] Project #1: Edge 52 Backwards data retrieval started.
+[14:57:59:095] Project #1: Edge 52 Forwards data retrieval started.
+[14:57:59:095] Project #1: Edge 48 Backwards data retrieval started.
+[14:57:59:097] Project #1: Edge 51 Backwards data retrieval started.
+[14:57:59:099] Project #1: Edge 51 Forwards data retrieval started.
+[14:57:59:100] Project #1: Edge 50 Backwards data retrieval started.
+[14:57:59:102] Project #1: Edge 49 Forwards data retrieval started.
+[14:57:59:105] Project #1: Edge 49 Backwards data retrieval started.
+[14:57:59:107] Project #1: Edge 50 Forwards data retrieval started.
+[14:57:59:123] Project #1: Edge 65 data retrieval is being skipped.
+[14:57:59:124] Project #1: Edge 64 Backwards data retrieval started.
+[14:57:59:127] Project #1: Edge 64 Forwards data retrieval started.
+[14:57:59:129] Project #1: Edge 63 Backwards data retrieval started.
+[14:57:59:131] Project #1: Edge 63 Forwards data retrieval started.
+[14:57:59:142] Project #1: Edge 62 Backwards data retrieval started.
+[14:57:59:149] Project #1: Edge 62 Forwards data retrieval started.
+[14:57:59:154] Project #1: Edge 61 Backwards data retrieval started.
+[14:57:59:158] Project #1: Edge 60 Forwards data retrieval started.
+[14:57:59:160] Project #1: Edge 61 Forwards data retrieval started.
+[14:57:59:162] Project #1: Edge 60 Backwards data retrieval started.
+[14:57:59:177] Project #1: Edge 77 data retrieval is being skipped.
+[14:57:59:179] Project #1: Edge 76 Backwards data retrieval started.
+[14:57:59:182] Project #1: Edge 76 Forwards data retrieval started.
+[14:57:59:193] Project #1: Edge 72 Forwards data retrieval started.
+[14:57:59:195] Project #1: Edge 72 Backwards data retrieval started.
+[14:57:59:199] Project #1: Edge 75 Backwards data retrieval started.
+[14:57:59:200] Project #1: Edge 73 Forwards data retrieval started.
+[14:57:59:202] Project #1: Edge 73 Backwards data retrieval started.
+[14:57:59:205] Project #1: Edge 74 Forwards data retrieval started.
+[14:57:59:208] Project #1: Edge 74 Backwards data retrieval started.
+[14:57:59:209] Project #1: Edge 75 Forwards data retrieval started.
+[14:57:59:218] Project #1: Edge 89 data retrieval is being skipped.
+[14:57:59:219] Project #1: Edge 84 Forwards data retrieval started.
+[14:57:59:226] Project #1: Edge 84 Backwards data retrieval started.
+[14:57:59:228] Project #1: Edge 85 Forwards data retrieval started.
+[14:57:59:230] Project #1: Edge 85 Backwards data retrieval started.
+[14:57:59:233] Project #1: Edge 86 Forwards data retrieval started.
+[14:57:59:236] Project #1: Edge 86 Backwards data retrieval started.
+[14:57:59:239] Project #1: Edge 87 Forwards data retrieval started.
+[14:57:59:240] Project #1: Edge 88 Backwards data retrieval started.
+[14:57:59:241] Project #1: Edge 88 Forwards data retrieval started.
+[14:57:59:243] Project #1: Edge 87 Backwards data retrieval started.
+[14:57:59:260] Project #1: Edge 101 data retrieval is being skipped.
+[14:57:59:263] Project #1: Edge 100 Backwards data retrieval started.
+[14:57:59:265] Project #1: Edge 100 Forwards data retrieval started.
+[14:57:59:266] Project #1: Edge 99 Backwards data retrieval started.
+[14:57:59:272] Project #1: Edge 99 Forwards data retrieval started.
+[14:57:59:274] Project #1: Edge 98 Backwards data retrieval started.
+[14:57:59:277] Project #1: Edge 98 Forwards data retrieval started.
+[14:57:59:279] Project #1: Edge 97 Backwards data retrieval started.
+[14:57:59:281] Project #1: Edge 97 Forwards data retrieval started.
+[14:57:59:285] Project #1: Edge 96 Backwards data retrieval started.
+[14:57:59:286] Project #1: Edge 96 Forwards data retrieval started.
+[14:57:59:289] Project #1: Edge 107 data retrieval is being skipped.
+[14:57:59:292] Project #1: Edge 106 Backwards data retrieval started.
+[14:57:59:297] Project #1: Edge 106 Forwards data retrieval started.
+[14:57:59:309] Project #1: Edge 102 Forwards data retrieval started.
+[14:57:59:313] Project #1: Edge 102 Backwards data retrieval started.
+[14:57:59:316] Project #1: Edge 103 Forwards data retrieval started.
+[14:57:59:319] Project #1: Edge 103 Backwards data retrieval started.
+[14:57:59:348] Project #1: Edge 105 Backwards data retrieval started.
+[14:57:59:351] Project #1: Edge 105 Forwards data retrieval started.
+[14:57:59:352] Project #1: Edge 104 Backwards data retrieval started.
+[14:57:59:353] Project #1: Edge 104 Forwards data retrieval started.
+[14:57:59:358] Project #1: Edge 119 data retrieval is being skipped.
+[14:57:59:360] Project #1: Edge 114 Forwards data retrieval started.
+[14:57:59:361] Project #1: Edge 118 Backwards data retrieval started.
+[14:57:59:362] Project #1: Edge 114 Backwards data retrieval started.
+[14:57:59:363] Project #1: Edge 118 Forwards data retrieval started.
+[14:57:59:365] Project #1: Edge 117 Backwards data retrieval started.
+[14:57:59:366] Project #1: Edge 117 Forwards data retrieval started.
+[14:57:59:387] Project #1: Edge 115 Forwards data retrieval started.
+[14:57:59:389] Project #1: Edge 115 Backwards data retrieval started.
+[14:57:59:392] Project #1: Edge 116 Backwards data retrieval started.
+[14:57:59:393] Project #1: Edge 116 Forwards data retrieval started.
+[14:57:59:409] Project #1: Edge 137 data retrieval is being skipped.
+[14:57:59:418] Project #1: Edge 132 Forwards data retrieval started.
+[14:57:59:419] Project #1: Edge 136 Backwards data retrieval started.
+[14:57:59:420] Project #1: Edge 136 Forwards data retrieval started.
+[14:57:59:428] Project #1: Edge 135 Backwards data retrieval started.
+[14:57:59:429] Project #1: Edge 135 Forwards data retrieval started.
+[14:57:59:430] Project #1: Edge 134 Backwards data retrieval started.
+[14:57:59:431] Project #1: Edge 132 Backwards data retrieval started.
+[14:57:59:433] Project #1: Edge 133 Forwards data retrieval started.
+[14:57:59:441] Project #1: Edge 134 Forwards data retrieval started.
+[14:57:59:445] Project #1: Edge 133 Backwards data retrieval started.
+[14:57:59:450] Project #1: Edge 149 data retrieval is being skipped.
+[14:57:59:451] Project #1: Edge 148 Backwards data retrieval started.
+[14:57:59:452] Project #1: Edge 148 Forwards data retrieval started.
+[14:57:59:454] Project #1: Edge 147 Backwards data retrieval started.
+[14:57:59:456] Project #1: Edge 144 Forwards data retrieval started.
+[14:57:59:459] Project #1: Edge 144 Backwards data retrieval started.
+[14:57:59:461] Project #1: Edge 145 Forwards data retrieval started.
+[14:57:59:466] Project #1: Edge 147 Forwards data retrieval started.
+[14:57:59:468] Project #1: Edge 145 Backwards data retrieval started.
+[14:57:59:470] Project #1: Edge 146 Forwards data retrieval started.
+[14:57:59:474] Project #1: Edge 146 Backwards data retrieval started.
+[14:57:59:485] Project #1: Edge 162 data retrieval is being skipped.
+[14:57:59:487] Project #1: Edge 156 Forwards data retrieval started.
+[14:57:59:487] Project #1: Edge 157 Forwards data retrieval started.
+[14:57:59:489] Project #1: Edge 161 Backwards data retrieval started.
+[14:57:59:492] Project #1: Edge 158 Forwards data retrieval started.
+[14:57:59:495] Project #1: Edge 158 Backwards data retrieval started.
+[14:57:59:496] Project #1: Edge 159 Forwards data retrieval started.
+[14:57:59:497] Project #1: Edge 159 Backwards data retrieval started.
+[14:57:59:499] Project #1: Edge 160 Forwards data retrieval started.
+[14:57:59:503] Project #1: Edge 160 Backwards data retrieval started.
+[14:57:59:506] Project #1: Edge 161 Forwards data retrieval started.
+[14:57:59:518] Project #1: Edge 168 data retrieval is being skipped.
+[14:57:59:519] Project #1: Edge 163 Forwards data retrieval started.
+[14:57:59:519] Project #1: Edge 163 Backwards data retrieval started.
+[14:57:59:521] Project #1: Edge 167 Backwards data retrieval started.
+[14:57:59:524] Project #1: Edge 167 Forwards data retrieval started.
+[14:57:59:526] Project #1: Edge 166 Backwards data retrieval started.
+[14:57:59:527] Project #1: Edge 166 Forwards data retrieval started.
+[14:57:59:529] Project #1: Edge 164 Forwards data retrieval started.
+[14:57:59:530] Project #1: Edge 164 Backwards data retrieval started.
+[14:57:59:555] Project #1: Edge 165 Backwards data retrieval started.
+[14:57:59:558] Project #1: Edge 165 Forwards data retrieval started.
+[14:57:59:564] Project #1: Edge 181 data retrieval is being skipped.
+[14:57:59:566] Project #1: Edge 180 Backwards data retrieval started.
+[14:57:59:568] Project #1: Edge 180 Forwards data retrieval started.
+[14:57:59:574] Project #1: Edge 176 Forwards data retrieval started.
+[14:57:59:579] Project #1: Edge 179 Backwards data retrieval started.
+[14:57:59:582] Project #1: Edge 179 Forwards data retrieval started.
+[14:57:59:585] Project #1: Edge 178 Backwards data retrieval started.
+[14:57:59:588] Project #1: Edge 178 Forwards data retrieval started.
+[14:57:59:590] Project #1: Edge 177 Backwards data retrieval started.
+[14:57:59:592] Project #1: Edge 177 Forwards data retrieval started.
+[14:57:59:595] Project #1: Edge 176 Backwards data retrieval started.
+[14:57:59:616] Project #1: Edge 193 data retrieval is being skipped.
+[14:57:59:616] Project #1: Edge 188 Forwards data retrieval started.
+[14:57:59:617] Project #1: Edge 188 Backwards data retrieval started.
+[14:57:59:618] Project #1: Edge 192 Backwards data retrieval started.
+[14:57:59:620] Project #1: Edge 189 Forwards data retrieval started.
+[14:57:59:622] Project #1: Edge 192 Forwards data retrieval started.
+[14:57:59:624] Project #1: Edge 189 Backwards data retrieval started.
+[14:57:59:625] Project #1: Edge 190 Forwards data retrieval started.
+[14:57:59:626] Project #1: Edge 190 Backwards data retrieval started.
+[14:57:59:627] Project #1: Edge 191 Forwards data retrieval started.
+[14:57:59:629] Project #1: Edge 191 Backwards data retrieval started.
+[14:57:59:642] Project #1: Edge 206 Backwards data retrieval started.
+[14:57:59:643] Project #1: Edge 206 Forwards data retrieval started.
+[14:57:59:644] Project #1: Edge 205 Forwards data retrieval started.
+[14:57:59:645] Project #1: Edge 200 Forwards data retrieval started.
+[14:57:59:645] Project #1: Edge 201 Forwards data retrieval started.
+[14:57:59:649] Project #1: Edge 202 Forwards data retrieval started.
+[14:57:59:650] Project #1: Edge 204 Backwards data retrieval started.
+[14:57:59:660] Project #1: Edge 204 Forwards data retrieval started.
+[14:57:59:662] Project #1: Edge 203 Backwards data retrieval started.
+[14:57:59:665] Project #1: Edge 202 Backwards data retrieval started.
+[14:57:59:665] Project #1: Edge 203 Forwards data retrieval started.
+[14:57:59:670] Project #1: Edge 220 data retrieval is being skipped.
+[14:57:59:671] Project #1: Edge 215 Forwards data retrieval started.
+[14:57:59:675] Project #1: Edge 215 Backwards data retrieval started.
+[14:57:59:677] Project #1: Edge 216 Forwards data retrieval started.
+[14:57:59:679] Project #1: Edge 216 Backwards data retrieval started.
+[14:57:59:681] Project #1: Edge 219 Backwards data retrieval started.
+[14:57:59:682] Project #1: Edge 217 Forwards data retrieval started.
+[14:57:59:686] Project #1: Edge 217 Backwards data retrieval started.
+[14:57:59:694] Project #1: Edge 219 Forwards data retrieval started.
+[14:57:59:699] Project #1: Edge 218 Forwards data retrieval started.
+[14:57:59:701] Project #1: Edge 218 Backwards data retrieval started.
+[14:57:59:713] Project #1: Edge 232 data retrieval is being skipped.
+[14:57:59:715] Project #1: Edge 227 Forwards data retrieval started.
+[14:57:59:716] Project #1: Edge 227 Backwards data retrieval started.
+[14:57:59:720] Project #1: Edge 228 Forwards data retrieval started.
+[14:57:59:722] Project #1: Edge 228 Backwards data retrieval started.
+[14:57:59:724] Project #1: Edge 229 Forwards data retrieval started.
+[14:57:59:726] Project #1: Edge 231 Backwards data retrieval started.
+[14:57:59:727] Project #1: Edge 229 Backwards data retrieval started.
+[14:57:59:729] Project #1: Edge 230 Forwards data retrieval started.
+[14:57:59:731] Project #1: Edge 230 Backwards data retrieval started.
+[14:57:59:732] Project #1: Edge 231 Forwards data retrieval started.

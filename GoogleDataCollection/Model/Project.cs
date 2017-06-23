@@ -41,6 +41,7 @@ namespace GoogleDataCollection.Model
             Log = new Log(new FileInfo($"{ AppDomain.CurrentDomain.BaseDirectory }\\project_{ Number }.txt"))
             {
                 Output = Log.OutputFormats.File | Log.OutputFormats.Console | Log.OutputFormats.Debugger,
+                WriteMode = Log.WriteModes.Overwrite,
                 ConsolePriority = Log.PriorityLevels.UltraLow,
                 FilePriority = Log.PriorityLevels.UltraLow,
                 DebuggerPriority = Log.PriorityLevels.UltraLow
@@ -52,7 +53,7 @@ namespace GoogleDataCollection.Model
         {
             return await Task.Run(() =>
             {
-                Log.AddToLog(new LogMessage($"Project #{ Number }: Edge {edge.Fid} data retrieval started.", Log.PriorityLevels.UltraLow));
+                Log.AddToLog(new LogMessage($"Project #{ Number }: Edge {edge.Fid} { direction } data retrieval started.", Log.PriorityLevels.UltraLow));
                 //Console.WriteLine($"Project #{ Number }: Edge {edge.Fid} data retrieval started.");
 /*
                 var response2 = new Tuple<uint, Edge, DirectionsResponse>(edge.Fid, edge, null);
@@ -126,9 +127,7 @@ namespace GoogleDataCollection.Model
 
                 while (batchCount < MaxBatchRequests)
                 {
-                    Tuple<int, Edge, UpdateTime> currentEdge;
-
-                    if (!edges.TryDequeue(out currentEdge))
+                    if (!edges.TryDequeue(out Tuple<int, Edge, UpdateTime> currentEdge))
                     {
                         //Log.AddToLog(new LogMessage($"Project #{ Number } completed with x, y z", Log.PriorityLevels.Low));
 

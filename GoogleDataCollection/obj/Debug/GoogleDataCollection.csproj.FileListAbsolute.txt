@@ -25,10 +25,8 @@ D:\Project4\Programming\C#\GoogleDataCollection\GoogleDataCollection\bin\Debug\G
 D:\Project4\Programming\C#\GoogleDataCollection\GoogleDataCollection\bin\Debug\GoogleDataCollection.pdb
 D:\Project4\Programming\C#\GoogleDataCollection\GoogleDataCollection\bin\Debug\GoogleMapsApi.dll
 D:\Project4\Programming\C#\GoogleDataCollection\GoogleDataCollection\bin\Debug\Newtonsoft.Json.dll
-D:\Project4\Programming\C#\GoogleDataCollection\GoogleDataCollection\bin\Debug\ShellProgressBar.dll
 D:\Project4\Programming\C#\GoogleDataCollection\GoogleDataCollection\bin\Debug\GoogleMapsApi.xml
 D:\Project4\Programming\C#\GoogleDataCollection\GoogleDataCollection\bin\Debug\Newtonsoft.Json.xml
-D:\Project4\Programming\C#\GoogleDataCollection\GoogleDataCollection\bin\Debug\ShellProgressBar.pdb
 D:\Project4\Programming\C#\GoogleDataCollection\GoogleDataCollection\obj\Debug\GoogleDataCollection.csprojResolveAssemblyReference.cache
 D:\Project4\Programming\C#\GoogleDataCollection\GoogleDataCollection\obj\Debug\GoogleDataCollection.exe
 D:\Project4\Programming\C#\GoogleDataCollection\GoogleDataCollection\obj\Debug\GoogleDataCollection.pdb

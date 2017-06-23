@@ -5,7 +5,7 @@ namespace GoogleDataCollection.Model
     [JsonObject(MemberSerialization.OptIn)]
     public class CsvParsingError
     {
-        public enum ErrorTypes : byte { Unknown = 0, NullValue, InvalidColumn }
+        public enum ErrorTypes : byte { Unknown = 0, NullValue, UnknownColumn, ConversionError}
 
         [JsonProperty(PropertyName = "row", Required = Required.Always)]
         public uint Row { get; set; }

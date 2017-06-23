@@ -13,6 +13,15 @@ namespace GoogleDataCollection.Logging
     {
         public static readonly string DefaultGlobalLogFilename = "global_log.txt";
         public static readonly FileInfo DefaultFileInfo = new FileInfo($"{ AppDomain.CurrentDomain.BaseDirectory }\\{ DefaultGlobalLogFilename }");
+        public static Log GlobalLog = new Log(new FileInfo($"{ AppDomain.CurrentDomain.BaseDirectory }\\global_log.txt"))
+        {
+            //Output = OutputFormats.File | OutputFormats.Console | OutputFormats.Debugger,
+            Output = OutputFormats.Console,
+            WriteMode = WriteModes.Overwrite,
+            ConsolePriority = PriorityLevels.Medium,
+            FilePriority = PriorityLevels.UltraLow,
+            DebuggerPriority = PriorityLevels.UltraLow
+        };
 
         private static uint _logCount = 0;
         private static readonly BlockingCollection<Tuple<LogMessage, Log>> GlobalMessages = new BlockingCollection<Tuple<LogMessage, Log>>();
@@ -77,35 +86,6 @@ namespace GoogleDataCollection.Logging
         public Log(PriorityLevels filePriority = PriorityLevels.UltraLow, WriteModes writeMode = WriteModes.Overwrite, PriorityLevels debugPriority = PriorityLevels.UltraLow, PriorityLevels consolePriority = PriorityLevels.UltraLow, OutputFormats output = OutputFormats.File | OutputFormats.Debugger, bool enable = true)
                 : this(new FileInfo($"{ AppDomain.CurrentDomain.BaseDirectory }\\{ DefaultGlobalLogFilename }"), filePriority, writeMode, debugPriority, consolePriority, output, enable) { }
 
-        private static void LogToFileBackgroundTask()
-        {
-            Task.Run(() =>
-            {
-                while (true)
-                {
-                    foreach (var tuple in GlobalMessages.GetConsumingEnumerable())
-                    {
-                        if (LogToFileCancellationToken.IsCancellationRequested) { return;  }
-
-                        if (tuple.Item2.IsEnabled && tuple.Item2.Output.HasFlag(OutputFormats.File)) 
-                        { 
-                            WriteToFile(tuple.Item1, tuple.Item2);
-                        }
-                    }
-                }
-            });
-        }
-
-        private static void WriteToFile(LogMessage logMessage, Log log)
-        {
-            if (!HasAtLeastPriority(log.FilePriority, logMessage.Priority) || log.FileInfo == null)
-            {
-                return;
-            }
-
-            File.AppendAllText(log.FileInfo.FullName, $"{ logMessage }");
-        }
-
         public void AddToLog(LogMessage message, bool writeToOutputs = true)
         {
             if (!IsEnabled) { return ; }
@@ -116,12 +96,7 @@ namespace GoogleDataCollection.Logging
 
             if (writeToOutputs) { WriteToOutputs(message);}
         }
-/*
-        public void ClearLogMessages()
-        {
-            Messages.Clear();
-        }
-*/
+
         public void Enable()
         {
             IsEnabled = true;
@@ -131,17 +106,19 @@ namespace GoogleDataCollection.Logging
         {
             IsEnabled = false;
         }
-/*
-        public void FlushMessages()
-        {
-            foreach (var message in Messages)
-            {
-                WriteToOutputs(message);
-            }
 
-            ClearLogMessages();
+/*
+        // TO DO: Test FlushMessages method.
+        // TO DO: Create a new log with appropriate file based settings and (deep?) copy this log's messages into it.
+        public void FlushMessagesToFile(FileInfo fileInfo, WriteModes writeMode)
+        {
+            while (Messages.TryTake(out LogMessage logMessage))
+            {
+                GlobalMessages.Add(new Tuple<LogMessage, Log>(logMessage, this));
+            }
         }
 */
+
         public List<LogMessage> GetMessagesByPriority(PriorityLevels matchingPriority)
         {
             return Messages.ToList().FindAll(m => HasPriority(matchingPriority, m.Priority));
@@ -168,25 +145,6 @@ namespace GoogleDataCollection.Logging
             {
                 WriteToConsole(message);
             }
-        }
-
-        protected void WriteToFile(LogMessage logMessage)
-        {
-            if (!HasAtLeastPriority(FilePriority, logMessage.Priority) || FileInfo == null)
-            {
-                return;
-            }
-
-            if (WriteMode == WriteModes.Overwrite && WriteToFileCount == 0)
-            {
-                File.WriteAllText(FileInfo.FullName, $"{ logMessage }");
-            }
-            else
-            {
-                File.AppendAllText(FileInfo.FullName, $"{ logMessage }");
-            }
-
-            WriteToFileCount++;
         }
 
         protected void WriteToDebugger(LogMessage logMessage)
@@ -222,6 +180,43 @@ namespace GoogleDataCollection.Logging
         public static bool HasAtLeastPriority(PriorityLevels matchingPriority, PriorityLevels messagePriority)
         {
             return messagePriority >= matchingPriority;
+        }
+
+
+        private static void LogToFileBackgroundTask()
+        {
+            Task.Run(() =>
+            {
+                while (true)
+                {
+                    foreach (var tuple in GlobalMessages.GetConsumingEnumerable())
+                    {
+                        if (LogToFileCancellationToken.IsCancellationRequested) { return; }
+
+                        if (tuple.Item2.IsEnabled 
+                            && tuple.Item2.Output.HasFlag(OutputFormats.File)
+                            && HasAtLeastPriority(tuple.Item2.FilePriority, tuple.Item1.Priority)
+                            && tuple.Item2.FileInfo != null)
+                        {
+                            WriteToFile(tuple.Item1, tuple.Item2);
+                        }
+                    }
+                }
+            });
+        }
+
+        private static void WriteToFile(LogMessage logMessage, Log log)
+        {
+            if (log.WriteMode == WriteModes.Overwrite && log.WriteToFileCount == 0)
+            {
+                File.WriteAllText(log.FileInfo.FullName, $"{ logMessage }");
+            }
+            else
+            {
+                File.AppendAllText(log.FileInfo.FullName, $"{ logMessage }");
+            }
+
+            log.WriteToFileCount++;
         }
     }
 
