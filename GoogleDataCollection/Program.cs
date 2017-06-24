@@ -3,10 +3,7 @@ using GoogleDataCollection.Logging;
 using GoogleDataCollection.Model;
 using Newtonsoft.Json;
 using System;
-using System.Collections.Concurrent;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 
 namespace GoogleDataCollection
 {
@@ -16,31 +13,34 @@ namespace GoogleDataCollection
         // DONE: Add logging from Caliburn Micro app.
         private static void Main(string[] args)
         {
-            Log.GlobalLog = new Log(new FileInfo($"{ AppDomain.CurrentDomain.BaseDirectory }\\global_log.txt"))
-            {
-                //Output = OutputFormats.File | OutputFormats.Console | OutputFormats.Debugger,
-                Output = Log.OutputFormats.Console,
-                WriteMode = Log.WriteModes.Overwrite,
-                ConsolePriority = Log.PriorityLevels.Medium,
-                FilePriority = Log.PriorityLevels.UltraLow,
-                DebuggerPriority = Log.PriorityLevels.UltraLow
-            };
-            //Logging.Log.GlobalLog.Disable();
-
-
-            // !IMPORTANT: Uncomment to get a new (clean) Qld network JSON file. This will overwrite any existing "qld_network.json".
-/*
-            var container = CsvAccess.ParseCsv();
-            File.WriteAllText(JsonAccess.DefaultFilename, JsonConvert.SerializeObject(container, Formatting.Indented));
-*/
-
             try
             {
+                Log.GlobalLog = new Log(new FileInfo($"{ AppDomain.CurrentDomain.BaseDirectory }\\{ Log.DefaultGlobalLogFilename }"))
+                {
+                    //Output = OutputFormats.File | OutputFormats.Console | OutputFormats.Debugger,
+                    Output = Log.OutputFormats.Console,
+                    WriteMode = Log.WriteModes.Overwrite,
+                    ConsolePriority = Log.PriorityLevels.Medium,            // Highly recommended, any lower will significantly decrease operations' performance.
+                    FilePriority = Log.PriorityLevels.UltraLow,             // File logging runs as a background task and should not affect operations, although if the application is closed all log messages may not have been processed. Also, it has to be enabled (Output = OutputFormats.File).
+                    DebuggerPriority = Log.PriorityLevels.UltraLow
+                };
+
+                // Uncomment for a quick disable of logging.
+/*                
+                //Logging.Log.GlobalLog.Disable();
+*/
+
+
+                // !IMPORTANT: Uncomment to get a new (clean) Qld network JSON file. This will overwrite any existing "qld_network.json".
+/*    
+                var container = CsvAccess.ParseCsv();
+                container.UpdateTimes.AddRange(UpdateTime.DefaultUpdateTimes);      // Add default update times (hard coded).
+                File.WriteAllText(JsonAccess.DefaultFilename, JsonConvert.SerializeObject(container, Formatting.Indented));
+*/
 
                 var data = JsonAccess.DeserializeEdges();
 
                 GoogleAccess.RunDataCollector(data).Wait();
-
 
 /*
                 Console.WriteLine($"{DateTime.Now}: Data collection started.");
@@ -49,25 +49,6 @@ namespace GoogleDataCollection
 
                 // DONE [!IMPORTANT]: Overwrite existing file (JsonAccess.DefaultFilename).
                 File.WriteAllText($"{ AppDomain.CurrentDomain.BaseDirectory }\\{ JsonAccess.DefaultFilename }", JsonConvert.SerializeObject(data, Formatting.Indented));
-*/
-/*
-                var groupByUpdateCount4 =
-                    data.Edges.GroupBy(e => e.Updates.Count, e => e,
-                            (key, g) => new {UpdateCount = key, Edges = g.ToList()                                                                                                          // Group edges by update count.
-                            .OrderBy(edge => edge.Fid).ToList()})                                                                                                                           // Order individual groupings by FID.
-                        .OrderBy(g => g.UpdateCount)                                                                                                                                        // Order groups by update count.
-                        //.OrderByDescending(g => g.UpdateCount)
-                        //.ToList()
-                        .Select(x => new {x.UpdateCount, x.Edges})                                                                                                                          // Transform anonymous type to new { int, List<Edge> }
-                        .SelectMany(x => x.Edges.Select(y => new Tuple<int, Edge, TimeBracket>(x.UpdateCount, y, data.TimeBrackets[x.UpdateCount % data.TimeBrackets.Count])))              // Flatten groups into a list of Tuples<int, Edge> | Tuples<UpdateCount, Edge>.
-                        .ToList();
-
-                Console.WriteLine($"TUPLE COUNT: { groupByUpdateCount4.Count }.");
-                
-                //var oneWayCount = groupByUpdateCount4.Skip(50).Count(t => t.Item1 == 1);
-                //Console.WriteLine($"TEST1 COUNT: { oneWayCount }.");
-
-                var cq = new ConcurrentQueue<Tuple<int, Edge, TimeBracket>>(groupByUpdateCount4);
 */
             }
             catch (Exception e)
@@ -79,19 +60,8 @@ namespace GoogleDataCollection
 
 
             // TO DO: Uncomment for release version.
-
             Console.WriteLine("Press enter to close...");
             Console.ReadLine();
-
-
-
-            // EXAMPLE: Retrieve the next Time Bracket occurrence (based on a selected hour).
-/*
-            //const int hour = 9;
-
-            //Console.WriteLine($"NEXT OCCURRENCE ({hour}:00): { TimeBracket.GetNextOccurrence(hour)} ");
-            //Console.WriteLine($"UNIX TIMESTAMP ({hour}:00): { TimeBracket.ConvertToUnixTimestamp(TimeBracket.GetNextOccurrence(hour)) }");
-*/
         }
     }
 }

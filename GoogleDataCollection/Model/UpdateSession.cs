@@ -1,10 +1,9 @@
 ﻿using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace GoogleDataCollection.Model
 {
+    // TO DO: Add (all, i.e., batch, project, overall) summaries here?
     [JsonObject(MemberSerialization.OptIn)]
     public class UpdateSession
     {
@@ -18,10 +17,5 @@ namespace GoogleDataCollection.Model
 
         [JsonProperty(PropertyName = "requestCount", Required = Required.Always)]
         public uint RequestCount { get; set; }
-
-        // I.e., 
-        [JsonProperty(PropertyName = "successCount", Required = Required.Always)]
-        public uint SuccessCount { get; set; }
-
     }
 }

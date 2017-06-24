@@ -4,6 +4,7 @@ using Newtonsoft.Json;
 
 namespace GoogleDataCollection.Model
 {
+    // DONE: Test 0 or 24 hour; Result = 0.
     [JsonObject(MemberSerialization.OptIn)]
     public class UpdateTime
     {
@@ -15,27 +16,24 @@ namespace GoogleDataCollection.Model
             new UpdateTime("Afternoon on peak 2", 18)
         };
 
-        [JsonProperty(PropertyName = "id", Required = Required.Always)]
-        public Guid Id { get; set; }
-
         [JsonProperty(PropertyName = "name", Required = Required.Always)]
         public string Name { get; set; }
 
         [JsonProperty(PropertyName = "hourRunTime", Required = Required.Always)]
-        public int HourRunTime { get; set; }
+        public uint HourRunTime { get; set; }
 
         public UpdateTime()
         {
             
         }
 
-        public UpdateTime(string name, int hourRunTime)
+        public UpdateTime(string name, uint hourRunTime)
         {
-            Id = Guid.NewGuid();
             Name = name;
             HourRunTime = hourRunTime;
         }
 
+        // 0-23, i.e., midnight to eleven PM.
         // REFERENCE: https://stackoverflow.com/questions/42724629/get-time-until-next-occurrence-of-6pm
         public static DateTime GetNextOccurrence(int hour)
         {
@@ -44,7 +42,6 @@ namespace GoogleDataCollection.Model
             var tomorrowAtHour = new DateTime(tomorrow.Year, tomorrow.Month, tomorrow.Day, hour, 0, 0);
             var diff = tomorrowAtHour.Subtract(DateTime.Now);
 
-            //var hoursFromNow = 0d;
             var minutesFromNow = 0d;
 
             if (diff.TotalHours > 24d)

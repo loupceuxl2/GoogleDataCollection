@@ -1,5 +1,6 @@
 ﻿using GoogleMapsApi;
 using GoogleMapsApi.Entities.Directions.Request;
+using GoogleMapsApi.Entities.Directions.Response;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Concurrent;
@@ -10,7 +11,8 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using GoogleDataCollection.Logging;
-using GoogleMapsApi.Entities.Directions.Response;
+
+using System.Diagnostics;
 
 namespace GoogleDataCollection.Model
 {
@@ -19,9 +21,9 @@ namespace GoogleDataCollection.Model
     {
         public static uint MaxRequests = 200;
 
-        public static uint MaxBatchRequests = 11;
+        public static uint MaxBatchRequests = 10;
 
-        public static uint IntervalTime = 1500;
+        public static uint BatchIntervalTime = 1100;
 
         private static uint _numProjects;
 
@@ -40,321 +42,152 @@ namespace GoogleDataCollection.Model
 
             Log = new Log(new FileInfo($"{ AppDomain.CurrentDomain.BaseDirectory }\\project_{ Number }.txt"))
             {
-                Output = Log.OutputFormats.File | Log.OutputFormats.Console | Log.OutputFormats.Debugger,
+                //Output = Log.OutputFormats.File | Log.OutputFormats.Console | Log.OutputFormats.Debugger,         // Add file output for distinct project logs.
+                Output = Log.OutputFormats.Console,
                 WriteMode = Log.WriteModes.Overwrite,
-                ConsolePriority = Log.PriorityLevels.UltraLow,
+                ConsolePriority = Log.PriorityLevels.Medium,
                 FilePriority = Log.PriorityLevels.UltraLow,
                 DebuggerPriority = Log.PriorityLevels.UltraLow
             };
         }
 
-        // Return Task<Tuple<FID, Edge, DirectionsResponse>>
-        public async Task<int> GetUpdate(Edge edge, UpdateSession.UpdateDirections direction, UpdateTime updateTime)
+        public async Task<Tuple<uint, Edge, UpdateSession.UpdateDirections, UpdateInfo, UpdateTime>> GetUpdate(Edge edge, UpdateSession.UpdateDirections direction, UpdateTime updateTime)
         {
             return await Task.Run(() =>
             {
-                Log.AddToLog(new LogMessage($"Project #{ Number }: Edge {edge.Fid} { direction } data retrieval started.", Log.PriorityLevels.UltraLow));
-                //Console.WriteLine($"Project #{ Number }: Edge {edge.Fid} data retrieval started.");
-/*
-                var response2 = new Tuple<uint, Edge, DirectionsResponse>(edge.Fid, edge, null);
+                var updateInfo = new UpdateInfo();
+                var travelMode = TravelMode.Driving;
+                var occurrence = UpdateTime.GetNextOccurrence((int)updateTime.HourRunTime);
+                occurrence = new DateTime(occurrence.Year, occurrence.Month, occurrence.Day, occurrence.Hour, 0, 0);
 
+                Log.AddToLog(new LogMessage($"Project #{ Number }: Requesting edge {edge.Fid} { direction.ToString().ToLower() } { travelMode.ToString().ToLower() } traversal duration for { occurrence }.", Log.PriorityLevels.UltraLow));
 
-                //Console.WriteLine($"Project #{ Number } | Edge #{ edge.Fid } data retrieval started... Seeking duration of travel for { occurrence }.");
-
-                var update = new EdgeUpdate();
-
-                var xOrigin = session.CurrentDirection == UpdateSession.UpdateDirections.Forwards ? edge.XFromPoint.ToString(CultureInfo.InvariantCulture) : edge.XToPoint.ToString(CultureInfo.InvariantCulture);
-                var yOrigin = session.CurrentDirection == UpdateSession.UpdateDirections.Forwards ? edge.YFromPoint.ToString(CultureInfo.InvariantCulture) : edge.YToPoint.ToString(CultureInfo.InvariantCulture);
-                var xDestination = session.CurrentDirection == UpdateSession.UpdateDirections.Forwards ? edge.XToPoint.ToString(CultureInfo.InvariantCulture) : edge.XFromPoint.ToString(CultureInfo.InvariantCulture);
-                var yDestination = session.CurrentDirection == UpdateSession.UpdateDirections.Forwards ? edge.YToPoint.ToString(CultureInfo.InvariantCulture) : edge.YFromPoint.ToString(CultureInfo.InvariantCulture);
+                var xOrigin = direction == UpdateSession.UpdateDirections.Forwards ? edge.XFromPoint.ToString(CultureInfo.InvariantCulture) : edge.XToPoint.ToString(CultureInfo.InvariantCulture);
+                var yOrigin = direction == UpdateSession.UpdateDirections.Forwards ? edge.YFromPoint.ToString(CultureInfo.InvariantCulture) : edge.YToPoint.ToString(CultureInfo.InvariantCulture);
+                var xDestination = direction == UpdateSession.UpdateDirections.Forwards ? edge.XToPoint.ToString(CultureInfo.InvariantCulture) : edge.XFromPoint.ToString(CultureInfo.InvariantCulture);
+                var yDestination = direction == UpdateSession.UpdateDirections.Forwards ? edge.YToPoint.ToString(CultureInfo.InvariantCulture) : edge.YFromPoint.ToString(CultureInfo.InvariantCulture);
 
                 var directionsRequest = new DirectionsRequest
                 {
                     Origin = $"{xOrigin},{yOrigin}",
                     Destination = $"{xDestination},{yDestination}",
                     DepartureTime = occurrence,
-                    TravelMode = TravelMode.Driving,
+                    TravelMode = travelMode,
                     ApiKey = ApiKey
                 };
 
+                var requestTime = DateTime.Now;
                 var response = GoogleMaps.Directions.Query(directionsRequest);
 
-                update.Status = response.Status;
-                update.UpdateTimeBracketId = session.CurrentTimeBracketId;
+                Log.AddToLog((response.Status == DirectionsStatusCodes.OK)
+                    ? new LogMessage($"Project #{ Number }: Edge {edge.Fid} { direction.ToString().ToLower() } { travelMode.ToString().ToLower() } traversal duration for { occurrence } response: { response.Status }.", Log.PriorityLevels.UltraLow)
+                    : new LogMessage($"Project #{ Number }: Edge {edge.Fid} { direction.ToString().ToLower() } { travelMode.ToString().ToLower() } traversal duration for { occurrence } response: { response.Status }.{(!string.IsNullOrEmpty(response.ErrorMessage) ? Environment.NewLine + "Error: " + response.ErrorMessage + "." : string.Empty)}", Log.PriorityLevels.Medium));
 
-                //Console.WriteLine($"Project #{ Number } | Edge #{ edge.Fid } Google response status: {update.Status}");
+                updateInfo.GoogleRequestTime = requestTime;
+                updateInfo.GoogleStatus = response.Status;
+                updateInfo.DepartureTime = occurrence;
+                updateInfo.TravelMode = travelMode;
+                updateInfo.GoogleErrorMessage = response?.ErrorMessage;
+                updateInfo.Duration = response.Routes?.FirstOrDefault()?.Legs?.FirstOrDefault()?.DurationInTraffic?.Value;
 
-                if (response.ErrorMessage != null)
-                {
-                    Console.WriteLine($"Project #{ Number } | Edge #{ edge.Fid } Google error message: { response.ErrorMessage }");
-                }
-
-                //var tempDuration = response.Routes?.FirstOrDefault()?.Legs?.FirstOrDefault()?.Duration;
-                var tempDuration = response.Routes?.FirstOrDefault()?.Legs?.FirstOrDefault()?.DurationInTraffic;
-
-                if (tempDuration == null)
-                {
-                    Console.WriteLine($"Project #{ Number } | Edge #{edge.Fid}: No information available.");
-                    //return update;
-                    return 0;
-                }
-
-                update.Duration = tempDuration.Value;
-
-                //Console.WriteLine($"Project #{ Number } | Edge #{edge.Fid} duration: {update.Duration}.");
-                //Console.WriteLine($"Project #{ Number } | Edge #{edge.Fid} data retrieval completed successfully.");
-
-                //return update;
-*/
-                return 1;
+                return new Tuple<uint, Edge, UpdateSession.UpdateDirections, UpdateInfo, UpdateTime>(edge.Fid, edge, direction, updateInfo, updateTime);
             });
         }
 
         // DONE: Set departure time!
         // DONE: Take oneway streets into consideration.
+        // DONE: Add a timer.
         // TO DO: Take non streets into account (i.e., ignore them).
-        // TO DO: Add a timer.
         // TO DO: Test empty queue.
         public async Task<int> GetUpdates(ConcurrentQueue<Tuple<int, Edge, UpdateTime>> edges)
         {
-            var requestCount = 0;
-            var processedCount = 0;
+            var requestTotal = 0;
+            var batchTotal = 0;
+            var stopwatch = new Stopwatch();
 
-            while (requestCount < MaxRequests)
+            while (requestTotal < MaxRequests)
             {
-                var batchCount = 0;
-                var tasks = new List<Task>();
+                var batchNumber = 0;
+                var tasks = new List<Task<Tuple<uint, Edge, UpdateSession.UpdateDirections, UpdateInfo, UpdateTime>>>();
 
-                while (batchCount < MaxBatchRequests)
+                while (batchNumber < MaxBatchRequests)
                 {
+                    stopwatch.Restart();
+
                     if (!edges.TryDequeue(out Tuple<int, Edge, UpdateTime> currentEdge))
                     {
-                        //Log.AddToLog(new LogMessage($"Project #{ Number } completed with x, y z", Log.PriorityLevels.Low));
-
                         break;
                     }
 
                     if (currentEdge.Item2.IsOneWay)
                     {
+                        Log.AddToLog(new LogMessage($"Project #{ Number }: Attempting one way data retrieval #{ requestTotal + 1 } of { MaxRequests } (#{ batchNumber + 1 } of batch #{ batchTotal + 1 }).", Log.PriorityLevels.UltraLow));
+
                         tasks.Add(GetUpdate(currentEdge.Item2, UpdateSession.UpdateDirections.Forwards, currentEdge.Item3));
 
-                        batchCount++;
+                        requestTotal++;
+                        batchNumber++;
                     }
                     else
                     {
-                        // TO DO: Test twoway streets.
-                        //if (batchCount + 1 >= MaxBatchRequests)
-                        if (batchCount + 2 > MaxBatchRequests)
+                        //if (batchNumber + 1 >= MaxBatchRequests)
+                        if (batchNumber + 2 > MaxBatchRequests)
                         {
-                            Log.AddToLog(new LogMessage($"Project #{ Number }: Edge {currentEdge.Item2.Fid} data retrieval is being skipped.", Log.PriorityLevels.Low));
+                            Log.AddToLog(new LogMessage($"Project #{ Number }: Skipping two way data retrieval #{ requestTotal + 1 } of { MaxRequests } (#{ batchNumber + 1 } of batch #{ batchTotal + 1 }) AND #{ requestTotal + 2 } of { MaxRequests } (#{ batchNumber + 2 } of batch #{ batchTotal + 1 }).", Log.PriorityLevels.Low));
+
+                            edges.Enqueue(currentEdge);
 
                             break;
                         }
 
+                        Log.AddToLog(new LogMessage($"Project #{ Number }: Attempting two way data retrieval #{ requestTotal + 1 } of { MaxRequests } (#{ batchNumber + 1 } of batch #{ batchTotal + 1 }) AND #{ requestTotal + 2 } of { MaxRequests } (#{ batchNumber + 2 } of batch #{ batchTotal + 1 }).", Log.PriorityLevels.UltraLow));
+
                         tasks.Add(GetUpdate(currentEdge.Item2, UpdateSession.UpdateDirections.Forwards, currentEdge.Item3));
                         tasks.Add(GetUpdate(currentEdge.Item2, UpdateSession.UpdateDirections.Backwards, currentEdge.Item3));
 
-                        batchCount += 2;
+                        requestTotal += 2;
+                        batchNumber += 2;
+
+                        // Lol, why not? Let's end once all requests have been exhausted.
+                        edges.Enqueue(currentEdge);
                     }
                 }
 
-                requestCount += batchCount;
+                batchTotal += 1;
 
                 await Task.WhenAll(tasks);
 
+                var summary = new BatchSummary(batchTotal, tasks);
+
+                Log.AddToLog(new LogMessage($"Project #{ Number }{ Environment.NewLine }{ summary }.", Log.PriorityLevels.Medium));
+
+                // Validate and write to object.
+
+                // Actual time is earlier but may as well include processing time for generating summaries, validation and writing to object).
+                stopwatch.Stop();
+
+                Log.AddToLog(new LogMessage($"Project #{ Number }: Batch # { batchTotal } took { stopwatch.ElapsedMilliseconds } milliseconds.", Log.PriorityLevels.Medium));
+
                 if (edges.IsEmpty)
                 {
+                    Log.AddToLog(new LogMessage($"Project #{ Number } completed.", Log.PriorityLevels.High));
+
+                    // TO DO: Add project summary.
 
                     return 0;
                 }
 
-                // Validate and write to object.
+                if (stopwatch.ElapsedMilliseconds < BatchIntervalTime)
+                {
+                    var timeToWait = (int)(BatchIntervalTime - stopwatch.ElapsedMilliseconds);
+
+                    Log.AddToLog(new LogMessage($"Project #{ Number }: Waiting { timeToWait } milliseconds.", Log.PriorityLevels.Medium));
+
+                    Thread.Sleep(timeToWait);
+                }
             }
             
             return 0;
         }
     }
 }
-
-/*
-public async Task<int> GetUpdates(Dictionary<uint, Edge> edges, List<TimeBracket> timeBrackets)
-{
-    return await Task.Run(() =>
-    {
-        var totalEdges = edges.Count;
-
-        if (totalEdges == 0)
-        {
-            Console.WriteLine($"Project #{ Number } has { totalEdges } available.");
-            return -1;
-        }
-
-        for (var i = 0; i < MaxRequests; i++)
-        {
-            if (CurrentSession == null)
-            {
-                Console.WriteLine($"Error [UpdateSession]: Project #{ Number } does not have an update session.");
-                return -1;
-            }
-
-            var timeBracket =
-                timeBrackets?.Find(tb => tb.Id.ToString() == CurrentSession.CurrentTimeBracketId.ToString());
-
-            if (timeBracket == null)
-            {
-                Console.WriteLine($"Error [UpdateSession]: Project #{ Number } does not have a Time Bracket set.");
-                return -1;
-            }
-
-            var occurrence = TimeBracket.GetNextOccurrence(timeBracket.HourRunTime);
-            occurrence = new DateTime(occurrence.Year, occurrence.Month, occurrence.Day, occurrence.Hour, 0, 0);
-
-            var edge = edges.ContainsKey(CurrentSession.CurrentEdgeFid) ? edges[CurrentSession.CurrentEdgeFid] : null;
-
-            // TO DO: Add edge error handling data.
-            if (edge == null)
-            {
-                Console.WriteLine($"Error [Edge]: Project #{ Number } |  Edge #{ CurrentSession.CurrentEdgeFid } not available.");
-                CurrentSession = UpdateSession.GetNextUpdateSession((uint)totalEdges, CurrentSession, timeBrackets);
-                continue;
-            }
-
-            if (CurrentSession.CurrentDirection == UpdateSession.UpdateDirections.Forwards)
-            {
-                edge.Updates.Add(GetUpdate(edge, CurrentSession, occurrence));
-            }
-            else
-            {
-                edge.InvertedUpdates.Add(GetUpdate(edge, CurrentSession, occurrence));
-            }
-
-            CurrentSession = UpdateSession.GetNextUpdateSession((uint)totalEdges, CurrentSession, timeBrackets);
-
-            if ((i + 1) % MaxBatchRequests != 0) { continue; }
-
-            Console.WriteLine($"Project #{ Number }: Maximum interval reached ({ MaxBatchRequests })," +
-                              $" delaying ~{ IntervalTime / 1000 } seconds before starting a new batch." +
-                              $" { i + 1 } of { MaxRequests } edges processed thus far.");
-            Thread.Sleep(IntervalTime);
-        }
-
-        CurrentSession.RunTimeCompletedAt = DateTime.Now;
-
-        return 0;
-    });
-}
-
-public static void SetProjectUpdateSessions(DataContainer data)
-{
-    var totalEdges = (uint)data.Edges.Count;
-
-    data.Projects[0].CurrentSession =
-        data.UpdateSessions.LastOrDefault() ?? UpdateSession.GetNextUpdateSession(totalEdges, null, data.TimeBrackets);
-
-    // !!! IF EdgeFid < previousId
-    for (var i = 1; i < data.Projects.Count; i++)
-    {
-        var previousSession = data.Projects[i - 1].CurrentSession;
-        var previousFid = previousSession.CurrentEdgeFid;
-        var newFid = (MaxRequests + previousFid) % totalEdges;
-        var direction = previousSession.CurrentDirection;
-        var timeBracketId = previousSession.CurrentTimeBracketId;
-
-        // TO DO [OPTIONAL]: Change below calls into two separate functions. Use in 'GetNextUpdateSession' method as well.
-        if (newFid < previousFid)
-        {
-            direction = previousSession.CurrentDirection == UpdateSession.UpdateDirections.Forwards
-                ? UpdateSession.UpdateDirections.Backwards
-                : UpdateSession.UpdateDirections.Forwards;
-
-            timeBracketId = previousSession.CurrentDirection == UpdateSession.UpdateDirections.Forwards
-                ? previousSession.CurrentTimeBracketId
-                : TimeBracket.GetNextTimeBracket(data.TimeBrackets, previousSession.CurrentTimeBracketId).Id;
-        }
-
-        var nextStartingPoint = new UpdateSession
-        {
-            CurrentEdgeFid = newFid,
-            CurrentDirection = direction,
-            CurrentTimeBracketId = timeBracketId
-        };
-
-        data.Projects[i].CurrentSession = nextStartingPoint;
-    }
-
-    // Set the project number.
-    for (var i = 0; i < data.Projects.Count; i++)
-    {
-        var project = data.Projects[i];
-
-        project.Number = i + 1;
-
-        Console.WriteLine($"Project #{ project.Number } API key: { project.ApiKey }.");
-        Console.WriteLine($"Project #{ project.Number } starting edge FID: { project.CurrentSession.CurrentEdgeFid }.");
-        Console.WriteLine($"Project #{ project.Number } (hour) time bracket: { data.TimeBrackets.Single(b => b.Id.ToString() == project.CurrentSession.CurrentTimeBracketId.ToString()).HourRunTime }.");
-        Console.WriteLine($"Project #{ project.Number } starting direction: { project.CurrentSession.CurrentDirection }.{ Environment.NewLine }");
-    }
-}
-
-// DONE: Set departure time!
-// TO DO: Take oneway streets into consideration (i.e., no need to invert).
-// TO DO: Take non streets into account (i.e., ignore them).
-public EdgeUpdate GetUpdate(Edge edge, UpdateSession session, DateTime occurrence)
-{
-    //Console.WriteLine($"Project #{ Number } | Edge #{ edge.Fid } data retrieval started... Seeking duration of travel for { occurrence }.");
-
-    var update = new EdgeUpdate();
-
-    var xOrigin = session.CurrentDirection == UpdateSession.UpdateDirections.Forwards ? edge.XFromPoint.ToString(CultureInfo.InvariantCulture) : edge.XToPoint.ToString(CultureInfo.InvariantCulture);
-    var yOrigin = session.CurrentDirection == UpdateSession.UpdateDirections.Forwards ? edge.YFromPoint.ToString(CultureInfo.InvariantCulture) : edge.YToPoint.ToString(CultureInfo.InvariantCulture);
-    var xDestination = session.CurrentDirection == UpdateSession.UpdateDirections.Forwards ? edge.XToPoint.ToString(CultureInfo.InvariantCulture) : edge.XFromPoint.ToString(CultureInfo.InvariantCulture);
-    var yDestination = session.CurrentDirection == UpdateSession.UpdateDirections.Forwards ? edge.YToPoint.ToString(CultureInfo.InvariantCulture) : edge.YFromPoint.ToString(CultureInfo.InvariantCulture);
-
-    var directionsRequest = new DirectionsRequest
-    {
-        Origin = $"{xOrigin},{yOrigin}",
-        Destination = $"{xDestination},{yDestination}",
-        DepartureTime = occurrence,
-        TravelMode = TravelMode.Driving,
-        ApiKey = ApiKey
-    };
-
-    var response = GoogleMaps.Directions.Query(directionsRequest);
-
-    update.Status = response.Status;
-    update.UpdateTimeBracketId = session.CurrentTimeBracketId;
-
-    //Console.WriteLine($"Project #{ Number } | Edge #{ edge.Fid } Google response status: {update.Status}");
-
-    if (response.ErrorMessage != null)
-    {
-        Console.WriteLine($"Project #{ Number } | Edge #{ edge.Fid } Google error message: { response.ErrorMessage }");
-    }
-
-    //var tempDuration = response.Routes?.FirstOrDefault()?.Legs?.FirstOrDefault()?.Duration;
-    var tempDuration = response.Routes?.FirstOrDefault()?.Legs?.FirstOrDefault()?.DurationInTraffic;
-
-    if (tempDuration == null)
-    {
-        Console.WriteLine($"Project #{ Number } | Edge #{edge.Fid}: No information available.");
-        return update;
-    }
-
-    update.Duration = tempDuration.Value;
-
-    //Console.WriteLine($"Project #{ Number } | Edge #{edge.Fid} duration: {update.Duration}.");
-    //Console.WriteLine($"Project #{ Number } | Edge #{edge.Fid} data retrieval completed successfully.");
-
-    return update;
-}
-
-public static void UpdateLastProjectSession(DataContainer data)
-{
-    var lastSession = data.Projects?.LastOrDefault()?.CurrentSession;
-
-    if (lastSession == null) { return; }
-
-    data.UpdateSessions.Add(lastSession);
-}
-
-*/

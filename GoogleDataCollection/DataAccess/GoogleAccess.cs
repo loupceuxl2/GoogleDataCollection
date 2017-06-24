@@ -13,6 +13,7 @@ namespace GoogleDataCollection.DataAccess
         {
             var totalProjects = data.Projects.Count;
 
+            // TO DO: Remove duplicate projects (i.e., have the same HourRunTime) and order ascending (by HourRunTime).
             if (totalProjects == 0)
             {
                 Logging.Log.GlobalLog.AddToLog(new Logging.LogMessage($"No projects found. Data collection aborted.", Logging.Log.PriorityLevels.UltraHigh));
@@ -24,6 +25,7 @@ namespace GoogleDataCollection.DataAccess
 
             var totalUpdateTimes = data.UpdateTimes.Count;
 
+            // DONE: Check if there are no update times.
             if (totalUpdateTimes == 0)
             {
                 Logging.Log.GlobalLog.AddToLog(new Logging.LogMessage($"No update times found. Data collection aborted.", Logging.Log.PriorityLevels.UltraHigh));
@@ -33,7 +35,6 @@ namespace GoogleDataCollection.DataAccess
 
             Logging.Log.GlobalLog.AddToLog(new Logging.LogMessage($"{ totalUpdateTimes } update times loaded.", Logging.Log.PriorityLevels.Medium));
 
-            // TO DO: Check if there are no update times.
             var prioritisedUpdates =
                 data.Edges.GroupBy(e => e.Updates.Count, e => e,
                         (key, g) => new {UpdateCount = key, Edges = g.ToList()                                                                                                          // Group edges by update count.
@@ -66,7 +67,7 @@ namespace GoogleDataCollection.DataAccess
 
             Logging.Log.GlobalLog.AddToLog(new Logging.LogMessage($"Data collection completed successfully.", Logging.Log.PriorityLevels.Medium));
 
-            // TO DO: Summary.
+            // TO DO: Overall summary.
 
             return 0;
         }

@@ -15,13 +15,8 @@ namespace GoogleDataCollection.Logging
 
         public LogMessage(string message, Log.PriorityLevels priority, LogCategory logCategory = null, string header = null)
         {
-            if (message == null)
-            {
-                throw new ArgumentNullException(nameof(message));
-            }
-
             Timestamp = DateTime.Now;
-            Message = message;
+            Message = message ?? throw new ArgumentNullException(nameof(message));
             Header = header;
             LogCategory = logCategory;
             Priority = priority;

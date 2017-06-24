@@ -55,11 +55,11 @@
     <Compile Include="DataAccess\CsvAccess.cs" />
     <Compile Include="DataAccess\GoogleAccess.cs" />
     <Compile Include="DataAccess\JsonAccess.cs" />
-    <Compile Include="DataAccess\SpreadsheetAccess.cs" />
     <Compile Include="Logging\ILog.cs" />
     <Compile Include="Logging\Log.cs" />
     <Compile Include="Logging\LogCategory.cs" />
     <Compile Include="Logging\LogMessage.cs" />
+    <Compile Include="Model\BatchSummary.cs" />
     <Compile Include="Model\CsvParsing.cs" />
     <Compile Include="Model\Edge.cs" />
     <Compile Include="Model\DataContainer.cs" />
