@@ -21,7 +21,7 @@ namespace GoogleDataCollection
                     Output = Log.OutputFormats.Console,
                     WriteMode = Log.WriteModes.Overwrite,
                     ConsolePriority = Log.PriorityLevels.Medium,            // Highly recommended, any lower will significantly decrease operations' performance.
-                    FilePriority = Log.PriorityLevels.UltraLow,             // File logging runs as a background task and should not affect operations, although if the application is closed all log messages may not have been processed. Also, it has to be enabled (Output = OutputFormats.File).
+                    FilePriority = Log.PriorityLevels.Low,             // File logging runs as a background task and should not affect operations, although if the application is closed all log messages may not have been processed. Also, it has to be enabled (Output = OutputFormats.File).
                     DebuggerPriority = Log.PriorityLevels.UltraLow
                 };
 

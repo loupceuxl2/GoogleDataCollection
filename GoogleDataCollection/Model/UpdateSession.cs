@@ -7,8 +7,6 @@ namespace GoogleDataCollection.Model
     [JsonObject(MemberSerialization.OptIn)]
     public class UpdateSession
     {
-        public enum UpdateDirections : byte { Forwards, Backwards }
-
         [JsonProperty(PropertyName = "runTimeStartedAt", Required = Required.Always)]
         public DateTime RunTimeStartedAt { get; set; }
 
@@ -17,5 +15,8 @@ namespace GoogleDataCollection.Model
 
         [JsonProperty(PropertyName = "requestCount", Required = Required.Always)]
         public uint RequestCount { get; set; }
+
+        [JsonProperty(PropertyName = "executionSummary", Required = Required.Always)]
+        public ExecutionSummary ExecutionSummary { get; set; }
     }
 }

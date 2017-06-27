@@ -1,5 +1,8 @@
 ﻿using System.Collections.Generic;
 using Newtonsoft.Json;
+using System;
+using System.Threading.Tasks;
+using System.Collections.Concurrent;
 
 namespace GoogleDataCollection.Model
 {
@@ -55,6 +58,55 @@ namespace GoogleDataCollection.Model
         public Edge()
         {
             Updates = new List<EdgeUpdate>();
+        }
+
+        public bool Validate(List<Tuple<uint, Edge, EdgeUpdate.UpdateDirections, UpdateInfo, UpdateTime>> directionUpdates)
+        {
+            if (!IsOneWay)
+            {
+                if (directionUpdates.Count != 2
+                    || (!directionUpdates[0].Item4.IsValid())
+                    || (!directionUpdates[1].Item4.IsValid())
+                    || (!UpdateInfo.IsSavable(directionUpdates[0].Item4))
+                    || (!UpdateInfo.IsSavable(directionUpdates[1].Item4))
+                    || (directionUpdates[0].Item5.HourRunTime != directionUpdates[1].Item5.HourRunTime))
+                {
+                    return false;
+                }
+
+                Updates.Add(new EdgeUpdate
+                {
+                    Forward = directionUpdates[0].Item4,
+                    Backward = directionUpdates[1].Item4,
+                    UpdateHour = directionUpdates[0].Item5.HourRunTime
+                });
+
+            }
+            else
+            {
+                if (directionUpdates.Count != 1
+                    || (!directionUpdates[0].Item4.IsValid())
+                    || (!UpdateInfo.IsSavable(directionUpdates[0].Item4)))
+                {
+                    return false;
+                }
+
+                Updates.Add(new EdgeUpdate
+                {
+                    Forward = directionUpdates[0].Item4,
+                    UpdateHour = directionUpdates[0].Item5.HourRunTime
+                });
+            }
+
+            return true;
+        }
+
+        public void ValidateAndRequeue(List<Tuple<uint, Edge, EdgeUpdate.UpdateDirections, UpdateInfo, UpdateTime>> directionUpdates, ConcurrentQueue<Tuple<int, Edge, UpdateTime>> edges, List<UpdateTime> updateTimes)
+        {
+            if (Validate(directionUpdates))
+            {
+                edges.Enqueue(new Tuple<int, Edge, UpdateTime>((int)directionUpdates[0].Item1 + 1, directionUpdates[0].Item2, updateTimes[((int)directionUpdates[0].Item1 + 1) % updateTimes.Count]));
+            }
         }
     }
 }

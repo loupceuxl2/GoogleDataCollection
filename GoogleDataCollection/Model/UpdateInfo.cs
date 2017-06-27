@@ -12,7 +12,7 @@ namespace GoogleDataCollection.Model
         public DateTime GoogleRequestTime { get; set; }
 
         [JsonProperty(PropertyName = "travelMode", Required = Required.Always)]
-        public TravelMode TravelMode { get; set; }
+        public TravelMode GoogleTravelMode { get; set; }
 
         [JsonProperty(PropertyName = "departureTime", Required = Required.Always)]
         public DateTime DepartureTime { get; set; }
@@ -21,14 +21,23 @@ namespace GoogleDataCollection.Model
         public DirectionsStatusCodes GoogleStatus { get; set; }
 
         [JsonProperty(PropertyName = "duration", Required = Required.AllowNull)]
-        public TimeSpan? Duration { get; set; }
+        public TimeSpan? GoogleDuration { get; set; } = null;
 
         [JsonProperty(PropertyName = "error", Required = Required.Default)]
         public string GoogleErrorMessage { get; set; }
 
+        public bool IsValid()
+        {
+            if (this == null || (!UpdateInfo.IsSavable(this)))
+            {
+                return false;
+            }
+
+            return true;
+        }
 
         // REFERENCE: https://developers.google.com/maps/documentation/directions/intro#StatusCodes
-        public static bool HasValidResponseStatus(UpdateInfo updateInfo)
+        public static bool IsSavable(UpdateInfo updateInfo)
         {
             switch (updateInfo.GoogleStatus)
             {
@@ -42,10 +51,10 @@ namespace GoogleDataCollection.Model
                     return true;
 
                 case DirectionsStatusCodes.MAX_WAYPOINTS_EXCEEDED:
-                    return true;
+                    return false;
 
                 case DirectionsStatusCodes.INVALID_REQUEST:
-                    return false;
+                    return true;
 
                 case DirectionsStatusCodes.OVER_QUERY_LIMIT:
                     return false;
@@ -54,10 +63,43 @@ namespace GoogleDataCollection.Model
                     return false;
 
                 case DirectionsStatusCodes.UNKNOWN_ERROR:
-                    return true;
+                    return false;
 
                 default:
                     return false;
+            }
+        }
+
+        public static bool IsRequeuable(UpdateInfo updateInfo)
+        {
+            switch (updateInfo.GoogleStatus)
+            {
+                case DirectionsStatusCodes.OK:
+                    return true;
+
+                case DirectionsStatusCodes.NOT_FOUND:
+                    return false;
+
+                case DirectionsStatusCodes.ZERO_RESULTS:
+                    return false;
+
+                case DirectionsStatusCodes.MAX_WAYPOINTS_EXCEEDED:
+                    return false;
+
+                case DirectionsStatusCodes.INVALID_REQUEST:
+                    return false;
+
+                case DirectionsStatusCodes.OVER_QUERY_LIMIT:
+                    return true;
+
+                case DirectionsStatusCodes.REQUEST_DENIED:
+                    return true;
+
+                case DirectionsStatusCodes.UNKNOWN_ERROR:
+                    return true;
+
+                default:
+                    return true;
             }
         }
     }

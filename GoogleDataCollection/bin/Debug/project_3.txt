@@ -1,0 +1,1057 @@
+[16:59:08:744] Project #3: Attempting two way data retrieval #1 of 200 (#1 of batch #1) AND #2 of 200 (#2 of batch #1).
+[16:59:08:745] Project #3: Attempting two way data retrieval #3 of 200 (#3 of batch #1) AND #4 of 200 (#4 of batch #1).
+[16:59:08:745] Project #3: Attempting two way data retrieval #5 of 200 (#5 of batch #1) AND #6 of 200 (#6 of batch #1).
+[16:59:08:745] Project #3: Attempting two way data retrieval #7 of 200 (#7 of batch #1) AND #8 of 200 (#8 of batch #1).
+[16:59:08:745] Project #3: Attempting two way data retrieval #9 of 200 (#9 of batch #1) AND #10 of 200 (#10 of batch #1).
+[16:59:08:749] Project #3: Requesting edge 10 backwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:09:714] Project #3: Requesting edge 6 forwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:10:003] Project #3: Edge 10 backwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:10:004] Project #3: Requesting edge 10 forwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:10:111] Project #3: Edge 6 forwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:10:111] Project #3: Requesting edge 6 backwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:10:513] Project #3: Edge 10 forwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:10:513] Project #3: Requesting edge 9 backwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:10:540] Project #3: Edge 6 backwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:10:540] Project #3: Requesting edge 7 forwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:10:923] Project #3: Edge 9 backwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:10:923] Project #3: Requesting edge 9 forwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:10:976] Project #3: Edge 7 forwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:10:976] Project #3: Requesting edge 7 backwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:11:475] Project #3: Edge 7 backwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:11:475] Project #3: Requesting edge 8 forwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:11:561] Project #3: Edge 9 forwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:11:562] Project #3: Requesting edge 8 backwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:11:855] Project #3: Edge 8 backwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:11:980] Project #3: Edge 8 forwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:11:995] Project #3: Summary for batch #1.
+===== BATCH #1 SUMMARY =====
+Total requests: 10
+OK: 10
+Has duration: 10
+Ran to completion: 10
+One way count: 0
+Two way count: 10
+Not OK: 0
+Has duration: 10
+No duration: 0
+Not found: 0
+Zero results: 0
+Max waypoints exceeded: 0
+Invalid request: 0
+Over query limit: 0
+Request denied: 0
+Unknown error: 0
+Error messages: 0
+Failed to complete: 0
+
+
+=============================.
+[16:59:11:995] Project #3: Batch # 1 took 3250 milliseconds to process.
+[16:59:11:996] Project #3: Attempting two way data retrieval #11 of 200 (#1 of batch #2) AND #12 of 200 (#2 of batch #2).
+[16:59:11:996] Project #3: Attempting two way data retrieval #13 of 200 (#3 of batch #2) AND #14 of 200 (#4 of batch #2).
+[16:59:11:996] Project #3: Attempting two way data retrieval #15 of 200 (#5 of batch #2) AND #16 of 200 (#6 of batch #2).
+[16:59:11:996] Project #3: Attempting two way data retrieval #17 of 200 (#7 of batch #2) AND #18 of 200 (#8 of batch #2).
+[16:59:11:996] Project #3: Attempting two way data retrieval #19 of 200 (#9 of batch #2) AND #20 of 200 (#10 of batch #2).
+[16:59:11:996] Project #3: Requesting edge 19 backwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:12:405] Project #3: Edge 19 backwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:12:406] Project #3: Requesting edge 19 forwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:12:625] Project #3: Requesting edge 15 forwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:12:841] Project #3: Edge 19 forwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:12:841] Project #3: Requesting edge 18 backwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:13:139] Project #3: Edge 15 forwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:13:139] Project #3: Requesting edge 15 backwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:13:288] Project #3: Edge 18 backwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:13:288] Project #3: Requesting edge 18 forwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:13:371] Project #3: Requesting edge 16 forwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:13:512] Project #3: Edge 15 backwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:13:512] Project #3: Requesting edge 16 backwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:13:745] Project #3: Edge 16 forwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:13:858] Project #3: Edge 18 forwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:13:858] Project #3: Requesting edge 17 backwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:13:939] Project #3: Edge 16 backwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:14:181] Project #3: Edge 17 backwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:14:181] Project #3: Requesting edge 17 forwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:14:650] Project #3: Edge 17 forwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:14:651] Project #3: Summary for batch #2.
+===== BATCH #2 SUMMARY =====
+Total requests: 10
+OK: 10
+Has duration: 10
+Ran to completion: 10
+One way count: 0
+Two way count: 10
+Not OK: 0
+Has duration: 10
+No duration: 0
+Not found: 0
+Zero results: 0
+Max waypoints exceeded: 0
+Invalid request: 0
+Over query limit: 0
+Request denied: 0
+Unknown error: 0
+Error messages: 0
+Failed to complete: 0
+
+
+=============================.
+[16:59:14:651] Project #3: Batch # 2 took 2654 milliseconds to process.
+[16:59:14:651] Project #3: Attempting two way data retrieval #21 of 200 (#1 of batch #3) AND #22 of 200 (#2 of batch #3).
+[16:59:14:651] Project #3: Attempting two way data retrieval #23 of 200 (#3 of batch #3) AND #24 of 200 (#4 of batch #3).
+[16:59:14:651] Project #3: Attempting two way data retrieval #25 of 200 (#5 of batch #3) AND #26 of 200 (#6 of batch #3).
+[16:59:14:651] Project #3: Attempting two way data retrieval #27 of 200 (#7 of batch #3) AND #28 of 200 (#8 of batch #3).
+[16:59:14:651] Project #3: Attempting two way data retrieval #29 of 200 (#9 of batch #3) AND #30 of 200 (#10 of batch #3).
+[16:59:14:651] Project #3: Requesting edge 34 backwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:14:817] Project #3: Requesting edge 30 forwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:15:078] Project #3: Edge 34 backwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:15:078] Project #3: Requesting edge 34 forwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:15:241] Project #3: Requesting edge 30 backwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:15:394] Project #3: Edge 30 forwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:15:395] Project #3: Requesting edge 31 forwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:15:604] Project #3: Edge 30 backwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:15:619] Project #3: Edge 34 forwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:15:620] Project #3: Requesting edge 33 backwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:15:843] Project #3: Edge 31 forwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:16:074] Project #3: Edge 33 backwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:16:074] Project #3: Requesting edge 33 forwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:16:516] Project #3: Edge 33 forwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:16:517] Project #3: Requesting edge 32 backwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:16:996] Project #3: Edge 32 backwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:16:996] Project #3: Requesting edge 32 forwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:16:999] Project #3: Requesting edge 31 backwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:17:356] Project #3: Edge 31 backwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:17:434] Project #3: Edge 32 forwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:17:434] Project #3: Summary for batch #3.
+===== BATCH #3 SUMMARY =====
+Total requests: 10
+OK: 10
+Has duration: 10
+Ran to completion: 10
+One way count: 0
+Two way count: 10
+Not OK: 0
+Has duration: 10
+No duration: 0
+Not found: 0
+Zero results: 0
+Max waypoints exceeded: 0
+Invalid request: 0
+Over query limit: 0
+Request denied: 0
+Unknown error: 0
+Error messages: 0
+Failed to complete: 0
+
+
+=============================.
+[16:59:17:435] Project #3: Batch # 3 took 2783 milliseconds to process.
+[16:59:17:435] Project #3: Attempting two way data retrieval #31 of 200 (#1 of batch #4) AND #32 of 200 (#2 of batch #4).
+[16:59:17:435] Project #3: Attempting two way data retrieval #33 of 200 (#3 of batch #4) AND #34 of 200 (#4 of batch #4).
+[16:59:17:435] Project #3: Attempting two way data retrieval #35 of 200 (#5 of batch #4) AND #36 of 200 (#6 of batch #4).
+[16:59:17:435] Project #3: Attempting two way data retrieval #37 of 200 (#7 of batch #4) AND #38 of 200 (#8 of batch #4).
+[16:59:17:437] Project #3: Attempting two way data retrieval #39 of 200 (#9 of batch #4) AND #40 of 200 (#10 of batch #4).
+[16:59:17:437] Project #3: Requesting edge 54 backwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:17:889] Project #3: Edge 54 backwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:17:889] Project #3: Requesting edge 54 forwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:18:391] Project #3: Edge 54 forwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:18:682] Project #3: Requesting edge 50 forwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:19:061] Project #3: Edge 50 forwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:19:061] Project #3: Requesting edge 50 backwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:19:516] Project #3: Edge 50 backwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:20:797] Project #3: Requesting edge 51 forwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:20:955] Project #3: Requesting edge 51 backwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:21:218] Project #3: Edge 51 forwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:21:218] Project #3: Requesting edge 52 forwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:21:493] Project #3: Edge 51 backwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:21:708] Project #3: Edge 52 forwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:22:666] Project #3: Requesting edge 52 backwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:23:130] Project #3: Edge 52 backwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:23:130] Project #3: Requesting edge 53 forwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:23:161] Project #3: Requesting edge 53 backwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:23:541] Project #3: Edge 53 forwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:23:594] Project #3: Edge 53 backwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:23:594] Project #3: Summary for batch #4.
+===== BATCH #4 SUMMARY =====
+Total requests: 10
+OK: 10
+Has duration: 10
+Ran to completion: 10
+One way count: 0
+Two way count: 10
+Not OK: 0
+Has duration: 10
+No duration: 0
+Not found: 0
+Zero results: 0
+Max waypoints exceeded: 0
+Invalid request: 0
+Over query limit: 0
+Request denied: 0
+Unknown error: 0
+Error messages: 0
+Failed to complete: 0
+
+
+=============================.
+[16:59:23:594] Project #3: Batch # 4 took 6157 milliseconds to process.
+[16:59:23:595] Project #3: Attempting two way data retrieval #41 of 200 (#1 of batch #5) AND #42 of 200 (#2 of batch #5).
+[16:59:23:595] Project #3: Attempting two way data retrieval #43 of 200 (#3 of batch #5) AND #44 of 200 (#4 of batch #5).
+[16:59:23:595] Project #3: Attempting two way data retrieval #45 of 200 (#5 of batch #5) AND #46 of 200 (#6 of batch #5).
+[16:59:23:595] Project #3: Attempting two way data retrieval #47 of 200 (#7 of batch #5) AND #48 of 200 (#8 of batch #5).
+[16:59:23:595] Project #3: Attempting two way data retrieval #49 of 200 (#9 of batch #5) AND #50 of 200 (#10 of batch #5).
+[16:59:23:595] Project #3: Requesting edge 79 backwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:24:011] Project #3: Edge 79 backwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:24:011] Project #3: Requesting edge 79 forwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:24:382] Project #3: Edge 79 forwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:24:382] Project #3: Requesting edge 78 backwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:24:885] Project #3: Edge 78 backwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:24:885] Project #3: Requesting edge 78 forwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:24:949] Project #3: Requesting edge 75 forwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:25:240] Project #3: Edge 78 forwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:25:240] Project #3: Requesting edge 77 backwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:25:324] Project #3: Edge 75 forwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:25:324] Project #3: Requesting edge 75 backwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:25:338] Project #3: Requesting edge 76 forwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:25:612] Project #3: Edge 77 backwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:25:612] Project #3: Requesting edge 77 forwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:25:688] Project #3: Edge 76 forwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:25:749] Project #3: Edge 75 backwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:25:749] Project #3: Requesting edge 76 backwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:25:958] Project #3: Edge 77 forwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:26:283] Project #3: Edge 76 backwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:26:284] Project #3: Summary for batch #5.
+===== BATCH #5 SUMMARY =====
+Total requests: 10
+OK: 10
+Has duration: 10
+Ran to completion: 10
+One way count: 0
+Two way count: 10
+Not OK: 0
+Has duration: 10
+No duration: 0
+Not found: 0
+Zero results: 0
+Max waypoints exceeded: 0
+Invalid request: 0
+Over query limit: 0
+Request denied: 0
+Unknown error: 0
+Error messages: 0
+Failed to complete: 0
+
+
+=============================.
+[16:59:26:284] Project #3: Batch # 5 took 2689 milliseconds to process.
+[16:59:26:284] Project #3: Attempting two way data retrieval #51 of 200 (#1 of batch #6) AND #52 of 200 (#2 of batch #6).
+[16:59:26:284] Project #3: Attempting two way data retrieval #53 of 200 (#3 of batch #6) AND #54 of 200 (#4 of batch #6).
+[16:59:26:284] Project #3: Attempting two way data retrieval #55 of 200 (#5 of batch #6) AND #56 of 200 (#6 of batch #6).
+[16:59:26:284] Project #3: Attempting two way data retrieval #57 of 200 (#7 of batch #6) AND #58 of 200 (#8 of batch #6).
+[16:59:26:284] Project #3: Attempting two way data retrieval #59 of 200 (#9 of batch #6) AND #60 of 200 (#10 of batch #6).
+[16:59:26:284] Project #3: Requesting edge 94 backwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:26:811] Project #3: Requesting edge 90 forwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:26:871] Project #3: Edge 94 backwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:26:871] Project #3: Requesting edge 94 forwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:27:177] Project #3: Edge 90 forwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:27:177] Project #3: Requesting edge 90 backwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:27:192] Project #3: Edge 94 forwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:27:192] Project #3: Requesting edge 93 backwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:27:321] Project #3: Requesting edge 91 forwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:27:605] Project #3: Edge 90 backwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:27:708] Project #3: Edge 91 forwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:27:708] Project #3: Requesting edge 91 backwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:27:745] Project #3: Edge 93 backwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:27:745] Project #3: Requesting edge 93 forwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:28:041] Project #3: Edge 91 backwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:28:165] Project #3: Edge 93 forwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:28:165] Project #3: Requesting edge 92 backwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:28:602] Project #3: Edge 92 backwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:28:602] Project #3: Requesting edge 92 forwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:29:092] Project #3: Edge 92 forwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:29:092] Project #3: Summary for batch #6.
+===== BATCH #6 SUMMARY =====
+Total requests: 10
+OK: 10
+Has duration: 10
+Ran to completion: 10
+One way count: 0
+Two way count: 10
+Not OK: 0
+Has duration: 10
+No duration: 0
+Not found: 0
+Zero results: 0
+Max waypoints exceeded: 0
+Invalid request: 0
+Over query limit: 0
+Request denied: 0
+Unknown error: 0
+Error messages: 0
+Failed to complete: 0
+
+
+=============================.
+[16:59:29:092] Project #3: Batch # 6 took 2807 milliseconds to process.
+[16:59:29:092] Project #3: Attempting two way data retrieval #61 of 200 (#1 of batch #7) AND #62 of 200 (#2 of batch #7).
+[16:59:29:092] Project #3: Attempting two way data retrieval #63 of 200 (#3 of batch #7) AND #64 of 200 (#4 of batch #7).
+[16:59:29:092] Project #3: Attempting two way data retrieval #65 of 200 (#5 of batch #7) AND #66 of 200 (#6 of batch #7).
+[16:59:29:092] Project #3: Attempting two way data retrieval #67 of 200 (#7 of batch #7) AND #68 of 200 (#8 of batch #7).
+[16:59:29:092] Project #3: Attempting two way data retrieval #69 of 200 (#9 of batch #7) AND #70 of 200 (#10 of batch #7).
+[16:59:29:093] Project #3: Requesting edge 109 backwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:29:240] Project #3: Requesting edge 105 forwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:29:336] Project #3: Requesting edge 105 backwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:29:514] Project #3: Edge 109 backwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:29:514] Project #3: Requesting edge 109 forwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:29:636] Project #3: Edge 105 forwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:29:700] Project #3: Edge 105 backwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:30:044] Project #3: Edge 109 forwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:30:044] Project #3: Requesting edge 108 backwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:30:665] Project #3: Edge 108 backwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:30:665] Project #3: Requesting edge 108 forwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:31:087] Project #3: Edge 108 forwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:31:087] Project #3: Requesting edge 107 backwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:31:310] Project #3: Requesting edge 106 forwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:31:529] Project #3: Edge 107 backwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:31:529] Project #3: Requesting edge 107 forwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:31:869] Project #3: Edge 106 forwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:31:869] Project #3: Requesting edge 106 backwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:31:971] Project #3: Edge 107 forwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:32:159] Project #3: Edge 106 backwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:32:159] Project #3: Summary for batch #7.
+===== BATCH #7 SUMMARY =====
+Total requests: 10
+OK: 10
+Has duration: 10
+Ran to completion: 10
+One way count: 0
+Two way count: 10
+Not OK: 0
+Has duration: 10
+No duration: 0
+Not found: 0
+Zero results: 0
+Max waypoints exceeded: 0
+Invalid request: 0
+Over query limit: 0
+Request denied: 0
+Unknown error: 0
+Error messages: 0
+Failed to complete: 0
+
+
+=============================.
+[16:59:32:159] Project #3: Batch # 7 took 3067 milliseconds to process.
+[16:59:32:160] Project #3: Attempting two way data retrieval #71 of 200 (#1 of batch #8) AND #72 of 200 (#2 of batch #8).
+[16:59:32:160] Project #3: Attempting two way data retrieval #73 of 200 (#3 of batch #8) AND #74 of 200 (#4 of batch #8).
+[16:59:32:160] Project #3: Attempting two way data retrieval #75 of 200 (#5 of batch #8) AND #76 of 200 (#6 of batch #8).
+[16:59:32:160] Project #3: Attempting two way data retrieval #77 of 200 (#7 of batch #8) AND #78 of 200 (#8 of batch #8).
+[16:59:32:160] Project #3: Attempting two way data retrieval #79 of 200 (#9 of batch #8) AND #80 of 200 (#10 of batch #8).
+[16:59:32:160] Project #3: Requesting edge 129 backwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:32:375] Project #3: Requesting edge 125 forwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:32:602] Project #3: Edge 129 backwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:32:603] Project #3: Requesting edge 129 forwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:32:805] Project #3: Edge 125 forwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:32:806] Project #3: Requesting edge 125 backwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:33:022] Project #3: Edge 129 forwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:33:023] Project #3: Requesting edge 128 backwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:33:242] Project #3: Edge 125 backwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:33:243] Project #3: Requesting edge 126 forwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:33:243] Project #3: Requesting edge 126 backwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:33:243] Project #3: Requesting edge 127 backwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:33:244] Project #3: Requesting edge 127 forwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:33:244] Project #3: Requesting edge 128 forwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:33:449] Project #3: Edge 128 backwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:33:541] Project #3: Edge 126 forwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:33:585] Project #3: Edge 127 forwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:33:747] Project #3: Edge 126 backwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:33:787] Project #3: Edge 127 backwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:33:833] Project #3: Edge 128 forwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:33:833] Project #3: Summary for batch #8.
+===== BATCH #8 SUMMARY =====
+Total requests: 10
+OK: 10
+Has duration: 10
+Ran to completion: 10
+One way count: 0
+Two way count: 10
+Not OK: 0
+Has duration: 10
+No duration: 0
+Not found: 0
+Zero results: 0
+Max waypoints exceeded: 0
+Invalid request: 0
+Over query limit: 0
+Request denied: 0
+Unknown error: 0
+Error messages: 0
+Failed to complete: 0
+
+
+=============================.
+[16:59:33:833] Project #3: Batch # 8 took 1673 milliseconds to process.
+[16:59:33:833] Project #3: Attempting two way data retrieval #81 of 200 (#1 of batch #9) AND #82 of 200 (#2 of batch #9).
+[16:59:33:834] Project #3: Attempting two way data retrieval #83 of 200 (#3 of batch #9) AND #84 of 200 (#4 of batch #9).
+[16:59:33:834] Project #3: Attempting two way data retrieval #85 of 200 (#5 of batch #9) AND #86 of 200 (#6 of batch #9).
+[16:59:33:834] Project #3: Attempting two way data retrieval #87 of 200 (#7 of batch #9) AND #88 of 200 (#8 of batch #9).
+[16:59:33:834] Project #3: Attempting two way data retrieval #89 of 200 (#9 of batch #9) AND #90 of 200 (#10 of batch #9).
+[16:59:33:834] Project #3: Requesting edge 134 backwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:33:966] Project #3: Requesting edge 130 forwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:34:208] Project #3: Edge 134 backwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:34:208] Project #3: Requesting edge 134 forwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:34:369] Project #3: Edge 130 forwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:34:607] Project #3: Edge 134 forwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:34:607] Project #3: Requesting edge 133 backwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:34:638] Project #3: Requesting edge 130 backwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:34:690] Project #3: Requesting edge 131 forwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:34:988] Project #3: Edge 133 backwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:34:989] Project #3: Requesting edge 133 forwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:35:003] Project #3: Edge 130 backwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:35:045] Project #3: Edge 131 forwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:35:340] Project #3: Requesting edge 131 backwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:35:399] Project #3: Edge 133 forwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:35:399] Project #3: Requesting edge 132 backwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:35:613] Project #3: Requesting edge 132 forwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:35:741] Project #3: Edge 131 backwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:35:955] Project #3: Edge 132 backwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:36:024] Project #3: Edge 132 forwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:36:024] Project #3: Summary for batch #9.
+===== BATCH #9 SUMMARY =====
+Total requests: 10
+OK: 10
+Has duration: 10
+Ran to completion: 10
+One way count: 0
+Two way count: 10
+Not OK: 0
+Has duration: 10
+No duration: 0
+Not found: 0
+Zero results: 0
+Max waypoints exceeded: 0
+Invalid request: 0
+Over query limit: 0
+Request denied: 0
+Unknown error: 0
+Error messages: 0
+Failed to complete: 0
+
+
+=============================.
+[16:59:36:024] Project #3: Batch # 9 took 2190 milliseconds to process.
+[16:59:36:024] Project #3: Attempting one way data retrieval #91 of 200 (#1 of batch #10).
+[16:59:36:024] Project #3: Attempting one way data retrieval #92 of 200 (#2 of batch #10).
+[16:59:36:024] Project #3: Attempting two way data retrieval #93 of 200 (#3 of batch #10) AND #94 of 200 (#4 of batch #10).
+[16:59:36:024] Project #3: Attempting two way data retrieval #95 of 200 (#5 of batch #10) AND #96 of 200 (#6 of batch #10).
+[16:59:36:024] Project #3: Attempting two way data retrieval #97 of 200 (#7 of batch #10) AND #98 of 200 (#8 of batch #10).
+[16:59:36:024] Project #3: Attempting two way data retrieval #99 of 200 (#9 of batch #10) AND #100 of 200 (#10 of batch #10).
+[16:59:36:025] Project #3: Requesting edge 161 backwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:36:337] Project #3: Requesting edge 156 forwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:36:461] Project #3: Edge 161 backwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:36:461] Project #3: Requesting edge 161 forwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:36:564] Project #3: Requesting edge 157 forwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:36:592] Project #3: Requesting edge 158 forwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:36:731] Project #3: Requesting edge 158 backwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:36:790] Project #3: Requesting edge 159 forwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:36:904] Project #3: Edge 161 forwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:36:904] Project #3: Requesting edge 160 backwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:36:936] Project #3: Edge 156 forwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:36:937] Project #3: Requesting edge 159 backwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:36:985] Project #3: Edge 158 forwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:36:985] Project #3: Requesting edge 160 forwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:37:027] Project #3: Edge 157 forwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:37:098] Project #3: Edge 158 backwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:37:415] Project #3: Edge 159 forwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:37:424] Project #3: Edge 160 backwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:37:529] Project #3: Edge 159 backwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:37:636] Project #3: Edge 160 forwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:37:636] Project #3: Summary for batch #10.
+===== BATCH #10 SUMMARY =====
+Total requests: 10
+OK: 10
+Has duration: 10
+Ran to completion: 10
+One way count: 2
+Two way count: 8
+Not OK: 0
+Has duration: 10
+No duration: 0
+Not found: 0
+Zero results: 0
+Max waypoints exceeded: 0
+Invalid request: 0
+Over query limit: 0
+Request denied: 0
+Unknown error: 0
+Error messages: 0
+Failed to complete: 0
+
+
+=============================.
+[16:59:37:636] Project #3: Batch # 10 took 1611 milliseconds to process.
+[16:59:37:636] Project #3: Attempting two way data retrieval #101 of 200 (#1 of batch #11) AND #102 of 200 (#2 of batch #11).
+[16:59:37:636] Project #3: Attempting two way data retrieval #103 of 200 (#3 of batch #11) AND #104 of 200 (#4 of batch #11).
+[16:59:37:636] Project #3: Attempting two way data retrieval #105 of 200 (#5 of batch #11) AND #106 of 200 (#6 of batch #11).
+[16:59:37:637] Project #3: Attempting two way data retrieval #107 of 200 (#7 of batch #11) AND #108 of 200 (#8 of batch #11).
+[16:59:37:637] Project #3: Attempting two way data retrieval #109 of 200 (#9 of batch #11) AND #110 of 200 (#10 of batch #11).
+[16:59:37:637] Project #3: Requesting edge 177 backwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:37:867] Project #3: Requesting edge 173 forwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:37:891] Project #3: Requesting edge 173 backwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:37:919] Project #3: Requesting edge 174 forwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:37:958] Project #3: Requesting edge 174 backwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:38:027] Project #3: Edge 177 backwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:38:027] Project #3: Requesting edge 177 forwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:38:047] Project #3: Requesting edge 175 forwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:38:119] Project #3: Requesting edge 175 backwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:38:203] Project #3: Requesting edge 176 forwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:38:276] Project #3: Edge 173 backwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:38:389] Project #3: Edge 174 backwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:38:509] Project #3: Edge 175 forwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:38:511] Project #3: Edge 175 backwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:38:524] Project #3: Edge 173 forwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:38:564] Project #3: Edge 174 forwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:38:609] Project #3: Edge 177 forwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:38:609] Project #3: Requesting edge 176 backwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:38:623] Project #3: Edge 176 forwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:38:994] Project #3: Edge 176 backwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:38:994] Project #3: Summary for batch #11.
+===== BATCH #11 SUMMARY =====
+Total requests: 10
+OK: 10
+Has duration: 10
+Ran to completion: 10
+One way count: 0
+Two way count: 10
+Not OK: 0
+Has duration: 10
+No duration: 0
+Not found: 0
+Zero results: 0
+Max waypoints exceeded: 0
+Invalid request: 0
+Over query limit: 0
+Request denied: 0
+Unknown error: 0
+Error messages: 0
+Failed to complete: 0
+
+
+=============================.
+[16:59:38:994] Project #3: Batch # 11 took 1357 milliseconds to process.
+[16:59:38:994] Project #3: Attempting two way data retrieval #111 of 200 (#1 of batch #12) AND #112 of 200 (#2 of batch #12).
+[16:59:38:994] Project #3: Attempting two way data retrieval #113 of 200 (#3 of batch #12) AND #114 of 200 (#4 of batch #12).
+[16:59:38:994] Project #3: Attempting two way data retrieval #115 of 200 (#5 of batch #12) AND #116 of 200 (#6 of batch #12).
+[16:59:38:994] Project #3: Attempting two way data retrieval #117 of 200 (#7 of batch #12) AND #118 of 200 (#8 of batch #12).
+[16:59:38:994] Project #3: Attempting two way data retrieval #119 of 200 (#9 of batch #12) AND #120 of 200 (#10 of batch #12).
+[16:59:38:994] Project #3: Requesting edge 192 backwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:39:218] Project #3: Requesting edge 188 forwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:39:232] Project #3: Requesting edge 188 backwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:39:233] Project #3: Requesting edge 189 forwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:39:295] Project #3: Requesting edge 189 backwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:39:330] Project #3: Requesting edge 190 forwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:39:330] Project #3: Requesting edge 190 backwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:39:370] Project #3: Edge 192 backwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:39:370] Project #3: Requesting edge 192 forwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:39:376] Project #3: Requesting edge 191 forwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:39:534] Project #3: Edge 188 forwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:39:593] Project #3: Edge 189 forwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:39:608] Project #3: Edge 188 backwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:39:640] Project #3: Edge 190 backwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:39:731] Project #3: Edge 192 forwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:39:732] Project #3: Requesting edge 191 backwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:39:754] Project #3: Edge 189 backwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:40:056] Project #3: Edge 190 forwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:40:094] Project #3: Edge 191 forwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:40:123] Project #3: Edge 191 backwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:40:124] Project #3: Summary for batch #12.
+===== BATCH #12 SUMMARY =====
+Total requests: 10
+OK: 10
+Has duration: 10
+Ran to completion: 10
+One way count: 0
+Two way count: 10
+Not OK: 0
+Has duration: 10
+No duration: 0
+Not found: 0
+Zero results: 0
+Max waypoints exceeded: 0
+Invalid request: 0
+Over query limit: 0
+Request denied: 0
+Unknown error: 0
+Error messages: 0
+Failed to complete: 0
+
+
+=============================.
+[16:59:40:124] Project #3: Batch # 12 took 1129 milliseconds to process.
+[16:59:40:124] Project #3: Attempting two way data retrieval #121 of 200 (#1 of batch #13) AND #122 of 200 (#2 of batch #13).
+[16:59:40:124] Project #3: Attempting one way data retrieval #123 of 200 (#3 of batch #13).
+[16:59:40:124] Project #3: Attempting two way data retrieval #124 of 200 (#4 of batch #13) AND #125 of 200 (#5 of batch #13).
+[16:59:40:124] Project #3: Attempting one way data retrieval #126 of 200 (#6 of batch #13).
+[16:59:40:124] Project #3: Attempting two way data retrieval #127 of 200 (#7 of batch #13) AND #128 of 200 (#8 of batch #13).
+[16:59:40:124] Project #3: Attempting one way data retrieval #129 of 200 (#9 of batch #13).
+[16:59:40:124] Project #3: Attempting one way data retrieval #130 of 200 (#10 of batch #13).
+[16:59:40:124] Project #3: Requesting edge 210 forwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:40:373] Project #3: Requesting edge 204 forwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:40:437] Project #3: Requesting edge 204 backwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:40:485] Project #3: Requesting edge 205 forwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:40:522] Project #3: Requesting edge 206 forwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:40:581] Project #3: Requesting edge 206 backwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:40:760] Project #3: Edge 210 forwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:40:760] Project #3: Requesting edge 209 forwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:40:858] Project #3: Edge 204 forwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:40:910] Project #3: Edge 205 forwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:40:956] Project #3: Edge 206 forwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:40:972] Project #3: Edge 204 backwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:41:072] Project #3: Edge 206 backwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:41:125] Project #3: Edge 209 forwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:41:125] Project #3: Requesting edge 208 backwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:41:478] Project #3: Requesting edge 207 forwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:41:518] Project #3: Requesting edge 208 forwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:41:664] Project #3: Edge 208 backwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:41:955] Project #3: Edge 208 forwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:41:988] Project #3: Edge 207 forwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:41:988] Project #3: Summary for batch #13.
+===== BATCH #13 SUMMARY =====
+Total requests: 10
+OK: 10
+Has duration: 10
+Ran to completion: 10
+One way count: 4
+Two way count: 6
+Not OK: 0
+Has duration: 10
+No duration: 0
+Not found: 0
+Zero results: 0
+Max waypoints exceeded: 0
+Invalid request: 0
+Over query limit: 0
+Request denied: 0
+Unknown error: 0
+Error messages: 0
+Failed to complete: 0
+
+
+=============================.
+[16:59:41:988] Project #3: Batch # 13 took 1864 milliseconds to process.
+[16:59:41:988] Project #3: Attempting two way data retrieval #131 of 200 (#1 of batch #14) AND #132 of 200 (#2 of batch #14).
+[16:59:41:988] Project #3: Attempting two way data retrieval #133 of 200 (#3 of batch #14) AND #134 of 200 (#4 of batch #14).
+[16:59:41:988] Project #3: Attempting two way data retrieval #135 of 200 (#5 of batch #14) AND #136 of 200 (#6 of batch #14).
+[16:59:41:989] Project #3: Attempting two way data retrieval #137 of 200 (#7 of batch #14) AND #138 of 200 (#8 of batch #14).
+[16:59:41:989] Project #3: Attempting two way data retrieval #139 of 200 (#9 of batch #14) AND #140 of 200 (#10 of batch #14).
+[16:59:41:989] Project #3: Requesting edge 236 backwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:42:212] Project #3: Requesting edge 232 forwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:42:506] Project #3: Edge 236 backwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:42:506] Project #3: Requesting edge 236 forwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:42:559] Project #3: Requesting edge 232 backwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:42:573] Project #3: Requesting edge 233 forwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:42:628] Project #3: Requesting edge 233 backwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:42:701] Project #3: Requesting edge 234 forwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:42:710] Project #3: Edge 232 forwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:42:710] Project #3: Requesting edge 234 backwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:42:779] Project #3: Requesting edge 235 forwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:42:840] Project #3: Requesting edge 235 backwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:42:897] Project #3: Edge 233 forwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:42:984] Project #3: Edge 236 forwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:42:999] Project #3: Edge 233 backwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:43:067] Project #3: Edge 234 forwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:43:105] Project #3: Edge 232 backwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:43:173] Project #3: Edge 235 forwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:43:226] Project #3: Edge 235 backwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:43:236] Project #3: Edge 234 backwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:43:236] Project #3: Summary for batch #14.
+===== BATCH #14 SUMMARY =====
+Total requests: 10
+OK: 10
+Has duration: 10
+Ran to completion: 10
+One way count: 0
+Two way count: 10
+Not OK: 0
+Has duration: 10
+No duration: 0
+Not found: 0
+Zero results: 0
+Max waypoints exceeded: 0
+Invalid request: 0
+Over query limit: 0
+Request denied: 0
+Unknown error: 0
+Error messages: 0
+Failed to complete: 0
+
+
+=============================.
+[16:59:43:236] Project #3: Batch # 14 took 1247 milliseconds to process.
+[16:59:43:236] Project #3: Attempting two way data retrieval #141 of 200 (#1 of batch #15) AND #142 of 200 (#2 of batch #15).
+[16:59:43:236] Project #3: Attempting two way data retrieval #143 of 200 (#3 of batch #15) AND #144 of 200 (#4 of batch #15).
+[16:59:43:236] Project #3: Attempting two way data retrieval #145 of 200 (#5 of batch #15) AND #146 of 200 (#6 of batch #15).
+[16:59:43:236] Project #3: Attempting two way data retrieval #147 of 200 (#7 of batch #15) AND #148 of 200 (#8 of batch #15).
+[16:59:43:236] Project #3: Attempting two way data retrieval #149 of 200 (#9 of batch #15) AND #150 of 200 (#10 of batch #15).
+[16:59:43:236] Project #3: Requesting edge 251 backwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:43:522] Project #3: Requesting edge 247 forwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:43:766] Project #3: Edge 251 backwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:43:766] Project #3: Requesting edge 251 forwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:43:914] Project #3: Requesting edge 247 backwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:43:972] Project #3: Requesting edge 248 forwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:44:037] Project #3: Edge 247 forwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:44:037] Project #3: Requesting edge 248 backwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:44:046] Project #3: Requesting edge 249 forwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:44:098] Project #3: Requesting edge 249 backwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:44:142] Project #3: Edge 251 forwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:44:142] Project #3: Requesting edge 250 backwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:44:142] Project #3: Requesting edge 250 forwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:44:289] Project #3: Edge 247 backwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:44:349] Project #3: Edge 248 forwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:44:404] Project #3: Edge 248 backwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:44:469] Project #3: Edge 249 forwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:44:524] Project #3: Edge 249 backwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:44:626] Project #3: Edge 250 backwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:44:856] Project #3: Edge 250 forwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:44:857] Project #3: Summary for batch #15.
+===== BATCH #15 SUMMARY =====
+Total requests: 10
+OK: 10
+Has duration: 10
+Ran to completion: 10
+One way count: 0
+Two way count: 10
+Not OK: 0
+Has duration: 10
+No duration: 0
+Not found: 0
+Zero results: 0
+Max waypoints exceeded: 0
+Invalid request: 0
+Over query limit: 0
+Request denied: 0
+Unknown error: 0
+Error messages: 0
+Failed to complete: 0
+
+
+=============================.
+[16:59:44:857] Project #3: Batch # 15 took 1620 milliseconds to process.
+[16:59:44:857] Project #3: Attempting one way data retrieval #151 of 200 (#1 of batch #16).
+[16:59:44:857] Project #3: Attempting two way data retrieval #152 of 200 (#2 of batch #16) AND #153 of 200 (#3 of batch #16).
+[16:59:44:857] Project #3: Attempting two way data retrieval #154 of 200 (#4 of batch #16) AND #155 of 200 (#5 of batch #16).
+[16:59:44:857] Project #3: Attempting two way data retrieval #156 of 200 (#6 of batch #16) AND #157 of 200 (#7 of batch #16).
+[16:59:44:857] Project #3: Attempting two way data retrieval #158 of 200 (#8 of batch #16) AND #159 of 200 (#9 of batch #16).
+[16:59:44:857] Project #3: Skipping two way data retrieval #160 of 200 (#10 of batch #16) AND #161 of 200 (#11 of batch #16).
+[16:59:44:857] Project #3: Requesting edge 267 backwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:45:241] Project #3: Requesting edge 263 forwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:45:251] Project #3: Requesting edge 264 forwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:45:323] Project #3: Edge 267 backwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:45:323] Project #3: Requesting edge 267 forwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:45:354] Project #3: Requesting edge 264 backwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:45:427] Project #3: Requesting edge 265 forwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:45:477] Project #3: Requesting edge 265 backwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:45:528] Project #3: Requesting edge 266 forwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:45:687] Project #3: Edge 263 forwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:45:688] Project #3: Edge 264 forwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:45:689] Project #3: Requesting edge 266 backwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:45:737] Project #3: Edge 264 backwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:45:750] Project #3: Edge 267 forwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:45:805] Project #3: Edge 265 backwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:45:867] Project #3: Edge 266 forwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:45:915] Project #3: Edge 265 forwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:46:414] Project #3: Edge 266 backwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:46:414] Project #3: Summary for batch #16.
+===== BATCH #16 SUMMARY =====
+Total requests: 9
+OK: 9
+Has duration: 9
+Ran to completion: 9
+One way count: 1
+Two way count: 8
+Not OK: 0
+Has duration: 9
+No duration: 0
+Not found: 0
+Zero results: 0
+Max waypoints exceeded: 0
+Invalid request: 0
+Over query limit: 0
+Request denied: 0
+Unknown error: 0
+Error messages: 0
+Failed to complete: 0
+
+
+=============================.
+[16:59:46:414] Project #3: Batch # 16 took 1557 milliseconds to process.
+[16:59:46:415] Project #3: Attempting two way data retrieval #160 of 200 (#1 of batch #17) AND #161 of 200 (#2 of batch #17).
+[16:59:46:415] Project #3: Attempting two way data retrieval #162 of 200 (#3 of batch #17) AND #163 of 200 (#4 of batch #17).
+[16:59:46:415] Project #3: Attempting two way data retrieval #164 of 200 (#5 of batch #17) AND #165 of 200 (#6 of batch #17).
+[16:59:46:415] Project #3: Attempting two way data retrieval #166 of 200 (#7 of batch #17) AND #167 of 200 (#8 of batch #17).
+[16:59:46:415] Project #3: Attempting two way data retrieval #168 of 200 (#9 of batch #17) AND #169 of 200 (#10 of batch #17).
+[16:59:46:415] Project #3: Requesting edge 278 backwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:46:417] Project #3: Requesting edge 274 forwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:46:417] Project #3: Requesting edge 274 backwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:46:418] Project #3: Requesting edge 275 forwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:46:418] Project #3: Requesting edge 275 backwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:46:418] Project #3: Requesting edge 276 forwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:46:419] Project #3: Requesting edge 276 backwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:46:426] Project #3: Requesting edge 277 forwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:46:453] Project #3: Requesting edge 277 backwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:46:700] Project #3: Edge 278 backwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:46:700] Project #3: Requesting edge 278 forwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:46:765] Project #3: Edge 275 backwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:46:853] Project #3: Edge 276 backwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:46:902] Project #3: Edge 277 forwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:46:949] Project #3: Edge 277 backwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:46:964] Project #3: Edge 274 forwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:47:011] Project #3: Edge 274 backwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:47:096] Project #3: Edge 275 forwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:47:152] Project #3: Edge 276 forwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:47:242] Project #3: Edge 278 forwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:47:243] Project #3: Summary for batch #17.
+===== BATCH #17 SUMMARY =====
+Total requests: 10
+OK: 10
+Has duration: 10
+Ran to completion: 10
+One way count: 0
+Two way count: 10
+Not OK: 0
+Has duration: 10
+No duration: 0
+Not found: 0
+Zero results: 0
+Max waypoints exceeded: 0
+Invalid request: 0
+Over query limit: 0
+Request denied: 0
+Unknown error: 0
+Error messages: 0
+Failed to complete: 0
+
+
+=============================.
+[16:59:47:243] Project #3: Batch # 17 took 827 milliseconds to process.
+[16:59:47:243] Project #3: Waiting 273 milliseconds.
+[16:59:47:518] Project #3: Attempting two way data retrieval #170 of 200 (#1 of batch #18) AND #171 of 200 (#2 of batch #18).
+[16:59:47:518] Project #3: Attempting two way data retrieval #172 of 200 (#3 of batch #18) AND #173 of 200 (#4 of batch #18).
+[16:59:47:518] Project #3: Attempting two way data retrieval #174 of 200 (#5 of batch #18) AND #175 of 200 (#6 of batch #18).
+[16:59:47:518] Project #3: Requesting edge 285 forwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:47:518] Project #3: Attempting two way data retrieval #176 of 200 (#7 of batch #18) AND #177 of 200 (#8 of batch #18).
+[16:59:47:518] Project #3: Requesting edge 285 backwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:47:518] Project #3: Attempting two way data retrieval #178 of 200 (#9 of batch #18) AND #179 of 200 (#10 of batch #18).
+[16:59:47:518] Project #3: Requesting edge 286 forwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:47:518] Project #3: Requesting edge 289 backwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:47:518] Project #3: Requesting edge 286 backwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:47:519] Project #3: Requesting edge 287 forwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:47:519] Project #3: Requesting edge 287 backwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:47:519] Project #3: Requesting edge 288 forwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:47:519] Project #3: Requesting edge 288 backwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:47:832] Project #3: Edge 285 backwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:47:833] Project #3: Requesting edge 289 forwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:47:872] Project #3: Edge 285 forwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:48:150] Project #3: Edge 289 backwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:48:164] Project #3: Edge 286 forwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:48:233] Project #3: Edge 286 backwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:48:292] Project #3: Edge 287 backwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:48:346] Project #3: Edge 288 backwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:48:524] Project #3: Edge 287 forwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:48:643] Project #3: Edge 288 forwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:49:062] Project #3: Edge 289 forwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:49:062] Project #3: Summary for batch #18.
+===== BATCH #18 SUMMARY =====
+Total requests: 10
+OK: 10
+Has duration: 10
+Ran to completion: 10
+One way count: 0
+Two way count: 10
+Not OK: 0
+Has duration: 10
+No duration: 0
+Not found: 0
+Zero results: 0
+Max waypoints exceeded: 0
+Invalid request: 0
+Over query limit: 0
+Request denied: 0
+Unknown error: 0
+Error messages: 0
+Failed to complete: 0
+
+
+=============================.
+[16:59:49:062] Project #3: Batch # 18 took 1543 milliseconds to process.
+[16:59:49:062] Project #3: Attempting two way data retrieval #180 of 200 (#1 of batch #19) AND #181 of 200 (#2 of batch #19).
+[16:59:49:062] Project #3: Attempting two way data retrieval #182 of 200 (#3 of batch #19) AND #183 of 200 (#4 of batch #19).
+[16:59:49:062] Project #3: Requesting edge 295 forwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:49:062] Project #3: Attempting two way data retrieval #184 of 200 (#5 of batch #19) AND #185 of 200 (#6 of batch #19).
+[16:59:49:062] Project #3: Attempting two way data retrieval #186 of 200 (#7 of batch #19) AND #187 of 200 (#8 of batch #19).
+[16:59:49:062] Project #3: Attempting one way data retrieval #188 of 200 (#9 of batch #19).
+[16:59:49:062] Project #3: Skipping two way data retrieval #189 of 200 (#10 of batch #19) AND #190 of 200 (#11 of batch #19).
+[16:59:49:062] Project #3: Requesting edge 299 forwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:49:063] Project #3: Requesting edge 296 forwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:49:063] Project #3: Requesting edge 295 backwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:49:063] Project #3: Requesting edge 296 backwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:49:063] Project #3: Requesting edge 297 forwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:49:063] Project #3: Requesting edge 297 backwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:49:063] Project #3: Requesting edge 298 forwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:49:183] Project #3: Requesting edge 298 backwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:49:390] Project #3: Edge 295 forwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:49:431] Project #3: Edge 296 forwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:49:592] Project #3: Edge 297 forwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:49:606] Project #3: Edge 299 forwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:49:678] Project #3: Edge 298 forwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:49:683] Project #3: Edge 295 backwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:49:725] Project #3: Edge 296 backwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:49:738] Project #3: Edge 298 backwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:49:830] Project #3: Edge 297 backwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:49:830] Project #3: Summary for batch #19.
+===== BATCH #19 SUMMARY =====
+Total requests: 9
+OK: 9
+Has duration: 9
+Ran to completion: 9
+One way count: 1
+Two way count: 8
+Not OK: 0
+Has duration: 9
+No duration: 0
+Not found: 0
+Zero results: 0
+Max waypoints exceeded: 0
+Invalid request: 0
+Over query limit: 0
+Request denied: 0
+Unknown error: 0
+Error messages: 0
+Failed to complete: 0
+
+
+=============================.
+[16:59:49:830] Project #3: Batch # 19 took 768 milliseconds to process.
+[16:59:49:831] Project #3: Waiting 332 milliseconds.
+[16:59:50:165] Project #3: Attempting two way data retrieval #189 of 200 (#1 of batch #20) AND #190 of 200 (#2 of batch #20).
+[16:59:50:165] Project #3: Attempting two way data retrieval #191 of 200 (#3 of batch #20) AND #192 of 200 (#4 of batch #20).
+[16:59:50:165] Project #3: Attempting two way data retrieval #193 of 200 (#5 of batch #20) AND #194 of 200 (#6 of batch #20).
+[16:59:50:165] Project #3: Requesting edge 306 backwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:50:165] Project #3: Requesting edge 306 forwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:50:165] Project #3: Attempting two way data retrieval #195 of 200 (#7 of batch #20) AND #196 of 200 (#8 of batch #20).
+[16:59:50:165] Project #3: Attempting two way data retrieval #197 of 200 (#9 of batch #20) AND #198 of 200 (#10 of batch #20).
+[16:59:50:165] Project #3: Requesting edge 307 forwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:50:165] Project #3: Requesting edge 310 backwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:50:165] Project #3: Requesting edge 307 backwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:50:165] Project #3: Requesting edge 308 forwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:50:165] Project #3: Requesting edge 308 backwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:50:165] Project #3: Requesting edge 309 forwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:50:166] Project #3: Requesting edge 309 backwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:50:166] Project #3: Requesting edge 310 forwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:50:486] Project #3: Edge 306 forwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:50:495] Project #3: Edge 306 backwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:50:684] Project #3: Edge 307 forwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:50:710] Project #3: Edge 310 backwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:50:749] Project #3: Edge 307 backwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:50:763] Project #3: Edge 308 forwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:50:786] Project #3: Edge 308 backwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:50:839] Project #3: Edge 309 forwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:50:930] Project #3: Edge 309 backwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:51:002] Project #3: Edge 310 forwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:51:002] Project #3: Summary for batch #20.
+===== BATCH #20 SUMMARY =====
+Total requests: 10
+OK: 10
+Has duration: 10
+Ran to completion: 10
+One way count: 0
+Two way count: 10
+Not OK: 0
+Has duration: 10
+No duration: 0
+Not found: 0
+Zero results: 0
+Max waypoints exceeded: 0
+Invalid request: 0
+Over query limit: 0
+Request denied: 0
+Unknown error: 0
+Error messages: 0
+Failed to complete: 0
+
+
+=============================.
+[16:59:51:002] Project #3: Batch # 20 took 836 milliseconds to process.
+[16:59:51:002] Project #3: Waiting 264 milliseconds.
+[16:59:51:268] Project #3: Attempting two way data retrieval #199 of 200 (#1 of batch #21) AND #200 of 200 (#2 of batch #21).
+[16:59:51:268] Project #3: Attempting two way data retrieval #201 of 200 (#3 of batch #21) AND #202 of 200 (#4 of batch #21).
+[16:59:51:268] Project #3: Attempting two way data retrieval #203 of 200 (#5 of batch #21) AND #204 of 200 (#6 of batch #21).
+[16:59:51:268] Project #3: Requesting edge 316 forwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:51:268] Project #3: Attempting two way data retrieval #205 of 200 (#7 of batch #21) AND #206 of 200 (#8 of batch #21).
+[16:59:51:268] Project #3: Attempting two way data retrieval #207 of 200 (#9 of batch #21) AND #208 of 200 (#10 of batch #21).
+[16:59:51:269] Project #3: Requesting edge 320 backwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:51:269] Project #3: Requesting edge 316 backwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:51:269] Project #3: Requesting edge 317 forwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:51:269] Project #3: Requesting edge 317 backwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:51:269] Project #3: Requesting edge 318 forwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:51:270] Project #3: Requesting edge 318 backwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:51:270] Project #3: Requesting edge 319 forwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:51:270] Project #3: Requesting edge 319 backwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:51:270] Project #3: Requesting edge 320 forwards driving traversal duration for 28/06/2017 07:00:00.
+[16:59:51:600] Project #3: Edge 320 backwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:51:614] Project #3: Edge 316 forwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:51:888] Project #3: Edge 317 forwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:51:925] Project #3: Edge 316 backwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:51:940] Project #3: Edge 318 forwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:51:973] Project #3: Edge 317 backwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:52:006] Project #3: Edge 318 backwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:52:011] Project #3: Edge 319 forwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:52:065] Project #3: Edge 319 backwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:52:071] Project #3: Edge 320 forwards driving traversal duration for 28/06/2017 07:00:00 response: OK.
+[16:59:52:072] Project #3: Summary for batch #21.
+===== BATCH #21 SUMMARY =====
+Total requests: 10
+OK: 10
+Has duration: 10
+Ran to completion: 10
+One way count: 0
+Two way count: 10
+Not OK: 0
+Has duration: 10
+No duration: 0
+Not found: 0
+Zero results: 0
+Max waypoints exceeded: 0
+Invalid request: 0
+Over query limit: 0
+Request denied: 0
+Unknown error: 0
+Error messages: 0
+Failed to complete: 0
+
+
+=============================.
+[16:59:52:072] Project #3: Batch # 21 took 803 milliseconds to process.
+[16:59:52:072] Project #3: Waiting 297 milliseconds.
+[16:59:52:372] Project #3 completed.
+===== PROJECT #3 SUMMARY =====
+Total requests: 208
+OK: 208
+Has duration: 208
+Ran to completion: 0
+One way count: 8
+Two way count: 200
+Not OK: 0
+Has duration: 208
+No duration: 0
+Not found: 0
+Zero results: 0
+Max waypoints exceeded: 0
+Invalid request: 0
+Over query limit: 0
+Request denied: 0
+Unknown error: 0
+Error messages: 0
+Failed to complete: 0
+
+
+=============================
