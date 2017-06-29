@@ -8,7 +8,7 @@ namespace GoogleDataCollection.Model
     [JsonObject(MemberSerialization.OptIn)]
     public class UpdateTime
     {
-        public static List<UpdateTime> DefaultUpdateTimes = new List<UpdateTime>()
+        public static List<UpdateTime> DefaultUpdateTimes = new List<UpdateTime>
         {
             new UpdateTime("Morning on peak", 7),
             new UpdateTime("Morning off peak", 10),

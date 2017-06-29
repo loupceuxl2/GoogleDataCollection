@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using Newtonsoft.Json;
 using System;
-using System.Collections.Concurrent;
 using System.Linq;
 
 namespace GoogleDataCollection.Model
@@ -60,10 +59,10 @@ namespace GoogleDataCollection.Model
         }
 
         // NOTE: An edge is considered to be valid if both its directions are savable if twoway, or if forward direction is savable if oneway (see UpdateInfo class).
-        public bool UpdateEdge(List<Tuple<uint, Edge, EdgeUpdate.UpdateDirections, UpdateInfo, UpdateTime>> directionUpdates)
+        public bool UpdateEdge(List<Tuple<int, uint, Edge, EdgeUpdate.UpdateDirections, UpdateInfo, UpdateTime>> directionUpdates)
         {
-            var first = directionUpdates.FirstOrDefault()?.Item4;
-            var second = directionUpdates.Skip(1).Take(1).FirstOrDefault()?.Item4;
+            var first = directionUpdates.FirstOrDefault()?.Item5;
+            var second = directionUpdates.Skip(1).Take(1).FirstOrDefault()?.Item5;
 
             if ((!UpdateInfo.IsSavableUpdate(first)) || ((!IsOneWay) && (!UpdateInfo.IsSavableUpdate(second))))
             {
@@ -74,22 +73,22 @@ namespace GoogleDataCollection.Model
             {
                 Forward = first,
                 Backward = second ?? null,
-                UpdateHour = directionUpdates[0].Item5.HourRunTime
+                UpdateHour = directionUpdates[0].Item6.HourRunTime
             });
 
             return true;
         }
 
         // NOTE: An edge is considered non-requeuable if both directions are non-requeuable. Nulls are requeuable. See UpdateInfo class for specifics.
-        public bool IsRequeuable(List<Tuple<uint, Edge, EdgeUpdate.UpdateDirections, UpdateInfo, UpdateTime>> directionUpdates)
+        public bool IsRequeuable(List<Tuple<int, uint, Edge, EdgeUpdate.UpdateDirections, UpdateInfo, UpdateTime>> directionUpdates)
         {
-            return (UpdateInfo.IsRequeuableUpdate(directionUpdates.FirstOrDefault()?.Item4)) && (UpdateInfo.IsRequeuableUpdate(directionUpdates.Skip(1).Take(1).FirstOrDefault()?.Item4));
+            return (UpdateInfo.IsRequeuableUpdate(directionUpdates.FirstOrDefault()?.Item5)) && (UpdateInfo.IsRequeuableUpdate(directionUpdates.Skip(1).Take(1).FirstOrDefault()?.Item5));
         }
 /*
         // NOTE: An edge is considered quittable (i.e., end data requests) if either direction is quittable. Nulls are not quittable. See UpdateInfo class for specifics.
-        public bool IsQuittable(List<Tuple<uint, Edge, EdgeUpdate.UpdateDirections, UpdateInfo, UpdateTime>> directionUpdates)
+        public bool IsQuittable(List<Tuple<int, uint, Edge, EdgeUpdate.UpdateDirections, UpdateInfo, UpdateTime>> directionUpdates)
         {
-            return (UpdateInfo.IsQuittableUpdate(directionUpdates.FirstOrDefault()?.Item4)) || (!UpdateInfo.IsQuittableUpdate(directionUpdates.Skip(1).Take(1).FirstOrDefault()?.Item4));
+            return (UpdateInfo.IsQuittableUpdate(directionUpdates.FirstOrDefault()?.Item5)) || (!UpdateInfo.IsQuittableUpdate(directionUpdates.Skip(1).Take(1).FirstOrDefault()?.Item5);
         }
 */
     }

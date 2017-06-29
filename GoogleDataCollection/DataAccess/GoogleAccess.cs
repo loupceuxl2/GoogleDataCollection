@@ -6,10 +6,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-// TO DO: DELETE!
-// GDC1: AIzaSyD_EFI7UTnUSKJk_R8_66tDD0_XHEujQVc
-// GDC2: AIzaSyCAJzU9R8Y8UgtD1QoUHswUgRjnLMA7VJ4
-// GDC3: AIzaSyCtoG6JK_SAu_On2rW4fZ_Wypp3K-xZ1WI
 namespace GoogleDataCollection.DataAccess
 {
     public static class GoogleAccess
@@ -69,6 +65,8 @@ namespace GoogleDataCollection.DataAccess
 
             Log.GlobalLog.AddToLog(new LogMessage($"Data collection started.", Log.PriorityLevels.Medium));
 
+            data.Projects.ForEach(p => p.LoadProject());
+
             data.UpdateSessions.Add(updateSession);
             updateSession.RunTimeStartedAt = DateTime.Now;
             updateSession.ExecutionSummary = executionSummary;
@@ -84,7 +82,7 @@ namespace GoogleDataCollection.DataAccess
             // DONE: Overall summary.
             data.Projects.ForEach(p => executionSummary.Update(p.Summary));
 
-            Log.GlobalLog.AddToLog(new LogMessage($"{ executionSummary }.", Log.PriorityLevels.High));
+            Log.GlobalLog.AddToLog(new LogMessage($"{ executionSummary }", Log.PriorityLevels.High));
 
             updateSession.ExecutionSummary = executionSummary;
             updateSession.RunTimeCompletedAt = DateTime.Now;

@@ -4,6 +4,10 @@ using System.IO;
 
 namespace GoogleDataCollection.DataAccess
 {
+    // TO DO: DELETE!
+    // GDC1: AIzaSyD_EFI7UTnUSKJk_R8_66tDD0_XHEujQVc
+    // GDC2: AIzaSyCAJzU9R8Y8UgtD1QoUHswUgRjnLMA7VJ4
+    // GDC3: AIzaSyCtoG6JK_SAu_On2rW4fZ_Wypp3K-xZ1WI
     public static class CsvAccess
     {
         public enum ColumnIndex : byte { FId = 0, OsmId, HighwayName, HighwayType, IsOneWay, MaxSpeed, Length, FromY, FromX, ToY, ToX, YMid, XMid };
@@ -88,9 +92,6 @@ namespace GoogleDataCollection.DataAccess
             {
                 Logging.Log.GlobalLog.AddToLog(new Logging.LogMessage($"Parsing { row * 100 / totalEdges }% complete ({ row } of { totalEdges } edges processed).", Logging.Log.PriorityLevels.Medium));
             }
-
-            // Summary.
-
 
             return container;
         }

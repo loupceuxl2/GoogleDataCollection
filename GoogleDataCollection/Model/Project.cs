@@ -19,17 +19,16 @@ namespace GoogleDataCollection.Model
     [JsonObject(MemberSerialization.OptIn)]
     public class Project : ILog
     {
-        public static uint MaxRequests = 2500;
+        public static uint MaxRequests = 3;
 
-        public static uint MaxBatchRequests = 50;
+        public static uint MaxBatchRequests = 2;
 
         public static uint BatchIntervalTime = 1100;
-
-        private static uint _numProjects;
 
         [JsonProperty(PropertyName = "apiKey", Required = Required.Always)]
         public string ApiKey { get; set; }
 
+        [JsonProperty(PropertyName = "number", Required = Required.Always)]
         public uint Number { get; set; }
 
         public UpdateSession CurrentSession { get; set; }
@@ -40,8 +39,11 @@ namespace GoogleDataCollection.Model
 
         public Project()
         {
-            Number = ++_numProjects;
 
+        }
+
+        public void LoadProject()
+        {
             Summary = new ProjectSummary((int)Number);
 
             Log = new Log(new FileInfo($"{ AppDomain.CurrentDomain.BaseDirectory }\\project_{ Number }.txt"))
@@ -55,7 +57,7 @@ namespace GoogleDataCollection.Model
             };
         }
 
-        public async Task<Tuple<uint, Edge, EdgeUpdate.UpdateDirections, UpdateInfo, UpdateTime>> GetUpdate(Edge edge, EdgeUpdate.UpdateDirections direction, UpdateTime updateTime)
+        public async Task<Tuple<int, uint, Edge, EdgeUpdate.UpdateDirections, UpdateInfo, UpdateTime>> GetUpdate(int updateCount, Edge edge, EdgeUpdate.UpdateDirections direction, UpdateTime updateTime)
         {
             return await Task.Run(() =>
             {
@@ -94,7 +96,7 @@ namespace GoogleDataCollection.Model
                 updateInfo.GoogleErrorMessage = response?.ErrorMessage;
                 updateInfo.GoogleDuration = response.Routes?.FirstOrDefault()?.Legs?.FirstOrDefault()?.DurationInTraffic?.Value;
 
-                return new Tuple<uint, Edge, EdgeUpdate.UpdateDirections, UpdateInfo, UpdateTime>(edge.Fid, edge, direction, updateInfo, updateTime);
+                return new Tuple<int, uint, Edge, EdgeUpdate.UpdateDirections, UpdateInfo, UpdateTime>(updateCount, edge.Fid, edge, direction, updateInfo, updateTime);
             });
         }
 
@@ -104,18 +106,19 @@ namespace GoogleDataCollection.Model
         // TO DO: Test empty queue.
         public async Task<int> GetUpdates(ConcurrentQueue<Tuple<int, Edge, UpdateTime>> edges, List<UpdateTime> updateTimes)
         {
-            var requestTotal = 0;
+            var projectTotal = 0;
             var batchTotal = 0;
+            var hasOverflowed = MaxBatchRequests < 2;
             var stopwatch = new Stopwatch();
 
             try
             {
-                while (requestTotal < MaxRequests)
+                while (projectTotal < MaxRequests && (!hasOverflowed))
                 {
                     var batchNumber = 0;
-                    var tasks = new List<Task<Tuple<uint, Edge, EdgeUpdate.UpdateDirections, UpdateInfo, UpdateTime>>>();
+                    var tasks = new List<Task<Tuple<int, uint, Edge, EdgeUpdate.UpdateDirections, UpdateInfo, UpdateTime>>>();
 
-                    while (batchNumber < MaxBatchRequests)
+                    while (batchNumber < MaxBatchRequests && projectTotal < MaxRequests)
                     {
                         stopwatch.Restart();
 
@@ -126,19 +129,21 @@ namespace GoogleDataCollection.Model
 
                         if (currentEdge.Item2.IsOneWay)
                         {
-                            Log.AddToLog(new LogMessage($"Project #{ Number }: Attempting one way data retrieval #{ requestTotal + 1 } of { MaxRequests } (#{ batchNumber + 1 } of batch #{ batchTotal + 1 }) (Edge #{ currentEdge.Item2.Fid }).", Log.PriorityLevels.UltraLow));
+                            Log.AddToLog(new LogMessage($"Project #{ Number }: Attempting one way data retrieval #{ projectTotal + 1 } of { MaxRequests } (#{ batchNumber + 1 } of batch #{ batchTotal + 1 }) (Edge #{ currentEdge.Item2.Fid }).", Log.PriorityLevels.UltraLow));
 
-                            tasks.Add(GetUpdate(currentEdge.Item2, EdgeUpdate.UpdateDirections.Forwards, currentEdge.Item3));
+                            tasks.Add(GetUpdate(currentEdge.Item1, currentEdge.Item2, EdgeUpdate.UpdateDirections.Forwards, currentEdge.Item3));
 
-                            requestTotal++;
+                            projectTotal++;
                             batchNumber++;
                         }
                         else
                         {
+                            if (hasOverflowed = projectTotal + 2 > MaxRequests) { break; }
+
                             //if (batchNumber + 1 >= MaxBatchRequests)
                             if (batchNumber + 2 > MaxBatchRequests)
                             {
-                                Log.AddToLog(new LogMessage($"Project #{ Number }: Skipping two way data retrieval #{ requestTotal + 1 } of { MaxRequests } (#{ batchNumber + 1 } of batch #{ batchTotal + 1 }) AND #{ requestTotal + 2 } of { MaxRequests } (#{ batchNumber + 2 } of batch #{ batchTotal + 1 }) (Edge #{ currentEdge.Item2.Fid }).", Log.PriorityLevels.Low));
+                                Log.AddToLog(new LogMessage($"Project #{ Number }: Skipping two way data retrieval #{ projectTotal + 1 } of { MaxRequests } (#{ batchNumber + 1 } of batch #{ batchTotal + 1 }) AND #{ projectTotal + 2 } of { MaxRequests } (#{ batchNumber + 2 } of batch #{ batchTotal + 1 }) (Edge #{ currentEdge.Item2.Fid }).", Log.PriorityLevels.Low));
 
                                 // Requeue skipped item.
                                 edges.Enqueue(currentEdge);
@@ -146,42 +151,45 @@ namespace GoogleDataCollection.Model
                                 break;
                             }
 
-                            Log.AddToLog(new LogMessage($"Project #{ Number }: Attempting two way data retrieval #{ requestTotal + 1 } of { MaxRequests } (#{ batchNumber + 1 } of batch #{ batchTotal + 1 }) AND #{ requestTotal + 2 } of { MaxRequests } (#{ batchNumber + 2 } of batch #{ batchTotal + 1 }) (Edge #{ currentEdge.Item2.Fid }).", Log.PriorityLevels.UltraLow));
+                            Log.AddToLog(new LogMessage($"Project #{ Number }: Attempting two way data retrieval #{ projectTotal + 1 } of { MaxRequests } (#{ batchNumber + 1 } of batch #{ batchTotal + 1 }) AND #{ projectTotal + 2 } of { MaxRequests } (#{ batchNumber + 2 } of batch #{ batchTotal + 1 }) (Edge #{ currentEdge.Item2.Fid }).", Log.PriorityLevels.UltraLow));
 
-                            tasks.Add(GetUpdate(currentEdge.Item2, EdgeUpdate.UpdateDirections.Forwards, currentEdge.Item3));
-                            tasks.Add(GetUpdate(currentEdge.Item2, EdgeUpdate.UpdateDirections.Backwards, currentEdge.Item3));
+                            tasks.Add(GetUpdate(currentEdge.Item1, currentEdge.Item2, EdgeUpdate.UpdateDirections.Forwards, currentEdge.Item3));
+                            tasks.Add(GetUpdate(currentEdge.Item1, currentEdge.Item2, EdgeUpdate.UpdateDirections.Backwards, currentEdge.Item3));
 
-                            requestTotal += 2;
+                            projectTotal += 2;
                             batchNumber += 2;
                         }
                     }
 
-                    batchTotal += 1;
-
                     await Task.WhenAll(tasks);
 
+                    if (tasks.Count == 0) { break;  }
+
+                    batchTotal += 1;
+
                     // Validate, write to object and requeue.
+                    // DONE: Test requeuing is working correctly.
                     tasks.Where(t => t.Status == TaskStatus.RanToCompletion)
                         .Select(t => t.Result)
-                        .GroupBy(t => t.Item2.Fid, t => t, (key, g) => new { edge = g.Where(v => v.Item2.Fid == key).Select(v => v.Item2).First(), updates = g.ToList() })
+                        .GroupBy(t => t.Item3.Fid, t => t, (key, g) => new { edge = g.Where(v => v.Item3.Fid == key).Select(v => v.Item3).First(), updates = g.ToList() })
                         .Select(a => new { a.edge, a.updates })
                         .ToList().ForEach(v =>
                         {
                             v.edge.UpdateEdge(v.updates);
-                            if (v.edge.IsRequeuable(v.updates)) { edges.Enqueue(new Tuple<int, Edge, UpdateTime>((int)v.updates[0].Item1 + 1, v.updates[0].Item2, updateTimes[((int)v.updates[0].Item1 + 1) % updateTimes.Count])); }
+                            if (v.edge.IsRequeuable(v.updates)) { edges.Enqueue(new Tuple<int, Edge, UpdateTime>(v.updates[0].Item1 + 1, v.updates[0].Item3, updateTimes[(v.updates[0].Item1 + 1) % updateTimes.Count])); }
                         });
 
                     // Summarise batch.
                     var batchSummary = new BatchSummary(batchTotal, tasks);
 
-                    Log.AddToLog(new LogMessage($"Project #{ Number }: Summary for batch #{ batchSummary.Number }.{ Environment.NewLine }{ batchSummary }.", Log.PriorityLevels.Low));
+                    Log.AddToLog(new LogMessage($"Project #{ Number }: Summary for batch #{ batchSummary.Number }.{ Environment.NewLine }{ batchSummary }", Log.PriorityLevels.Low));
 
                     Summary.Update(batchSummary);
 
                     // Actual request & response time is earlier but may as well include processing time required to validate, write to object and generate or update summaries.
                     stopwatch.Stop();
 
-                    Log.AddToLog(new LogMessage($"Project #{ Number }: Batch # { batchTotal } took { stopwatch.ElapsedMilliseconds } milliseconds to process.", Log.PriorityLevels.Medium));
+                    Log.AddToLog(new LogMessage($"Project #{ Number }: Batch #{ batchTotal } took { stopwatch.ElapsedMilliseconds } milliseconds to process.", Log.PriorityLevels.Medium));
 
                     // This will only happen if you somehow manage to get a TON of API keys :)
                     if (edges.IsEmpty)
@@ -219,28 +227,15 @@ namespace GoogleDataCollection.Model
                 return -1;
             }
         }
+
+        public static List<Project> GenerateTestProjects()
+        {
+            return  new List<Project>
+            {
+                new Project { Number = 1, ApiKey = "AIzaSyD_EFI7UTnUSKJk_R8_66tDD0_XHEujQVc" },
+                new Project { Number = 2, ApiKey = "AIzaSyCAJzU9R8Y8UgtD1QoUHswUgRjnLMA7VJ4" },
+                new Project { Number = 3, ApiKey = "AIzaSyCtoG6JK_SAu_On2rW4fZ_Wypp3K-xZ1WI" }
+            };
+        }
     }
 }
-
-/*
-                var toValidate = tasks.Where(t => t.Status == TaskStatus.RanToCompletion)
-                    .Select(t => t.Result)
-                    .GroupBy(t => t.Item2.Fid, t => t, (key, g) => new { edge = g.Where(v => v.Item2.Fid == key).Select(v => v.Item2).First(), updates = g.ToList() })
-                    .Select(a => new { a.edge, a.updates })
-                    .ToList();
-
-                foreach (var result in toValidate)
-                {
-                    result.edge.UpdateEdge(result.updates);
-
-                    if (result.edge.IsRequeuable(result.updates))
-                    {
-                        edges.Enqueue(new Tuple<int, Edge, UpdateTime>((int)result.updates[0].Item1 + 1, result.updates[0].Item2, updateTimes[((int)result.updates[0].Item1 + 1) % updateTimes.Count]));
-                    }
-
-                    if (result.edge.IsQuittable(result.updates))
-                    {
-                        isValid = false;
-                    }
-                }
-*/

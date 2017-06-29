@@ -25,23 +25,22 @@ namespace GoogleDataCollection
                     DebuggerPriority = Log.PriorityLevels.UltraLow
                 };
 
-                // Uncomment for a quick disable of logging.
+                // Uncomment to disable global logging.
 /*                
                 //Logging.Log.GlobalLog.Disable();
 */
 
 
                 // !IMPORTANT: Uncomment to get a new (clean) Qld network JSON file. This will overwrite any existing "qld_network.json".
-/*    
+   
                 var container = CsvAccess.ParseCsv();
                 container.UpdateTimes.AddRange(UpdateTime.DefaultUpdateTimes);      // Add default update times (hard coded).
+                container.Projects.AddRange(Project.GenerateTestProjects());        // If testing, add some (real) projects.
                 File.WriteAllText(JsonAccess.DefaultFilename, JsonConvert.SerializeObject(container, Formatting.Indented));
-*/
+
 
                 var data = JsonAccess.DeserializeEdges();
-
                 GoogleAccess.RunDataCollector(data).Wait();
-
                 File.WriteAllText($"{ AppDomain.CurrentDomain.BaseDirectory }\\{ JsonAccess.DefaultFilename }", JsonConvert.SerializeObject(data, Formatting.Indented));
 
 /*
@@ -66,23 +65,3 @@ namespace GoogleDataCollection
     }
 }
 
-/*
-            var test = JsonAccess.DeserializeEdges();
-
-
-            foreach (var edge in test.Edges)
-            {
-                if (edge.MaxSpeed == 0)
-                {
-                    edge.MaxSpeed = null;
-                }
-            }
-
-            var output2 = JsonConvert.SerializeObject(test, Formatting.Indented);
-
-            File.WriteAllText(JsonAccess.DefaultFilepath + "new_file2.json", output2);
-
-            var test2 = JsonAccess.DeserializeEdges(JsonAccess.DefaultFilepath + "new_file2.json");
-
-            Console.WriteLine(test2.Edges.Count);
-*/
