@@ -22,11 +22,6 @@ namespace GoogleDataCollection.Model
         [JsonProperty(PropertyName = "edges", Required = Required.Always)]
         public List<Edge> Edges { get; set; }
 
-        public static Dictionary<uint, Edge> EdgesToDictionary(DataContainer container)
-        {
-            return container.Edges.ToDictionary(x => x.Fid, x => x);
-        }
-
         public DataContainer()
         {
             Edges = new List<Edge>();

@@ -17,7 +17,7 @@ namespace GoogleDataCollection.DataAccess
         public static async Task<int> RunDataCollector(DataContainer data)
         {
             var updateSession = new UpdateSession();
-            var executionSummary = new ExecutionSummary(0);
+            var executionSummary = new ExecutionSummary();
             var totalProjects = data.Projects.Count;
 
             // TO DO?: Remove duplicate projects (i.e., have the same HourRunTime) and order ascending (by HourRunTime).
@@ -43,6 +43,7 @@ namespace GoogleDataCollection.DataAccess
             Log.GlobalLog.AddToLog(new LogMessage($"{ totalUpdateTimes } update times loaded.", Log.PriorityLevels.Medium));
 
             // TO DO: Filter out non drivable streets (requires 1. Changing 'HighwayType' to an enum; 2. Reparsing the data to reflect changes).
+            // TO DO: Filter based on whether an edge contains updates which fail the IsRequeable test.
             // TO DO: Consider other filters based on data structure.
             var prioritisedUpdates =
                 data.Edges.GroupBy(e => e.Updates.Count, e => e,
@@ -85,6 +86,7 @@ namespace GoogleDataCollection.DataAccess
 
             Log.GlobalLog.AddToLog(new LogMessage($"{ executionSummary }.", Log.PriorityLevels.High));
 
+            updateSession.ExecutionSummary = executionSummary;
             updateSession.RunTimeCompletedAt = DateTime.Now;
 
             return 0;

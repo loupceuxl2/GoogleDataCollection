@@ -13,9 +13,6 @@ namespace GoogleDataCollection.Model
         [JsonProperty(PropertyName = "runTimeCompletedAt", Required = Required.Always)]
         public DateTime RunTimeCompletedAt { get; set; }
 
-        [JsonProperty(PropertyName = "requestCount", Required = Required.Always)]
-        public uint RequestCount { get; set; }
-
         [JsonProperty(PropertyName = "executionSummary", Required = Required.Always)]
         public ExecutionSummary ExecutionSummary { get; set; }
     }

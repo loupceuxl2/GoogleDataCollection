@@ -10,7 +10,7 @@ namespace GoogleDataCollection
     internal class Program
     {
         // TO DO: Add note regarding deletion of TimeBracket will corrupt data.
-        // DONE: Add logging from Caliburn Micro app.
+        // DONE: Import logging from Caliburn Micro app (AutoProgramCM).
         private static void Main(string[] args)
         {
             try
@@ -42,6 +42,8 @@ namespace GoogleDataCollection
 
                 GoogleAccess.RunDataCollector(data).Wait();
 
+                File.WriteAllText($"{ AppDomain.CurrentDomain.BaseDirectory }\\{ JsonAccess.DefaultFilename }", JsonConvert.SerializeObject(data, Formatting.Indented));
+
 /*
                 Console.WriteLine($"{DateTime.Now}: Data collection started.");
                 GoogleAccess.RunDataCollector(data).Wait();
@@ -56,8 +58,6 @@ namespace GoogleDataCollection
                 Console.WriteLine($"Exception");
                 Console.WriteLine($"{e}");
             }
-
-
 
             // TO DO: Uncomment for release version.
             Console.WriteLine("Press enter to close...");

@@ -26,35 +26,28 @@ namespace GoogleDataCollection.Model
         [JsonProperty(PropertyName = "error", Required = Required.Default)]
         public string GoogleErrorMessage { get; set; }
 
-        public bool IsValid()
-        {
-            if (this == null || (!UpdateInfo.IsSavable(this)))
-            {
-                return false;
-            }
-
-            return true;
-        }
-
         // REFERENCE: https://developers.google.com/maps/documentation/directions/intro#StatusCodes
-        public static bool IsSavable(UpdateInfo updateInfo)
+        public static bool IsSavableUpdate(UpdateInfo updateInfo)
         {
+            if (updateInfo == null) { return false; }
+
             switch (updateInfo.GoogleStatus)
             {
                 case DirectionsStatusCodes.OK:
                     return true;
 
                 case DirectionsStatusCodes.NOT_FOUND:
-                    return true;
+                    return false;
 
                 case DirectionsStatusCodes.ZERO_RESULTS:
-                    return true;
+                    return false;
 
+                // Should never occur for any versions of the program < 3.0.
                 case DirectionsStatusCodes.MAX_WAYPOINTS_EXCEEDED:
                     return false;
 
                 case DirectionsStatusCodes.INVALID_REQUEST:
-                    return true;
+                    return false;
 
                 case DirectionsStatusCodes.OVER_QUERY_LIMIT:
                     return false;
@@ -70,12 +63,49 @@ namespace GoogleDataCollection.Model
             }
         }
 
-        public static bool IsRequeuable(UpdateInfo updateInfo)
+        public static bool IsRequeuableUpdate(UpdateInfo updateInfo)
         {
+            if (updateInfo == null) { return true; }
+
             switch (updateInfo.GoogleStatus)
             {
                 case DirectionsStatusCodes.OK:
                     return true;
+
+                case DirectionsStatusCodes.NOT_FOUND:
+                    return false;
+
+                case DirectionsStatusCodes.ZERO_RESULTS:
+                    return false;
+
+                case DirectionsStatusCodes.MAX_WAYPOINTS_EXCEEDED:
+                    return true;
+
+                case DirectionsStatusCodes.INVALID_REQUEST:
+                    return true;
+
+                case DirectionsStatusCodes.OVER_QUERY_LIMIT:
+                    return true;
+
+                case DirectionsStatusCodes.REQUEST_DENIED:
+                    return true;
+
+                case DirectionsStatusCodes.UNKNOWN_ERROR:
+                    return true;
+
+                default:
+                    return true;
+            }
+        }
+
+        public static bool IsQuittableUpdate(UpdateInfo updateInfo)
+        {
+            if (updateInfo == null) { return false; }
+
+            switch (updateInfo.GoogleStatus)
+            {
+                case DirectionsStatusCodes.OK:
+                    return false;
 
                 case DirectionsStatusCodes.NOT_FOUND:
                     return false;
@@ -96,10 +126,10 @@ namespace GoogleDataCollection.Model
                     return true;
 
                 case DirectionsStatusCodes.UNKNOWN_ERROR:
-                    return true;
+                    return false;
 
                 default:
-                    return true;
+                    return false;
             }
         }
     }

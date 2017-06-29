@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using Newtonsoft.Json;
 using System;
-using System.Threading.Tasks;
 using System.Collections.Concurrent;
+using System.Linq;
 
 namespace GoogleDataCollection.Model
 {
@@ -15,7 +15,6 @@ namespace GoogleDataCollection.Model
         [JsonProperty(PropertyName = "osmId", Required = Required.Always)]
         public uint OsmId { get; set; }
 
-        //52054
         [JsonProperty(PropertyName = "highwayName", Required = Required.AllowNull)]
         public string HighwayName { get; set; }
 
@@ -60,53 +59,38 @@ namespace GoogleDataCollection.Model
             Updates = new List<EdgeUpdate>();
         }
 
-        public bool Validate(List<Tuple<uint, Edge, EdgeUpdate.UpdateDirections, UpdateInfo, UpdateTime>> directionUpdates)
+        // NOTE: An edge is considered to be valid if both its directions are savable if twoway, or if forward direction is savable if oneway (see UpdateInfo class).
+        public bool UpdateEdge(List<Tuple<uint, Edge, EdgeUpdate.UpdateDirections, UpdateInfo, UpdateTime>> directionUpdates)
         {
-            if (!IsOneWay)
+            var first = directionUpdates.FirstOrDefault()?.Item4;
+            var second = directionUpdates.Skip(1).Take(1).FirstOrDefault()?.Item4;
+
+            if ((!UpdateInfo.IsSavableUpdate(first)) || ((!IsOneWay) && (!UpdateInfo.IsSavableUpdate(second))))
             {
-                if (directionUpdates.Count != 2
-                    || (!directionUpdates[0].Item4.IsValid())
-                    || (!directionUpdates[1].Item4.IsValid())
-                    || (!UpdateInfo.IsSavable(directionUpdates[0].Item4))
-                    || (!UpdateInfo.IsSavable(directionUpdates[1].Item4))
-                    || (directionUpdates[0].Item5.HourRunTime != directionUpdates[1].Item5.HourRunTime))
-                {
-                    return false;
-                }
-
-                Updates.Add(new EdgeUpdate
-                {
-                    Forward = directionUpdates[0].Item4,
-                    Backward = directionUpdates[1].Item4,
-                    UpdateHour = directionUpdates[0].Item5.HourRunTime
-                });
-
+                return false;
             }
-            else
+
+            Updates.Add(new EdgeUpdate
             {
-                if (directionUpdates.Count != 1
-                    || (!directionUpdates[0].Item4.IsValid())
-                    || (!UpdateInfo.IsSavable(directionUpdates[0].Item4)))
-                {
-                    return false;
-                }
-
-                Updates.Add(new EdgeUpdate
-                {
-                    Forward = directionUpdates[0].Item4,
-                    UpdateHour = directionUpdates[0].Item5.HourRunTime
-                });
-            }
+                Forward = first,
+                Backward = second ?? null,
+                UpdateHour = directionUpdates[0].Item5.HourRunTime
+            });
 
             return true;
         }
 
-        public void ValidateAndRequeue(List<Tuple<uint, Edge, EdgeUpdate.UpdateDirections, UpdateInfo, UpdateTime>> directionUpdates, ConcurrentQueue<Tuple<int, Edge, UpdateTime>> edges, List<UpdateTime> updateTimes)
+        // NOTE: An edge is considered non-requeuable if both directions are non-requeuable. Nulls are requeuable. See UpdateInfo class for specifics.
+        public bool IsRequeuable(List<Tuple<uint, Edge, EdgeUpdate.UpdateDirections, UpdateInfo, UpdateTime>> directionUpdates)
         {
-            if (Validate(directionUpdates))
-            {
-                edges.Enqueue(new Tuple<int, Edge, UpdateTime>((int)directionUpdates[0].Item1 + 1, directionUpdates[0].Item2, updateTimes[((int)directionUpdates[0].Item1 + 1) % updateTimes.Count]));
-            }
+            return (UpdateInfo.IsRequeuableUpdate(directionUpdates.FirstOrDefault()?.Item4)) && (UpdateInfo.IsRequeuableUpdate(directionUpdates.Skip(1).Take(1).FirstOrDefault()?.Item4));
         }
+/*
+        // NOTE: An edge is considered quittable (i.e., end data requests) if either direction is quittable. Nulls are not quittable. See UpdateInfo class for specifics.
+        public bool IsQuittable(List<Tuple<uint, Edge, EdgeUpdate.UpdateDirections, UpdateInfo, UpdateTime>> directionUpdates)
+        {
+            return (UpdateInfo.IsQuittableUpdate(directionUpdates.FirstOrDefault()?.Item4)) || (!UpdateInfo.IsQuittableUpdate(directionUpdates.Skip(1).Take(1).FirstOrDefault()?.Item4));
+        }
+*/
     }
 }

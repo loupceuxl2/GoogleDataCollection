@@ -1,4 +1,5 @@
 ﻿using GoogleMapsApi.Entities.Directions.Response;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,28 +7,63 @@ using System.Threading.Tasks;
 
 namespace GoogleDataCollection.Model
 {
+    [JsonObject(MemberSerialization.OptIn)]
     public abstract class Summary
     {
         public abstract string Name { get; protected set; }
 
+        [JsonProperty(PropertyName = "number", Required = Required.Always)]
         public int Number { get; protected set; }
 
+        [JsonProperty(PropertyName = "totalRequests", Required = Required.Always)]
         public int TotalRequests { get; protected set; } = 0;
+
+        [JsonProperty(PropertyName = "oneWayCount", Required = Required.Always)]
         public int OneWayCount { get; protected set; } = 0;
+
+        [JsonProperty(PropertyName = "twoWayCount", Required = Required.Always)]
         public int TwoWayCount { get; protected set; } = 0;
+
+        [JsonProperty(PropertyName = "okCount", Required = Required.Always)]
         public int GoogleOkCount { get; protected set; } = 0;
+
+        [JsonProperty(PropertyName = "notOkCount", Required = Required.Always)]
         public int GoogleNotOkCount { get; protected set; } = 0;
+
+        [JsonProperty(PropertyName = "notFoundCount", Required = Required.Always)]
         public int GoogleNotFoundCount { get; protected set; } = 0;
+
+        [JsonProperty(PropertyName = "zeroResultsCount", Required = Required.Always)]
         public int GoogleZeroResultsCount { get; protected set; } = 0;
+
+        [JsonProperty(PropertyName = "maxWaypointsExceededCount", Required = Required.Always)]
         public int GoogleMaxWaypointsExceededCount { get; protected set; } = 0;
+
+        [JsonProperty(PropertyName = "invalidRequestCount", Required = Required.Always)]
         public int GoogleInvalidRequestCount { get; protected set; } = 0;
+
+        [JsonProperty(PropertyName = "overQueryLimitCount", Required = Required.Always)]
         public int GoogleOverQueryLimitCount { get; protected set; } = 0;
+
+        [JsonProperty(PropertyName = "requestDeniedCount", Required = Required.Always)]
         public int GoogleRequestDeniedCount { get; protected set; } = 0;
+
+        [JsonProperty(PropertyName = "unknownErrorCount", Required = Required.Always)]
         public int GoogleUnknownErrorCount { get; protected set; } = 0;
+
+        [JsonProperty(PropertyName = "errorMessageCount", Required = Required.Always)]
         public int GoogleErrorMessageCount { get; protected set; } = 0;
+
+        [JsonProperty(PropertyName = "durationCount", Required = Required.Always)]
         public int DurationCount { get; protected set; } = 0;
+
+        [JsonProperty(PropertyName = "nullDurationCount", Required = Required.Always)]
         public int NullDurationCount { get; protected set; } = 0;
+
+        [JsonProperty(PropertyName = "ranToCompletionCount", Required = Required.Always)]
         public int RanToCompletionCount { get; protected set; } = 0;
+
+        [JsonProperty(PropertyName = "failedToRunToCompletionCount", Required = Required.Always)]
         public int FailedToRunToCompletionCount { get; protected set; } = 0;
 
         public Summary(int number)
@@ -78,6 +114,7 @@ namespace GoogleDataCollection.Model
         }
     }
 
+    //[JsonObject(MemberSerialization.OptIn)]
     public class BatchSummary : Summary
     {
         public override string Name { get; protected set; }  = "Batch";
@@ -113,24 +150,51 @@ namespace GoogleDataCollection.Model
         }
     }
 
-
+    //[JsonObject(MemberSerialization.OptIn)]
     public class ProjectSummary : Summary
     {
         public override string Name { get; protected set; } = "Project";
 
+        //[JsonProperty(PropertyName = "batchSummaries", Required = Required.Always)]
+        public List<BatchSummary> BatchSummaries { get; set; }
+
         public ProjectSummary(int number) : base(number)
         {
+            BatchSummaries = new List<BatchSummary>();
+        }
 
+        public override void Update(Summary summary)
+        {
+            if (!(summary is BatchSummary)) { throw new ArgumentException(); }
+
+            base.Update(summary);
+
+            BatchSummaries.Add((BatchSummary)summary);
         }
     }
 
+    [JsonObject(MemberSerialization.OptIn)]
     public class ExecutionSummary : Summary
     {
         public override string Name { get; protected set; } = "Execution";
 
+        //[JsonProperty(PropertyName = "projectSummaries", Required = Required.Always)]
+        public List<ProjectSummary> ProjectSummaries { get; set; }
+
+        public ExecutionSummary() : this(1) { }
+
         public ExecutionSummary(int number) : base(number)
         {
+            ProjectSummaries = new List<ProjectSummary>();
+        }
 
+        public override void Update(Summary summary)
+        {
+            if (!(summary is ProjectSummary)) { throw new ArgumentException(); }
+
+            base.Update(summary);
+
+            ProjectSummaries.Add((ProjectSummary)summary);
         }
 
         public override string ToString()
@@ -139,13 +203,3 @@ namespace GoogleDataCollection.Model
         }
     }
 }
-
-/*
-        public DirectionsStatusCodes t1 = DirectionsStatusCodes.NOT_FOUND;
-        public DirectionsStatusCodes t2 = DirectionsStatusCodes.ZERO_RESULTS;
-        public DirectionsStatusCodes t3 = DirectionsStatusCodes.MAX_WAYPOINTS_EXCEEDED;
-        public DirectionsStatusCodes t4 = DirectionsStatusCodes.INVALID_REQUEST;
-        public DirectionsStatusCodes t5 = DirectionsStatusCodes.OVER_QUERY_LIMIT;
-        public DirectionsStatusCodes t6 = DirectionsStatusCodes.REQUEST_DENIED;
-        public DirectionsStatusCodes t7 = DirectionsStatusCodes.UNKNOWN_ERROR;
-*/
