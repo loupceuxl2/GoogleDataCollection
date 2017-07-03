@@ -8,6 +8,9 @@ namespace GoogleDataCollection.Model
     [JsonObject(MemberSerialization.OptIn)]
     public class EdgeUpdate
     {
+        [JsonProperty(PropertyName = "edgeId", Required = Required.Always)]         // For easy parent access.  
+        public string EdgeId { get; set; }
+
         [JsonProperty(PropertyName = "updateHour", Required = Required.Always)]
         public uint UpdateHour { get; set; }
 

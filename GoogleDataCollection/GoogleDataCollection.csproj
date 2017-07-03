@@ -66,7 +66,6 @@
     <Compile Include="Model\CsvParsingError.cs" />
     <Compile Include="Model\EdgeUpdate.cs" />
     <Compile Include="Model\Project.cs" />
-    <Compile Include="Model\Period.cs" />
     <Compile Include="Model\UpdateTime.cs" />
     <Compile Include="Model\UpdateSession.cs" />
     <Compile Include="Program.cs" />

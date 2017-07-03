@@ -19,8 +19,8 @@ namespace GoogleDataCollection
                 {
                     //Output = OutputFormats.File | OutputFormats.Console | OutputFormats.Debugger,
                     Output = Log.OutputFormats.Console,
-                    WriteMode = Log.WriteModes.Overwrite,
-                    ConsolePriority = Log.PriorityLevels.Medium,            // Highly recommended, any lower will significantly decrease operations' performance.
+                    FileWriteMode = Log.FileWriteModes.Overwrite,
+                    ConsolePriority = Log.PriorityLevels.Medium,       // Highly recommended, any lower will significantly decrease performance. For lower priorities consider using file logging instead.
                     FilePriority = Log.PriorityLevels.Low,             // File logging runs as a background task and should not affect operations, although if the application is closed all log messages may not have been processed. Also, it has to be enabled (Output = OutputFormats.File).
                     DebuggerPriority = Log.PriorityLevels.UltraLow
                 };
@@ -32,16 +32,18 @@ namespace GoogleDataCollection
 
 
                 // !IMPORTANT: Uncomment to get a new (clean) Qld network JSON file. This will overwrite any existing "qld_network.json".
-/*  
+ 
                 var container = CsvAccess.ParseCsv();
                 container.UpdateTimes.AddRange(UpdateTime.DefaultUpdateTimes);      // Add default update times (hard coded).
                 container.Projects.AddRange(Project.GenerateTestProjects());        // If testing, add some (real) projects.
                 File.WriteAllText(JsonAccess.DefaultFilename, JsonConvert.SerializeObject(container, Formatting.Indented));
-*/
-                var data = JsonAccess.DeserializeEdges();
-                GoogleAccess.RunDataCollector(data).Wait();
-                File.WriteAllText($"{ AppDomain.CurrentDomain.BaseDirectory }\\{ JsonAccess.DefaultFilename }", JsonConvert.SerializeObject(data, Formatting.Indented));
 
+                var data = JsonAccess.DeserializeEdges();
+
+                GoogleAccess.RunDataCollector(data).Wait();
+                JsonAccess.SerializeEdges(data);
+
+                JsonAccess.CreateOverview(data);
             }
             catch (Exception e)
             {

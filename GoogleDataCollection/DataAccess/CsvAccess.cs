@@ -122,7 +122,7 @@ namespace GoogleDataCollection.DataAccess
                         break;
 
                     case (uint)ColumnIndex.HighwayType:
-                        edge.HighwayType = value;
+                        edge.HighwayType = Edge.GetHighwayType(value);
                         break;
 
                     case (uint)ColumnIndex.IsOneWay:
@@ -178,7 +178,7 @@ namespace GoogleDataCollection.DataAccess
             }
             catch (Exception e)
             {
-                Logging.Log.GlobalLog.AddToLog(new Logging.LogMessage($"Parsing value { value } at [{ row + 1 }, { column + 1 }] failed: Conversion failure.", Logging.Log.PriorityLevels.High));
+                Logging.Log.GlobalLog.AddToLog(new Logging.LogMessage($"Parsing value { value } at [{ row }, { column }] failed: Conversion failure.", Logging.Log.PriorityLevels.High));
 
                 container.CsvParsing.Errors.Add(new CsvParsingError()
                 {

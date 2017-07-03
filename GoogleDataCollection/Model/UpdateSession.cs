@@ -3,7 +3,7 @@ using System;
 
 namespace GoogleDataCollection.Model
 {
-    // TO DO: Add (all, i.e., batch, project, overall) summaries here?
+    // DONE: Add (all, i.e., batch, project, overall) summaries here? --> Added execution summary only as (although supported) nesting summaries will end up making the JSON file large very quickly.
     [JsonObject(MemberSerialization.OptIn)]
     public class UpdateSession
     {

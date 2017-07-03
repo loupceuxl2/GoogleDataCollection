@@ -17,7 +17,7 @@ namespace GoogleDataCollection.Logging
         {
             //Output = OutputFormats.File | OutputFormats.Console | OutputFormats.Debugger,
             Output = OutputFormats.Console,
-            WriteMode = WriteModes.Overwrite,
+            FileWriteMode = FileWriteModes.Overwrite,
             ConsolePriority = PriorityLevels.Medium,
             FilePriority = PriorityLevels.UltraLow,
             DebuggerPriority = PriorityLevels.UltraLow
@@ -36,7 +36,7 @@ namespace GoogleDataCollection.Logging
             UltraHigh
         }
 
-        public enum WriteModes
+        public enum FileWriteModes
         {
             Overwrite,
             Append
@@ -56,18 +56,18 @@ namespace GoogleDataCollection.Logging
         public PriorityLevels FilePriority { get; set; }
         public PriorityLevels DebuggerPriority { get; set; }
         public PriorityLevels ConsolePriority { get; set; }
-        public WriteModes WriteMode { get; set; }
+        public FileWriteModes FileWriteMode { get; set; }
         public OutputFormats Output { get; set; }
         public FileInfo FileInfo { get; protected set; }
         public bool IsEnabled { get; protected set; }
         public uint WriteToFileCount { get; protected set; }
         public ConcurrentBag<LogMessage> Messages { get; protected set; }
 
-        public Log(FileInfo fileInfo, PriorityLevels filePriority = PriorityLevels.UltraLow, WriteModes writeMode = WriteModes.Overwrite, PriorityLevels debugPriority = PriorityLevels.UltraLow, PriorityLevels consolePriority = PriorityLevels.UltraLow, OutputFormats output = OutputFormats.File | OutputFormats.Debugger, bool enable = true)
+        public Log(FileInfo fileInfo, PriorityLevels filePriority = PriorityLevels.UltraLow, FileWriteModes writeMode = FileWriteModes.Overwrite, PriorityLevels debugPriority = PriorityLevels.UltraLow, PriorityLevels consolePriority = PriorityLevels.UltraLow, OutputFormats output = OutputFormats.File | OutputFormats.Debugger, bool enable = true)
         {
             FileInfo = fileInfo;
             FilePriority = filePriority;
-            WriteMode = writeMode;
+            FileWriteMode = writeMode;
             DebuggerPriority = debugPriority;
             ConsolePriority = consolePriority;
             Output = output;
@@ -83,7 +83,7 @@ namespace GoogleDataCollection.Logging
             }
         }
 
-        public Log(PriorityLevels filePriority = PriorityLevels.UltraLow, WriteModes writeMode = WriteModes.Overwrite, PriorityLevels debugPriority = PriorityLevels.UltraLow, PriorityLevels consolePriority = PriorityLevels.UltraLow, OutputFormats output = OutputFormats.File | OutputFormats.Debugger, bool enable = true)
+        public Log(PriorityLevels filePriority = PriorityLevels.UltraLow, FileWriteModes writeMode = FileWriteModes.Overwrite, PriorityLevels debugPriority = PriorityLevels.UltraLow, PriorityLevels consolePriority = PriorityLevels.UltraLow, OutputFormats output = OutputFormats.File | OutputFormats.Debugger, bool enable = true)
                 : this(new FileInfo($"{ AppDomain.CurrentDomain.BaseDirectory }\\{ DefaultGlobalLogFilename }"), filePriority, writeMode, debugPriority, consolePriority, output, enable) { }
 
         public void AddToLog(LogMessage message, bool writeToOutputs = true)
@@ -106,18 +106,6 @@ namespace GoogleDataCollection.Logging
         {
             IsEnabled = false;
         }
-
-/*
-        // TO DO: Test FlushMessages method.
-        // TO DO: Create a new log with appropriate file based settings and (deep?) copy this log's messages into it.
-        public void FlushMessagesToFile(FileInfo fileInfo, WriteModes writeMode)
-        {
-            while (Messages.TryTake(out LogMessage logMessage))
-            {
-                GlobalMessages.Add(new Tuple<LogMessage, Log>(logMessage, this));
-            }
-        }
-*/
 
         public List<LogMessage> GetMessagesByPriority(PriorityLevels matchingPriority)
         {
@@ -207,7 +195,7 @@ namespace GoogleDataCollection.Logging
 
         private static void WriteToFile(LogMessage logMessage, Log log)
         {
-            if (log.WriteMode == WriteModes.Overwrite && log.WriteToFileCount == 0)
+            if (log.FileWriteMode == FileWriteModes.Overwrite && log.WriteToFileCount == 0)
             {
                 File.WriteAllText(log.FileInfo.FullName, $"{ logMessage }");
             }

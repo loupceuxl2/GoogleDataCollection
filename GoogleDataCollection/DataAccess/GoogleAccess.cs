@@ -10,13 +10,43 @@ namespace GoogleDataCollection.DataAccess
 {
     public static class GoogleAccess
     {
+        public static HashSet<Edge.HighwayTypes> AcceptableHighwayTypes = new HashSet<Edge.HighwayTypes>
+        {
+            Edge.HighwayTypes.Motorway,
+            Edge.HighwayTypes.Trunk,
+            Edge.HighwayTypes.Primary,
+            Edge.HighwayTypes.Secondary,
+            Edge.HighwayTypes.Tertiary,
+            Edge.HighwayTypes.Unclassified,
+            Edge.HighwayTypes.Residential,
+            Edge.HighwayTypes.Service,
+            Edge.HighwayTypes.MotorwayLink,
+            Edge.HighwayTypes.TrunkLink,
+            Edge.HighwayTypes.PrimaryLink,
+            Edge.HighwayTypes.SecondaryLink,
+            Edge.HighwayTypes.TertiaryLink,
+            Edge.HighwayTypes.LivingStreet,
+            Edge.HighwayTypes.Pedestrian,
+            Edge.HighwayTypes.Track,
+            Edge.HighwayTypes.BusGuideway,
+            Edge.HighwayTypes.Escape,
+            Edge.HighwayTypes.Raceway,
+            Edge.HighwayTypes.Road,
+            Edge.HighwayTypes.Private,
+            Edge.HighwayTypes.Unsurfaced,
+            Edge.HighwayTypes.Minor,
+            Edge.HighwayTypes.Ford,
+            Edge.HighwayTypes.ClosedTrunk,
+            Edge.HighwayTypes.Unknown
+        };
+
         public static async Task<int> RunDataCollector(DataContainer data)
         {
             var updateSession = new UpdateSession();
             var executionSummary = new ExecutionSummary();
             var totalProjects = data.Projects.Count;
 
-            // TO DO?: Remove duplicate projects (i.e., have the same HourRunTime) and order ascending (by HourRunTime).
+            // TO DO [OPTIONAL]: Remove duplicate projects (i.e., have the same HourRunTime) and order ascending (by HourRunTime).
             if (totalProjects == 0)
             {
                 Log.GlobalLog.AddToLog(new LogMessage($"No projects found. Data collection aborted.", Log.PriorityLevels.UltraHigh));
@@ -38,12 +68,12 @@ namespace GoogleDataCollection.DataAccess
 
             Log.GlobalLog.AddToLog(new LogMessage($"{ totalUpdateTimes } update times loaded.", Log.PriorityLevels.Medium));
 
-            // TO DO: Filter out non drivable streets (requires 1. Changing 'HighwayType' to an enum; 2. Reparsing the data to reflect changes).
-            // TO DO: Filter based on whether an edge contains updates which fail the IsRequeable test.
-            // TO DO: Consider other filters based on data structure.
+            // DONE: Filter out non drivable streets (requires 1. Changing 'HighwayType' to an enum; 2. Reparsing the data to reflect changes).
+            // TO DO [OPTIONAL]: Consider other filters based on data structure.
             var prioritisedUpdates =
-                data.Edges.GroupBy(e => e.Updates.Count, e => e,
-                        (key, g) => new {UpdateCount = key, Edges = g.ToList()                                                                                                          // Group edges by update count.
+                data.Edges.Where(e => AcceptableHighwayTypes.Contains((Edge.HighwayTypes)e.HighwayType))                                                                                // Filter out non accepted highway types.
+                    .GroupBy(e => e.Updates.Count, e => e,                                                                                                                              // Group edges by update count.
+                        (key, g) => new {UpdateCount = key, Edges = g.ToList()                                                                                                          
                         .OrderBy(edge => edge.Fid).ToList()})                                                                                                                           // Order individual groupings by FID.
                     .OrderBy(g => g.UpdateCount)                                                                                                                                        // Order groups by update count.
                     .Select(x => new { x.UpdateCount, x.Edges })                                                                                                                          // Transform anonymous type to new { int, List<Edge> }
@@ -52,11 +82,9 @@ namespace GoogleDataCollection.DataAccess
 
             var edgeQueue = new ConcurrentQueue<Tuple<int, Edge, UpdateTime>>(prioritisedUpdates);
 
-            var totalEdges = edgeQueue.Count;
+            Log.GlobalLog.AddToLog(new LogMessage($"{ edgeQueue.Count } edges loaded. { data.Edges.Count - edgeQueue.Count } filtered out (from an initial total of { data.Edges.Count }).", Log.PriorityLevels.Medium));
 
-            Log.GlobalLog.AddToLog(new LogMessage($"{ edgeQueue.Count } edges loaded.", Log.PriorityLevels.Medium));
-
-            if (totalEdges == 0)
+            if (edgeQueue.Count == 0)
             {
                 Log.GlobalLog.AddToLog(new LogMessage($"No edges found. Data collection aborted.", Log.PriorityLevels.UltraHigh));
 

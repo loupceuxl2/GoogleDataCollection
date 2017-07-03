@@ -50,8 +50,7 @@ namespace GoogleDataCollection.Model
             Log = new Log(new FileInfo($"{ AppDomain.CurrentDomain.BaseDirectory }\\project_{ Number }.txt"))
             {
                 Output = Log.OutputFormats.File | Log.OutputFormats.Console | Log.OutputFormats.Debugger,         // Add file output for distinct project logs.
-                //Output = Log.OutputFormats.Console,
-                WriteMode = Log.WriteModes.Overwrite,
+                FileWriteMode = Log.FileWriteModes.Overwrite,
                 ConsolePriority = Log.PriorityLevels.Medium,
                 FilePriority = Log.PriorityLevels.UltraLow,
                 DebuggerPriority = Log.PriorityLevels.UltraLow
@@ -64,6 +63,7 @@ namespace GoogleDataCollection.Model
             {
                 var update = new EdgeUpdate
                 {
+                    EdgeId = edge.Id,
                     UpdateHour = updateTime.HourRunTime
                 };
 
