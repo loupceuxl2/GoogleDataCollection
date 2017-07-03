@@ -1,8 +1,4 @@
-﻿using GoogleMapsApi;
-using GoogleMapsApi.Entities.Directions.Request;
-using GoogleMapsApi.Entities.Directions.Response;
-using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Globalization;
@@ -10,7 +6,11 @@ using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using GoogleMapsApi;
+using GoogleMapsApi.Entities.Directions.Request;
+using GoogleMapsApi.Entities.Directions.Response;
 using GoogleDataCollection.Logging;
+using Newtonsoft.Json;
 
 using System.Diagnostics;
 
@@ -19,9 +19,10 @@ namespace GoogleDataCollection.Model
     [JsonObject(MemberSerialization.OptIn)]
     public class Project : ILog
     {
-        public static uint MaxRequests = 3;
+        public static uint MaxRequests = 50;
 
-        public static uint MaxBatchRequests = 2;
+        // !IMPORTANT: MaxBatchRequest must be <= MaxRequests.
+        public static uint MaxBatchRequests = 45;
 
         public static uint BatchIntervalTime = 1100;
 
@@ -57,21 +58,25 @@ namespace GoogleDataCollection.Model
             };
         }
 
-        public async Task<Tuple<int, uint, Edge, EdgeUpdate.UpdateDirections, UpdateInfo, UpdateTime>> GetUpdate(int updateCount, Edge edge, EdgeUpdate.UpdateDirections direction, UpdateTime updateTime)
+        public async Task<Tuple<int, Edge, UpdateTime, EdgeUpdate>> GetUpdate(int updateCount, Edge edge, UpdateTime updateTime)
         {
             return await Task.Run(() =>
             {
-                var updateInfo = new UpdateInfo();
+                var update = new EdgeUpdate
+                {
+                    UpdateHour = updateTime.HourRunTime
+                };
+
                 var travelMode = TravelMode.Driving;
                 var occurrence = UpdateTime.GetNextOccurrence((int)updateTime.HourRunTime);
                 occurrence = new DateTime(occurrence.Year, occurrence.Month, occurrence.Day, occurrence.Hour, 0, 0);
 
-                Log.AddToLog(new LogMessage($"Project #{ Number }: Requesting edge {edge.Fid} { direction.ToString().ToLower() } { travelMode.ToString().ToLower() } traversal duration for { occurrence }.", Log.PriorityLevels.UltraLow));
+                Log.AddToLog(new LogMessage($"Project #{ Number }: Requesting edge '{edge.Id}' { travelMode.ToString().ToLower() } duration at { occurrence }.", Log.PriorityLevels.UltraLow));
 
-                var xOrigin = direction == EdgeUpdate.UpdateDirections.Forwards ? edge.XFromPoint.ToString(CultureInfo.InvariantCulture) : edge.XToPoint.ToString(CultureInfo.InvariantCulture);
-                var yOrigin = direction == EdgeUpdate.UpdateDirections.Forwards ? edge.YFromPoint.ToString(CultureInfo.InvariantCulture) : edge.YToPoint.ToString(CultureInfo.InvariantCulture);
-                var xDestination = direction == EdgeUpdate.UpdateDirections.Forwards ? edge.XToPoint.ToString(CultureInfo.InvariantCulture) : edge.XFromPoint.ToString(CultureInfo.InvariantCulture);
-                var yDestination = direction == EdgeUpdate.UpdateDirections.Forwards ? edge.YToPoint.ToString(CultureInfo.InvariantCulture) : edge.YFromPoint.ToString(CultureInfo.InvariantCulture);
+                var xOrigin = edge.XFromPoint.ToString(CultureInfo.InvariantCulture);
+                var yOrigin = edge.YFromPoint.ToString(CultureInfo.InvariantCulture);
+                var xDestination = edge.XToPoint.ToString(CultureInfo.InvariantCulture);
+                var yDestination = edge.YToPoint.ToString(CultureInfo.InvariantCulture);
 
                 var directionsRequest = new DirectionsRequest
                 {
@@ -85,18 +90,19 @@ namespace GoogleDataCollection.Model
                 var requestTime = DateTime.Now;
                 var response = GoogleMaps.Directions.Query(directionsRequest);
 
+                // Log result.
                 Log.AddToLog((response.Status == DirectionsStatusCodes.OK)
-                    ? new LogMessage($"Project #{ Number }: Edge {edge.Fid} { direction.ToString().ToLower() } { travelMode.ToString().ToLower() } traversal duration for { occurrence } response: { response.Status }.", Log.PriorityLevels.UltraLow)
-                    : new LogMessage($"Project #{ Number }: Edge {edge.Fid} { direction.ToString().ToLower() } { travelMode.ToString().ToLower() } traversal duration for { occurrence } response: { response.Status }.{(!string.IsNullOrEmpty(response.ErrorMessage) ? Environment.NewLine + "Error: " + response.ErrorMessage + "." : string.Empty)}", Log.PriorityLevels.Low));
+                    ? new LogMessage($"Project #{ Number }: Edge '{ edge.Id }' { travelMode.ToString().ToLower() } duration at { occurrence } response: { response.Status }.", Log.PriorityLevels.UltraLow)
+                    : new LogMessage($"Project #{ Number }: Edge '{ edge.Id }' { travelMode.ToString().ToLower() } duration at { occurrence } response: { response.Status }.{(!string.IsNullOrEmpty(response.ErrorMessage) ? Environment.NewLine + "Error: " + response.ErrorMessage + "." : string.Empty)}", Log.PriorityLevels.Low));
 
-                updateInfo.DepartureTime = occurrence;
-                updateInfo.GoogleRequestTime = requestTime;
-                updateInfo.GoogleStatus = response.Status;
-                updateInfo.GoogleTravelMode = travelMode;
-                updateInfo.GoogleErrorMessage = response?.ErrorMessage;
-                updateInfo.GoogleDuration = response.Routes?.FirstOrDefault()?.Legs?.FirstOrDefault()?.DurationInTraffic?.Value;
+                update.DepartureTime = occurrence;
+                update.GoogleRequestTime = requestTime;
+                update.GoogleStatus = response.Status;
+                update.GoogleTravelMode = travelMode;
+                update.GoogleErrorMessage = response?.ErrorMessage;
+                update.GoogleDuration = response.Routes?.FirstOrDefault()?.Legs?.FirstOrDefault()?.DurationInTraffic?.Value;
 
-                return new Tuple<int, uint, Edge, EdgeUpdate.UpdateDirections, UpdateInfo, UpdateTime>(updateCount, edge.Fid, edge, direction, updateInfo, updateTime);
+                return new Tuple<int, Edge, UpdateTime, EdgeUpdate>(updateCount, edge, updateTime, update);
             });
         }
 
@@ -106,19 +112,24 @@ namespace GoogleDataCollection.Model
         // TO DO: Test empty queue.
         public async Task<int> GetUpdates(ConcurrentQueue<Tuple<int, Edge, UpdateTime>> edges, List<UpdateTime> updateTimes)
         {
-            var projectTotal = 0;
-            var batchTotal = 0;
-            var hasOverflowed = MaxBatchRequests < 2;
+            if (MaxBatchRequests > MaxRequests) { return -2; }
+
+            var requestCompletedCount = 0;
+            var batchNumber = 0;
             var stopwatch = new Stopwatch();
 
             try
             {
-                while (projectTotal < MaxRequests && (!hasOverflowed))
+                while (true)
                 {
-                    var batchNumber = 0;
-                    var tasks = new List<Task<Tuple<int, uint, Edge, EdgeUpdate.UpdateDirections, UpdateInfo, UpdateTime>>>();
+                    batchNumber++;
 
-                    while (batchNumber < MaxBatchRequests && projectTotal < MaxRequests)
+                    Log.AddToLog(new LogMessage($"Project #{ Number }: Loading batch #{ batchNumber }.", Log.PriorityLevels.Low));
+
+                    var tasks = new List<Task<Tuple<int, Edge, UpdateTime, EdgeUpdate>>>();
+                    var batchRequestCount = 0;
+
+                    for (; batchRequestCount < MaxBatchRequests && ((requestCompletedCount + (batchRequestCount % MaxBatchRequests)) < MaxRequests); batchRequestCount++)
                     {
                         stopwatch.Restart();
 
@@ -127,60 +138,23 @@ namespace GoogleDataCollection.Model
                             break;
                         }
 
-                        if (currentEdge.Item2.IsOneWay)
-                        {
-                            Log.AddToLog(new LogMessage($"Project #{ Number }: Attempting one way data retrieval #{ projectTotal + 1 } of { MaxRequests } (#{ batchNumber + 1 } of batch #{ batchTotal + 1 }) (Edge #{ currentEdge.Item2.Fid }).", Log.PriorityLevels.UltraLow));
-
-                            tasks.Add(GetUpdate(currentEdge.Item1, currentEdge.Item2, EdgeUpdate.UpdateDirections.Forwards, currentEdge.Item3));
-
-                            projectTotal++;
-                            batchNumber++;
-                        }
-                        else
-                        {
-                            if (hasOverflowed = projectTotal + 2 > MaxRequests) { break; }
-
-                            //if (batchNumber + 1 >= MaxBatchRequests)
-                            if (batchNumber + 2 > MaxBatchRequests)
-                            {
-                                Log.AddToLog(new LogMessage($"Project #{ Number }: Skipping two way data retrieval #{ projectTotal + 1 } of { MaxRequests } (#{ batchNumber + 1 } of batch #{ batchTotal + 1 }) AND #{ projectTotal + 2 } of { MaxRequests } (#{ batchNumber + 2 } of batch #{ batchTotal + 1 }) (Edge #{ currentEdge.Item2.Fid }).", Log.PriorityLevels.Low));
-
-                                // Requeue skipped item.
-                                edges.Enqueue(currentEdge);
-
-                                break;
-                            }
-
-                            Log.AddToLog(new LogMessage($"Project #{ Number }: Attempting two way data retrieval #{ projectTotal + 1 } of { MaxRequests } (#{ batchNumber + 1 } of batch #{ batchTotal + 1 }) AND #{ projectTotal + 2 } of { MaxRequests } (#{ batchNumber + 2 } of batch #{ batchTotal + 1 }) (Edge #{ currentEdge.Item2.Fid }).", Log.PriorityLevels.UltraLow));
-
-                            tasks.Add(GetUpdate(currentEdge.Item1, currentEdge.Item2, EdgeUpdate.UpdateDirections.Forwards, currentEdge.Item3));
-                            tasks.Add(GetUpdate(currentEdge.Item1, currentEdge.Item2, EdgeUpdate.UpdateDirections.Backwards, currentEdge.Item3));
-
-                            projectTotal += 2;
-                            batchNumber += 2;
-                        }
+                        tasks.Add(GetUpdate(currentEdge.Item1, currentEdge.Item2, currentEdge.Item3));
                     }
+
+                    Log.AddToLog(new LogMessage($"Project #{ Number }: Loaded batch #{ batchNumber } with { batchRequestCount } edges.", Log.PriorityLevels.Low));
 
                     await Task.WhenAll(tasks);
 
-                    if (tasks.Count == 0) { break;  }
-
-                    batchTotal += 1;
-
-                    // Validate, write to object and requeue.
-                    // DONE: Test requeuing is working correctly.
-                    tasks.Where(t => t.Status == TaskStatus.RanToCompletion)
-                        .Select(t => t.Result)
-                        .GroupBy(t => t.Item3.Fid, t => t, (key, g) => new { edge = g.Where(v => v.Item3.Fid == key).Select(v => v.Item3).First(), updates = g.ToList() })
-                        .Select(a => new { a.edge, a.updates })
+                    tasks.Select(t => t.Result)
                         .ToList().ForEach(v =>
                         {
-                            v.edge.UpdateEdge(v.updates);
-                            if (v.edge.IsRequeuable(v.updates)) { edges.Enqueue(new Tuple<int, Edge, UpdateTime>(v.updates[0].Item1 + 1, v.updates[0].Item3, updateTimes[(v.updates[0].Item1 + 1) % updateTimes.Count])); }
+                            v.Item2.UpdateAndRequeue(v.Item1, v.Item4, updateTimes, edges);
                         });
 
                     // Summarise batch.
-                    var batchSummary = new BatchSummary(batchTotal, tasks);
+                    var batchSummary = new BatchSummary(batchNumber, tasks.Where(t => t.Status == TaskStatus.RanToCompletion).Select(t => t.Result).ToList());
+
+                    requestCompletedCount += batchRequestCount;
 
                     Log.AddToLog(new LogMessage($"Project #{ Number }: Summary for batch #{ batchSummary.Number }.{ Environment.NewLine }{ batchSummary }", Log.PriorityLevels.Low));
 
@@ -189,9 +163,14 @@ namespace GoogleDataCollection.Model
                     // Actual request & response time is earlier but may as well include processing time required to validate, write to object and generate or update summaries.
                     stopwatch.Stop();
 
-                    Log.AddToLog(new LogMessage($"Project #{ Number }: Batch #{ batchTotal } took { stopwatch.ElapsedMilliseconds } milliseconds to process.", Log.PriorityLevels.Medium));
+                    Log.AddToLog(new LogMessage($"Project #{ Number }: Batch #{ batchNumber } took { stopwatch.ElapsedMilliseconds } milliseconds to process.", Log.PriorityLevels.Medium));
 
-                    // This will only happen if you somehow manage to get a TON of API keys :)
+                    if (requestCompletedCount >= MaxRequests)
+                    {
+                        break;
+                    }
+
+                    // This should never happen as we're currently requeuing.
                     if (edges.IsEmpty)
                     {
                         Log.AddToLog(new LogMessage($"Project #{ Number } can no longer retrieve data: There are no edges left to process.", Log.PriorityLevels.High));
@@ -222,7 +201,7 @@ namespace GoogleDataCollection.Model
             }
             catch (Exception e)
             {
-                Log.AddToLog(new LogMessage($"Project #{ Number } has encountered an unexpected error. Project #{ Number } is aborting. Please ensure you are connected to the internet before trying again.", Log.PriorityLevels.UltraHigh));
+                Log.AddToLog(new LogMessage($"Project #{ Number } has encountered an unexpected error. Project #{ Number } is aborting. Please ensure you are connected to the internet.", Log.PriorityLevels.UltraHigh));
 
                 return -1;
             }

@@ -1,18 +1,102 @@
-[14:38:01:028] Project #1: Attempting two way data retrieval #1 of 3 (#1 of batch #1) AND #2 of 3 (#2 of batch #1) (Edge #0).
-[14:38:01:042] Project #1: Requesting edge 0 backwards driving traversal duration for 30/06/2017 07:00:00.
-[14:38:01:575] Project #1: Edge 0 backwards driving traversal duration for 30/06/2017 07:00:00 response: OK.
-[14:38:01:576] Project #1: Requesting edge 0 forwards driving traversal duration for 30/06/2017 07:00:00.
-[14:38:01:776] Project #1: Edge 0 forwards driving traversal duration for 30/06/2017 07:00:00 response: OK.
-[14:38:01:789] Project #1: Summary for batch #1.
+[13:14:53:301] Project #1: Loading batch #1.
+[13:14:53:314] Project #1: Loaded batch #1 with 45 edges.
+[13:14:53:319] Project #1: Requesting edge '119b-->a' driving duration at 04/07/2017 07:00:00.
+[13:14:54:298] Project #1: Requesting edge '97b-->a' driving duration at 04/07/2017 07:00:00.
+[13:14:54:404] Project #1: Edge '119b-->a' driving duration at 04/07/2017 07:00:00 response: OK.
+[13:14:54:404] Project #1: Requesting edge '119a-->b' driving duration at 04/07/2017 07:00:00.
+[13:14:54:762] Project #1: Edge '97b-->a' driving duration at 04/07/2017 07:00:00 response: OK.
+[13:14:54:762] Project #1: Requesting edge '98a-->b' driving duration at 04/07/2017 07:00:00.
+[13:14:54:842] Project #1: Edge '119a-->b' driving duration at 04/07/2017 07:00:00 response: OK.
+[13:14:54:842] Project #1: Requesting edge '118b-->a' driving duration at 04/07/2017 07:00:00.
+[13:14:55:259] Project #1: Edge '98a-->b' driving duration at 04/07/2017 07:00:00 response: OK.
+[13:14:55:259] Project #1: Requesting edge '98b-->a' driving duration at 04/07/2017 07:00:00.
+[13:14:55:389] Project #1: Edge '118b-->a' driving duration at 04/07/2017 07:00:00 response: OK.
+[13:14:55:389] Project #1: Requesting edge '118a-->b' driving duration at 04/07/2017 07:00:00.
+[13:14:55:701] Project #1: Edge '98b-->a' driving duration at 04/07/2017 07:00:00 response: OK.
+[13:14:55:701] Project #1: Requesting edge '99a-->b' driving duration at 04/07/2017 07:00:00.
+[13:14:55:804] Project #1: Edge '118a-->b' driving duration at 04/07/2017 07:00:00 response: OK.
+[13:14:55:804] Project #1: Requesting edge '117b-->a' driving duration at 04/07/2017 07:00:00.
+[13:14:56:145] Project #1: Edge '99a-->b' driving duration at 04/07/2017 07:00:00 response: OK.
+[13:14:56:145] Project #1: Requesting edge '99b-->a' driving duration at 04/07/2017 07:00:00.
+[13:14:56:354] Project #1: Edge '117b-->a' driving duration at 04/07/2017 07:00:00 response: OK.
+[13:14:56:354] Project #1: Requesting edge '117a-->b' driving duration at 04/07/2017 07:00:00.
+[13:14:56:606] Project #1: Edge '99b-->a' driving duration at 04/07/2017 07:00:00 response: OK.
+[13:14:56:606] Project #1: Requesting edge '100a-->b' driving duration at 04/07/2017 07:00:00.
+[13:14:56:817] Project #1: Edge '117a-->b' driving duration at 04/07/2017 07:00:00 response: OK.
+[13:14:56:817] Project #1: Requesting edge '116b-->a' driving duration at 04/07/2017 07:00:00.
+[13:14:57:256] Project #1: Edge '116b-->a' driving duration at 04/07/2017 07:00:00 response: OK.
+[13:14:57:256] Project #1: Requesting edge '116a-->b' driving duration at 04/07/2017 07:00:00.
+[13:14:57:420] Project #1: Edge '100a-->b' driving duration at 04/07/2017 07:00:00 response: OK.
+[13:14:57:420] Project #1: Requesting edge '100b-->a' driving duration at 04/07/2017 07:00:00.
+[13:14:57:422] Project #1: Requesting edge '101a-->b' driving duration at 04/07/2017 07:00:00.
+[13:14:57:738] Project #1: Edge '116a-->b' driving duration at 04/07/2017 07:00:00 response: OK.
+[13:14:57:738] Project #1: Requesting edge '115b-->a' driving duration at 04/07/2017 07:00:00.
+[13:14:57:751] Project #1: Edge '100b-->a' driving duration at 04/07/2017 07:00:00 response: OK.
+[13:14:57:752] Project #1: Requesting edge '101b-->a' driving duration at 04/07/2017 07:00:00.
+[13:14:57:832] Project #1: Edge '101a-->b' driving duration at 04/07/2017 07:00:00 response: OK.
+[13:14:57:832] Project #1: Requesting edge '102a-->b' driving duration at 04/07/2017 07:00:00.
+[13:14:58:130] Project #1: Edge '115b-->a' driving duration at 04/07/2017 07:00:00 response: OK.
+[13:14:58:130] Project #1: Requesting edge '115a-->b' driving duration at 04/07/2017 07:00:00.
+[13:14:58:252] Project #1: Edge '101b-->a' driving duration at 04/07/2017 07:00:00 response: OK.
+[13:14:58:253] Project #1: Requesting edge '102b-->a' driving duration at 04/07/2017 07:00:00.
+[13:14:58:266] Project #1: Edge '102a-->b' driving duration at 04/07/2017 07:00:00 response: OK.
+[13:14:58:266] Project #1: Requesting edge '103a-->b' driving duration at 04/07/2017 07:00:00.
+[13:14:58:498] Project #1: Edge '115a-->b' driving duration at 04/07/2017 07:00:00 response: OK.
+[13:14:58:498] Project #1: Requesting edge '114b-->a' driving duration at 04/07/2017 07:00:00.
+[13:14:58:688] Project #1: Edge '102b-->a' driving duration at 04/07/2017 07:00:00 response: OK.
+[13:14:58:735] Project #1: Edge '103a-->b' driving duration at 04/07/2017 07:00:00 response: OK.
+[13:14:58:735] Project #1: Requesting edge '103b-->a' driving duration at 04/07/2017 07:00:00.
+[13:14:58:959] Project #1: Edge '114b-->a' driving duration at 04/07/2017 07:00:00 response: OK.
+[13:14:58:959] Project #1: Requesting edge '114a-->b' driving duration at 04/07/2017 07:00:00.
+[13:14:59:149] Project #1: Requesting edge '104a-->b' driving duration at 04/07/2017 07:00:00.
+[13:14:59:175] Project #1: Edge '103b-->a' driving duration at 04/07/2017 07:00:00 response: OK.
+[13:14:59:175] Project #1: Requesting edge '104b-->a' driving duration at 04/07/2017 07:00:00.
+[13:14:59:396] Project #1: Edge '114a-->b' driving duration at 04/07/2017 07:00:00 response: OK.
+[13:14:59:397] Project #1: Requesting edge '113b-->a' driving duration at 04/07/2017 07:00:00.
+[13:14:59:531] Project #1: Edge '104b-->a' driving duration at 04/07/2017 07:00:00 response: OK.
+[13:14:59:538] Project #1: Edge '104a-->b' driving duration at 04/07/2017 07:00:00 response: OK.
+[13:14:59:538] Project #1: Requesting edge '105a-->b' driving duration at 04/07/2017 07:00:00.
+[13:14:59:816] Project #1: Edge '113b-->a' driving duration at 04/07/2017 07:00:00 response: OK.
+[13:14:59:816] Project #1: Requesting edge '113a-->b' driving duration at 04/07/2017 07:00:00.
+[13:14:59:927] Project #1: Requesting edge '105b-->a' driving duration at 04/07/2017 07:00:00.
+[13:15:00:035] Project #1: Edge '105a-->b' driving duration at 04/07/2017 07:00:00 response: OK.
+[13:15:00:035] Project #1: Requesting edge '106a-->b' driving duration at 04/07/2017 07:00:00.
+[13:15:00:223] Project #1: Edge '113a-->b' driving duration at 04/07/2017 07:00:00 response: OK.
+[13:15:00:224] Project #1: Requesting edge '112b-->a' driving duration at 04/07/2017 07:00:00.
+[13:15:00:334] Project #1: Edge '105b-->a' driving duration at 04/07/2017 07:00:00 response: OK.
+[13:15:00:334] Project #1: Requesting edge '106b-->a' driving duration at 04/07/2017 07:00:00.
+[13:15:00:479] Project #1: Edge '106a-->b' driving duration at 04/07/2017 07:00:00 response: OK.
+[13:15:00:479] Project #1: Requesting edge '107a-->b' driving duration at 04/07/2017 07:00:00.
+[13:15:00:637] Project #1: Edge '112b-->a' driving duration at 04/07/2017 07:00:00 response: OK.
+[13:15:00:637] Project #1: Requesting edge '112a-->b' driving duration at 04/07/2017 07:00:00.
+[13:15:00:700] Project #1: Edge '106b-->a' driving duration at 04/07/2017 07:00:00 response: OK.
+[13:15:00:965] Project #1: Edge '107a-->b' driving duration at 04/07/2017 07:00:00 response: OK.
+[13:15:00:965] Project #1: Requesting edge '107b-->a' driving duration at 04/07/2017 07:00:00.
+[13:15:01:000] Project #1: Edge '112a-->b' driving duration at 04/07/2017 07:00:00 response: OK.
+[13:15:01:000] Project #1: Requesting edge '111b-->a' driving duration at 04/07/2017 07:00:00.
+[13:15:01:084] Project #1: Requesting edge '108a-->b' driving duration at 04/07/2017 07:00:00.
+[13:15:01:414] Project #1: Edge '111b-->a' driving duration at 04/07/2017 07:00:00 response: OK.
+[13:15:01:414] Project #1: Requesting edge '111a-->b' driving duration at 04/07/2017 07:00:00.
+[13:15:01:428] Project #1: Edge '107b-->a' driving duration at 04/07/2017 07:00:00 response: OK.
+[13:15:01:429] Project #1: Requesting edge '108b-->a' driving duration at 04/07/2017 07:00:00.
+[13:15:01:617] Project #1: Edge '108a-->b' driving duration at 04/07/2017 07:00:00 response: OK.
+[13:15:01:617] Project #1: Requesting edge '109a-->b' driving duration at 04/07/2017 07:00:00.
+[13:15:01:762] Project #1: Edge '111a-->b' driving duration at 04/07/2017 07:00:00 response: OK.
+[13:15:01:762] Project #1: Requesting edge '110b-->a' driving duration at 04/07/2017 07:00:00.
+[13:15:01:869] Project #1: Edge '108b-->a' driving duration at 04/07/2017 07:00:00 response: OK.
+[13:15:01:869] Project #1: Requesting edge '109b-->a' driving duration at 04/07/2017 07:00:00.
+[13:15:01:937] Project #1: Edge '109a-->b' driving duration at 04/07/2017 07:00:00 response: OK.
+[13:15:02:237] Project #1: Edge '110b-->a' driving duration at 04/07/2017 07:00:00 response: OK.
+[13:15:02:237] Project #1: Requesting edge '110a-->b' driving duration at 04/07/2017 07:00:00.
+[13:15:02:335] Project #1: Edge '109b-->a' driving duration at 04/07/2017 07:00:00 response: OK.
+[13:15:02:561] Project #1: Edge '110a-->b' driving duration at 04/07/2017 07:00:00 response: OK.
+[13:15:02:567] Project #1: Summary for batch #1.
 ===== BATCH #1 SUMMARY =====
-Total requests: 2
-OK: 2
-Has duration: 2
-Ran to completion: 2
-One way count: 0
-Two way count: 2
+Total requests: 45
+OK: 45
+Has duration: 45
 Not OK: 0
-Has duration: 2
+Has duration: 45
 No duration: 0
 Not found: 0
 Zero results: 0
@@ -22,19 +106,47 @@ Over query limit: 0
 Request denied: 0
 Unknown error: 0
 Error messages: 0
-Failed to complete: 0 
 =============================
-[14:38:01:789] Project #1: Batch #1 took 760 milliseconds to process.
-[14:38:02:132] Project #1 completed.
+
+[13:15:02:567] Project #1: Batch #1 took 9252 milliseconds to process.
+[13:15:02:568] Project #1: Loading batch #2.
+[13:15:02:568] Project #1: Loaded batch #2 with 5 edges.
+[13:15:02:568] Project #1: Requesting edge '144b-->a' driving duration at 04/07/2017 07:00:00.
+[13:15:02:766] Project #1: Requesting edge '142b-->a' driving duration at 04/07/2017 07:00:00.
+[13:15:02:877] Project #1: Requesting edge '143a-->b' driving duration at 04/07/2017 07:00:00.
+[13:15:03:121] Project #1: Edge '144b-->a' driving duration at 04/07/2017 07:00:00 response: OK.
+[13:15:03:121] Project #1: Requesting edge '144a-->b' driving duration at 04/07/2017 07:00:00.
+[13:15:03:269] Project #1: Edge '142b-->a' driving duration at 04/07/2017 07:00:00 response: OK.
+[13:15:03:269] Project #1: Requesting edge '143b-->a' driving duration at 04/07/2017 07:00:00.
+[13:15:03:278] Project #1: Edge '143a-->b' driving duration at 04/07/2017 07:00:00 response: OK.
+[13:15:03:473] Project #1: Edge '144a-->b' driving duration at 04/07/2017 07:00:00 response: OK.
+[13:15:03:691] Project #1: Edge '143b-->a' driving duration at 04/07/2017 07:00:00 response: OK.
+[13:15:03:691] Project #1: Summary for batch #2.
+===== BATCH #2 SUMMARY =====
+Total requests: 5
+OK: 5
+Has duration: 5
+Not OK: 0
+Has duration: 5
+No duration: 0
+Not found: 0
+Zero results: 0
+Max waypoints exceeded: 0
+Invalid request: 0
+Over query limit: 0
+Request denied: 0
+Unknown error: 0
+Error messages: 0
+=============================
+
+[13:15:03:691] Project #1: Batch #2 took 1123 milliseconds to process.
+[13:15:03:691] Project #1 completed.
 ===== PROJECT #1 SUMMARY =====
-Total requests: 2
-OK: 2
-Has duration: 2
-Ran to completion: 0
-One way count: 0
-Two way count: 2
+Total requests: 50
+OK: 50
+Has duration: 50
 Not OK: 0
-Has duration: 2
+Has duration: 50
 No duration: 0
 Not found: 0
 Zero results: 0
@@ -44,5 +156,5 @@ Over query limit: 0
 Request denied: 0
 Unknown error: 0
 Error messages: 0
-Failed to complete: 0 
 =============================
+

@@ -70,7 +70,13 @@ namespace GoogleDataCollection.DataAccess
                         ParseItem((uint)row, (uint)column, parts[column], currentEdge, container);
                     }
 
+                    currentEdge.Id = Edge.GenerateId(currentEdge.Fid, Edge.EdgeDirections.Forwards);
                     container.Edges.Add(currentEdge);
+
+                    if (!currentEdge.IsOneWay)
+                    {
+                        container.Edges.Add(Edge.CreateReverseEdge(currentEdge));
+                    }
 
                     column = 0;
 
@@ -125,6 +131,7 @@ namespace GoogleDataCollection.DataAccess
 
                     case (uint)ColumnIndex.MaxSpeed:
                         edge.MaxSpeed = Convert.ToUInt32(value);
+                        if (edge.MaxSpeed == 0) { edge.MaxSpeed = null; }
                         break;
 
                     case (uint)ColumnIndex.Length:

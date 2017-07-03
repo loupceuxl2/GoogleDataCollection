@@ -32,25 +32,16 @@ namespace GoogleDataCollection
 
 
                 // !IMPORTANT: Uncomment to get a new (clean) Qld network JSON file. This will overwrite any existing "qld_network.json".
-   
+/*  
                 var container = CsvAccess.ParseCsv();
                 container.UpdateTimes.AddRange(UpdateTime.DefaultUpdateTimes);      // Add default update times (hard coded).
                 container.Projects.AddRange(Project.GenerateTestProjects());        // If testing, add some (real) projects.
                 File.WriteAllText(JsonAccess.DefaultFilename, JsonConvert.SerializeObject(container, Formatting.Indented));
-
-
+*/
                 var data = JsonAccess.DeserializeEdges();
                 GoogleAccess.RunDataCollector(data).Wait();
                 File.WriteAllText($"{ AppDomain.CurrentDomain.BaseDirectory }\\{ JsonAccess.DefaultFilename }", JsonConvert.SerializeObject(data, Formatting.Indented));
 
-/*
-                Console.WriteLine($"{DateTime.Now}: Data collection started.");
-                GoogleAccess.RunDataCollector(data).Wait();
-                Console.WriteLine($"{DateTime.Now}: Data collection complete.");
-
-                // DONE [!IMPORTANT]: Overwrite existing file (JsonAccess.DefaultFilename).
-                File.WriteAllText($"{ AppDomain.CurrentDomain.BaseDirectory }\\{ JsonAccess.DefaultFilename }", JsonConvert.SerializeObject(data, Formatting.Indented));
-*/
             }
             catch (Exception e)
             {

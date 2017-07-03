@@ -3,7 +3,6 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace GoogleDataCollection.Model
 {
@@ -17,12 +16,6 @@ namespace GoogleDataCollection.Model
 
         [JsonProperty(PropertyName = "totalRequests", Required = Required.Always)]
         public int TotalRequests { get; protected set; } = 0;
-
-        [JsonProperty(PropertyName = "oneWayCount", Required = Required.Always)]
-        public int OneWayCount { get; protected set; } = 0;
-
-        [JsonProperty(PropertyName = "twoWayCount", Required = Required.Always)]
-        public int TwoWayCount { get; protected set; } = 0;
 
         [JsonProperty(PropertyName = "okCount", Required = Required.Always)]
         public int GoogleOkCount { get; protected set; } = 0;
@@ -53,22 +46,12 @@ namespace GoogleDataCollection.Model
 
         [JsonProperty(PropertyName = "errorMessageCount", Required = Required.Always)]
         public int GoogleErrorMessageCount { get; protected set; } = 0;
-/*
-        [JsonProperty(PropertyName = "edgeCount", Required = Required.Always)]
-        public int EdgeCount { get; protected set; } = 0;
-*/
 
         [JsonProperty(PropertyName = "durationCount", Required = Required.Always)]
         public int DurationCount { get; protected set; } = 0;
 
         [JsonProperty(PropertyName = "nullDurationCount", Required = Required.Always)]
         public int NullDurationCount { get; protected set; } = 0;
-
-        [JsonProperty(PropertyName = "ranToCompletionCount", Required = Required.Always)]
-        public int RanToCompletionCount { get; protected set; } = 0;
-
-        [JsonProperty(PropertyName = "failedToRunToCompletionCount", Required = Required.Always)]
-        public int FailedToRunToCompletionCount { get; protected set; } = 0;
 
         public Summary(int number)
         {
@@ -78,8 +61,6 @@ namespace GoogleDataCollection.Model
         public virtual void Update(Summary summary)
         {
             TotalRequests += summary.TotalRequests;
-            OneWayCount += summary.OneWayCount;
-            TwoWayCount += summary.TwoWayCount;
             GoogleOkCount += summary.GoogleOkCount;
             GoogleNotOkCount += summary.GoogleNotOkCount;
             GoogleZeroResultsCount += summary.GoogleZeroResultsCount;
@@ -99,9 +80,6 @@ namespace GoogleDataCollection.Model
                 $"Total requests: { TotalRequests }{ Environment.NewLine }" +
                 $"OK: { GoogleOkCount }{ Environment.NewLine }" +
                 $"Has duration: { DurationCount }{ Environment.NewLine }" +
-                $"Ran to completion: { RanToCompletionCount }{ Environment.NewLine }" +
-                $"One way count: { OneWayCount }{ Environment.NewLine }" +
-                $"Two way count: { TwoWayCount }{ Environment.NewLine }" +
                 $"Not OK: { GoogleNotOkCount }{ Environment.NewLine }" +
                 $"Has duration: { DurationCount }{ Environment.NewLine }" +
                 $"No duration: { NullDurationCount }{ Environment.NewLine }" +
@@ -113,8 +91,7 @@ namespace GoogleDataCollection.Model
                 $"Request denied: { GoogleRequestDeniedCount }{ Environment.NewLine }" +
                 $"Unknown error: { GoogleUnknownErrorCount }{ Environment.NewLine }" +
                 $"Error messages: { GoogleErrorMessageCount }{ Environment.NewLine }" +
-                $"Failed to complete: { FailedToRunToCompletionCount } { Environment.NewLine }" +
-                $"=============================";
+                $"============================={ Environment.NewLine }";
         }
     }
 
@@ -123,7 +100,7 @@ namespace GoogleDataCollection.Model
     {
         public override string Name { get; protected set; }  = "Batch";
 
-        public BatchSummary(int number, List<Task<Tuple<int, uint, Edge, EdgeUpdate.UpdateDirections, UpdateInfo, UpdateTime>>> results) : base(number)
+        public BatchSummary(int number, List<Tuple<int, Edge, UpdateTime, EdgeUpdate>> results) : base(number)
         {
             if (results == null)
             {
@@ -132,28 +109,23 @@ namespace GoogleDataCollection.Model
 
             Number = number;
 
-            var resultsAsList = results.Select(t => t.Result).ToList();
-
-            TotalRequests = resultsAsList.Count;
-            OneWayCount = resultsAsList.Count(t => t.Item3.IsOneWay);
-            TwoWayCount = resultsAsList.Count(t => !t.Item3.IsOneWay);
-            GoogleOkCount = resultsAsList.Count(t => t.Item5.GoogleStatus == DirectionsStatusCodes.OK);
-            GoogleNotOkCount = resultsAsList.Count(t => t.Item5.GoogleStatus != DirectionsStatusCodes.OK);
-            GoogleNotFoundCount = resultsAsList.Count(t => t.Item5.GoogleStatus == DirectionsStatusCodes.NOT_FOUND);
-            GoogleZeroResultsCount = resultsAsList.Count(t => t.Item5.GoogleStatus == DirectionsStatusCodes.ZERO_RESULTS);
-            GoogleMaxWaypointsExceededCount = resultsAsList.Count(t => t.Item5.GoogleStatus == DirectionsStatusCodes.MAX_WAYPOINTS_EXCEEDED);
-            GoogleInvalidRequestCount = resultsAsList.Count(t => t.Item5.GoogleStatus == DirectionsStatusCodes.INVALID_REQUEST);
-            GoogleOverQueryLimitCount = resultsAsList.Count(t => t.Item5.GoogleStatus == DirectionsStatusCodes.OVER_QUERY_LIMIT);
-            GoogleRequestDeniedCount = resultsAsList.Count(t => t.Item5.GoogleStatus == DirectionsStatusCodes.REQUEST_DENIED);
-            GoogleUnknownErrorCount = resultsAsList.Count(t => t.Item5.GoogleStatus == DirectionsStatusCodes.UNKNOWN_ERROR);
-            GoogleErrorMessageCount = resultsAsList.Count(t => !string.IsNullOrEmpty(t.Item5.GoogleErrorMessage));
-            DurationCount = resultsAsList.Count(t => t.Item5.GoogleDuration != null);
-            NullDurationCount = resultsAsList.Count(t => t.Item5.GoogleDuration == null);
-            RanToCompletionCount = results.Count(t => t.Status == TaskStatus.RanToCompletion);
-            FailedToRunToCompletionCount = results.Count(t => t.Status != TaskStatus.RanToCompletion);
+            TotalRequests = results.Count;
+            GoogleOkCount = results.Count(t => t.Item4.GoogleStatus == DirectionsStatusCodes.OK);
+            GoogleNotOkCount = results.Count(t => t.Item4.GoogleStatus != DirectionsStatusCodes.OK);
+            GoogleNotFoundCount = results.Count(t => t.Item4.GoogleStatus == DirectionsStatusCodes.NOT_FOUND);
+            GoogleZeroResultsCount = results.Count(t => t.Item4.GoogleStatus == DirectionsStatusCodes.ZERO_RESULTS);
+            GoogleMaxWaypointsExceededCount = results.Count(t => t.Item4.GoogleStatus == DirectionsStatusCodes.MAX_WAYPOINTS_EXCEEDED);
+            GoogleInvalidRequestCount = results.Count(t => t.Item4.GoogleStatus == DirectionsStatusCodes.INVALID_REQUEST);
+            GoogleOverQueryLimitCount = results.Count(t => t.Item4.GoogleStatus == DirectionsStatusCodes.OVER_QUERY_LIMIT);
+            GoogleRequestDeniedCount = results.Count(t => t.Item4.GoogleStatus == DirectionsStatusCodes.REQUEST_DENIED);
+            GoogleUnknownErrorCount = results.Count(t => t.Item4.GoogleStatus == DirectionsStatusCodes.UNKNOWN_ERROR);
+            GoogleErrorMessageCount = results.Count(t => !string.IsNullOrEmpty(t.Item4.GoogleErrorMessage));
+            DurationCount = results.Count(t => t.Item4.GoogleDuration != null);
+            NullDurationCount = results.Count(t => t.Item4.GoogleDuration == null);
         }
     }
 
+    // Currently not saving the nested project and batch summaries as it makes the JSON quite verbose.
     //[JsonObject(MemberSerialization.OptIn)]
     public class ProjectSummary : Summary
     {
