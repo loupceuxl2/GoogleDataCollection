@@ -19,6 +19,8 @@ namespace GoogleDataCollection.Model
     [JsonObject(MemberSerialization.OptIn)]
     public class Project : ILog
     {
+        public static bool EnableLogging = true;
+
         public static uint MaxRequests = 50;
 
         // !IMPORTANT: MaxBatchRequest must be <= MaxRequests.
@@ -49,12 +51,14 @@ namespace GoogleDataCollection.Model
 
             Log = new Log(new FileInfo($"{ AppDomain.CurrentDomain.BaseDirectory }\\project_{ Number }.txt"))
             {
-                Output = Log.OutputFormats.File | Log.OutputFormats.Console | Log.OutputFormats.Debugger,         // Add file output for distinct project logs.
+                Output = Log.OutputFormats.File,         // Add file output for distinct project logs.
                 FileWriteMode = Log.FileWriteModes.Overwrite,
                 ConsolePriority = Log.PriorityLevels.Medium,
                 FilePriority = Log.PriorityLevels.UltraLow,
                 DebuggerPriority = Log.PriorityLevels.UltraLow
             };
+
+            if (!EnableLogging) { Log.Disable(); }
         }
 
         public async Task<Tuple<int, Edge, UpdateTime, EdgeUpdate>> GetUpdate(int updateCount, Edge edge, UpdateTime updateTime)

@@ -1,4 +1,5 @@
 ﻿using GoogleDataCollection.DataAccess;
+using GoogleDataCollection.Helper;
 using GoogleDataCollection.Logging;
 using GoogleDataCollection.Model;
 using Newtonsoft.Json;
@@ -13,6 +14,9 @@ namespace GoogleDataCollection
         // DONE: Import logging from Caliburn Micro app (AutoProgramCM).
         private static void Main(string[] args)
         {
+            var initialConsoleMode = ConsoleQuickEdit.GetConsoleMode();
+            ConsoleQuickEdit.Disable();     // Mouse clicks on the console stops code execution, therefore disable quick edit.
+
             try
             {
                 Log.GlobalLog = new Log(new FileInfo($"{ AppDomain.CurrentDomain.BaseDirectory }\\{ Log.DefaultGlobalLogFilename }"))
@@ -20,35 +24,42 @@ namespace GoogleDataCollection
                     //Output = OutputFormats.File | OutputFormats.Console | OutputFormats.Debugger,
                     Output = Log.OutputFormats.Console,
                     FileWriteMode = Log.FileWriteModes.Overwrite,
-                    ConsolePriority = Log.PriorityLevels.Medium,       // Highly recommended, any lower will significantly decrease performance. For lower priorities consider using file logging instead.
-                    FilePriority = Log.PriorityLevels.Low,             // File logging runs as a background task and should not affect operations, although if the application is closed all log messages may not have been processed. Also, it has to be enabled (Output = OutputFormats.File).
+                    ConsolePriority = Log.PriorityLevels.Medium,       // Highly recommended, any lower will significantly decrease performance. For lower priorities consider using file logging instead which runs as a background task.
+                    FilePriority = Log.PriorityLevels.UltraLow,             // File logging runs as a background task and should not affect operations, although if the application is closed 'too early' some log messages may be lost. Also, it has to be enabled (Output = OutputFormats.File).
                     DebuggerPriority = Log.PriorityLevels.UltraLow
                 };
 
                 // Uncomment to disable global logging.
 /*                
-                //Logging.Log.GlobalLog.Disable();
+                Logging.Log.GlobalLog.Disable();
 */
 
+                // Uncomment to disable project logging.
+/*                
+                Project.EnableLogging = false;
+*/
 
-                // !IMPORTANT: Uncomment to get a new (clean) Qld network JSON file. This will overwrite any existing "qld_network.json".
- 
                 var container = CsvAccess.ParseCsv();
                 container.UpdateTimes.AddRange(UpdateTime.DefaultUpdateTimes);      // Add default update times (hard coded).
                 container.Projects.AddRange(Project.GenerateTestProjects());        // If testing, add some (real) projects.
                 File.WriteAllText(JsonAccess.DefaultFilename, JsonConvert.SerializeObject(container, Formatting.Indented));
 
                 var data = JsonAccess.DeserializeEdges();
-
+/*
                 GoogleAccess.RunDataCollector(data).Wait();
                 JsonAccess.SerializeEdges(data);
-
-                JsonAccess.CreateOverview(data);
+*/
+                CsvAccess.GenerateCsvReportGroupedByUpdateTime(data);
             }
             catch (Exception e)
             {
                 Console.WriteLine($"Exception");
                 Console.WriteLine($"{e}");
+            }
+
+            if (initialConsoleMode != null)
+            { 
+                ConsoleQuickEdit.SetConsoleMode((uint)initialConsoleMode);
             }
 
             // TO DO: Uncomment for release version.

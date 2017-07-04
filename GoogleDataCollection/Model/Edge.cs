@@ -111,7 +111,8 @@ namespace GoogleDataCollection.Model
             { "minor", HighwayTypes.Minor },
             { "ford", HighwayTypes.Ford },
             { "closed:trunk", HighwayTypes.ClosedTrunk },
-            { "unclassifed", HighwayTypes.Unclassified }            // Typo in data.
+            { "unclassifed", HighwayTypes.Unclassified },            // Typo in data.
+            { "unknown", HighwayTypes.Unknown }
         };
 
         public enum EdgeDirections : byte { Forwards, Backwards }
@@ -129,7 +130,7 @@ namespace GoogleDataCollection.Model
         public string HighwayName { get; set; }
 
         // DONE [OPTIONAL]: Change to an enum.
-        [JsonProperty(PropertyName = "highwayType", Required = Required.AllowNull)]
+        [JsonProperty(PropertyName = "highwayType", Required = Required.Always)]
         public HighwayTypes? HighwayType { get; set; }
 
         [JsonProperty(PropertyName = "isOneWay", Required = Required.Always)]
@@ -227,6 +228,31 @@ namespace GoogleDataCollection.Model
         public static HighwayTypes? GetHighwayType(string name)
         {
             return string.IsNullOrWhiteSpace(name) ? null : (HighwayTypeNames.ContainsKey(name) ? (HighwayTypes?)HighwayTypeNames[name] : HighwayTypes.Unknown);
+        }
+
+        public static string GenerateCsvHeader(char separator)
+        {
+            var edge = new Edge();      // Only for reflection purposes.
+
+            var headerRow = new List<string>
+            {
+                nameof(edge.Id),
+                nameof(edge.Fid),
+                nameof(edge.OsmId),
+                nameof(edge.HighwayName),
+                nameof(edge.HighwayType),
+                nameof(edge.IsOneWay),
+                nameof(edge.MaxSpeed),
+                nameof(edge.Length),
+                nameof(edge.XFromPoint),
+                nameof(edge.YFromPoint),
+                nameof(edge.XToPoint),
+                nameof(edge.YToPoint),
+                nameof(edge.XMidPoint),
+                nameof(edge.YMidPoint)
+            };
+
+            return string.Join(separator.ToString(), headerRow);
         }
     }
 }

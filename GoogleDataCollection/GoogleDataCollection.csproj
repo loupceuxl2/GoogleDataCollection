@@ -52,6 +52,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Helper\ConsoleQuickEdit.cs" />
     <Compile Include="DataAccess\CsvAccess.cs" />
     <Compile Include="DataAccess\GoogleAccess.cs" />
     <Compile Include="DataAccess\JsonAccess.cs" />
