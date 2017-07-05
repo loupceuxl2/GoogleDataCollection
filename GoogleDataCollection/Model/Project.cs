@@ -21,10 +21,10 @@ namespace GoogleDataCollection.Model
     {
         public static bool EnableLogging = true;
 
-        public static uint MaxRequests = 50;
+        public static ulong MaxRequests = ulong.MaxValue;       // Or if you prefer 2,500. Project stops collecting data once an OVER_QUERY_LIMIT or REQUEST_DENIED is found.
 
         // !IMPORTANT: MaxBatchRequest must be <= MaxRequests.
-        public static uint MaxBatchRequests = 45;
+        public static ulong MaxBatchRequests = 50;
 
         public static uint BatchIntervalTime = 1100;
 
@@ -49,9 +49,9 @@ namespace GoogleDataCollection.Model
         {
             Summary = new ProjectSummary((int)Number);
 
-            Log = new Log(new FileInfo($"{ AppDomain.CurrentDomain.BaseDirectory }\\project_{ Number }.txt"))
+            Log = new Log(new FileInfo($@"{ AppDomain.CurrentDomain.BaseDirectory }\project_{ Number }.txt"))
             {
-                Output = Log.OutputFormats.File,         // Add file output for distinct project logs.
+                Output = Log.OutputFormats.File | Log.OutputFormats.Console,
                 FileWriteMode = Log.FileWriteModes.Overwrite,
                 ConsolePriority = Log.PriorityLevels.Medium,
                 FilePriority = Log.PriorityLevels.UltraLow,
@@ -133,7 +133,7 @@ namespace GoogleDataCollection.Model
                     var tasks = new List<Task<Tuple<int, Edge, UpdateTime, EdgeUpdate>>>();
                     var batchRequestCount = 0;
 
-                    for (; batchRequestCount < MaxBatchRequests && ((requestCompletedCount + (batchRequestCount % MaxBatchRequests)) < MaxRequests); batchRequestCount++)
+                    for (; (ulong)batchRequestCount < MaxBatchRequests && (((ulong)requestCompletedCount + ((ulong)batchRequestCount % MaxBatchRequests)) < MaxRequests); batchRequestCount++)
                     {
                         stopwatch.Restart();
 
@@ -169,7 +169,7 @@ namespace GoogleDataCollection.Model
 
                     Log.AddToLog(new LogMessage($"Project #{ Number }: Batch #{ batchNumber } took { stopwatch.ElapsedMilliseconds } milliseconds to process.", Log.PriorityLevels.Medium));
 
-                    if (requestCompletedCount >= MaxRequests)
+                    if ((ulong)requestCompletedCount >= MaxRequests)
                     {
                         break;
                     }
@@ -211,13 +211,11 @@ namespace GoogleDataCollection.Model
             }
         }
 
-        public static List<Project> GenerateTestProjects()
+        public static List<Project> DefaultProjects()
         {
             return  new List<Project>
             {
-                new Project { Number = 1, ApiKey = "AIzaSyD_EFI7UTnUSKJk_R8_66tDD0_XHEujQVc" },
-                new Project { Number = 2, ApiKey = "AIzaSyCAJzU9R8Y8UgtD1QoUHswUgRjnLMA7VJ4" },
-                new Project { Number = 3, ApiKey = "AIzaSyCtoG6JK_SAu_On2rW4fZ_Wypp3K-xZ1WI" }
+                //E.g., new Project { Number = 1, ApiKey = "AIzaSyD_EFI7UTnUSKJk_R8_66tDD0_XHEujQVc" },
             };
         }
     }

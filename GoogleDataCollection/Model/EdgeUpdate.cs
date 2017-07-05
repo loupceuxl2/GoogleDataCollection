@@ -35,7 +35,8 @@ namespace GoogleDataCollection.Model
         // REFERENCE: https://developers.google.com/maps/documentation/directions/intro#StatusCodes
         public static bool IsSavableUpdate(EdgeUpdate update)
         {
-            if (update == null) { return false; }
+            // !IMPORTANT: Some edges seem to return OK status despite going the wrong way on a one way street, which in turn results in a null duration. Take Edge '548a-->b', which should be inverted.
+            if (update == null || update.GoogleDuration == null) { return false; }
 
             switch (update.GoogleStatus)
             {

@@ -46,7 +46,6 @@ namespace GoogleDataCollection.DataAccess
             var executionSummary = new ExecutionSummary();
             var totalProjects = data.Projects.Count;
 
-            // TO DO [OPTIONAL]: Remove duplicate projects (i.e., have the same HourRunTime) and order ascending (by HourRunTime).
             if (totalProjects == 0)
             {
                 Log.GlobalLog.AddToLog(new LogMessage($"No projects found. Data collection aborted.", Log.PriorityLevels.UltraHigh));
@@ -59,6 +58,7 @@ namespace GoogleDataCollection.DataAccess
             var totalUpdateTimes = data.UpdateTimes.Count;
 
             // DONE: Check if there are no update times.
+            // TO DO [OPTIONAL]: Remove duplicate UpdateTimes (i.e., have the same HourRunTime) and order ascending (by HourRunTime). Decided not to as replicating UpdateTimes could be done on purpose to collect data faster for the replicated project(s).
             if (totalUpdateTimes == 0)
             {
                 Log.GlobalLog.AddToLog(new LogMessage($"No update times found. Data collection aborted.", Log.PriorityLevels.UltraHigh));
@@ -69,14 +69,14 @@ namespace GoogleDataCollection.DataAccess
             Log.GlobalLog.AddToLog(new LogMessage($"{ totalUpdateTimes } update times loaded.", Log.PriorityLevels.Medium));
 
             // DONE: Filter out non drivable streets (requires 1. Changing 'HighwayType' to an enum; 2. Reparsing the data to reflect changes).
-            // TO DO [OPTIONAL]: Consider other filters based on data structure.
+            // DONE: [OPTIONAL]: Consider other filters based on data structure --> Could use waypoints for two way edge traversal, i.e., waypoint 1 = A-->B, waypoint 2 = B-->A. A far more complex example would be hardcore graphing to optimise a single Google request into max waypoints.
             var prioritisedUpdates =
                 data.Edges.Where(e => AcceptableHighwayTypes.Contains((Edge.HighwayTypes)e.HighwayType))                                                                                // Filter out non accepted highway types.
                     .GroupBy(e => e.Updates.Count, e => e,                                                                                                                              // Group edges by update count.
                         (key, g) => new {UpdateCount = key, Edges = g.ToList()                                                                                                          
                         .OrderBy(edge => edge.Fid).ToList()})                                                                                                                           // Order individual groupings by FID.
                     .OrderBy(g => g.UpdateCount)                                                                                                                                        // Order groups by update count.
-                    .Select(x => new { x.UpdateCount, x.Edges })                                                                                                                          // Transform anonymous type to new { int, List<Edge> }
+                    .Select(x => new { x.UpdateCount, x.Edges })                                                                                                                        // Transform anonymous type to new { int, List<Edge> }
                     .SelectMany(x => x.Edges.Select(y => new Tuple<int, Edge, UpdateTime>(x.UpdateCount, y, data.UpdateTimes[x.UpdateCount % data.UpdateTimes.Count])))                 // Flatten groups into a list of Tuples<int, Edge, UpdateTime>.
                     .ToList();
 

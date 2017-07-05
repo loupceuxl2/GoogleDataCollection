@@ -81,7 +81,6 @@ namespace GoogleDataCollection.Model
                 $"OK: { GoogleOkCount }{ Environment.NewLine }" +
                 $"Has duration: { DurationCount }{ Environment.NewLine }" +
                 $"Not OK: { GoogleNotOkCount }{ Environment.NewLine }" +
-                $"Has duration: { DurationCount }{ Environment.NewLine }" +
                 $"No duration: { NullDurationCount }{ Environment.NewLine }" +
                 $"Not found: { GoogleNotFoundCount }{ Environment.NewLine }" +
                 $"Zero results: { GoogleZeroResultsCount }{ Environment.NewLine }" +

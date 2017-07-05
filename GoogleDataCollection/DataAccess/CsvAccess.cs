@@ -7,10 +7,6 @@ using System.Linq;
 
 namespace GoogleDataCollection.DataAccess
 {
-    // TO DO: DELETE!
-    // GDC1: AIzaSyD_EFI7UTnUSKJk_R8_66tDD0_XHEujQVc
-    // GDC2: AIzaSyCAJzU9R8Y8UgtD1QoUHswUgRjnLMA7VJ4
-    // GDC3: AIzaSyCtoG6JK_SAu_On2rW4fZ_Wypp3K-xZ1WI
     public static class CsvAccess
     {
         public enum ColumnIndex : byte { FId = 0, OsmId, HighwayName, HighwayType, IsOneWay, MaxSpeed, Length, FromY, FromX, ToY, ToX, YMid, XMid };
@@ -108,7 +104,7 @@ namespace GoogleDataCollection.DataAccess
 
         public static DataContainer ParseCsv()
         {
-            return ParseCsv($"{ AppDomain.CurrentDomain.BaseDirectory }\\{ DefaultCsvFilename }");
+            return ParseCsv($@"{ AppDomain.CurrentDomain.BaseDirectory }\{ DefaultCsvFilename }");
         }
         
         private static void ParseItem(uint row, uint column, string value, Edge edge, DataContainer container)
@@ -128,7 +124,7 @@ namespace GoogleDataCollection.DataAccess
                         break;
 
                     case (uint)ColumnIndex.HighwayName:
-                        edge.HighwayName = value;
+                        edge.HighwayName = value ?? null;
                         break;
 
                     case (uint)ColumnIndex.HighwayType:
@@ -204,13 +200,6 @@ namespace GoogleDataCollection.DataAccess
         {
             Log.GlobalLog.AddToLog(new LogMessage($"Generating CSV report started -- grouping edges by update hour.", Log.PriorityLevels.Medium));
 
-            if (!File.Exists($"{ filename }"))
-            {
-                Log.GlobalLog.AddToLog(new LogMessage($"CSV file '{ filename }' not found! Aborting operation.", Log.PriorityLevels.UltraHigh));
-
-                return;
-            }
-
             var reportData = data.Edges
                 .SelectMany(e => e.Updates)                                     // Flatten all updates (EdgeUpdates).
                 .GroupBy(u => u.UpdateHour)                                     // Group by hour.
@@ -238,9 +227,18 @@ namespace GoogleDataCollection.DataAccess
             Log.GlobalLog.AddToLog(new LogMessage($"Writing report to file '{ filename }' completed.", Log.PriorityLevels.Medium));
         }
 
-        public static void GenerateCsvReportGroupedByUpdateTime(DataContainer data)
+        public static void GenerateCsvReportGroupedByUpdateTime()
         {
-            GenerateCsvReportGroupedByUpdateTime(data, $"{ AppDomain.CurrentDomain.BaseDirectory }\\{ DefaultReportFilename }");
+            var data = JsonAccess.DeserializeEdges();
+
+            if (data == null)
+            {
+                Log.GlobalLog.AddToLog(new LogMessage($"No data available! Aborting operation.", Log.PriorityLevels.UltraHigh));
+
+                return;
+            }
+
+            GenerateCsvReportGroupedByUpdateTime(data, $@"{ AppDomain.CurrentDomain.BaseDirectory }\{ DefaultReportFilename }");
         }
 
         private static string GenerateGroupedByUpdateTimeRow(char separator, uint hour, Edge edge, TimeSpan? latestDuration)

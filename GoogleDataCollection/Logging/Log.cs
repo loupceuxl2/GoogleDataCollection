@@ -12,8 +12,8 @@ namespace GoogleDataCollection.Logging
     public class Log
     {
         public static readonly string DefaultGlobalLogFilename = "global_log.txt";
-        public static readonly FileInfo DefaultFileInfo = new FileInfo($"{ AppDomain.CurrentDomain.BaseDirectory }\\{ DefaultGlobalLogFilename }");
-        public static Log GlobalLog = new Log(new FileInfo($"{ AppDomain.CurrentDomain.BaseDirectory }\\global_log.txt"))
+        public static readonly FileInfo DefaultFileInfo = new FileInfo($@"{ AppDomain.CurrentDomain.BaseDirectory }\{ DefaultGlobalLogFilename }");
+        public static Log GlobalLog = new Log(new FileInfo($@"{ AppDomain.CurrentDomain.BaseDirectory }\global_log.txt"))
         {
             //Output = OutputFormats.File | OutputFormats.Console | OutputFormats.Debugger,
             Output = OutputFormats.Console,
@@ -84,7 +84,7 @@ namespace GoogleDataCollection.Logging
         }
 
         public Log(PriorityLevels filePriority = PriorityLevels.UltraLow, FileWriteModes writeMode = FileWriteModes.Overwrite, PriorityLevels debugPriority = PriorityLevels.UltraLow, PriorityLevels consolePriority = PriorityLevels.UltraLow, OutputFormats output = OutputFormats.File | OutputFormats.Debugger, bool enable = true)
-                : this(new FileInfo($"{ AppDomain.CurrentDomain.BaseDirectory }\\{ DefaultGlobalLogFilename }"), filePriority, writeMode, debugPriority, consolePriority, output, enable) { }
+                : this(new FileInfo($@"{ AppDomain.CurrentDomain.BaseDirectory }\{ DefaultGlobalLogFilename }"), filePriority, writeMode, debugPriority, consolePriority, output, enable) { }
 
         public void AddToLog(LogMessage message, bool writeToOutputs = true)
         {

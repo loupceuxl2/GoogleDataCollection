@@ -57,7 +57,7 @@ namespace GoogleDataCollection.Model
             Unsurfaced,         // 45
             Minor,              // 46
             Ford,               // 47
-            ClosedTrunk,        // 48
+            ClosedTrunk,        // 48 ???
             Unknown
         }
 
@@ -129,7 +129,7 @@ namespace GoogleDataCollection.Model
         [JsonProperty(PropertyName = "highwayName", Required = Required.AllowNull)]
         public string HighwayName { get; set; }
 
-        // DONE [OPTIONAL]: Change to an enum.
+        // DONE: Change to an enum.
         [JsonProperty(PropertyName = "highwayType", Required = Required.Always)]
         public HighwayTypes? HighwayType { get; set; }
 

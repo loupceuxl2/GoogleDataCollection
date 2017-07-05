@@ -14,10 +14,16 @@ namespace GoogleDataCollection.DataAccess
         {
             DataContainer container;
 
+            if (!File.Exists($"{ filename }"))
+            {
+                Log.GlobalLog.AddToLog(new LogMessage($"JSON file '{ filename }' not found! Aborting operation.", Log.PriorityLevels.UltraHigh));
+
+                return null;
+            }
+
             using (var file = File.OpenText(filename))
             {
-                var serializer = new JsonSerializer();
-                container = (DataContainer)serializer.Deserialize(file, typeof(DataContainer));
+                container = (DataContainer)new JsonSerializer().Deserialize(file, typeof(DataContainer));
             }
 
             return container;
@@ -25,7 +31,7 @@ namespace GoogleDataCollection.DataAccess
 
         public static DataContainer DeserializeEdges()
         {
-            return DeserializeEdges($"{ AppDomain.CurrentDomain.BaseDirectory }\\{ DefaultFilename }");
+            return DeserializeEdges($@"{ AppDomain.CurrentDomain.BaseDirectory }\{ DefaultFilename }");
         }
 
         private static void SerializeEdges(DataContainer data, string filename)
@@ -37,7 +43,7 @@ namespace GoogleDataCollection.DataAccess
 
         public static void SerializeEdges(DataContainer data)
         {
-            SerializeEdges(data, $"{ AppDomain.CurrentDomain.BaseDirectory }\\{ DefaultFilename }");
+            SerializeEdges(data, $@"{ AppDomain.CurrentDomain.BaseDirectory }\{ DefaultFilename }");
         }
     }
 }
