@@ -10,6 +10,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using static GoogleDataCollection.ProgramOption;
 
+// v2.0
 namespace GoogleDataCollection
 {
     internal class Program
